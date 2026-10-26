@@ -88,7 +88,9 @@ export const en = {
     },
     process: {
       eyebrow: "Start with the application",
-      title: "The right solution starts with the right questions.",
+      title: "The right solution starts with the right",
+      titleAccent: "questions.",
+      text: "We work methodically from the first conversation to a market-ready solution, aligning technical and commercial requirements.",
       steps: [
         { title: "Discover", text: "Product, process, market and commercial objective." },
         { title: "Define", text: "Format, compatibility, profile and technical requirements." },

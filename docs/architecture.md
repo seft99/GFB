@@ -77,3 +77,10 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 - Component: `components/home/home-showcase.tsx`; desktop styles: `app/styles/home-showcase.css` (≥ 1100 px). The markup keeps the previous `showcase-*` classes, so tablet and mobile still use the original rules in `globals.css`.
 - Desktop: full-bleed grid with the photo at 53.5 % from the viewport edge (rounded right corners) and the copy column keeping the page gutter. The headline is rendered as `titleLines` plus `titleAccent`; lines and lime accent only apply on desktop.
 - Photo: `raw-materials/fruit-concentrates.avif` (the category image). Hover zooms it to 1.045 over 1 s; none under reduced motion.
+
+## Homepage "Start with the application"
+
+- Components: `components/home/home-process.tsx` and the client `components/home/reveal-list.tsx`; desktop styles: `app/styles/home-process.css` (≥ 1100 px). The heading and `process-grid` list keep their classes, so tablet and mobile render as before; photo, lead, icon nodes and connectors are desktop-only.
+- Connectors are stretched SVG lines (no `vector-effect`, which would break the `pathLength` dash used for the draw-in) plus a fixed arrowhead.
+- Entrance: `RevealList` marks a list that starts below the fold as `data-reveal="pending"`, then `"in"` via `IntersectionObserver`; content is visible without JavaScript and under reduced motion. Steps are not links, so hover is the only interaction.
+- Photo: `flavours/beverage.avif`, decorative, pending an approved product-development image.

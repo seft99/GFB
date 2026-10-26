@@ -90,7 +90,9 @@ export const es: Dictionary = {
     },
     process: {
       eyebrow: "Partir de la aplicación",
-      title: "La solución correcta empieza por las preguntas correctas.",
+      title: "La solución correcta empieza por las preguntas",
+      titleAccent: "correctas.",
+      text: "Trabajamos con método desde la primera conversación hasta una solución lista para el mercado, alineando los requisitos técnicos y comerciales.",
       steps: [
         { title: "Descubrir", text: "Producto, proceso, mercado y objetivo comercial." },
         { title: "Definir", text: "Formato, compatibilidad, perfil y requisitos técnicos." },

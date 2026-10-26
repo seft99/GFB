@@ -1,7 +1,20 @@
 import type { ReactNode } from "react";
 
 export type IconName =
-  "arrow" | "menu" | "close" | "globe" | "mail" | "phone" | "pin" | "check" | "cube" | "leaf" | "bars" | "nodes";
+  | "arrow"
+  | "menu"
+  | "close"
+  | "globe"
+  | "mail"
+  | "phone"
+  | "pin"
+  | "check"
+  | "cube"
+  | "leaf"
+  | "bars"
+  | "nodes"
+  | "search"
+  | "document";
 
 const paths: Record<IconName, ReactNode> = {
   arrow: (
@@ -70,6 +83,18 @@ const paths: Record<IconName, ReactNode> = {
       <circle cx="5.5" cy="17.5" r="2.5" />
       <circle cx="18.5" cy="17.5" r="2.5" />
       <path d="m10.75 7.95-4 7.35M13.25 7.95l4 7.35M8 17.5h8" />
+    </>
+  ),
+  search: (
+    <>
+      <circle cx="14" cy="10" r="6.25" />
+      <path d="m9.6 14.4-5.85 5.85" />
+    </>
+  ),
+  document: (
+    <>
+      <path d="M6 3.25h8.5l4.25 4.25v13.25H6Z" />
+      <path d="M14.25 3.5v4.25h4.25M9.25 11.5h6.5M9.25 14.75h6.5M9.25 18h4" />
     </>
   )
 };
