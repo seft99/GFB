@@ -11,6 +11,7 @@ import "../styles/header.css";
 import "../styles/home-hero.css";
 import "../styles/home-connection.css";
 import "../styles/home-divisions.css";
+import "../styles/home-showcase.css";
 
 // Humanist sans closest to the approved reference typography; self-hosted by next/font.
 const notoSans = Noto_Sans({

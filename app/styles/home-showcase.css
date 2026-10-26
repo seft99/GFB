@@ -1,0 +1,106 @@
+/*
+ * Homepage "Portfolio discovery" — desktop design (≥ 1100px).
+ *
+ * Below 1100px the section keeps its previous styles from globals.css. Here the grid goes
+ * full-bleed: the photo runs from the viewport edge (≈ 53.5%) and the copy column keeps
+ * the right-hand gutter of the page.
+ */
+
+@media (min-width: 1100px) {
+  .showcase-section.section-dark {
+    padding-block: 1rem 2rem;
+    background: radial-gradient(60% 80% at 85% 55%, rgba(16, 34, 66, 0.35), transparent 70%), #03091d;
+  }
+
+  .showcase-section .showcase-grid {
+    width: 100%;
+    min-height: 0;
+    grid-template-columns: minmax(0, 53.5fr) minmax(0, 46.5fr);
+    font-family: var(--font-brand);
+  }
+
+  .showcase-section .showcase-image {
+    min-height: clamp(36rem, 45.7vw, 54rem);
+    margin-left: 0;
+    border-radius: 0 1.875rem 1.875rem 0;
+    isolation: isolate;
+  }
+  .showcase-section .showcase-image img {
+    transform: scale(1.001);
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .showcase-section .showcase-image:hover img {
+    transform: scale(1.045);
+  }
+
+  .showcase-section .showcase-copy {
+    justify-content: center;
+    padding: 3.5rem clamp(2rem, 6vw, 7rem) 3.5rem clamp(3rem, 4.65vw, 5.25rem);
+  }
+
+  .showcase-section .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1.35rem;
+    margin: 0 0 1.75rem;
+    color: var(--brand-lime);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+  .showcase-section .eyebrow::after {
+    content: "";
+    width: 5.5rem;
+    height: 1px;
+    background: rgba(179, 236, 62, 0.6);
+  }
+
+  .showcase-section .showcase-title {
+    max-width: none;
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(3.25rem, 4.3vw, 4.75rem);
+    font-weight: 680;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: wrap;
+  }
+  .showcase-title > span {
+    display: block;
+  }
+  .showcase-title__accent {
+    color: var(--brand-lime);
+  }
+
+  .showcase-section .showcase-copy > p:not(.eyebrow) {
+    max-width: 37.5rem;
+    margin: 2.4rem 0 2.25rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: clamp(1rem, 1.05vw, 1.0625rem);
+    line-height: 1.75;
+  }
+
+  .showcase-section .showcase-cta.button {
+    min-height: 4rem;
+    gap: 1.1rem;
+    margin-top: 0;
+    padding: 0 1.75rem;
+    color: var(--brand-navy);
+    background: var(--brand-lime);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .showcase-section .showcase-cta.button:hover {
+    background: var(--brand-lime-hover);
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .showcase-section .showcase-image img {
+    transition: none;
+  }
+  .showcase-section .showcase-image:hover img {
+    transform: none;
+  }
+}

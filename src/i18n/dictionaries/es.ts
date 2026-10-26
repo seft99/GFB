@@ -82,10 +82,11 @@ export const es: Dictionary = {
     },
     showcase: {
       eyebrow: "Descubrimiento por portafolio",
-      title: "Concentrados organizados como compra la industria.",
+      titleLines: ["Concentrados", "organizados", "como compra"],
+      titleAccent: "la industria.",
       text: "Cítricos, mediterráneos, tropicales, frutos rojos y vegetales, organizados para que los equipos de compras y formulación encuentren rápidamente la referencia adecuada.",
       cta: "Ver familias de concentrados",
-      imageAlt: "Selección de frutas para concentrados"
+      imageAlt: "Vaso y botella de concentrado de frutos rojos junto a bayas frescas"
     },
     process: {
       eyebrow: "Partir de la aplicación",

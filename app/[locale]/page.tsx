@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { HomeConnection } from "@/components/home/home-connection";
 import { HomeDivisions } from "@/components/home/home-divisions";
 import { HomeHero } from "@/components/home/home-hero";
+import { HomeShowcase } from "@/components/home/home-showcase";
 import { CtaBand } from "@/components/sections/cta-band";
-import { ButtonLink, TextLink } from "@/components/ui/button-link";
+import { TextLink } from "@/components/ui/button-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { JsonLd } from "@/components/ui/json-ld";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { getDivisionById } from "@/src/content/catalog";
 import { company } from "@/src/content/company";
 import { isLocale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
@@ -34,8 +33,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const { home, common } = getDictionary(locale);
-  const rawMaterials = getDivisionById("raw-materials");
-  const concentrates = rawMaterials?.categories.find((category) => category.id === "fruit-concentrates");
 
   return (
     <main id="main-content">
@@ -47,28 +44,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       <HomeDivisions locale={locale} />
 
-      {rawMaterials && concentrates && (
-        <section className="section showcase-section section-dark">
-          <div className="shell showcase-grid">
-            <div className="showcase-image">
-              <Image
-                src={concentrates.image}
-                alt={home.showcase.imageAlt}
-                fill
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
-            </div>
-            <div className="showcase-copy">
-              <Eyebrow onDark>{home.showcase.eyebrow}</Eyebrow>
-              <h2>{home.showcase.title}</h2>
-              <p>{home.showcase.text}</p>
-              <ButtonLink href={paths.category(locale, rawMaterials, concentrates)} variant="light">
-                {home.showcase.cta}
-              </ButtonLink>
-            </div>
-          </div>
-        </section>
-      )}
+      <HomeShowcase locale={locale} />
 
       <section className="section application-section">
         <div className="shell">

@@ -80,10 +80,11 @@ export const en = {
     },
     showcase: {
       eyebrow: "Portfolio discovery",
-      title: "Concentrates organized the way industry buys.",
+      titleLines: ["Concentrates", "organized", "the way"],
+      titleAccent: "industry buys.",
       text: "Citrus, Mediterranean, tropical, red-fruit and vegetable families, organized so purchasing and formulation teams can find the right reference quickly.",
       cta: "View concentrate families",
-      imageAlt: "Fruit selection for concentrates"
+      imageAlt: "Glass and bottle of dark berry concentrate beside fresh berries"
     },
     process: {
       eyebrow: "Start with the application",
