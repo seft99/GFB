@@ -83,7 +83,7 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 - Components: `components/home/home-process.tsx` and the client `components/home/reveal-list.tsx`; desktop styles: `app/styles/home-process.css` (≥ 1100 px). The heading and `process-grid` list keep their classes, so tablet and mobile render as before; photo, lead, icon nodes and connectors are desktop-only.
 - Connectors are stretched SVG lines (no `vector-effect`, which would break the `pathLength` dash used for the draw-in) plus a fixed arrowhead.
 - Entrance: `RevealList` marks a list that starts below the fold as `data-reveal="pending"`, then `"in"` via `IntersectionObserver`; content is visible without JavaScript and under reduced motion. Steps are not links, so hover is the only interaction.
-- Photo: `flavours/beverage.avif`, decorative, pending an approved product-development image.
+- Photo: `public/images/home/process-honey.webp` (approved asset, 1672 × 941, WebP from the supplied PNG), decorative, cropped from the right so the spoon and honey stream stay clear of the faded left edge.
 
 ## Homepage "International coordination"
 
