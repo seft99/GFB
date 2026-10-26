@@ -237,20 +237,25 @@
     color: var(--brand-lime-text);
   }
 
-  /* Entrance: hidden until RevealList marks the list as in view. */
+  /* Entrance: hidden until RevealList marks the list as in view. Hiding is instant
+     (no transition), so nothing is ever caught half-faded. */
   .process__steps[data-reveal="pending"] .process__node {
     opacity: 0;
     translate: 0 14px;
+    transition: none;
   }
   .process__steps[data-reveal="pending"] > li > :is(span[aria-hidden]:not(.process__node, .process__connector), h3, p) {
     opacity: 0;
     translate: 0 10px;
+    transition: none;
   }
   .process__steps[data-reveal="pending"] .process__connector svg:first-child path {
     stroke-dashoffset: 1;
+    transition: none;
   }
   .process__steps[data-reveal="pending"] .process__connector-head {
     opacity: 0;
+    transition: none;
   }
 }
 

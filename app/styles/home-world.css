@@ -264,17 +264,21 @@
     stroke-width: 2.5;
   }
 
-  /* Entrance: hidden until RevealList marks the globe as in view. */
+  /* Entrance: hidden until RevealList marks the globe as in view. Hiding is instant
+     (no transition), so nothing is ever caught half-faded. */
   .world__globe[data-reveal="pending"] .world__sphere {
     opacity: 0;
     scale: 0.96;
+    transition: none;
   }
   .world__globe[data-reveal="pending"] .world__place {
     opacity: 0;
     translate: 0 0.6rem;
+    transition: none;
   }
   .world__globe[data-reveal="pending"] .world__arc {
     stroke-dashoffset: 1;
+    transition: none;
   }
 }
 
