@@ -48,11 +48,26 @@ export const es: Dictionary = {
         ["Conocimiento", "que conecta"]
       ]
     },
-    intro: {
+    connection: {
       eyebrow: "El valor de la conexión",
-      title: "Un interlocutor. Múltiples puntos críticos resueltos.",
-      lead: "Desde la selección del envase hasta la materia prima, el perfil de sabor o el proceso industrial, GFB parte de la aplicación y coordina la solución alrededor de ella.",
-      body: "GFB trabaja con productores y fabricantes especializados para abastecer proyectos internacionales. Según la categoría, su papel combina abastecimiento, desarrollo de producto, coordinación de proyecto y consultoría."
+      titleLead: "Un interlocutor.",
+      title: "Múltiples puntos críticos",
+      titleAccent: "resueltos.",
+      text: "Desde la selección del envase hasta la materia prima, el perfil de sabor o el proceso industrial, GFB parte de la aplicación y coordina la solución alrededor de ella. Combinamos abastecimiento, desarrollo de producto, coordinación de proyectos y consultoría para convertir la complejidad en decisiones comerciales claras.",
+      approach: "Nuestro enfoque",
+      indicatorsLabel: "Una relación, varias disciplinas",
+      indicators: [
+        { value: "1", label: "punto de contacto" },
+        { value: "4", label: "disciplinas clave" },
+        { value: "∞", label: "posibilidades más amplias" }
+      ],
+      networkLabel: "Disciplinas coordinadas por GFB",
+      disciplines: {
+        packaging: { title: "Embalaje", text: "Soluciones para cada requisito de envase" },
+        ingredients: { title: "Ingredientes", text: "Abastecimiento alineado con la aplicación" },
+        flavours: { title: "Sabores", text: "Perfiles de producto y sensoriales" },
+        consulting: { title: "Consultoría", text: "Coordinación técnica y de proyectos" }
+      }
     },
     solutions: {
       eyebrow: "Cuatro divisiones",

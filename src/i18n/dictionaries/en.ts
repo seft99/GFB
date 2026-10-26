@@ -46,11 +46,26 @@ export const en = {
         ["Know-how", "that connects"]
       ]
     },
-    intro: {
+    connection: {
       eyebrow: "The value of connection",
-      title: "One conversation. Multiple critical points resolved.",
-      lead: "From packaging selection to raw material, flavour profile or industrial process, GFB starts with the application and coordinates the solution around it.",
-      body: "GFB works with specialized producers and manufacturers to support international projects. Depending on the category, its role combines sourcing, product development, project coordination and consulting."
+      titleLead: "One conversation.",
+      title: "Multiple critical points",
+      titleAccent: "resolved.",
+      text: "From packaging selection to raw material, flavour profile or industrial process, GFB starts with the application and coordinates the solution around it. We combine sourcing, product development, project coordination and consulting to turn complexity into clear, commercial decisions.",
+      approach: "Our approach",
+      indicatorsLabel: "One relationship, several disciplines",
+      indicators: [
+        { value: "1", label: "point of contact" },
+        { value: "4", label: "key disciplines" },
+        { value: "∞", label: "broader possibilities" }
+      ],
+      networkLabel: "Disciplines coordinated by GFB",
+      disciplines: {
+        packaging: { title: "Packaging", text: "Solutions for packaging requirements" },
+        ingredients: { title: "Ingredients", text: "Sourcing aligned to applications" },
+        flavours: { title: "Flavours", text: "Product and sensory profiles" },
+        consulting: { title: "Consulting", text: "Technical and project coordination" }
+      }
     },
     solutions: {
       eyebrow: "Four divisions",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { DivisionCard } from "@/components/cards/division-card";
+import { HomeConnection } from "@/components/home/home-connection";
 import { HomeHero } from "@/components/home/home-hero";
 import { CtaBand } from "@/components/sections/cta-band";
 import { ButtonLink, TextLink } from "@/components/ui/button-link";
@@ -42,18 +43,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       <HomeHero locale={locale} />
 
-      <section className="section intro-section">
-        <div className="shell split-intro">
-          <div>
-            <Eyebrow>{home.intro.eyebrow}</Eyebrow>
-            <h2>{home.intro.title}</h2>
-          </div>
-          <div>
-            <p className="lead">{home.intro.lead}</p>
-            <p>{home.intro.body}</p>
-          </div>
-        </div>
-      </section>
+      <HomeConnection locale={locale} />
 
       <section id="solutions" className="section solutions-section">
         <div className="shell">

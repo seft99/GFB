@@ -9,6 +9,7 @@ import { siteOrigin } from "@/src/lib/metadata";
 import "../globals.css";
 import "../styles/header.css";
 import "../styles/home-hero.css";
+import "../styles/home-connection.css";
 
 // Humanist sans closest to the approved reference typography; self-hosted by next/font.
 const notoSans = Noto_Sans({

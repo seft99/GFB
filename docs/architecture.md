@@ -56,3 +56,11 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 - The photo sits in a "stage" with its exact aspect ratio, filling the hero height and anchored right. Callouts are placed by their circle centre as a percentage of the photo (`callouts` in the component) and sized in stage container units, so they stay on the printed arcs at every size. To move one, change its `x`/`y` percentages.
 - Layouts: desktop ≥ 1100 px (composition), 900–1099 px (two columns, no callouts), ≤ 899 px (copy, then a crop of the product group); callouts are hidden ≤ 640 px.
 - Typeface: Noto Sans (variable, `wdth` 92 %) via `next/font`, scoped to the header and hero through `--font-brand`.
+
+## Homepage "The value of connection"
+
+- Component: `components/home/home-connection.tsx`; styles: `app/styles/home-connection.css`; copy: `home.connection` in the dictionaries.
+- The network is an aspect-locked box (840 × 590) shared by the SVG `viewBox` and the percentage-positioned cards, so paths, nodes, hub and cards scale together. Path coordinates live in `links` in the component; cards fill the corners in `disciplines` order.
+- Card photos reuse the division images listed in `disciplines`; the hub uses `public/brand/gfb-logo.avif`.
+- Layouts: two columns ≥ 1100 px, stacked drawing 760–1099 px, hub plus card grid ≤ 759 px (one column ≤ 559 px).
+- Motion: scroll-driven entrance (`animation-timeline`, no JavaScript) and a slow glow on the hub nodes, both inside `prefers-reduced-motion: no-preference`. The section uses `overflow: clip` because `hidden` would make it a scroll container and break the view timeline.
