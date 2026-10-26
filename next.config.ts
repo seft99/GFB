@@ -37,6 +37,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [75, 90],
     deviceSizes: [320, 375, 430, 768, 1024, 1280, 1440, 1920]
   },
   async headers() {

@@ -26,16 +26,26 @@ export const en = {
     metaDescription: "Packaging, raw materials, flavours and industrial consulting coordinated for B2B buyers.",
     hero: {
       eyebrow: "B2B solutions for food & beverage",
-      title: "One supply chain.",
-      titleAccent: "Better connected.",
+      title: "Supply chain solutions,",
+      titleAccent: "better connected.",
       intro:
         "GFB coordinates packaging, ingredients, flavours and industrial know-how to turn complex requirements into clear commercial decisions.",
-      visualLabel: "GFB solutions portfolio",
-      mainImageAlt: "Fresh ingredients for food applications",
-      secondaryImageAlt: "Beverage packaging solutions",
-      indexLabel: "connected divisions"
+      imageAlt:
+        "Kraft pouch, glass juice bottle and aluminium can alongside grapes, orange, almonds and a powdered ingredient",
+      calloutsLabel: "GFB divisions",
+      callouts: {
+        packaging: ["Smart", "packaging"],
+        ingredients: ["Quality ingredients,", "sourced globally"],
+        flavours: ["Flavours", "that inspire"],
+        consulting: ["Consulting", "that connects"]
+      },
+      valuesLabel: "What GFB brings",
+      values: [
+        ["Packaging", "that performs"],
+        ["Ingredients", "with purpose"],
+        ["Know-how", "that connects"]
+      ]
     },
-    capabilitiesLabel: "Core capabilities",
     intro: {
       eyebrow: "The value of connection",
       title: "One conversation. Multiple critical points resolved.",

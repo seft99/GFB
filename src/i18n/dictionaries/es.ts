@@ -28,16 +28,26 @@ export const es: Dictionary = {
     metaDescription: "Embalaje, materias primas, sabores y consultoría industrial coordinados para compradores B2B.",
     hero: {
       eyebrow: "Soluciones B2B para alimentación y bebidas",
-      title: "Una cadena de suministro.",
-      titleAccent: "Mejor conectada.",
+      title: "Soluciones para una cadena de suministro",
+      titleAccent: "mejor conectada.",
       intro:
         "GFB coordina embalaje, ingredientes, sabores y conocimiento industrial para convertir necesidades complejas en decisiones comerciales claras.",
-      visualLabel: "Portafolio de soluciones GFB",
-      mainImageAlt: "Ingredientes frescos para aplicaciones alimentarias",
-      secondaryImageAlt: "Soluciones de envase para bebidas",
-      indexLabel: "divisiones conectadas"
+      imageAlt:
+        "Bolsa kraft, botella de zumo de vidrio y lata de aluminio junto a uvas, naranja, almendras y un ingrediente en polvo",
+      calloutsLabel: "Divisiones de GFB",
+      callouts: {
+        packaging: ["Embalaje", "inteligente"],
+        ingredients: ["Ingredientes", "de calidad global"],
+        flavours: ["Sabores", "que inspiran"],
+        consulting: ["Consultoría", "que conecta"]
+      },
+      valuesLabel: "Lo que aporta GFB",
+      values: [
+        ["Embalaje", "que impulsa"],
+        ["Ingredientes", "con propósito"],
+        ["Conocimiento", "que conecta"]
+      ]
     },
-    capabilitiesLabel: "Capacidades principales",
     intro: {
       eyebrow: "El valor de la conexión",
       title: "Un interlocutor. Múltiples puntos críticos resueltos.",

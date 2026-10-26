@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { DivisionCard } from "@/components/cards/division-card";
+import { HomeHero } from "@/components/home/home-hero";
 import { CtaBand } from "@/components/sections/cta-band";
 import { ButtonLink, TextLink } from "@/components/ui/button-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -39,62 +40,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     <main id="main-content">
       <JsonLd data={organizationSchema()} />
 
-      <section className="hero section-dark">
-        <div className="hero-orbit hero-orbit--one" aria-hidden="true" />
-        <div className="hero-orbit hero-orbit--two" aria-hidden="true" />
-        <div className="shell hero-grid">
-          <div className="hero-copy">
-            <Eyebrow onDark>{home.hero.eyebrow}</Eyebrow>
-            <h1>
-              {home.hero.title}
-              <br />
-              <em>{home.hero.titleAccent}</em>
-            </h1>
-            <p className="hero-intro">{home.hero.intro}</p>
-            <div className="button-row">
-              <ButtonLink href={paths.page(locale, "contact")} variant="lime">
-                {common.inquire}
-              </ButtonLink>
-              <ButtonLink href="#solutions" variant="ghost" arrow={false}>
-                {common.explore}
-              </ButtonLink>
-            </div>
-          </div>
-          <div className="hero-visual" role="img" aria-label={home.hero.visualLabel}>
-            <div className="hero-image hero-image--main">
-              <Image
-                src="/images/home/food-industry.avif"
-                alt={home.hero.mainImageAlt}
-                fill
-                priority
-                sizes="(max-width: 900px) 92vw, 45vw"
-              />
-            </div>
-            <div className="hero-image hero-image--secondary">
-              <Image
-                src="/images/packaging/cans.avif"
-                alt={home.hero.secondaryImageAlt}
-                fill
-                sizes="(max-width: 900px) 45vw, 18vw"
-              />
-            </div>
-            <div className="hero-index">
-              <strong>{String(divisions.length).padStart(2, "0")}</strong>
-              <span>{home.hero.indexLabel}</span>
-            </div>
-          </div>
-        </div>
-        <div className="capability-rail">
-          <ul aria-label={home.capabilitiesLabel}>
-            {divisions.map((division) => (
-              <li key={division.id}>
-                {division.shortTitle[locale]}
-                <i aria-hidden="true">✦</i>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <HomeHero locale={locale} />
 
       <section className="section intro-section">
         <div className="shell split-intro">

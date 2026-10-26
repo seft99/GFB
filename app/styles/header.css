@@ -1,0 +1,236 @@
+/* Global site header and navigation. Layout tokens live in globals.css (:root). */
+
+.site-header {
+  position: fixed;
+  z-index: 100;
+  inset: 0 0 auto;
+  height: var(--header-h);
+  color: var(--white);
+  background: var(--brand-navy);
+  font-family: var(--font-brand);
+  font-stretch: 92%;
+}
+.site-header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  border-radius: 0.375rem;
+}
+.brand img {
+  width: 9.625rem;
+  height: auto;
+}
+
+.desktop-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.1vw, 2.05rem);
+}
+.desktop-nav a {
+  position: relative;
+  padding: 0.6rem 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.97rem;
+  font-weight: 620;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.desktop-nav a::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0.2rem;
+  height: 2px;
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: right;
+  background: var(--brand-lime);
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.desktop-nav a:hover,
+.desktop-nav a.is-active {
+  color: var(--white);
+}
+.desktop-nav a:hover::after,
+.desktop-nav a.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  margin-left: clamp(0rem, 1vw, 1rem);
+}
+.language-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.75rem;
+  padding-right: 1.15rem;
+  color: var(--white);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.language-link::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 1px;
+  height: 1.9rem;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+}
+.language-link svg {
+  width: 1.15rem;
+  opacity: 0.9;
+}
+.language-link:hover {
+  color: var(--brand-lime);
+}
+
+.header-cta.button {
+  min-height: 3rem;
+  gap: 1.2rem;
+  padding: 0 1.55rem;
+  color: var(--brand-navy);
+  background: var(--brand-lime);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.header-cta.button svg {
+  width: 1.15rem;
+}
+.header-cta.button:hover {
+  background: var(--brand-lime-hover);
+  transform: translateY(-1px);
+}
+
+.menu-button {
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+}
+.menu-button svg {
+  width: 1.3rem;
+}
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .desktop-nav,
+  .header-cta {
+    display: none;
+  }
+  .header-actions {
+    margin-left: auto;
+    gap: 0.75rem;
+  }
+  .language-link {
+    padding-right: 0.9rem;
+  }
+  .menu-button {
+    display: grid;
+  }
+  .mobile-menu {
+    position: fixed;
+    inset: var(--header-h) 0 0;
+    display: block;
+    overflow-y: auto;
+    visibility: hidden;
+    opacity: 0;
+    background: var(--brand-navy);
+    transform: translateY(-0.75rem);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0.25s;
+  }
+  .mobile-menu.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .mobile-menu nav {
+    width: min(calc(100% - 3rem), 48rem);
+    margin: 0 auto;
+    padding-block: 1.5rem 2.5rem;
+  }
+  .mobile-menu nav > a:not(.button) {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.05rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .mobile-menu nav > a[aria-current="page"] {
+    color: var(--brand-lime);
+  }
+  .mobile-menu nav > a span {
+    color: var(--brand-lime);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .mobile-menu nav > a svg {
+    width: 1.2rem;
+  }
+  .mobile-menu .button {
+    width: 100%;
+    min-height: 3.25rem;
+    margin-top: 2rem;
+    color: var(--brand-navy);
+    background: var(--brand-lime);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .shell-wide {
+    width: min(calc(100% - 2rem), var(--shell-wide));
+  }
+  .brand img {
+    width: 7.75rem;
+  }
+  .mobile-menu nav {
+    width: calc(100% - 2rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .brand img {
+    width: 6.75rem;
+  }
+  .header-actions {
+    gap: 0.5rem;
+  }
+  .language-link {
+    padding-right: 0.6rem;
+  }
+}

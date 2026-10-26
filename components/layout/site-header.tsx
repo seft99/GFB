@@ -14,7 +14,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
   const target = otherLocale(locale);
   return (
     <header className="site-header">
-      <div className="site-header__inner shell">
+      <div className="site-header__inner shell-wide">
         <Link href={paths.home(locale)} className="brand" aria-label={common.homeLinkLabel}>
           <Image src="/brand/gfb-logo.avif" alt="" width={187} height={77} priority />
         </Link>

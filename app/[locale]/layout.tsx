@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Noto_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -6,6 +7,16 @@ import { isLocale, locales } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { siteOrigin } from "@/src/lib/metadata";
 import "../globals.css";
+import "../styles/header.css";
+import "../styles/home-hero.css";
+
+// Humanist sans closest to the approved reference typography; self-hosted by next/font.
+const notoSans = Noto_Sans({
+  subsets: ["latin", "latin-ext"],
+  axes: ["wdth"],
+  display: "swap",
+  variable: "--font-noto-sans"
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -29,7 +40,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   if (!isLocale(locale)) notFound();
   const { common } = getDictionary(locale);
   return (
-    <html lang={locale} data-scroll-behavior="smooth">
+    <html lang={locale} className={notoSans.variable} data-scroll-behavior="smooth">
       <body>
         <a href="#main-content" className="skip-link">
           {common.skipToContent}

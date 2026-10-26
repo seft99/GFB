@@ -48,3 +48,11 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 - Midnight navy `#020216`, brand blue `#1457D9` / `#246EE9`, lime accent `#96D814` / `#B9EE43`, neutral `#F3F4F7`, ink `#11152A`.
 - Motion is limited to navigation, links and image scale; `prefers-reduced-motion` removes transitions.
 - Colour pairs are checked by the axe suite (WCAG 2.2 AA) on desktop and mobile.
+
+## Homepage hero
+
+- Component: `components/home/home-hero.tsx`; styles: `app/styles/home-hero.css`; header styles: `app/styles/header.css`.
+- Background: `public/images/home/hero-background.webp` (approved photo, 1584 × 993, unmodified). The approved design reference lives in `docs/design/references/` and is never rendered.
+- The photo sits in a "stage" with its exact aspect ratio, filling the hero height and anchored right. Callouts are placed by their circle centre as a percentage of the photo (`callouts` in the component) and sized in stage container units, so they stay on the printed arcs at every size. To move one, change its `x`/`y` percentages.
+- Layouts: desktop ≥ 1100 px (composition), 900–1099 px (two columns, no callouts), ≤ 899 px (copy, then a crop of the product group); callouts are hidden ≤ 640 px.
+- Typeface: Noto Sans (variable, `wdth` 92 %) via `next/font`, scoped to the header and hero through `--font-brand`.
