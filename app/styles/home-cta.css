@@ -2,11 +2,13 @@
  * Homepage closing CTA — desktop design (≥ 1100px).
  *
  * Below 1100px the section is the shared blue CtaBand layout from globals.css. Here the copy
- * stacks on the left and a liquid-surface artwork (SVG, sliced to the right edge) fills the
- * right side. The entrance runs once via RevealList (`data-reveal`), never under reduced motion.
+ * stacks on the left; the pipette photograph is anchored to the right edge at full section
+ * height (its left edge is plain blue and fades into the background), with the lime curve
+ * and node drawn above it in an SVG sliced to the right edge. The entrance runs once via RevealList (`data-reveal`), never under reduced motion.
  */
 
-.home-cta__art {
+.home-cta__art,
+.home-cta__photo {
   display: none;
 }
 
@@ -38,10 +40,18 @@
       opacity 0.9s var(--cta-ease),
       translate 1.1s var(--cta-ease);
   }
-  .home-cta__ripples ellipse {
-    fill: none;
-    stroke: #ffffff;
-    stroke-width: 1.5;
+  .home-cta__photo {
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    right: 0;
+    display: block;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    mask-image: linear-gradient(90deg, transparent 0, #000 30%);
+  }
+  .home-cta__photo img {
+    object-fit: cover;
   }
   .home-cta__curve {
     fill: none;

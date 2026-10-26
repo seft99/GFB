@@ -95,8 +95,8 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 ## Homepage closing CTA
 
 - Component: `components/home/home-cta.tsx`; desktop styles: `app/styles/home-cta.css` (≥ 1100 px). It keeps the shared `cta-section` / `cta-panel` markup, so tablet and mobile match `CtaBand`, which other pages still use unchanged.
-- Artwork: SVG light, liquid surface and ripples plus the lime curve and node, sliced to the right edge (`xMaxYMid slice`). It stands in for the approved pipette-and-droplet photograph until the original asset is supplied; the photo would replace the pool and ripples.
-- Entrance: once via `RevealList` (copy rises, artwork slides in); off under reduced motion.
+- Photo: `public/images/home/cta-droplet.webp` (approved asset, 1536 × 1024, WebP from the supplied PNG), anchored right at full section height with its plain-blue left edge masked into the background. The lime curve and node are an SVG above it, sliced to the right edge (`xMaxYMid slice`).
+- Entrance: once via `RevealList` (copy rises, the curve layer slides in); off under reduced motion.
 
 ## Site footer
 
