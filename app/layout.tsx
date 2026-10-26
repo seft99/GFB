@@ -1,14 +1,10 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { ReactNode } from "react";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.gfb-solutions.com"),
-  title: { default: "GFB Solutions | Food & Beverage Industry Solutions", template: "%s | GFB Solutions" },
-  description: "Packaging, ingredients, flavours and industrial consulting for food and beverage companies.",
-  applicationName: "GFB Solutions",
-  icons: { icon: "/brand/gfb-logo.avif" }
-};
-
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+/**
+ * Pass-through root layout. `<html>` lives in `app/[locale]/layout.tsx` so its `lang`
+ * matches the route; keeping a static root above it lets `notFound()` resolve to the
+ * localized `app/[locale]/not-found.tsx` in production builds.
+ */
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return children;
 }

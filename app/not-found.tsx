@@ -1,5 +1,25 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { NotFoundView } from "@/components/sections/not-found-content";
+import { defaultLocale } from "@/src/i18n/config";
+import { getDictionary } from "@/src/i18n/dictionaries";
+import { paths } from "@/src/i18n/routes";
+import "./globals.css";
 
-export default function NotFound() {
-  return <main id="main-content" className="not-found section-dark"><div><span>404</span><h1>That route is not in the portfolio.</h1><p>Return to the GFB Solutions overview or start a commercial inquiry.</p><div className="button-row"><Link href="/en" className="button button--lime">Go home</Link><Link href="/en/contact" className="button button--ghost">Contact GFB</Link></div></div></main>;
+// URLs outside any locale. The pass-through root layout renders no document, so this page does.
+const { notFound } = getDictionary(defaultLocale);
+
+export const metadata: Metadata = { title: notFound.metaTitle };
+
+export default function RootNotFound() {
+  return (
+    <html lang={defaultLocale}>
+      <body>
+        <NotFoundView
+          copy={notFound}
+          homeHref={paths.home(defaultLocale)}
+          contactHref={paths.page(defaultLocale, "contact")}
+        />
+      </body>
+    </html>
+  );
 }

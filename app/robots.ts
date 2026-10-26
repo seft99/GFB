@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { siteOrigin } from "@/src/lib/metadata";
+import { absoluteUrl } from "@/src/lib/metadata";
 
 export default function robots(): MetadataRoute.Robots {
-  return { rules: { userAgent: "*", allow: "/", disallow: "/api/" }, sitemap: `${siteOrigin}/sitemap.xml` };
+  return { rules: { userAgent: "*", allow: "/" }, sitemap: absoluteUrl("/sitemap.xml") };
 }

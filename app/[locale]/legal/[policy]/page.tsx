@@ -1,25 +1,65 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Breadcrumbs } from "@/components/breadcrumbs";
-import { company, ui } from "@/src/content/site-content";
-import { isLocale } from "@/src/lib/i18n";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { company } from "@/src/content/company";
+import { isLocale, locales } from "@/src/i18n/config";
+import { getDictionary } from "@/src/i18n/dictionaries";
+import { findLegalPolicy, legalPolicies, localizedPaths, paths, type LegalPolicy } from "@/src/i18n/routes";
 import { pageMetadata } from "@/src/lib/metadata";
 
-type PageProps = { params: Promise<{ locale: string; policy: string }> };
+type Props = PageProps<"/[locale]/legal/[policy]">;
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { locale, policy } = await params;
-  if (!isLocale(locale) || !["privacy", "cookies"].includes(policy)) return {};
-  const title = policy === "privacy" ? (locale === "es" ? "Privacidad" : "Privacy") : "Cookies";
-  return pageMetadata(locale, `/legal/${policy}`, title, locale === "es" ? "Borrador informativo pendiente de aprobación legal." : "Informational draft pending legal approval.");
+export function generateStaticParams() {
+  return locales.flatMap((locale) =>
+    (Object.keys(legalPolicies) as LegalPolicy[]).map((policy) => ({ locale, policy: legalPolicies[policy][locale] }))
+  );
 }
 
-export default async function LegalPage({ params }: PageProps) {
-  const { locale: value, policy } = await params;
-  if (!isLocale(value) || !["privacy", "cookies"].includes(policy)) notFound();
-  const locale = value;
-  const es = locale === "es";
-  const privacy = policy === "privacy";
-  const title = privacy ? (es ? "Privacidad" : "Privacy") : "Cookies";
-  return <main id="main-content" className="legal-page"><div className="shell legal-shell"><Breadcrumbs locale={locale} items={[{ label: title }]} /><p className="draft-badge">{ui[locale].legalDraft}</p><h1>{title}</h1><p className="lead">{es ? "Esta página es un borrador técnico para revisión por el responsable legal de GFB y no sustituye un aviso jurídico aprobado." : "This page is a technical draft for review by GFB's legal owner and does not replace an approved legal notice."}</p>{privacy ? <><h2>{es ? "Datos tratados" : "Data handled"}</h2><p>{es ? "El formulario solicita nombre, empresa, email corporativo y detalles voluntarios del proyecto. La finalidad prevista es responder a la consulta comercial. La base jurídica, los periodos de conservación, los destinatarios y los derechos del interesado deben ser confirmados por asesoría legal antes de producción." : "The form requests name, company, business email and voluntary project details. Its intended purpose is to respond to the commercial inquiry. Legal basis, retention periods, recipients and data-subject rights must be confirmed by legal counsel before production."}</p></> : <><h2>{es ? "Estado de medición" : "Measurement status"}</h2><p>{es ? "Esta implementación no activa analítica, publicidad ni cookies no esenciales. Cualquier herramienta futura de medición debe incorporarse detrás de un mecanismo de consentimiento aprobado." : "This implementation does not enable analytics, advertising or non-essential cookies. Any future measurement tool must be placed behind an approved consent mechanism."}</p></>}<h2>{es ? "Contacto" : "Contact"}</h2><p>{es ? "Las solicitudes relacionadas con privacidad deben dirigirse a" : "Privacy-related requests should be directed to"} <a href={`mailto:${company.email}`}>{company.email}</a>.</p></div></main>;
+async function resolve(params: Props["params"]) {
+  const { locale, policy: slug } = await params;
+  if (!isLocale(locale)) return null;
+  const policy = findLegalPolicy(locale, slug);
+  return policy ? { locale, policy } : null;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const resolved = await resolve(params);
+  if (!resolved) return {};
+  const { locale, policy } = resolved;
+  const { legal } = getDictionary(locale);
+  return {
+    ...pageMetadata({
+      locale,
+      paths: localizedPaths((item) => paths.legal(item, policy)),
+      title: legal[policy].title,
+      description: legal.metaDescription
+    }),
+    // Drafts stay out of search results until legal approval.
+    robots: { index: false, follow: true }
+  };
+}
+
+export default async function LegalPage({ params }: Props) {
+  const resolved = await resolve(params);
+  if (!resolved) notFound();
+  const { locale, policy } = resolved;
+  const { legal, common } = getDictionary(locale);
+  const content = legal[policy];
+
+  return (
+    <main id="main-content" className="legal-page">
+      <div className="shell legal-shell">
+        <Breadcrumbs locale={locale} items={[{ label: content.title }]} />
+        <p className="draft-badge">{common.legalDraft}</p>
+        <h1>{content.title}</h1>
+        <p className="lead">{legal.intro}</p>
+        <h2>{content.heading}</h2>
+        <p>{content.text}</p>
+        <h2>{legal.contactHeading}</h2>
+        <p>
+          {legal.contactText} <a href={`mailto:${company.email}`}>{company.email}</a>.
+        </p>
+      </div>
+    </main>
+  );
 }

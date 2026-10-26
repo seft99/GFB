@@ -13,20 +13,20 @@ Audit date: 2026-10-26. Primary business source: the public website at `https://
 
 ## Source map
 
-| New section | Primary current source URLs |
-|---|---|
-| Home / corporate positioning | `/`, `/about-us` |
-| Packaging overview | `/packaging-solutions` |
-| Cans and ends | `/cans`, `/aluminium-cans`, `/aluminum-cans/std-can-d66mm`, `/aluminum-cans/sleek-can-d57mm` |
-| Bottles | `/bottles` |
-| Closures | `/closures`, `/crown-corks`, `/ripcap/crown-cork-bottle-caps` |
-| Labels | `/labels`, `/wet-glue-labels` |
-| Raw materials | `/raw-materials` |
-| Fruit and vegetable concentrates | `/fruits-concentrates` |
-| Plant-based | `/plant-based-concentrate` |
-| IQF fruit | `/frozen-fruits`, `/frozen-lemon`, `/iqf-orange` |
-| Flavours | `/flavours-and-aromas`, `/sweets`, `/beverages`, `/savoury` |
-| Industrial consulting | `/consulting-solutions` |
+| New section                      | Primary current source URLs                                                                  |
+| -------------------------------- | -------------------------------------------------------------------------------------------- |
+| Home / corporate positioning     | `/`, `/about-us`                                                                             |
+| Packaging overview               | `/packaging-solutions`                                                                       |
+| Cans and ends                    | `/cans`, `/aluminium-cans`, `/aluminum-cans/std-can-d66mm`, `/aluminum-cans/sleek-can-d57mm` |
+| Bottles                          | `/bottles`                                                                                   |
+| Closures                         | `/closures`, `/crown-corks`, `/ripcap/crown-cork-bottle-caps`                                |
+| Labels                           | `/labels`, `/wet-glue-labels`                                                                |
+| Raw materials                    | `/raw-materials`                                                                             |
+| Fruit and vegetable concentrates | `/fruits-concentrates`                                                                       |
+| Plant-based                      | `/plant-based-concentrate`                                                                   |
+| IQF fruit                        | `/frozen-fruits`, `/frozen-lemon`, `/iqf-orange`                                             |
+| Flavours                         | `/flavours-and-aromas`, `/sweets`, `/beverages`, `/savoury`                                  |
+| Industrial consulting            | `/consulting-solutions`                                                                      |
 
 ## Editorial treatment
 

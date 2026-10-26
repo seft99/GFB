@@ -9,3 +9,8 @@ coverage/
 .edge-*/
 preview-*.png
 Thumbs.db
+
+# Playwright
+playwright-report/
+test-results/
+blob-report/

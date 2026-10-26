@@ -1,24 +1,35 @@
 import type { NextConfig } from "next";
+import { legacyRedirects } from "./src/i18n/legacy-redirects.ts";
+
+const isDev = process.env.NODE_ENV === "development";
+
+/**
+ * Pages are statically generated, so per-request CSP nonces are not available.
+ * Inline scripts emitted by Next.js still require 'unsafe-inline'; 'unsafe-eval' is only
+ * needed by the development runtime (React stack reconstruction) and is excluded from production.
+ */
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "img-src 'self' data: blob:",
+  "style-src 'self' 'unsafe-inline'",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  "font-src 'self' data:",
+  "connect-src 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'self'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  ...(isDev ? [] : ["upgrade-insecure-requests"])
+].join("; ");
 
 const securityHeaders = [
+  { key: "Content-Security-Policy", value: contentSecurityPolicy },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
-  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-  {
-    key: "Content-Security-Policy",
-    value: [
-      "default-src 'self'",
-      "img-src 'self' data: blob:",
-      "style-src 'self' 'unsafe-inline'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-      "font-src 'self' data:",
-      "connect-src 'self'",
-      "frame-ancestors 'self'",
-      "base-uri 'self'",
-      "form-action 'self'"
-    ].join("; ")
-  }
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+  ...(isDev ? [] : [{ key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" }])
 ];
 
 const nextConfig: NextConfig = {
@@ -30,6 +41,9 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
+  },
+  async redirects() {
+    return legacyRedirects();
   }
 };
 

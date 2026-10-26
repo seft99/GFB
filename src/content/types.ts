@@ -1,20 +1,24 @@
-export const locales = ["en", "es"] as const;
-export type Locale = (typeof locales)[number];
+import type { LocalizedText } from "../i18n/config.ts";
 
-export type LocalizedText = Record<Locale, string>;
+export type DivisionId = "packaging-solutions" | "raw-materials" | "flavours-aromas" | "industrial-consulting";
+
+export type CategoryGroup = { title: LocalizedText; items: LocalizedText[] };
 
 export type Category = {
-  slug: string;
+  /** Stable identifier, independent of the public slug; used in inquiries and tests. */
+  id: string;
+  slug: LocalizedText;
   title: LocalizedText;
   summary: LocalizedText;
   detail: LocalizedText;
   image: string;
   features?: LocalizedText[];
-  groups?: { title: LocalizedText; items: string[] }[];
+  groups?: CategoryGroup[];
 };
 
 export type Division = {
-  slug: "packaging-solutions" | "raw-materials" | "flavours-aromas" | "industrial-consulting";
+  id: DivisionId;
+  slug: LocalizedText;
   title: LocalizedText;
   shortTitle: LocalizedText;
   eyebrow: LocalizedText;

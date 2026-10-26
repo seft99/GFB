@@ -1,23 +1,43 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { locales, type Locale } from "@/src/content/types";
-import { isLocale } from "@/src/lib/i18n";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
+import { isLocale, locales } from "@/src/i18n/config";
+import { getDictionary } from "@/src/i18n/dictionaries";
+import { siteOrigin } from "@/src/lib/metadata";
+import "../globals.css";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
-  const { locale: value } = await params;
-  if (!isLocale(value)) notFound();
-  const locale: Locale = value;
+export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const { meta } = getDictionary(locale);
+  return {
+    metadataBase: new URL(siteOrigin),
+    title: { default: meta.siteTitle, template: "%s | GFB Solutions" },
+    description: meta.siteDescription,
+    applicationName: "GFB Solutions",
+    icons: { icon: "/brand/gfb-logo.avif" }
+  };
+}
+
+export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const { common } = getDictionary(locale);
   return (
-    <div lang={locale}>
-      <a href="#main-content" className="skip-link">{locale === "es" ? "Saltar al contenido principal" : "Skip to main content"}</a>
-      <SiteHeader locale={locale} />
-      {children}
-      <SiteFooter locale={locale} />
-    </div>
+    <html lang={locale} data-scroll-behavior="smooth">
+      <body>
+        <a href="#main-content" className="skip-link">
+          {common.skipToContent}
+        </a>
+        <SiteHeader locale={locale} />
+        {children}
+        <SiteFooter locale={locale} />
+      </body>
+    </html>
   );
 }

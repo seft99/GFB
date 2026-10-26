@@ -1,32 +1,35 @@
 import type { Metadata } from "next";
-import type { Locale } from "@/src/content/types";
+import { defaultLocale, locales, openGraphLocale, otherLocale, type Locale } from "../i18n/config.ts";
 
-const origin = process.env.NEXT_PUBLIC_SITE_URL || "https://www.gfb-solutions.com";
+export const siteOrigin = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.gfb-solutions.com").replace(/\/$/, "");
 
-export function pageMetadata(locale: Locale, path: string, title: string, description: string): Metadata {
-  const localizedPath = `/${locale}${path}`;
-  const alternateLocale = locale === "en" ? "es" : "en";
+export function absoluteUrl(path: string) {
+  return `${siteOrigin}${path}`;
+}
+
+type PageMetadataInput = {
+  locale: Locale;
+  /** Public path of this page in every locale, e.g. `{ en: "/en/about", es: "/es/sobre-gfb" }`. */
+  paths: Record<Locale, string>;
+  title: string;
+  description: string;
+};
+
+export function pageMetadata({ locale, paths, title, description }: PageMetadataInput): Metadata {
+  const languages: Record<string, string> = Object.fromEntries(locales.map((item) => [item, absoluteUrl(paths[item])]));
+  languages["x-default"] = absoluteUrl(paths[defaultLocale]);
   return {
     title,
     description,
-    alternates: {
-      canonical: `${origin}${localizedPath}`,
-      languages: {
-        en: `${origin}/en${path}`,
-        es: `${origin}/es${path}`,
-        "x-default": `${origin}/en${path}`
-      }
-    },
+    alternates: { canonical: absoluteUrl(paths[locale]), languages },
     openGraph: {
       title,
       description,
       type: "website",
-      locale: locale === "en" ? "en_GB" : "es_ES",
-      alternateLocale: alternateLocale === "en" ? "en_GB" : "es_ES",
-      url: `${origin}${localizedPath}`,
-      siteName: "GFB Solutions"
+      siteName: "GFB Solutions",
+      url: absoluteUrl(paths[locale]),
+      locale: openGraphLocale[locale],
+      alternateLocale: openGraphLocale[otherLocale(locale)]
     }
   };
 }
-
-export { origin as siteOrigin };
