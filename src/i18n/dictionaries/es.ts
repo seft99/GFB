@@ -105,7 +105,14 @@ export const es: Dictionary = {
       title: "Con base en Murcia y una mirada global.",
       text: "Con sede en Murcia (España) y presencia en Türkiye y Dubái, GFB conecta productores locales especializados con necesidades internacionales.",
       cta: "Conocer GFB",
-      mapLabel: "Presencia internacional de GFB"
+      mapLabel: "Presencia internacional de GFB",
+      headquarters: "Sede central",
+      presence: "Presencia",
+      indicatorsLabel: "GFB en cifras",
+      indicators: [
+        { value: "3", label: "Ubicaciones" },
+        { value: "Global", label: "Perspectiva" }
+      ]
     },
     cta: {
       eyebrow: "Hablemos de su proyecto",

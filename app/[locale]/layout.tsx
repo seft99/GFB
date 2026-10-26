@@ -13,6 +13,7 @@ import "../styles/home-connection.css";
 import "../styles/home-divisions.css";
 import "../styles/home-showcase.css";
 import "../styles/home-process.css";
+import "../styles/home-world.css";
 
 // Humanist sans closest to the approved reference typography; self-hosted by next/font.
 const notoSans = Noto_Sans({

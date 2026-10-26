@@ -103,7 +103,14 @@ export const en = {
       title: "Based in Murcia. Built with a global outlook.",
       text: "Headquartered in Murcia, Spain, with a presence in Türkiye and Dubai, GFB connects specialized local producers with international requirements.",
       cta: "Meet GFB",
-      mapLabel: "GFB international presence"
+      mapLabel: "GFB international presence",
+      headquarters: "Headquarters",
+      presence: "Presence",
+      indicatorsLabel: "GFB at a glance",
+      indicators: [
+        { value: "3", label: "Locations" },
+        { value: "Global", label: "Perspective" }
+      ]
     },
     cta: {
       eyebrow: "Let's discuss your project",

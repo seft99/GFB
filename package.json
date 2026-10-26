@@ -12,6 +12,7 @@
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write .",
+    "generate:globe": "node scripts/generate-globe.ts",
     "format:check": "prettier --check .",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "node --test \"tests/unit/**/*.test.ts\"",

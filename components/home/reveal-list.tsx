@@ -2,14 +2,18 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
+type RevealListProps = { as?: "ol" | "ul" | "div"; className?: string; children: ReactNode };
+
 /**
- * Ordered list that plays its CSS entrance once, when it scrolls into view. It renders
+ * Element (an ordered list by default) that plays its CSS entrance once, when it scrolls
+ * into view. It renders
  * visible on the server; only a list that starts below the fold is switched to
  * `data-reveal="pending"` and then to `"in"`, so content never depends on JavaScript.
  * Nothing happens under reduced motion.
  */
-export function RevealList({ className, children }: { className?: string; children: ReactNode }) {
-  const ref = useRef<HTMLOListElement>(null);
+export function RevealList({ as = "ol", className, children }: RevealListProps) {
+  // One ref type that fits every allowed tag.
+  const ref = useRef<HTMLOListElement & HTMLUListElement & HTMLDivElement>(null);
 
   useEffect(() => {
     const list = ref.current;
@@ -30,9 +34,10 @@ export function RevealList({ className, children }: { className?: string; childr
     return () => observer.disconnect();
   }, []);
 
+  const Tag = as;
   return (
-    <ol ref={ref} className={className}>
+    <Tag ref={ref} className={className}>
       {children}
-    </ol>
+    </Tag>
   );
 }
