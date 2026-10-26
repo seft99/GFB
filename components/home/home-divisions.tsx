@@ -51,7 +51,7 @@ export function HomeDivisions({ locale }: { locale: Locale }) {
         <header className="divisions__intro">
           <h2 className="divisions__title">
             {copy.titleLines.map((line) => (
-              <span key={line}>{line}</span>
+              <span key={line}>{line} </span>
             ))}
             <span className="divisions__accent">{copy.titleAccent}</span>
           </h2>

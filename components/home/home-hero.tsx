@@ -37,10 +37,10 @@ export function HomeHero({ locale }: { locale: Locale }) {
             src={heroBackground}
             alt={copy.imageAlt}
             fill
-            priority
-            quality={90}
+            loading="eager"
+            fetchPriority="high"
             placeholder="blur"
-            sizes="(max-width: 1099px) 155vw, 100vw"
+            sizes="(max-width: 899px) 155vw, (max-width: 1279px) 72vw, 100vw"
             className="home-hero__image"
           />
           <ul className="home-hero__callouts" aria-label={copy.calloutsLabel}>

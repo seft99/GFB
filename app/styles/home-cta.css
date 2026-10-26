@@ -14,7 +14,7 @@
 
 @media (min-width: 1100px) {
   .home-cta.cta-section {
-    --cta-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --cta-ease: var(--ease-out);
     position: relative;
     isolation: isolate;
     overflow: clip;

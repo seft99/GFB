@@ -53,7 +53,7 @@
   transform: scaleX(0);
   transform-origin: right;
   background: var(--brand-lime);
-  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: transform var(--motion-fast) var(--ease-lift);
 }
 .desktop-nav a:hover,
 .desktop-nav a.is-active {

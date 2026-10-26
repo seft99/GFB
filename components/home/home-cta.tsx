@@ -19,8 +19,9 @@ export function HomeCta({ locale }: { locale: Locale }) {
 
   return (
     <section className="section cta-section home-cta">
+      {/* Full section height at 3:2: about 770–1025px wide on desktop. */}
       <div className="home-cta__photo" aria-hidden="true">
-        <Image src={ctaDroplet} alt="" fill quality={90} placeholder="blur" sizes="(min-width: 1100px) 60vw, 1px" />
+        <Image src={ctaDroplet} alt="" fill placeholder="blur" sizes="1024px" />
       </div>
       <svg
         className="home-cta__art"

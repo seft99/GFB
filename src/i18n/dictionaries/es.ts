@@ -81,7 +81,7 @@ export const es: Dictionary = {
       closing: "Experiencia integrada para la industria de alimentos y bebidas."
     },
     showcase: {
-      eyebrow: "Descubrimiento por portafolio",
+      eyebrow: "Descubrir el portafolio",
       titleLines: ["Concentrados", "organizados", "como compra"],
       titleAccent: "la industria.",
       text: "Cítricos, mediterráneos, tropicales, frutos rojos y vegetales, organizados para que los equipos de compras y formulación encuentren rápidamente la referencia adecuada.",
@@ -96,7 +96,7 @@ export const es: Dictionary = {
       steps: [
         { title: "Descubrir", text: "Producto, proceso, mercado y objetivo comercial." },
         { title: "Definir", text: "Formato, compatibilidad, perfil y requisitos técnicos." },
-        { title: "Coordinar", text: "Origen, desarrollo, documentación y logística." },
+        { title: "Coordinar", text: "Abastecimiento, desarrollo, documentación y logística." },
         { title: "Acompañar", text: "Seguimiento comercial y técnico durante el proyecto." }
       ]
     },

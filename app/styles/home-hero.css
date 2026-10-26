@@ -77,7 +77,7 @@
   box-shadow: 0 0 0 calc(var(--ring) * 0.09) rgba(179, 236, 62, 0.12);
   backdrop-filter: blur(6px);
   transition:
-    transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform var(--motion-fast) var(--ease-lift),
     border-color 0.25s ease,
     background 0.25s ease;
 }
@@ -204,8 +204,11 @@
   width: 2.6rem;
 }
 
-/* Tablet and mobile: copy first, then a crop of the product group. */
-@media (max-width: 1099px) {
+/*
+ * Below 1280px the right-anchored photo would run under the copy, so narrower screens get
+ * the copy first, then a crop of the product group (two columns from 900px).
+ */
+@media (max-width: 1279px) {
   .home-hero {
     height: auto;
     display: flex;
@@ -248,8 +251,8 @@
   }
 }
 
-/* Landscape tablets: copy and product crop side by side. */
-@media (min-width: 900px) and (max-width: 1099px) {
+/* Landscape tablets and small laptops: copy and product crop side by side. */
+@media (min-width: 900px) and (max-width: 1279px) {
   .home-hero {
     display: grid;
     grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);

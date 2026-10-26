@@ -27,7 +27,7 @@
   }
   .showcase-section .showcase-image img {
     transform: scale(1.001);
-    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform var(--motion-zoom) var(--ease-out);
   }
   .showcase-section .showcase-image:hover img {
     transform: scale(1.045);

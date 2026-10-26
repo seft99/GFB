@@ -44,7 +44,8 @@ export function DivisionEditorialCard({ division, locale, index, total, span, fo
             src={division.heroImage}
             alt=""
             fill
-            sizes={span === "wide" ? "(max-width: 1440px) 58vw, 820px" : "(max-width: 1440px) 42vw, 590px"}
+            // Cover-cropped into a 458px-tall card, the ~2.2:1 photo renders about 1040px wide.
+            sizes="1040px"
             style={focus ? { objectPosition: focus } : undefined}
           />
         </span>

@@ -18,8 +18,10 @@ import "../styles/home-world.css";
 import "../styles/home-cta.css";
 
 // Humanist sans closest to the approved reference typography; self-hosted by next/font.
+// Only the latin subset is preloaded (~60 KB). latin-ext (~290 KB) is still declared through
+// unicode-range and downloads only when a page uses one of its characters.
 const notoSans = Noto_Sans({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   axes: ["wdth"],
   display: "swap",
   variable: "--font-noto-sans"

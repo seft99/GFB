@@ -99,7 +99,8 @@ export function HomeConnection({ locale }: { locale: Locale }) {
                         src={discipline.image}
                         alt=""
                         fill
-                        sizes="(max-width: 759px) 60vw, (max-width: 1099px) 30vw, 20vw"
+                        // Rendered width of the cover-cropped photo in the card media area.
+                        sizes="440px"
                       />
                     </span>
                     <span className="connection__card-icon">

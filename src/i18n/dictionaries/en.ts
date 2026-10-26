@@ -51,7 +51,7 @@ export const en = {
       titleLead: "One conversation.",
       title: "Multiple critical points",
       titleAccent: "resolved.",
-      text: "From packaging selection to raw material, flavour profile or industrial process, GFB starts with the application and coordinates the solution around it. We combine sourcing, product development, project coordination and consulting to turn complexity into clear, commercial decisions.",
+      text: "From packaging selection to raw material, flavour profile or industrial process, GFB starts with the application and coordinates the solution around it. We combine sourcing, product development, project coordination and consulting to turn complexity into clear commercial decisions.",
       approach: "Our approach",
       indicatorsLabel: "One relationship, several disciplines",
       indicators: [

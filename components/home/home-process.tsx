@@ -22,8 +22,8 @@ export function HomeProcess({ locale }: { locale: Locale }) {
   return (
     <section className="section application-section process">
       <div className="process__media" aria-hidden="true">
-        {/* Cover-cropped into a box narrower than the photo, so it renders wider than the box. */}
-        <Image src={processHoney} alt="" fill quality={90} placeholder="blur" sizes="64vw" className="process__image" />
+        {/* Cover-cropped into a box narrower than the photo: it renders ~1030–1150px wide. */}
+        <Image src={processHoney} alt="" fill placeholder="blur" sizes="1150px" className="process__image" />
         <svg className="process__arc" viewBox="0 0 800 640" preserveAspectRatio="none" focusable="false">
           <path d="M120 0C150 210 260 300 300 314S560 420 640 450 770 560 776 640" pathLength={1} />
         </svg>

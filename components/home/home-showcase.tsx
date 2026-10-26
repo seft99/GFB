@@ -22,13 +22,7 @@ export function HomeShowcase({ locale }: { locale: Locale }) {
     <section className="section showcase-section section-dark" aria-labelledby="showcase-title">
       <div className="shell showcase-grid">
         <div className="showcase-image">
-          <Image
-            src={concentrates.image}
-            alt={copy.imageAlt}
-            fill
-            quality={90}
-            sizes="(max-width: 900px) 100vw, 54vw"
-          />
+          <Image src={concentrates.image} alt={copy.imageAlt} fill sizes="(max-width: 900px) 100vw, 54vw" />
         </div>
         <div className="showcase-copy">
           <Eyebrow onDark>{copy.eyebrow}</Eyebrow>

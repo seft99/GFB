@@ -22,12 +22,12 @@ type Place = {
 };
 
 /*
- * Murcia and Dubai are city coordinates. GFB lists Türkiye as a country, so its marker sits
- * on Ankara as a stand-in for the country rather than a specific office.
+ * Murcia and Dubai are city coordinates. GFB lists Türkiye as a country without a city, so
+ * its marker sits at the country's geographic centre and must not be read as an office.
  */
 const places: Place[] = [
   { key: "spain", location: 0, coordinates: [-1.13, 37.99], city: "Murcia", headquarters: true },
-  { key: "turkiye", location: 1, coordinates: [32.86, 39.93] },
+  { key: "turkiye", location: 1, coordinates: [35.24, 38.96] },
   { key: "dubai", location: 2, coordinates: [55.27, 25.2] }
 ];
 
