@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HomeConnection } from "@/components/home/home-connection";
+import { HomeCta } from "@/components/home/home-cta";
 import { HomeDivisions } from "@/components/home/home-divisions";
 import { HomeHero } from "@/components/home/home-hero";
 import { HomeProcess } from "@/components/home/home-process";
 import { HomeShowcase } from "@/components/home/home-showcase";
 import { HomeWorld } from "@/components/home/home-world";
-import { CtaBand } from "@/components/sections/cta-band";
 import { JsonLd } from "@/components/ui/json-ld";
 import { isLocale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: PageProps<"/[locale]">): Prom
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const { home, common } = getDictionary(locale);
 
   return (
     <main id="main-content">
@@ -47,12 +46,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       <HomeWorld locale={locale} />
 
-      <CtaBand
-        eyebrow={home.cta.eyebrow}
-        title={home.cta.title}
-        href={paths.page(locale, "contact")}
-        label={common.inquire}
-      />
+      <HomeCta locale={locale} />
     </main>
   );
 }
