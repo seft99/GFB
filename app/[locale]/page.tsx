@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { DivisionCard } from "@/components/cards/division-card";
 import { HomeConnection } from "@/components/home/home-connection";
+import { HomeDivisions } from "@/components/home/home-divisions";
 import { HomeHero } from "@/components/home/home-hero";
 import { CtaBand } from "@/components/sections/cta-band";
 import { ButtonLink, TextLink } from "@/components/ui/button-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { JsonLd } from "@/components/ui/json-ld";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { divisions, getDivisionById } from "@/src/content/catalog";
+import { getDivisionById } from "@/src/content/catalog";
 import { company } from "@/src/content/company";
 import { isLocale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
@@ -45,22 +45,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       <HomeConnection locale={locale} />
 
-      <section id="solutions" className="section solutions-section">
-        <div className="shell">
-          <SectionHeading eyebrow={home.solutions.eyebrow} title={home.solutions.title} text={home.solutions.text} />
-        </div>
-        <div className="shell division-list">
-          {divisions.map((division, index) => (
-            <DivisionCard
-              key={division.id}
-              division={division}
-              locale={locale}
-              index={index}
-              linkLabel={common.viewDivision}
-            />
-          ))}
-        </div>
-      </section>
+      <HomeDivisions locale={locale} />
 
       {rawMaterials && concentrates && (
         <section className="section showcase-section section-dark">

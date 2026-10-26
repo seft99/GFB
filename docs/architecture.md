@@ -64,3 +64,10 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 - Card photos reuse the division images listed in `disciplines`; the hub uses `public/brand/gfb-logo.avif`.
 - Layouts: two columns ≥ 1100 px, stacked drawing 760–1099 px, hub plus card grid ≤ 759 px (one column ≤ 559 px).
 - Motion: scroll-driven entrance (`animation-timeline`, no JavaScript) and a slow glow on the hub nodes, both inside `prefers-reduced-motion: no-preference`. The section uses `overflow: clip` because `hidden` would make it a scroll container and break the view timeline.
+
+## Homepage "Four divisions"
+
+- Components: `components/home/home-divisions.tsx`, `components/cards/division-editorial-card.tsx` and the client `components/home/pointer-parallax-list.tsx`; styles: `app/styles/home-divisions.css`.
+- Desktop (≥ 1100 px) shows the editorial bento grid (12 columns, 7/5 then 5/7, cards 458 px tall). Below 1100 px the previous stacked `DivisionCard` list is rendered unchanged until the mobile redesign; only one variant is displayed, so the hidden one's lazy images are never requested. Remove `.divisions__legacy` when the mobile design lands.
+- Card data comes from the catalog (title, short title, eyebrow, summary, hero image). The lighter on-dark accent tints and per-card crop (`focus`) live in the components.
+- Pointer parallax writes `--mx`/`--my` on the hovered card once per animation frame, mouse only; there are no React state updates. Hover and `:focus-visible` share one state, and reduced motion removes every transform.

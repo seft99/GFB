@@ -1,0 +1,405 @@
+/*
+ * Homepage "Four divisions".
+ *
+ * Desktop (≥ 1100px) shows the editorial bento grid; smaller screens keep the previous
+ * stacked cards (`.divisions__legacy`, styled in globals.css) until the mobile redesign.
+ */
+
+.divisions__bento {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .divisions__legacy {
+    display: none;
+  }
+
+  .divisions.section {
+    padding-block: clamp(5.5rem, 6.4vw, 6.5rem) clamp(6rem, 7.5vw, 7.5rem);
+    background: radial-gradient(ellipse at 85% 14%, #e8f0ea 0, transparent 32%), #f5f7f9;
+  }
+
+  .divisions__bento {
+    --divisions-ink: #07172a;
+    --divisions-muted: #566577;
+    --divisions-subtle: #5d6b78;
+    display: block;
+    width: min(calc(100% - 4rem), 86.875rem);
+    margin-inline: auto;
+    color: var(--divisions-ink);
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+
+  /* Heading */
+  .divisions__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1.125rem;
+    margin: 0 0 1.7rem;
+    color: #2161ce;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.23em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+  .divisions__eyebrow::before {
+    content: "";
+    width: 1.9375rem;
+    height: 3px;
+    background: var(--brand-lime);
+  }
+  .divisions__eyebrow span {
+    color: var(--divisions-subtle);
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .divisions__intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 3.5rem;
+    margin: 0 0 3.25rem;
+  }
+  .divisions__title {
+    max-width: 8.4em;
+    margin: 0;
+    color: var(--divisions-ink);
+    font-size: clamp(3.5rem, 5.55vw, 5.4375rem);
+    font-weight: 820;
+    line-height: 1.03;
+    letter-spacing: -0.055em;
+    text-wrap: wrap;
+  }
+  .divisions__title > span {
+    display: block;
+  }
+  .divisions__accent {
+    color: var(--brand-lime-text);
+    white-space: nowrap;
+  }
+  .divisions__aside {
+    flex: 0 0 17.5rem;
+    max-width: 19rem;
+    padding-bottom: 0.625rem;
+  }
+  .divisions__aside::before {
+    content: "";
+    display: block;
+    width: 3.3rem;
+    height: 1px;
+    margin: 0 0 1.375rem;
+    background: #b9c5cb;
+  }
+  .divisions__aside p {
+    margin: 0 0 1.05rem;
+    color: var(--divisions-muted);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .divisions__aside .divisions__tagline {
+    margin: 0;
+    color: #123a5a;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .divisions__rail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 1.0625rem;
+    color: var(--divisions-subtle);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .divisions__rail i,
+  .divisions__closing i {
+    display: inline-block;
+    height: 1px;
+    vertical-align: middle;
+    background: #90a0ad;
+  }
+  .divisions__rail i {
+    width: 1.8rem;
+    margin: 0 0.5rem;
+  }
+
+  /* Grid */
+  .divisions__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.4375rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .divisions__closing {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin: 2rem 0 0;
+    color: var(--divisions-subtle);
+    font-size: 0.8125rem;
+  }
+  .divisions__closing strong {
+    color: #0b2540;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .divisions__closing i {
+    width: 2.375rem;
+  }
+
+  /* Card */
+  .division-tile {
+    --tile-ease: cubic-bezier(0.2, 0.7, 0.15, 1);
+    position: relative;
+    height: 28.625rem;
+  }
+  .division-tile--wide {
+    grid-column: span 7;
+  }
+  .division-tile--narrow {
+    grid-column: span 5;
+  }
+
+  /* Hover shadow on its own layer, so only opacity and transform animate. */
+  .division-tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    box-shadow:
+      0 1.7rem 4rem rgba(15, 31, 50, 0.18),
+      0 0.95rem 1.6rem rgba(15, 31, 50, 0.08);
+    opacity: 0;
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s var(--tile-ease);
+  }
+
+  .division-tile__link {
+    position: relative;
+    isolation: isolate;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 1.5rem;
+    color: var(--white);
+    background: #081729;
+    box-shadow:
+      0 0.55rem 1.25rem rgba(18, 34, 47, 0.075),
+      0 1.55rem 4rem rgba(18, 34, 47, 0.06);
+    transition: transform 0.6s var(--tile-ease);
+  }
+  .division-tile__link:focus-visible {
+    outline: 3px solid var(--brand-lime-text);
+    outline-offset: 3px;
+  }
+
+  /* Accent rule along the top edge; grows from 4px to 6px on hover. */
+  .division-tile__link::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    inset: 0 0 auto;
+    height: 6px;
+    background: var(--accent);
+    opacity: 0.9;
+    transform: scaleY(0.667);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+  }
+
+  .division-tile__media {
+    position: absolute;
+    z-index: -2;
+    inset: -5px;
+    transform: scale(1.015);
+    transition:
+      transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.8s ease;
+    filter: saturate(0.97);
+  }
+  .division-tile__media img {
+    object-fit: cover;
+  }
+
+  /* Bottom-heavy navy gradient for the copy. */
+  .division-tile__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(1, 11, 20, 0.37) 0%,
+      rgba(2, 15, 29, 0.05) 32%,
+      rgba(2, 15, 29, 0.24) 52%,
+      rgba(2, 15, 29, 0.96) 100%
+    );
+  }
+
+  .division-tile__top {
+    position: absolute;
+    top: 1.75rem;
+    left: 1.9375rem;
+    right: 1.9375rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .division-tile__number {
+    font-size: 0.75rem;
+    font-weight: 750;
+    letter-spacing: 0.17em;
+  }
+  .division-tile__chip {
+    padding: 0.5625rem 0.8125rem;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 999px;
+    background: rgba(5, 19, 32, 0.26);
+    backdrop-filter: blur(10px);
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .division-tile__bottom {
+    position: absolute;
+    left: 2.125rem;
+    right: 2.125rem;
+    bottom: 2rem;
+  }
+  .division-tile__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 0.75rem;
+    color: var(--accent);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+  .division-tile__eyebrow::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 1.1875rem;
+    height: 2px;
+    background: var(--accent);
+  }
+  .division-tile__titleline {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.875rem;
+  }
+  .division-tile__title {
+    max-width: 33rem;
+    margin: 0 0 0.8rem;
+    color: var(--white);
+    font-size: clamp(2.125rem, 3.1vw, 3.125rem);
+    font-weight: 720;
+    line-height: 1.09;
+    letter-spacing: -0.045em;
+  }
+  .division-tile__title > span {
+    display: block;
+  }
+  .division-tile__text {
+    max-width: 30.625rem;
+    margin: 0;
+    color: #d6dfe4;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    transition: transform 0.6s ease;
+  }
+
+  .division-tile__arrow {
+    flex: 0 0 3.5625rem;
+    width: 3.5625rem;
+    height: 3.5625rem;
+    display: grid;
+    place-items: center;
+    margin-bottom: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    transition:
+      background-color 0.4s ease,
+      border-color 0.4s ease,
+      color 0.4s ease,
+      transform 0.55s cubic-bezier(0.2, 0.9, 0.15, 1);
+  }
+  .division-tile__arrow svg {
+    width: 1.4375rem;
+  }
+
+  /* Hover and keyboard focus share one state. */
+  .division-tile:is(:hover, :focus-within)::before {
+    opacity: 1;
+    transform: translateY(-7px);
+  }
+  .division-tile__link:is(:hover, :focus-visible) {
+    z-index: 2;
+    transform: translateY(-7px);
+  }
+  .division-tile__link:is(:hover, :focus-visible)::after {
+    transform: scaleY(1);
+  }
+  .division-tile__link:is(:hover, :focus-visible) .division-tile__media {
+    transform: scale(1.11) translate3d(var(--mx, 0px), var(--my, 0px), 0);
+    filter: saturate(1.11);
+  }
+  .division-tile__link:is(:hover, :focus-visible) .division-tile__text {
+    transform: translateY(-2px);
+  }
+  .division-tile__link:is(:hover, :focus-visible) .division-tile__arrow {
+    color: var(--brand-navy);
+    border-color: var(--brand-lime);
+    background-color: var(--brand-lime);
+    transform: rotate(-45deg);
+  }
+}
+
+@media (min-width: 1100px) and (max-width: 1279px) {
+  .division-tile__bottom {
+    left: 1.75rem;
+    right: 1.75rem;
+  }
+  .division-tile__eyebrow {
+    letter-spacing: 0.16em;
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .division-tile::before,
+  .division-tile__link,
+  .division-tile__link::after,
+  .division-tile__media,
+  .division-tile__text,
+  .division-tile__arrow {
+    transition: none;
+  }
+  .division-tile:is(:hover, :focus-within)::before,
+  .division-tile__link:is(:hover, :focus-visible),
+  .division-tile__link:is(:hover, :focus-visible) .division-tile__media,
+  .division-tile__link:is(:hover, :focus-visible) .division-tile__text,
+  .division-tile__link:is(:hover, :focus-visible) .division-tile__arrow {
+    transform: none;
+  }
+}

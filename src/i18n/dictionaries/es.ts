@@ -71,8 +71,14 @@ export const es: Dictionary = {
     },
     solutions: {
       eyebrow: "Cuatro divisiones",
+      eyebrowContext: "GFB Solutions",
       title: "Una respuesta más completa al brief industrial.",
-      text: "Explore cada área y llegue rápidamente a la categoría que necesita."
+      titleLines: ["Una respuesta", "más completa al"],
+      titleAccent: "brief industrial.",
+      text: "Explore cada área y llegue rápidamente a las soluciones que necesita su proyecto.",
+      tagline: "Cuatro disciplinas. Un solo socio.",
+      explore: "Explorar especialidades",
+      closing: "Experiencia integrada para la industria de alimentos y bebidas."
     },
     showcase: {
       eyebrow: "Descubrimiento por portafolio",

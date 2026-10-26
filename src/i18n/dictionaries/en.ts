@@ -69,8 +69,14 @@ export const en = {
     },
     solutions: {
       eyebrow: "Four divisions",
+      eyebrowContext: "GFB Solutions",
       title: "A more complete answer to the industrial brief.",
-      text: "Explore each area and move quickly to the category you need."
+      titleLines: ["A more complete answer", "to the"],
+      titleAccent: "industrial brief.",
+      text: "Explore each area and move quickly to the solutions your project needs.",
+      tagline: "Four disciplines. One partner.",
+      explore: "Explore expertise",
+      closing: "Integrated expertise for the food and beverage industry."
     },
     showcase: {
       eyebrow: "Portfolio discovery",
