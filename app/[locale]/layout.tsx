@@ -8,6 +8,7 @@ import { getDictionary } from "@/src/i18n/dictionaries";
 import { siteOrigin } from "@/src/lib/metadata";
 import "../globals.css";
 import "../styles/header.css";
+import "../styles/footer.css";
 import "../styles/home-hero.css";
 import "../styles/home-connection.css";
 import "../styles/home-divisions.css";

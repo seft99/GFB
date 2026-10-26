@@ -241,7 +241,7 @@ export const es: Dictionary = {
     contactText: "Las solicitudes relacionadas con privacidad deben dirigirse a"
   },
   footer: {
-    title: "Conectemos su próximo reto con la solución adecuada.",
+    titleLines: ["Conectemos su", "próximo reto", "con la solución", "adecuada."],
     cta: "Hablar con el equipo comercial",
     navigate: "Navegación",
     solutions: "Soluciones",

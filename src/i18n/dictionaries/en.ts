@@ -239,7 +239,7 @@ export const en = {
     contactText: "Privacy-related requests should be directed to"
   },
   footer: {
-    title: "Connect your next challenge with the right solution.",
+    titleLines: ["Connect your", "next challenge", "with the", "right solution."],
     cta: "Talk to the commercial team",
     navigate: "Navigate",
     solutions: "Solutions",

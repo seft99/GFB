@@ -1,0 +1,203 @@
+/*
+ * Site footer — desktop design (≥ 1100px).
+ *
+ * Below 1100px the footer keeps its previous styles from globals.css. The decoration is two
+ * SVG layers behind the content: a lime orbit with a node on the left, and a stripe motif
+ * with two curves on the right. Each is sized from the page margin, so it never reaches
+ * the text; below 1500px the margins are too narrow and only the background gradients show.
+ */
+
+.footer-decor {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .site-footer {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    padding-block: clamp(5.5rem, 6.5vw, 7.5rem) 2.75rem;
+    background:
+      radial-gradient(38% 55% at 88% 0%, rgba(30, 90, 210, 0.35), transparent 70%),
+      radial-gradient(30% 45% at 0% 35%, rgba(20, 50, 110, 0.35), transparent 70%), #031225;
+    font-family: var(--font-brand);
+  }
+
+  /* Decoration */
+  .footer-decor {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    pointer-events: none;
+    fill: none;
+  }
+  .footer-decor path {
+    stroke-width: 1.5;
+    vector-effect: non-scaling-stroke;
+  }
+  .footer-decor__node {
+    fill: var(--brand-lime);
+    filter: drop-shadow(0 0 6px rgba(179, 236, 62, 0.8));
+  }
+  .footer-decor__curve {
+    stroke: rgba(179, 236, 62, 0.45);
+  }
+  .footer-decor__curve--blue {
+    stroke: rgba(47, 123, 255, 0.55);
+  }
+
+  /* Layout */
+  .site-footer .footer-grid {
+    width: min(calc(100% - 4rem), var(--shell-wide));
+    grid-template-columns: minmax(0, 36fr) minmax(0, 18fr) minmax(0, 21fr) minmax(0, 25fr);
+    gap: 2rem;
+    padding-bottom: clamp(4rem, 5vw, 5rem);
+  }
+
+  .site-footer .footer-lead .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+    margin-bottom: 1.4rem;
+    color: var(--brand-lime);
+    font-size: 0.875rem;
+    letter-spacing: 0.15em;
+  }
+  .site-footer .footer-lead .eyebrow::after {
+    content: "";
+    width: 2.9rem;
+    height: 2px;
+    background: var(--brand-lime);
+  }
+  .site-footer .footer-lead h2 {
+    max-width: none;
+    margin: 0 0 2.75rem;
+    font-size: clamp(3rem, 3.4vw, 4rem);
+    font-weight: 650;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+  .site-footer .footer-lead h2 > span {
+    display: block;
+  }
+  .site-footer .footer-lead .text-link {
+    color: var(--brand-lime);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .site-footer .footer-label {
+    margin: 0.2rem 0 1.9rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+  }
+  .site-footer li + li {
+    margin-top: 1.05rem;
+  }
+
+  /* Links: brighter text and a lime underline that grows from the left. */
+  .site-footer li a,
+  .site-footer .footer-contact a,
+  .site-footer .footer-bottom a {
+    color: rgba(255, 255, 255, 0.86);
+    background: linear-gradient(var(--brand-lime), var(--brand-lime)) no-repeat 0 100% / 0 1px;
+    transition:
+      color 0.25s ease,
+      background-size 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .site-footer li a {
+    font-size: 1.0625rem;
+  }
+  .site-footer li a:hover,
+  .site-footer .footer-contact a:hover,
+  .site-footer .footer-bottom a:hover {
+    color: var(--white);
+    background-size: 100% 1px;
+  }
+
+  .site-footer .footer-contact > *:not(.footer-label) {
+    gap: 1.1rem;
+    margin-bottom: 1.1rem;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  .site-footer .footer-contact a {
+    display: inline-flex;
+    width: fit-content;
+    background-position: 2.45rem 100%;
+  }
+  .site-footer .footer-contact a:hover {
+    background-size: calc(100% - 2.45rem) 1px;
+  }
+  .site-footer .footer-contact p {
+    color: rgba(255, 255, 255, 0.86);
+  }
+  .footer-address > span {
+    display: block;
+    text-wrap: balance;
+  }
+  .site-footer .footer-contact svg {
+    width: 1.35rem;
+    margin-top: 0.1rem;
+    color: var(--brand-lime);
+  }
+
+  .site-footer .footer-bottom {
+    width: min(calc(100% - 4rem), var(--shell-wide));
+    align-items: center;
+    padding-top: 2.25rem;
+    border-top-color: rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.9375rem;
+  }
+  .site-footer .footer-bottom div {
+    align-items: center;
+    gap: 0;
+  }
+  .site-footer .footer-bottom div a + a::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 1rem;
+    margin: 0 1.5rem;
+    vertical-align: -0.15rem;
+    background: rgba(255, 255, 255, 0.28);
+  }
+}
+
+/*
+ * Wide screens: the decoration lives in the page margins, as in the approved design. The
+ * margin is (100% - 86rem) / 2; the stripes and curves stay in the right 54% of their SVG
+ * and the orbit's visible stroke in the left ~80% of its SVG, so these widths keep both
+ * inside the margin.
+ */
+@media (min-width: 1500px) {
+  .footer-decor--orbit {
+    top: 0;
+    left: 0;
+    width: calc((100% - 86rem) * 0.6);
+    height: auto;
+  }
+  .footer-decor--mark {
+    top: 1.5rem;
+    right: 0;
+    width: calc((100% - 86rem) * 0.8);
+    height: auto;
+  }
+}
+@media (min-width: 1100px) and (max-width: 1499px) {
+  .footer-decor {
+    display: none;
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .site-footer li a,
+  .site-footer .footer-contact a,
+  .site-footer .footer-bottom a {
+    transition: none;
+  }
+}

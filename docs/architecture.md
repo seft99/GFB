@@ -97,3 +97,9 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 - Component: `components/home/home-cta.tsx`; desktop styles: `app/styles/home-cta.css` (≥ 1100 px). It keeps the shared `cta-section` / `cta-panel` markup, so tablet and mobile match `CtaBand`, which other pages still use unchanged.
 - Artwork: SVG light, liquid surface and ripples plus the lime curve and node, sliced to the right edge (`xMaxYMid slice`). It stands in for the approved pipette-and-droplet photograph until the original asset is supplied; the photo would replace the pool and ripples.
 - Entrance: once via `RevealList` (copy rises, artwork slides in); off under reduced motion.
+
+## Site footer
+
+- Component: `components/layout/site-footer.tsx`; desktop styles: `app/styles/footer.css` (≥ 1100 px). Below 1100 px the previous footer styles in `globals.css` apply unchanged.
+- Headline lines come from `footer.titleLines`; the address is split into street and city lines (same text as `formatAddress`). Both stack only on desktop.
+- Decoration: two `aria-hidden` SVG layers behind the content, sized from the page margin (`(100% - 86rem)`) so they never reach the text. They show from 1500 px; between 1100 and 1499 px only the background gradients remain. The stripe motif is an abstract nod to the brand mark, not the logo.
