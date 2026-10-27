@@ -10,7 +10,7 @@ export const divisions: Division[] = [
     slug: t("packaging-solutions", "soluciones-de-embalaje"),
     title: t("Packaging solutions", "Soluciones de embalaje"),
     shortTitle: t("Packaging", "Embalaje"),
-    eyebrow: t("Protect · present · perform", "Proteger · presentar · rendir"),
+    eyebrow: t("Protect · present · perform", "Protección · presentación · rendimiento"),
     summary: t(
       "Packaging formats selected around product, filling line and market requirements.",
       "Formatos de embalaje seleccionados según el producto, la línea de llenado y el mercado."
@@ -20,6 +20,51 @@ export const divisions: Division[] = [
       "GFB coordina opciones de embalaje para bebidas entre latas, botellas, cierres y etiquetas, ayudando a compradores industriales a evaluar formato, compatibilidad y presentación comercial."
     ),
     heroImage: "/images/packaging/hero.avif",
+    hero: {
+      text: t(
+        "Cans, bottles, closures and labels for beverage applications, with solutions adapted to your product and market requirements.",
+        "Latas, botellas, cierres y etiquetas para bebidas, con soluciones adaptadas a las necesidades de su producto y mercado."
+      ),
+      cta: t("Explore packaging", "Explorar envases"),
+      image: "/images/packaging/service-hero.webp",
+      focus: "50% 62%",
+      overlay: "standard"
+    },
+    overview: {
+      title: t("Options structured around the", "Opciones estructuradas en torno al"),
+      highlight: t("requirement.", "requisito."),
+      frameworkLabel: t("Decision framework", "Marco de decisión"),
+      criteria: [
+        {
+          id: "format",
+          title: t("Format", "Formato"),
+          text: t("Evaluate the most suitable packaging options.", "Evaluar las opciones de embalaje más adecuadas."),
+          icon: "bottle"
+        },
+        {
+          id: "compatibility",
+          title: t("Compatibility", "Compatibilidad"),
+          text: t("Assess technical and operational fit.", "Valorar el encaje técnico y operativo."),
+          icon: "gear"
+        },
+        {
+          id: "presentation",
+          title: t("Presentation", "Presentación"),
+          text: t("Align with commercial and market needs.", "Alinear con las necesidades comerciales y del mercado."),
+          icon: "cube"
+        }
+      ]
+    },
+    showcase: {
+      before: t("A portfolio built around your", "Un portafolio pensado para sus necesidades de"),
+      highlight: t("packaging", "embalaje"),
+      after: t(" needs.", "."),
+      countLabel: t("Four packaging categories", "Cuatro categorías de embalaje"),
+      text: t(
+        "From primary containers to closures and labels, a range of options for beverage packaging requirements.",
+        "Desde envases primarios hasta cierres y etiquetas, una gama de opciones para los requisitos de embalaje de bebidas."
+      )
+    },
     accent: "#8ed116",
     categories: [
       {
@@ -35,6 +80,7 @@ export const divisions: Division[] = [
           "Latas de aluminio para bebidas en múltiples perfiles y volúmenes nominales, suministradas junto con sus tapas compatibles. Las dimensiones, los recubrimientos internos y la compatibilidad con la línea de llenado se confirman en cada proyecto."
         ),
         image: "/images/packaging/cans.avif",
+        showcase: { image: "/images/packaging/can-detail.webp", focus: "50% 40%" },
         features: [
           t("Standard, slim and sleek profiles", "Perfiles estándar, slim y sleek"),
           t("Easy-open end options", "Opciones de tapas abre-fácil"),
@@ -81,7 +127,8 @@ export const divisions: Division[] = [
           "Label options built for visual impact, bottling efficiency and removal requirements, including 360-degree shrink sleeves, wash-off labels and wet-glue paper labels.",
           "Opciones de etiquetado pensadas para el impacto visual, la eficiencia en embotellado y los requisitos de retirada, incluidas mangas retráctiles 360°, etiquetas wash-off y etiquetas de papel con cola húmeda."
         ),
-        image: "/images/packaging/labels.avif"
+        image: "/images/packaging/labels.avif",
+        showcase: { image: "/images/packaging/labels-wash-off.webp", focus: "50% 50%" }
       }
     ]
   },
@@ -100,6 +147,57 @@ export const divisions: Division[] = [
       "La gama de GFB cubre concentrados de frutas y vegetales, concentrados de origen vegetal y formatos cítricos IQF para bebidas, panadería, confitería, postres y food service."
     ),
     heroImage: "/images/raw-materials/hero.avif",
+    hero: {
+      text: t(
+        "Fruit and vegetable concentrates, oat and almond concentrates, and IQF citrus formats for food and beverage applications.",
+        "Concentrados de frutas y vegetales, concentrados de avena y almendra, y formatos de cítricos IQF para aplicaciones alimentarias y bebidas."
+      ),
+      cta: t("Explore raw materials", "Explorar materias primas"),
+      image: "/images/raw-materials/service-hero.webp",
+      focus: "62% 45%",
+      overlay: "deep"
+    },
+    overview: {
+      title: t("Ingredients matched to the", "Ingredientes adaptados a la"),
+      highlight: t("application.", "aplicación."),
+      frameworkLabel: t("Selection criteria", "Criterios de selección"),
+      criteria: [
+        {
+          id: "family",
+          title: t("Product family", "Familia de producto"),
+          text: t(
+            "Fruit and vegetable concentrates, plant concentrates or IQF citrus formats.",
+            "Concentrados de frutas y vegetales, concentrados de origen vegetal o formatos cítricos IQF."
+          ),
+          icon: "leaf"
+        },
+        {
+          id: "application",
+          title: t("Application", "Aplicación"),
+          text: t("Beverages, confectionery, bakery or desserts.", "Bebidas, confitería, panadería o postres."),
+          icon: "target"
+        },
+        {
+          id: "formulation",
+          title: t("Formulation", "Formulación"),
+          text: t(
+            "Compound formulation adapted to each customer's requirements.",
+            "Formulación de compuestos adaptada a los requisitos de cada cliente."
+          ),
+          icon: "nodes"
+        }
+      ]
+    },
+    showcase: {
+      before: t("Concentrates for", "Concentrados y formatos para"),
+      highlight: t("food and beverage", "alimentación y bebidas"),
+      after: t(" applications.", "."),
+      countLabel: t("Three raw material families", "Tres familias de materias primas"),
+      text: t(
+        "Fruit and vegetable concentrates, with particular expertise in grape, plant concentrates and IQF citrus formats.",
+        "Concentrados de frutas y vegetales, con especial experiencia en uva, concentrados de origen vegetal y formatos cítricos IQF."
+      )
+    },
     accent: "#ffcf2f",
     categories: [
       {
@@ -115,6 +213,7 @@ export const divisions: Division[] = [
           "Concentrados organizados en familias cítricas, mediterráneas, tropicales, frutos rojos y vegetales. Las especificaciones, el origen y los formatos de envase se confirman en cada oferta comercial."
         ),
         image: "/images/raw-materials/fruit-concentrates.avif",
+        showcase: { image: "/images/raw-materials/fruit-vegetables.webp", focus: "50% 50%" },
         groups: [
           {
             title: t("Citrus", "Cítricos"),
@@ -198,7 +297,8 @@ export const divisions: Division[] = [
           "Oat and almond concentrates for plant-based beverage development. Composition, allergen, processing and application data are provided in the commercial specification for each project.",
           "Concentrados de avena y almendra para el desarrollo de bebidas vegetales. Los datos de composición, alérgenos, procesado y aplicación se facilitan en la especificación comercial de cada proyecto."
         ),
-        image: "/images/raw-materials/plant-based.avif"
+        image: "/images/raw-materials/plant-based.avif",
+        showcase: { image: "/images/raw-materials/oat-almond.webp", focus: "50% 50%" }
       },
       {
         id: "iqf-frozen-fruits",
@@ -212,7 +312,8 @@ export const divisions: Division[] = [
           "IQF lemon and orange formats including slices, half slices, sticks, cuts, zest and peel. Storage, packaging and technical requirements are agreed before supply.",
           "Formatos IQF de limón y naranja que incluyen rodajas, medias rodajas, bastones, cortes, ralladura y piel. El almacenamiento, el envase y los requisitos técnicos se acuerdan antes del suministro."
         ),
-        image: "/images/raw-materials/iqf-fruit.avif"
+        image: "/images/raw-materials/iqf-fruit.avif",
+        showcase: { image: "/images/raw-materials/citrus.webp", focus: "60% 50%" }
       }
     ]
   },
@@ -221,7 +322,7 @@ export const divisions: Division[] = [
     slug: t("flavours-aromas", "sabores-y-aromas"),
     title: t("Flavours & aromas", "Sabores y aromas"),
     shortTitle: t("Flavours", "Sabores"),
-    eyebrow: t("Built around the application", "Diseñados para la aplicación"),
+    eyebrow: t("Sweet · beverage · savoury", "Dulces · bebidas · salados"),
     summary: t(
       "Flavour development paths for sweet, beverage and savoury products.",
       "Rutas de desarrollo de sabor para productos dulces, bebidas y salados."
@@ -231,6 +332,60 @@ export const divisions: Division[] = [
       "Soluciones de sabor en tres grupos de aplicación, con apoyo al desarrollo para alinear la dirección sensorial, el formato y los requisitos industriales."
     ),
     heroImage: "/images/flavours/hero.avif",
+    hero: {
+      text: t(
+        "Flavour solutions for sweet products, beverages and savoury applications.",
+        "Soluciones de sabor para productos dulces, bebidas y aplicaciones saladas."
+      ),
+      cta: t("Explore applications", "Explorar aplicaciones"),
+      image: "/images/flavours/service-hero.webp",
+      focus: "60% 55%",
+      overlay: "deep"
+    },
+    overview: {
+      title: t("Flavours organized by", "Sabores organizados por"),
+      highlight: t("application.", "aplicación."),
+      frameworkLabel: t("Application groups", "Grupos de aplicación"),
+      criteria: [
+        {
+          id: "sweet",
+          title: t("Sweet", "Dulces"),
+          text: t(
+            "Confectionery, bakery, desserts, ice cream and dairy.",
+            "Confitería, panadería, postres, helados y lácteos."
+          ),
+          icon: "sweet"
+        },
+        {
+          id: "beverage",
+          title: t("Beverages", "Bebidas"),
+          text: t(
+            "Soft drinks, energy drinks, juices, waters, powders and syrups.",
+            "Refrescos, bebidas energéticas, zumos, aguas, polvos y jarabes."
+          ),
+          icon: "drop"
+        },
+        {
+          id: "savoury",
+          title: t("Savoury", "Salados"),
+          text: t(
+            "Soups, noodles, stock cubes, snacks, meat, fish and ready meals.",
+            "Sopas, fideos, pastillas de caldo, snacks, carnes, pescados y platos preparados."
+          ),
+          icon: "bowl"
+        }
+      ]
+    },
+    showcase: {
+      before: t("Flavours for sweet, beverage and", "Sabores para productos dulces, bebidas y"),
+      highlight: t("savoury", "salados"),
+      after: t(" products.", "."),
+      countLabel: t("Three application groups", "Tres grupos de aplicación"),
+      text: t(
+        "Flavour solutions organized by application, from confectionery and soft drinks to soups and ready meals.",
+        "Soluciones de sabor organizadas por aplicación, desde la confitería y los refrescos hasta las sopas y los platos preparados."
+      )
+    },
     accent: "#42c7ff",
     categories: [
       {
@@ -245,7 +400,8 @@ export const divisions: Division[] = [
           "Flavours for confectionery, baked goods, desserts, ice cream and dairy. Profiles and formats are developed against the customer's product brief.",
           "Sabores para confitería, productos horneados, postres, helados y lácteos. Los perfiles y formatos se desarrollan según el brief de producto del cliente."
         ),
-        image: "/images/flavours/sweet.avif"
+        image: "/images/flavours/sweet.avif",
+        showcase: { image: "/images/flavours/sweet-ice-cream.webp", focus: "50% 42%" }
       },
       {
         id: "beverage-applications",
@@ -259,7 +415,8 @@ export const divisions: Division[] = [
           "Flavour development for soft drinks, energy drinks, juices, flavoured waters, powder beverages and syrups. Suitability is assessed for the intended formulation and process.",
           "Desarrollo de sabores para refrescos, bebidas energéticas, zumos, aguas saborizadas, bebidas en polvo y jarabes. La idoneidad se evalúa para la formulación y el proceso previstos."
         ),
-        image: "/images/flavours/beverage.avif"
+        image: "/images/flavours/beverage.avif",
+        showcase: { image: "/images/flavours/beverage-citrus.webp", focus: "65% 50%" }
       },
       {
         id: "savoury-applications",
@@ -273,7 +430,8 @@ export const divisions: Division[] = [
           "Flavours for soups, noodles, stock cubes, snacks, meat and fish applications, and ready meals. Development starts from the target profile, base matrix and processing conditions.",
           "Sabores para sopas, noodles, cubitos de caldo, snacks, aplicaciones de carne y pescado y platos preparados. El desarrollo parte del perfil objetivo, la matriz base y las condiciones de proceso."
         ),
-        image: "/images/flavours/hero.avif"
+        image: "/images/flavours/hero.avif",
+        showcase: { image: "/images/flavours/savoury-board.webp", focus: "50% 50%" }
       }
     ]
   },
@@ -282,7 +440,7 @@ export const divisions: Division[] = [
     slug: t("industrial-consulting", "consultoria-industrial"),
     title: t("Industrial consulting", "Consultoría industrial"),
     shortTitle: t("Consulting", "Consultoría"),
-    eyebrow: t("Engineering attention where it matters", "Atención de ingeniería donde importa"),
+    eyebrow: t("Machinery · processes · efficiency", "Maquinaria · procesos · eficiencia"),
     summary: t(
       "Process and machinery consulting for food and industrial production.",
       "Consultoría de procesos y maquinaria para la producción alimentaria e industrial."
@@ -292,6 +450,57 @@ export const divisions: Division[] = [
       "Consultoría a medida para maquinaria y procesos productivos en los sectores alimentario, industrial, medioambiental y farmacéutico. El alcance y las responsabilidades se definen en cada proyecto."
     ),
     heroImage: "/images/consulting/hero.avif",
+    hero: {
+      text: t(
+        "Tailored consulting for machinery and production processes across food, industrial, environmental and pharmaceutical sectors.",
+        "Consultoría a medida sobre maquinaria y procesos de producción para los sectores alimentario, industrial, medioambiental y farmacéutico."
+      ),
+      cta: t("Explore sectors", "Explorar sectores"),
+      image: "/images/consulting/production-line.webp",
+      focus: "55% 55%",
+      overlay: "deep"
+    },
+    overview: {
+      title: t("Consulting focused on the", "Consultoría centrada en el"),
+      highlight: t("process.", "proceso."),
+      frameworkLabel: t("Consulting focus", "Enfoque de la consultoría"),
+      criteria: [
+        {
+          id: "machinery",
+          title: t("Machinery", "Maquinaria"),
+          text: t("Consulting on the machinery used in production.", "Consultoría sobre la maquinaria de producción."),
+          icon: "gear"
+        },
+        {
+          id: "processes",
+          title: t("Production processes", "Procesos productivos"),
+          text: t(
+            "Review and optimization of production processes.",
+            "Revisión y optimización de los procesos de producción."
+          ),
+          icon: "nodes"
+        },
+        {
+          id: "sectors",
+          title: t("Sector requirements", "Requisitos del sector"),
+          text: t(
+            "Food, industrial, environmental and pharmaceutical contexts, each with its own requirements.",
+            "Contextos alimentarios, industriales, medioambientales y farmacéuticos, cada uno con sus propios requisitos."
+          ),
+          icon: "document"
+        }
+      ]
+    },
+    showcase: {
+      before: t("Consulting across", "Consultoría en"),
+      highlight: t("four sectors", "cuatro sectores"),
+      after: t(".", "."),
+      countLabel: t("Four sectors", "Cuatro sectores"),
+      text: t(
+        "Machinery and production process consulting for food, industrial, environmental and pharmaceutical operations.",
+        "Consultoría de maquinaria y procesos de producción para operaciones alimentarias, industriales, medioambientales y farmacéuticas."
+      )
+    },
     accent: "#6fe08d",
     categories: [
       {
@@ -306,7 +515,8 @@ export const divisions: Division[] = [
           "Engagements can address machinery selection, production flow and process improvement. Deliverables are agreed in the consulting scope.",
           "Los proyectos pueden abordar la selección de maquinaria, el flujo productivo y la mejora de procesos. Los entregables se acuerdan en el alcance de la consultoría."
         ),
-        image: "/images/consulting/process.avif"
+        image: "/images/consulting/process.avif",
+        showcase: { image: "/images/consulting/production-line.webp", focus: "55% 55%" }
       },
       {
         id: "industrial-sector",
@@ -320,7 +530,8 @@ export const divisions: Division[] = [
           "Consulting aimed at manufacturing efficiency, downtime reduction and workflow optimization.",
           "Consultoría orientada a la eficiencia de fabricación, la reducción de paradas y la optimización del flujo de trabajo."
         ),
-        image: "/images/consulting/process.avif"
+        image: "/images/consulting/process.avif",
+        showcase: { placeholder: "gear" }
       },
       {
         id: "environmental-sector",
@@ -334,7 +545,8 @@ export const divisions: Division[] = [
           "Support for production decisions where resource efficiency and environmental impact matter. Each engagement starts with a defined project scope.",
           "Apoyo en decisiones productivas donde importan la eficiencia de recursos y el impacto ambiental. Cada proyecto parte de un alcance definido."
         ),
-        image: "/images/consulting/hero.avif"
+        image: "/images/consulting/hero.avif",
+        showcase: { placeholder: "leaf" }
       },
       {
         id: "pharmaceutical-sector",
@@ -348,7 +560,8 @@ export const divisions: Division[] = [
           "Process consulting for pharmaceutical manufacturing environments. Deliverables and compliance responsibilities are agreed in writing for each engagement.",
           "Consultoría de procesos para entornos de fabricación farmacéutica. Los entregables y las responsabilidades de cumplimiento se acuerdan por escrito en cada proyecto."
         ),
-        image: "/images/consulting/process.avif"
+        image: "/images/consulting/process.avif",
+        showcase: { placeholder: "capsule" }
       }
     ]
   }

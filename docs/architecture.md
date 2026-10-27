@@ -134,3 +134,23 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 ## About GFB · Closing CTA
 
 - Component: `components/sections/closing-cta.tsx`; desktop styles: `app/styles/closing-cta.css` (≥ 1100 px, imported by the About page). It keeps the shared `cta-section` / `cta-panel` markup, so below 1100 px it matches `CtaBand`; the supporting copy is desktop-only. One lime curve, scaled by the section height and set in from the right edge, keeps its node clear of the button.
+
+## Service page hero (packaging, raw materials, flavours, consulting)
+
+- Component: `components/sections/service-hero.tsx`, used by `app/[locale]/[division]/page.tsx`; styles: `app/styles/service-hero.css` (imported by the division page only). Data per service in `division.hero` (`src/content/catalog.ts`): description, CTA label, photo, desktop focal point (`focus`) and overlay strength (`standard` or `deep`); title, eyebrow and breadcrumb come from the division.
+- Below 1100 px the existing full-bleed `page-hero` layout applies unchanged (the CTA is desktop-only). From 1100 px: navy text area in the site shell, photo on the right 62 % below the header fading into the navy, a 3 px accent line 1.75rem inside the content beside the title and description, and a CTA to `#categories` (the category section, with a scroll margin for the fixed header). Content starts at the same height on every service page.
+- Photos: packaging `packaging/service-hero.webp` (cropped from the approved mockup photograph, 969 × 700, no text; to be replaced by a higher-resolution text-free original), raw materials `raw-materials/service-hero.webp` (grapes on the vine, official GFB website), flavours `flavours/service-hero.webp` (spices, official GFB website, 1200 × 900 source), consulting `consulting/production-line.webp` (Wikimedia Commons, CC0). All are decorative (`alt=""`).
+
+## Division page overview
+
+- Component: `components/sections/division-overview.tsx`, used by `app/[locale]/[division]/page.tsx`; styles: `app/styles/division-overview.css` (imported by the division page only). Content per division in `division.overview` (`src/content/catalog.ts`): headline and highlighted ending, framework label and two or three criteria (title, text, typed icon). The description is `division.description`; the commercial-review note and eyebrow are shared dictionary entries.
+- Below 1100 px the intro keeps the `split-intro` layout; the criteria row and curves are desktop-only. The grid column count follows `--criteria`, so a division with two verified criteria renders a balanced two-card row.
+- Criteria are informational (no links); they enter once via `RevealList` and lift 4 px on hover, both off under reduced motion.
+- Sources: packaging (cans, bottles, closures, labels; brand and category needs), raw materials (fruit, grape and vegetable concentrates, plant concentrates, IQF fruit, compound formulation; beverages, confectionery, bakery, desserts), flavours (sweet, beverage and savoury groups with their listed products) and consulting (machinery and production processes in the food, industrial, environmental and pharmaceutical sectors), from the official GFB division pages.
+
+## Division page category showcase
+
+- Component: `components/sections/division-category-showcase.tsx` (featured and secondary card subcomponents inside), used by `app/[locale]/[division]/page.tsx`; styles: `app/styles/division-showcase.css` (imported by the division page only). Heading copy per division in `division.showcase`; card photos for the showcase in `category.showcase` (the category pages keep `category.image`).
+- Desktop (≥ 1100 px): editorial intro, then the first category as a featured full-bleed card beside `--secondary` equal rows (three for packaging and consulting, two for raw materials and flavours) in one fixed-height grid. Below 1100 px the previous heading and two-column category grid render unchanged; only one variant is displayed, so the hidden one never loads its lazy images.
+- Each card is one link to the category page (arrow and number are decorative children). Hover (hover-capable devices only) zooms the photo inside the card, lifts it 3 px and fills the arrow with lime; keyboard focus shares the lift. Off under reduced motion.
+- Showcase photos: packaging cans `packaging/can-detail.webp` and labels `packaging/labels-wash-off.webp`; raw materials `fruit-vegetables`, `oat-almond`, `citrus`; flavours `sweet-ice-cream`, `beverage-citrus`, `savoury-board` (all from the official GFB website); consulting food sector `consulting/production-line.webp` (Wikimedia Commons, CC0). Industrial, environmental and pharmaceutical sectors use a neutral navy panel with an icon (`placeholder`) until approved photographs exist.

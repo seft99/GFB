@@ -1,0 +1,358 @@
+/*
+ * Division page category showcase ("Explore this area") — desktop design (≥ 1100px).
+ * Imported by the division page only; heading copy in `division.showcase`, card photo
+ * overrides in `category.showcase` (src/content/catalog.ts).
+ *
+ * Below 1100px the previous heading and two-column category grid render unchanged. From
+ * 1100px: an editorial intro (headline with a lime phrase; count label and text beside a
+ * divider), then a grid with the first category as a featured full-bleed card spanning the
+ * height of the stacked secondary cards. The stack has `--secondary` equal rows (two or
+ * three), and the grid keeps one total height, so every division shares its proportions.
+ */
+
+.category-showcase__desktop {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .category-showcase__legacy {
+    display: none;
+  }
+
+  .category-showcase.section {
+    --showcase-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --showcase-navy: #061430;
+    --showcase-muted: #5b6070;
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    padding-block: clamp(4.5rem, 6vw, 6.5rem);
+    background: radial-gradient(40% 50% at 0% 30%, rgba(214, 226, 247, 0.45), transparent 70%), #f5f7fa;
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+  .category-showcase__desktop {
+    display: block;
+  }
+  .category-showcase__desktop > .shell {
+    width: var(--container-desktop);
+  }
+
+  .category-showcase__curves {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    pointer-events: none;
+  }
+  .category-showcase__curves path {
+    stroke: rgba(150, 214, 30, 0.55);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* Intro */
+  .category-showcase__intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 5.5rem);
+    align-items: center;
+    margin: 0 0 clamp(2.5rem, 3.4vw, 3.5rem);
+  }
+  .category-showcase__intro .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+    color: var(--blue-600);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.2em;
+  }
+  .category-showcase__intro .eyebrow::after {
+    content: "";
+    width: 4rem;
+    height: 1.5px;
+    background: var(--brand-lime);
+  }
+  .category-showcase__intro h2 {
+    max-width: 14em;
+    margin: 0;
+    color: var(--brand-ink);
+    font-size: clamp(2.75rem, 3.8vw, 4.25rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  .category-showcase__highlight {
+    color: var(--brand-lime-text);
+  }
+  .category-showcase__aside {
+    padding: 0.5rem 0 0.5rem clamp(2rem, 3.4vw, 3.5rem);
+    border-left: 1px solid #d9dfe8;
+  }
+  .category-showcase__count {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin: 0 0 1.25rem;
+    color: #5b6575;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .category-showcase__count::before {
+    content: "";
+    flex: none;
+    width: 2.75rem;
+    height: 1.5px;
+    background: var(--brand-lime);
+  }
+  .category-showcase__aside > p:last-child {
+    max-width: 30rem;
+    margin: 0;
+    color: var(--showcase-muted);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  /* Grid: featured card on the left, `--secondary` equal rows on the right, one height. */
+  .category-showcase__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 54fr) minmax(0, 46fr);
+    grid-template-rows: repeat(var(--secondary, 3), minmax(0, 1fr));
+    gap: 0.875rem;
+    height: clamp(31rem, 34vw, 36.5rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .showcase-card--featured {
+    grid-row: 1 / -1;
+  }
+
+  .showcase-card__link {
+    position: relative;
+    isolation: isolate;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    border-radius: 1.375rem;
+    color: inherit;
+    transition:
+      transform 0.6s var(--showcase-ease),
+      box-shadow 0.6s var(--showcase-ease),
+      border-color 0.6s var(--showcase-ease);
+  }
+  .showcase-card__link:focus-visible {
+    outline: 3px solid var(--blue-600);
+    outline-offset: 3px;
+  }
+  .showcase-card__media {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  .showcase-card__media img {
+    object-fit: cover;
+    transition: transform 1s var(--showcase-ease);
+  }
+  /* Neutral panel when no relevant approved photograph exists. */
+  .showcase-card__media--placeholder {
+    display: grid;
+    place-items: center;
+    color: rgba(255, 255, 255, 0.78);
+    background:
+      radial-gradient(70% 90% at 30% 20%, rgba(70, 120, 210, 0.45), transparent 70%),
+      linear-gradient(135deg, #0b2250 0%, #10306b 100%);
+  }
+  .showcase-card__media--placeholder svg {
+    width: clamp(3rem, 4vw, 4.25rem);
+    transition: transform 1s var(--showcase-ease);
+  }
+
+  .showcase-card__number {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #4b6e0b;
+    font-size: 1.0625rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+  .showcase-card__number::after {
+    content: "";
+    width: 2.5rem;
+    height: 1.5px;
+    background: currentColor;
+    opacity: 0.7;
+  }
+  .showcase-card__arrow {
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    transition:
+      transform 0.5s var(--showcase-ease),
+      background-color 0.5s var(--showcase-ease),
+      border-color 0.5s var(--showcase-ease),
+      color 0.5s var(--showcase-ease);
+  }
+  .showcase-card__arrow svg {
+    width: 42%;
+  }
+
+  /* Featured card */
+  .showcase-card--featured .showcase-card__link {
+    align-items: center;
+    color: var(--white);
+    background: var(--showcase-navy);
+  }
+  .showcase-card--featured .showcase-card__media {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+  }
+  .showcase-card--featured .showcase-card__link::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(6, 20, 48, 0.9) 0%, rgba(6, 20, 48, 0.7) 34%, rgba(6, 20, 48, 0.12) 72%),
+      linear-gradient(0deg, rgba(6, 20, 48, 0.45) 0%, transparent 45%);
+    transition: opacity 0.8s var(--showcase-ease);
+  }
+  .showcase-card--featured .showcase-card__body {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 27rem;
+    padding: 2.5rem clamp(2rem, 2.8vw, 2.75rem);
+  }
+  .showcase-card--featured .showcase-card__number {
+    color: var(--brand-lime);
+  }
+  .showcase-card--featured .showcase-card__title {
+    margin: 0;
+    color: var(--white);
+    font-size: clamp(2.5rem, 3.4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+  .showcase-card--featured .showcase-card__text {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(1.0625rem, 1.15vw, 1.1875rem);
+    line-height: 1.5;
+  }
+  .showcase-card__action {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .showcase-card--featured .showcase-card__arrow {
+    width: 3.75rem;
+    height: 3.75rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+  }
+
+  /* Secondary cards */
+  .showcase-card--secondary .showcase-card__link {
+    align-items: center;
+    border: 1px solid rgba(10, 18, 41, 0.06);
+    background: var(--white);
+    box-shadow: 0 1rem 2.5rem -2rem rgba(10, 18, 41, 0.28);
+  }
+  .showcase-card--secondary .showcase-card__media {
+    flex: 0 0 41%;
+    align-self: stretch;
+    border-radius: 1.375rem;
+  }
+  .showcase-card--secondary .showcase-card__body {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem clamp(1rem, 1.6vw, 2rem);
+  }
+  .showcase-card--secondary .showcase-card__title {
+    margin: 0.25rem 0 0;
+    color: var(--brand-ink);
+    font-size: clamp(1.3125rem, 1.55vw, 1.625rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .showcase-card--secondary .showcase-card__text {
+    color: var(--showcase-muted);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .showcase-card--secondary .showcase-card__arrow {
+    width: 3.25rem;
+    height: 3.25rem;
+    margin-right: clamp(1.25rem, 1.8vw, 1.75rem);
+    border: 1.5px solid #c9d6ef;
+    color: var(--blue-600);
+    background: var(--white);
+  }
+
+  /* Hover on hover-capable devices; keyboard focus shares the lift and arrow state. */
+  .showcase-card__link:focus-visible {
+    transform: translateY(-3px);
+  }
+  .showcase-card--secondary .showcase-card__link:focus-visible .showcase-card__arrow {
+    border-color: var(--brand-lime);
+    color: var(--brand-navy);
+    background: var(--brand-lime);
+  }
+}
+
+@media (min-width: 1100px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .showcase-card__link:hover {
+    transform: translateY(-3px);
+  }
+  .showcase-card--featured .showcase-card__link:hover .showcase-card__media img {
+    transform: scale(1.07);
+  }
+  .showcase-card--featured .showcase-card__link:hover::before {
+    opacity: 0.92;
+  }
+  .showcase-card--featured .showcase-card__link:hover .showcase-card__arrow {
+    transform: translateX(4px);
+    border-color: var(--brand-lime);
+    color: var(--brand-navy);
+    background: var(--brand-lime);
+  }
+  .showcase-card--secondary .showcase-card__link:hover {
+    border-color: rgba(20, 87, 217, 0.14);
+    box-shadow: 0 1.5rem 3rem -2rem rgba(10, 18, 41, 0.38);
+  }
+  .showcase-card--secondary .showcase-card__link:hover .showcase-card__media img,
+  .showcase-card--secondary .showcase-card__link:hover .showcase-card__media--placeholder svg {
+    transform: scale(1.05);
+  }
+  .showcase-card--secondary .showcase-card__link:hover .showcase-card__arrow {
+    border-color: var(--brand-lime);
+    color: var(--brand-navy);
+    background: var(--brand-lime);
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .showcase-card__link,
+  .showcase-card__media img,
+  .showcase-card__arrow,
+  .showcase-card__media--placeholder svg {
+    transition: none;
+  }
+  .showcase-card__link:focus-visible {
+    transform: none;
+  }
+}

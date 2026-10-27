@@ -2,7 +2,13 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
-type RevealListProps = { as?: "ol" | "ul" | "div"; className?: string; children: ReactNode };
+type RevealListProps = {
+  as?: "ol" | "ul" | "div";
+  className?: string;
+  /** Id of a visible label for the list (`aria-labelledby`). */
+  labelledBy?: string;
+  children: ReactNode;
+};
 
 /**
  * Element (an ordered list by default) that plays its CSS entrance once, when it scrolls
@@ -13,7 +19,7 @@ type RevealListProps = { as?: "ol" | "ul" | "div"; className?: string; children:
  * a tall block is visible), so scrolling never passes a blank area. Nothing happens under
  * reduced motion.
  */
-export function RevealList({ as = "ol", className, children }: RevealListProps) {
+export function RevealList({ as = "ol", className, labelledBy, children }: RevealListProps) {
   // One ref type that fits every allowed tag.
   const ref = useRef<HTMLOListElement & HTMLUListElement & HTMLDivElement>(null);
 
@@ -38,7 +44,7 @@ export function RevealList({ as = "ol", className, children }: RevealListProps) 
 
   const Tag = as;
   return (
-    <Tag ref={ref} className={className}>
+    <Tag ref={ref} className={className} aria-labelledby={labelledBy}>
       {children}
     </Tag>
   );

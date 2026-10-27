@@ -1,0 +1,242 @@
+/*
+ * Division page overview — desktop design (≥ 1100px). Imported by the division page only;
+ * content in `division.overview` (src/content/catalog.ts).
+ *
+ * Below 1100px the intro keeps its `split-intro` layout from globals.css and the criteria
+ * row and curves are hidden. From 1100px: a light editorial section with a 45/55 intro
+ * (headline with a lime ending; description and the commercial-review note), then a labelled
+ * row of informational criteria cards joined by lime nodes. The row adapts to two or three
+ * criteria through `--criteria`. Cards enter once via RevealList (`data-reveal`).
+ */
+
+.division-overview__curves,
+.division-overview__framework {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .division-overview.section {
+    --overview-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --overview-muted: #5b6070;
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    padding-block: clamp(5rem, 6.5vw, 7rem);
+    background:
+      radial-gradient(45% 70% at 92% 20%, rgba(214, 226, 247, 0.55), transparent 70%),
+      radial-gradient(35% 55% at 0% 80%, rgba(226, 238, 214, 0.35), transparent 70%), #f7f9fc;
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+
+  /* Thin lime curves entering from the side edges, behind the content. */
+  .division-overview__curves {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    pointer-events: none;
+  }
+  .division-overview__curves path {
+    stroke: rgba(150, 214, 30, 0.55);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* Intro */
+  .division-overview .split-intro {
+    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+    gap: clamp(3rem, 5vw, 6rem);
+  }
+  .division-overview .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    color: var(--blue-600);
+    font-size: var(--type-eyebrow);
+    letter-spacing: 0.2em;
+  }
+  .division-overview .eyebrow::after {
+    content: "";
+    width: 5.5rem;
+    height: 1.5px;
+    background: var(--brand-lime);
+  }
+  .division-overview .split-intro h2 {
+    max-width: 10em;
+    margin: 0;
+    color: var(--brand-ink);
+    font-size: clamp(3rem, 4.4vw, 5rem);
+    font-weight: 750;
+    line-height: 1.03;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+  .division-overview__highlight {
+    color: var(--brand-lime-text);
+  }
+  .division-overview .split-intro > div:last-child {
+    max-width: 42rem;
+    padding-top: clamp(2.5rem, 3.4vw, 3.5rem);
+  }
+  .division-overview .lead {
+    margin: 0;
+    color: var(--brand-ink);
+    font-size: clamp(1.25rem, 1.6vw, 1.75rem);
+    line-height: 1.55;
+  }
+  .division-overview .content-note {
+    margin-top: 2.25rem;
+    padding-left: 1.75rem;
+    border-left-color: var(--brand-lime);
+    color: var(--overview-muted);
+    font-size: 1rem;
+  }
+
+  /* Criteria */
+  .division-overview__framework {
+    display: block;
+    margin-top: clamp(3.5rem, 4.5vw, 4.75rem);
+  }
+  .division-overview__label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 0 2rem;
+    color: var(--blue-600);
+    font-size: var(--type-eyebrow);
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .division-overview__label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #dde3ec;
+  }
+  .division-overview__criteria {
+    --gap: clamp(3rem, 4.4vw, 5rem);
+    display: grid;
+    grid-template-columns: repeat(var(--criteria, 3), minmax(0, 1fr));
+    gap: var(--gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .division-overview__criteria > li {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "icon number"
+      "icon title"
+      "icon text";
+    column-gap: 1.5rem;
+    align-content: center;
+    align-items: start;
+    padding: 1.25rem 1.75rem 1.25rem 1.25rem;
+    border: 1px solid rgba(10, 18, 41, 0.05);
+    border-radius: 1.375rem;
+    background: var(--white);
+    box-shadow: 0 1.25rem 2.75rem -2rem rgba(10, 18, 41, 0.22);
+    transition:
+      transform 0.5s var(--overview-ease),
+      box-shadow 0.5s var(--overview-ease),
+      border-color 0.5s var(--overview-ease),
+      opacity var(--motion-enter) var(--ease-out) calc(var(--i) * 80ms),
+      translate var(--motion-enter) var(--ease-out) calc(var(--i) * 80ms);
+  }
+  /* Connector to the next card: a short lime rule with a node, centred in the gap. */
+  .division-overview__criteria > li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: var(--gap);
+    height: 0.875rem;
+    background:
+      radial-gradient(circle, var(--brand-lime) 0 0.4rem, transparent calc(0.4rem + 1px)) center / 0.875rem 0.875rem
+        no-repeat,
+      linear-gradient(rgba(150, 214, 30, 0.7), rgba(150, 214, 30, 0.7)) center / 100% 1.5px no-repeat;
+    translate: 0 -50%;
+    pointer-events: none;
+  }
+
+  .division-overview__icon {
+    grid-area: icon;
+    align-self: center;
+    display: grid;
+    place-items: center;
+    width: clamp(5rem, 6vw, 6.25rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    color: var(--brand-ink);
+    background: radial-gradient(circle at 50% 40%, #f4f8fe, #e8effa);
+    box-shadow: 0 0.5rem 1.25rem -0.9rem rgba(20, 87, 217, 0.35);
+    transition:
+      color 0.5s var(--overview-ease),
+      background 0.5s var(--overview-ease);
+  }
+  .division-overview__icon svg {
+    width: 44%;
+    height: 44%;
+  }
+  .division-overview__number {
+    grid-area: number;
+    margin: 0 0 0.35rem;
+    color: #4b6e0b;
+    font-size: 0.9375rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+  }
+  .division-overview__criteria h3 {
+    grid-area: title;
+    margin: 0 0 0.4rem;
+    color: var(--brand-ink);
+    font-size: 1.1875rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+  .division-overview__criteria p {
+    grid-area: text;
+    margin: 0;
+    color: var(--overview-muted);
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .division-overview__criteria > li:hover {
+    transform: translateY(-4px);
+    border-color: rgba(20, 87, 217, 0.12);
+    box-shadow: 0 1.75rem 3.25rem -2rem rgba(10, 18, 41, 0.3);
+  }
+  .division-overview__criteria > li:hover .division-overview__icon {
+    color: var(--blue-600);
+    background: radial-gradient(circle at 50% 40%, #eef4ff, #dfe9fb);
+  }
+
+  /* Entrance: hidden until RevealList marks the row as in view (hiding is instant). */
+  .division-overview__criteria[data-reveal="pending"] > li {
+    opacity: 0;
+    translate: 0 1rem;
+    transition: none;
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .division-overview__criteria > li,
+  .division-overview__icon {
+    transition: none;
+  }
+  .division-overview__criteria > li:hover {
+    transform: none;
+  }
+}

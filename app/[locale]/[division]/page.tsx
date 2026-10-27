@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
-import { CategoryCard } from "@/components/cards/category-card";
-import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { CtaBand } from "@/components/sections/cta-band";
-import { Eyebrow } from "@/components/ui/eyebrow";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { DivisionCategoryShowcase } from "@/components/sections/division-category-showcase";
+import { DivisionOverview } from "@/components/sections/division-overview";
+import { ServiceHero } from "@/components/sections/service-hero";
 import { divisions, getDivisionBySlug } from "@/src/content/catalog";
 import { isLocale, locales } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { localizedPaths, paths } from "@/src/i18n/routes";
-import { accentStyle } from "@/src/lib/format";
 import { pageMetadata } from "@/src/lib/metadata";
+import "../../styles/service-hero.css";
+import "../../styles/division-overview.css";
+import "../../styles/division-showcase.css";
 
 type Props = PageProps<"/[locale]/[division]">;
 
@@ -46,50 +46,11 @@ export default async function DivisionPage({ params }: Props) {
 
   return (
     <main id="main-content">
-      <section className="page-hero section-dark" style={accentStyle(division.accent)}>
-        <div className="page-hero__image">
-          <Image src={division.heroImage} alt="" fill priority sizes="100vw" />
-        </div>
-        <div className="page-hero__overlay" />
-        <div className="shell page-hero__content">
-          <Breadcrumbs locale={locale} items={[{ label: division.title[locale] }]} />
-          <Eyebrow onDark>{division.eyebrow[locale]}</Eyebrow>
-          <h1>{division.title[locale]}</h1>
-          <p>{division.summary[locale]}</p>
-        </div>
-      </section>
+      <ServiceHero division={division} locale={locale} />
 
-      <section className="section division-intro">
-        <div className="shell split-intro">
-          <div>
-            <Eyebrow>{copy.overviewEyebrow}</Eyebrow>
-            <h2>{copy.overviewTitle}</h2>
-          </div>
-          <div>
-            <p className="lead">{division.description[locale]}</p>
-            <p className="content-note">{copy.note}</p>
-          </div>
-        </div>
-      </section>
+      <DivisionOverview division={division} locale={locale} />
 
-      <section className="section category-section">
-        <div className="shell">
-          <SectionHeading eyebrow={copy.exploreEyebrow} title={copy.exploreTitle} />
-          <div className="category-grid">
-            {division.categories.map((category, index) => (
-              <CategoryCard
-                key={category.id}
-                href={paths.category(locale, division, category)}
-                title={category.title[locale]}
-                summary={category.summary[locale]}
-                image={category.image}
-                index={index}
-                linkLabel={common.learnMore}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <DivisionCategoryShowcase division={division} locale={locale} />
 
       <CtaBand
         variant="compact"

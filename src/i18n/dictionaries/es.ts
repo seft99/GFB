@@ -119,7 +119,6 @@ export const es: Dictionary = {
   },
   division: {
     overviewEyebrow: "Visión general",
-    overviewTitle: "Opciones estructuradas alrededor de la necesidad.",
     note: "La disponibilidad, las especificaciones y la idoneidad final se confirman durante la revisión comercial.",
     exploreEyebrow: "Explore esta área",
     exploreTitle: "Encuentre la categoría adecuada.",

@@ -117,7 +117,6 @@ export const en = {
   },
   division: {
     overviewEyebrow: "Overview",
-    overviewTitle: "Options structured around the requirement.",
     note: "Availability, specifications and final suitability are confirmed during commercial review.",
     exploreEyebrow: "Explore this area",
     exploreTitle: "Find the relevant category.",

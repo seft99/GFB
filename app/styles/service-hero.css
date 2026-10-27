@@ -1,0 +1,164 @@
+/*
+ * Service page hero (packaging, raw materials, flavours, consulting). Imported by the
+ * division page only; data in `division.hero` (src/content/catalog.ts).
+ *
+ * Below 1100px the hero keeps the full-bleed `page-hero` layout from globals.css; the rule
+ * for the description repeats the one it had as the content's last paragraph, and the CTA
+ * is desktop-only. From 1100px: a deep navy text area on the left in the site shell, the
+ * photo on the right fading into it, a thin accent line beside the title and description
+ * (inside the content, never against the viewport edge) and one CTA to the page's categories.
+ */
+
+.service-hero .service-hero__text {
+  max-width: 40rem;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.2rem;
+}
+.service-hero__cta {
+  display: none;
+}
+
+/* The CTA target clears the fixed header. */
+.category-section[id] {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+@media (min-width: 1100px) {
+  .service-hero.page-hero {
+    --hero-navy: #061430;
+    /* Content starts at the same height on every service page; the hero grows if needed. */
+    min-height: clamp(38rem, 44vw, 47.5rem);
+    align-items: flex-start;
+    padding: calc(var(--header-h) + clamp(3.5rem, 4.8vw, 5.5rem)) 0 4.5rem;
+    background: radial-gradient(60% 90% at 20% 30%, rgba(18, 40, 86, 0.55), transparent 70%), var(--hero-navy);
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+
+  /* Photo: right 62% of the hero below the fixed header, its left edge fading into the navy. */
+  .service-hero .service-hero__media {
+    inset: var(--header-h) 0 0 auto;
+    width: 62%;
+    mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.6) 16%, #000 36%);
+  }
+  .service-hero .service-hero__media img {
+    object-position: var(--hero-focus, 50% 50%);
+  }
+  .service-hero .page-hero__overlay {
+    background: linear-gradient(
+      90deg,
+      var(--hero-navy) 0%,
+      rgba(6, 20, 48, 0.94) 34%,
+      rgba(6, 20, 48, 0.45) 52%,
+      rgba(6, 20, 48, 0) 72%
+    );
+  }
+  /* Bright or busy photographs get an extra navy tint across the whole image. */
+  .service-hero[data-overlay="deep"] .page-hero__overlay {
+    background:
+      linear-gradient(
+        90deg,
+        var(--hero-navy) 0%,
+        rgba(6, 20, 48, 0.95) 34%,
+        rgba(6, 20, 48, 0.55) 54%,
+        rgba(6, 20, 48, 0.12) 78%
+      ),
+      rgba(6, 20, 48, 0.18);
+  }
+
+  /* Content: the accent line sits 1.75rem inside the shell, left of the message. */
+  .service-hero .service-hero__content {
+    padding-left: 1.75rem;
+  }
+  .service-hero .service-hero__content::before {
+    display: none;
+  }
+  .service-hero .breadcrumbs {
+    margin-bottom: 1.75rem;
+    color: rgba(255, 255, 255, 0.86);
+  }
+  .service-hero .breadcrumbs li {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    opacity: 1;
+  }
+  .service-hero .breadcrumbs a {
+    transition: color var(--motion-fast) ease;
+  }
+  .service-hero .breadcrumbs a:hover {
+    color: var(--brand-lime);
+  }
+  .service-hero .eyebrow {
+    margin-bottom: 1.75rem;
+    color: var(--brand-lime);
+    font-size: 0.9375rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .service-hero__message {
+    position: relative;
+    max-width: min(40rem, 46vw);
+  }
+  .service-hero__message::before {
+    content: "";
+    position: absolute;
+    top: 0.35em;
+    bottom: 0.2em;
+    left: -1.75rem;
+    width: 3px;
+    border-radius: 2px;
+    background: var(--brand-lime);
+  }
+  .service-hero.page-hero h1 {
+    max-width: none;
+    margin: 0 0 1.75rem;
+    font-size: clamp(3.75rem, 5.4vw, 6.25rem);
+    font-weight: 750;
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+  .service-hero .service-hero__text {
+    max-width: 34rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1.125rem, 1.25vw, 1.375rem);
+    line-height: 1.5;
+  }
+
+  .service-hero__cta.button {
+    display: inline-flex;
+    min-height: 3.625rem;
+    gap: 1.4rem;
+    margin-top: 2.25rem;
+    padding: 0 2rem;
+    color: var(--brand-navy);
+    background: var(--brand-lime);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    transition:
+      transform var(--motion-fast) var(--ease-out),
+      background-color var(--motion-fast) ease;
+  }
+  .service-hero__cta.button:hover {
+    background: var(--brand-lime-hover);
+  }
+  .service-hero__cta.button svg {
+    width: 1.25rem;
+  }
+  .service-hero :focus-visible {
+    outline-color: var(--white);
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .service-hero__cta.button,
+  .service-hero__cta.button svg {
+    transition: none;
+  }
+  .service-hero__cta.button:hover {
+    transform: none;
+  }
+}
