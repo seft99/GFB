@@ -151,12 +151,15 @@ export const en = {
     },
     story: {
       eyebrow: "How GFB works",
-      title: "Local sourcing. Global coordination. Personal attention.",
+      titleLines: ["Local sourcing.", "Global coordination.", "Personal attention."],
+      /** Index of the line shown in lime on desktop. */
+      titleAccent: 1,
       paragraphs: [
         "GFB works with specialized producers and manufacturers to supply internationally, selecting the most suitable route for each requirement.",
         "Depending on the category, that means supplying products, developing solutions with partners or providing consulting — always through a single point of contact."
       ],
-      imageAlt: "International food supply chain"
+      imageAlt: "International food supply chain",
+      contact: "One point of contact"
     },
     mission: {
       eyebrow: "Mission",

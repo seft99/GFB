@@ -1,0 +1,179 @@
+/*
+ * About GFB · How GFB works — desktop design (≥ 1100px). Imported by the About page only.
+ *
+ * Below 1100px the section keeps its light two-column/stacked layout from globals.css. Here it
+ * becomes a dark editorial split after the light hero: a large rounded photo that runs past
+ * the content edge towards the viewport on the left; eyebrow, three-line headline, copy and a
+ * "one point of contact" badge on the right; thin lime brand lines and a node behind.
+ */
+
+.story-section__lines,
+.story-section__contact {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .story-section {
+    position: relative;
+    overflow: clip;
+    isolation: isolate;
+    padding-block: clamp(6.5rem, 8.6vw, 10rem) clamp(5rem, 6.2vw, 7.25rem);
+    color: var(--white);
+    background: radial-gradient(ellipse 60% 70% at 72% 38%, rgba(20, 44, 84, 0.45), transparent 70%), var(--brand-navy);
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+
+  /* Brand lines: decorative, behind the content, never over the copy. */
+  .story-section__lines {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    pointer-events: none;
+  }
+  .story-section__lines path {
+    stroke: rgba(179, 236, 62, 0.42);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+  }
+  .story-section__lines .story-section__node {
+    fill: var(--brand-lime);
+  }
+  .story-section__lines .story-section__halo {
+    fill: rgba(179, 236, 62, 0.16);
+  }
+
+  /* The composition runs wider than the shell, ≈ 4vw from each viewport edge. */
+  .story-section .story-grid {
+    width: min(calc(100% - 8vw), 104rem);
+    grid-template-columns: minmax(0, 53fr) minmax(0, 47fr);
+    gap: 4.4vw;
+    align-items: center;
+  }
+
+  /* Photo */
+  .story-section .story-image {
+    min-height: 0;
+    aspect-ratio: 1.225;
+    border-radius: clamp(2.25rem, 2.9vw, 3.25rem);
+    background: #0d2240;
+  }
+  .story-section .story-image img {
+    object-position: 50% 50%;
+  }
+
+  /* Copy. The headline scales with its column so the longest line always fits. */
+  .story-section .story-copy {
+    container-type: inline-size;
+  }
+  .story-section .eyebrow {
+    margin-bottom: 1.75rem;
+    color: var(--brand-lime);
+    font-size: 0.8125rem;
+    letter-spacing: 0.22em;
+  }
+  .story-section .story-grid h2 {
+    max-width: none;
+    margin: 0 0 2.4rem;
+    color: var(--white);
+    font-size: clamp(3.25rem, 11cqi, 5.25rem);
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+    text-wrap: wrap;
+  }
+  .story-section h2 span {
+    display: block;
+  }
+  /* "Abastecimiento local." is ≈ 6% longer than "Global coordination." */
+  .story-section:lang(es) .story-grid h2 {
+    font-size: clamp(3.25rem, 10.3cqi, 5.25rem);
+  }
+  .story-section .story-section__accent {
+    color: var(--brand-lime);
+  }
+  .story-section .story-grid p:not(.eyebrow) {
+    max-width: 40rem;
+    margin: 0 0 1.35rem;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: clamp(1.0625rem, 1.15vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* "One point of contact": a supporting badge, not a button — ring node, rule, outlined pill. */
+  .story-section .story-grid .story-section__contact {
+    display: flex;
+    align-items: center;
+    margin: 2.4rem 0 0;
+  }
+  .story-section__contact-node {
+    flex: none;
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 1.5px solid var(--brand-lime);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--brand-lime) 0 0.45rem, transparent calc(0.45rem + 1px));
+  }
+  .story-section__contact-label {
+    position: relative;
+    margin-left: clamp(6rem, 7.4vw, 8.25rem);
+    padding: 1rem 2.1rem;
+    border: 1.5px solid var(--brand-lime);
+    border-radius: 999px;
+    color: var(--brand-lime);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .story-section__contact-label::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    width: clamp(6rem, 7.4vw, 8.25rem);
+    height: 1.5px;
+    background: rgba(179, 236, 62, 0.7);
+  }
+}
+
+/* From 1280px each headline line stays on one line, as in the approved composition. */
+@media (min-width: 1280px) {
+  .story-section h2 span {
+    white-space: nowrap;
+  }
+}
+
+/* Restrained entrance tied to scroll: transform only, so text contrast is never reduced. */
+@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .story-section .story-copy > * {
+      animation: story-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 35%;
+    }
+    .story-section .story-image img {
+      animation: story-settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+  }
+}
+
+@keyframes story-rise {
+  from {
+    translate: 0 1.5rem;
+  }
+}
+@keyframes story-settle {
+  from {
+    scale: 1.06;
+  }
+}

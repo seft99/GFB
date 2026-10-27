@@ -153,12 +153,14 @@ export const es: Dictionary = {
     },
     story: {
       eyebrow: "Cómo trabaja GFB",
-      title: "Abastecimiento local. Coordinación global. Atención personal.",
+      titleLines: ["Abastecimiento local.", "Coordinación global.", "Atención personal."],
+      titleAccent: 1,
       paragraphs: [
         "GFB trabaja con productores y fabricantes especializados para suministrar a nivel internacional, seleccionando la ruta más adecuada para cada necesidad.",
         "Según la categoría, eso significa suministrar productos, desarrollar soluciones con socios o prestar consultoría, siempre con un único interlocutor."
       ],
-      imageAlt: "Cadena internacional de suministro de alimentos"
+      imageAlt: "Cadena internacional de suministro de alimentos",
+      contact: "Un único interlocutor"
     },
     mission: {
       eyebrow: "Misión",

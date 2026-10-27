@@ -11,6 +11,7 @@ import { localizedPaths, paths } from "@/src/i18n/routes";
 import { ordinal } from "@/src/lib/format";
 import { pageMetadata } from "@/src/lib/metadata";
 import "../../styles/about-hero.css";
+import "../../styles/about-story.css";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/about">): Promise<Metadata> {
   const { locale } = await params;
@@ -28,7 +29,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const { about, common } = getDictionary(locale);
-
   return (
     <main id="main-content">
       {/*
@@ -72,22 +72,48 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
         </div>
       </section>
 
+      {/*
+        Below 1100px the section keeps its light layout from globals.css; the dark editorial
+        desktop design, brand lines and contact callout are in app/styles/about-story.css.
+      */}
       <section className="section story-section">
+        <svg
+          className="story-section__lines"
+          viewBox="0 0 1672 900"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M830 0C868 48 918 88 978 100C1120 128 1310 128 1460 196C1560 242 1630 286 1700 344" />
+          <path d="M-20 616C110 700 270 820 430 920" />
+          <circle className="story-section__halo" cx="978" cy="100" r="17" />
+          <circle className="story-section__node" cx="978" cy="100" r="10" />
+        </svg>
         <div className="shell story-grid">
           <div className="story-image">
             <Image
               src="/images/home/global-sourcing.avif"
               alt={about.story.imageAlt}
               fill
-              sizes="(max-width: 900px) 100vw, 50vw"
+              sizes="(max-width: 900px) 100vw, (max-width: 1099px) 50vw, 52vw"
             />
           </div>
-          <div>
+          <div className="story-copy">
             <Eyebrow>{about.story.eyebrow}</Eyebrow>
-            <h2>{about.story.title}</h2>
+            <h2>
+              {about.story.titleLines.map((line, index) => (
+                <span key={line} className={index === about.story.titleAccent ? "story-section__accent" : undefined}>
+                  {line}{" "}
+                </span>
+              ))}
+            </h2>
             {about.story.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+            <p className="story-section__contact">
+              <span className="story-section__contact-node" aria-hidden="true" />
+              <span className="story-section__contact-label">{about.story.contact}</span>
+            </p>
           </div>
         </div>
       </section>

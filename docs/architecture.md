@@ -110,3 +110,10 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 - Desktop: light editorial split (copy, lead and trust row in grid areas on the left; rounded photo on the right running past the shell towards the viewport edge), with a lime orbit and node behind the photo.
 - Photo: `packaging/hero.avif` stands in until an approved, high-resolution bottling-line photograph is supplied.
 - Entrance on load is transform-only (no opacity), so it never delays the first paint; off under reduced motion.
+
+## About GFB · How GFB works
+
+- Markup: `app/[locale]/about/page.tsx` (`story-section`); desktop styles: `app/styles/about-story.css` (≥ 1100 px, imported by the About page only). Below 1100 px the light layout from `globals.css` is unchanged; the brand lines and the "one point of contact" badge are desktop-only.
+- Desktop: dark navy editorial split that runs ≈ 4vw from each viewport edge — rounded photo on the left; eyebrow, three-line headline (`about.story.titleLines`, the line at `titleAccent` in lime), copy and badge on the right. The headline size follows its column (`cqi`), with a smaller factor for the longer Spanish lines, so each line fits on one row from 1280 px.
+- Photo: `home/global-sourcing.avif` stands in until an approved, high-resolution sourcing/warehouse photograph is supplied.
+- Scroll-driven entrance is transform-only (no opacity), so contrast is never reduced mid-animation; off under reduced motion and where `animation-timeline` is unsupported.
