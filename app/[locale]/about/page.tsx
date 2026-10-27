@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { AboutCta } from "@/components/about/about-cta";
+import { AboutPresence } from "@/components/about/about-presence";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { RevealList } from "@/components/home/reveal-list";
-import { CtaBand } from "@/components/sections/cta-band";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon, type IconName } from "@/components/ui/icon";
-import { company } from "@/src/content/company";
 import { isLocale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { localizedPaths, paths } from "@/src/i18n/routes";
@@ -15,6 +15,8 @@ import { pageMetadata } from "@/src/lib/metadata";
 import "../../styles/about-hero.css";
 import "../../styles/about-story.css";
 import "../../styles/about-mission.css";
+import "../../styles/about-presence.css";
+import "../../styles/about-cta.css";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/about">): Promise<Metadata> {
   const { locale } = await params;
@@ -189,31 +191,9 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
         </div>
       </section>
 
-      <section className="section presence-section section-dark">
-        <div className="shell">
-          <Eyebrow onDark>{about.presence.eyebrow}</Eyebrow>
-          <div className="presence-heading">
-            <h2>{about.presence.title}</h2>
-            <p>{about.presence.text}</p>
-          </div>
-          <ul className="presence-list">
-            {company.locations.map((location, index) => (
-              <li key={location.en}>
-                <span aria-hidden="true">{ordinal(index)}</span>
-                <strong>{location[locale]}</strong>
-                {index === 0 && <small>{about.presence.headquarters}</small>}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <AboutPresence locale={locale} />
 
-      <CtaBand
-        eyebrow={about.cta.eyebrow}
-        title={about.cta.title}
-        href={paths.page(locale, "contact")}
-        label={common.inquire}
-      />
+      <AboutCta locale={locale} />
     </main>
   );
 }

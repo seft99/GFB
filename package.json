@@ -13,6 +13,7 @@
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write .",
     "generate:globe": "node scripts/generate-globe.ts",
+    "generate:world-map": "node scripts/generate-world-map.ts",
     "format:check": "prettier --check .",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "node --test \"tests/unit/**/*.test.ts\"",

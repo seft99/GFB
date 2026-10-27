@@ -1,0 +1,307 @@
+/*
+ * About GFB · International presence — desktop design (≥ 1100px). Imported by the About page.
+ *
+ * Below 1100px the heading and location list keep their layout from globals.css. Here the
+ * section becomes a 40/60 split (copy left, flat dotted world map right) above a row of
+ * three location blocks. The route lines draw and the markers appear once via RevealList
+ * (`data-reveal`, as keyframes so the stagger never delays hover); hovering a location
+ * block highlights its marker and route, and the reverse, through `:has()` and an
+ * inherited `--active`. Nothing moves under reduced motion.
+ */
+
+.presence-map,
+.presence-list__pin,
+.presence-list__extra {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .presence-section {
+    --presence-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: clip;
+    padding-block: clamp(6.5rem, 9vw, 10rem);
+    background:
+      radial-gradient(ellipse 55% 60% at 72% 34%, rgba(26, 64, 128, 0.32), transparent 70%), var(--brand-navy);
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+
+  .presence-section .presence-shell {
+    display: grid;
+    width: min(calc(100% - 14vw), calc(var(--shell) + 5rem));
+    grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "eyebrow map"
+      "heading map"
+      "list list";
+    column-gap: 3vw;
+  }
+
+  /* Copy */
+  .presence-section .eyebrow {
+    grid-area: eyebrow;
+    align-self: end;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-bottom: 2.25rem;
+    color: var(--brand-lime);
+    font-size: 0.8125rem;
+    letter-spacing: 0.3em;
+  }
+  .presence-section .eyebrow::after {
+    content: "";
+    width: 3.5rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.7;
+  }
+  .presence-section .presence-heading {
+    grid-area: heading;
+    display: block;
+    container-type: inline-size;
+  }
+  .presence-section .presence-heading h2 {
+    max-width: none;
+    margin: 0 0 2rem;
+    color: var(--white);
+    font-size: clamp(3.5rem, 15.2cqi, 5.75rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    text-wrap: wrap;
+  }
+  .presence-section:lang(es) .presence-heading h2 {
+    font-size: clamp(3.25rem, 12.4cqi, 5.25rem);
+  }
+  .presence-section__accent {
+    color: var(--brand-lime);
+  }
+  .presence-section .presence-heading p {
+    max-width: 24em;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: clamp(1.125rem, 1.42vw, 1.5rem);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* Map: dots image plus an overlay in the same box, so markers never drift from the land. */
+  .presence-map {
+    grid-area: map;
+    align-self: center;
+    position: relative;
+    display: block;
+    margin-right: -2.5vw;
+  }
+  .presence-map__dots {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .presence-map__lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    pointer-events: none;
+  }
+  .presence-map__arc {
+    stroke: rgba(179, 236, 62, calc(0.7 + var(--active, 0) * 0.3));
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    vector-effect: non-scaling-stroke;
+    transition: stroke 0.45s var(--presence-ease);
+  }
+
+  .presence-map__place {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  .presence-map__marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: #f2fde0;
+    box-shadow:
+      0 0 0 calc(0.28rem + var(--active, 0) * 0.14rem) rgba(179, 236, 62, 0.34),
+      0 0 calc(1rem + var(--active, 0) * 0.5rem) rgba(179, 236, 62, 0.42);
+    translate: -50% -50%;
+    scale: calc(1 + var(--active, 0) * 0.3);
+    transition:
+      scale 0.45s var(--presence-ease),
+      box-shadow 0.45s var(--presence-ease);
+  }
+  /* Murcia: larger dot inside a fine lime ring. */
+  .presence-map__place--hq .presence-map__marker {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+  .presence-map__place--hq .presence-map__marker::before {
+    content: "";
+    position: absolute;
+    inset: -0.65rem;
+    border: 1.5px solid var(--brand-lime);
+    border-radius: 50%;
+    background: rgba(179, 236, 62, 0.12);
+  }
+  /* Generous hit area for hovering a marker. */
+  .presence-map__marker::after {
+    content: "";
+    position: absolute;
+    inset: -0.9rem;
+    border-radius: 50%;
+  }
+
+  .presence-map__label {
+    position: absolute;
+    display: grid;
+    gap: 0.1rem;
+    white-space: nowrap;
+    line-height: 1.2;
+  }
+  .presence-map__label strong {
+    color: color-mix(in srgb, var(--brand-lime) calc(var(--active, 0) * 100%), var(--white));
+    font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+    font-weight: 700;
+    transition: color 0.45s var(--presence-ease);
+  }
+  .presence-map__label small {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(0.8125rem, 0.88vw, 0.9375rem);
+  }
+  .presence-map__place[data-label="left"] .presence-map__label {
+    top: 0.5rem;
+    right: 1.3rem;
+    text-align: right;
+  }
+  .presence-map__place[data-label="top"] .presence-map__label {
+    bottom: 0.7rem;
+    left: 0.85rem;
+  }
+  .presence-map__place[data-label="right"] .presence-map__label {
+    top: 0;
+    left: 1.25rem;
+    translate: 0 -50%;
+  }
+
+  /* Location row */
+  .presence-section .presence-list {
+    grid-area: list;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: clamp(3rem, 3.8vw, 4.25rem) 0 0;
+    padding-top: clamp(2.75rem, 3vw, 3.25rem);
+    border-block: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  .presence-section .presence-list li {
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    column-gap: clamp(1.25rem, 1.8vw, 1.75rem);
+    align-content: start;
+  }
+  .presence-section .presence-list li + li {
+    padding-left: clamp(2.5rem, 4vw, 4.25rem);
+    border-left: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  .presence-section .presence-list span {
+    padding-top: 0.75rem;
+    color: var(--brand-lime);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .presence-section .presence-list strong {
+    grid-column: 2;
+    color: color-mix(in srgb, var(--brand-lime) calc(var(--active, 0) * 100%), var(--white));
+    font-size: clamp(2.25rem, 2.65vw, 2.875rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    transition: color 0.45s var(--presence-ease);
+  }
+  .presence-section .presence-list small {
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 0.6rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: clamp(1.125rem, 1.3vw, 1.375rem);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .presence-list__pin {
+    display: block;
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: color-mix(in srgb, var(--brand-lime) calc(var(--active, 0) * 100%), #a9c2ff);
+    transition: color 0.45s var(--presence-ease);
+  }
+
+  /* Hover sync: a location block lights its marker and route, and a marker its block.
+     Hovering Spain (the headquarters) lights both routes. */
+  .presence-shell:has([data-place="spain"]:hover) :is([data-place="spain"], .presence-map__arc),
+  .presence-shell:has([data-place="turkiye"]:hover) [data-place="turkiye"],
+  .presence-shell:has([data-place="dubai"]:hover) [data-place="dubai"] {
+    --active: 1;
+  }
+
+  /* Entrance: hidden until RevealList marks the section as in view (hiding is instant),
+     then routes draw and markers appear once, staggered. */
+  .presence-shell[data-reveal="pending"] .presence-map__arc {
+    stroke-dashoffset: 1;
+  }
+  .presence-shell[data-reveal="pending"] :is(.presence-map__marker, .presence-map__label) {
+    opacity: 0;
+  }
+  .presence-shell[data-reveal="in"] .presence-map__marker {
+    animation: presence-pop 0.55s var(--presence-ease) calc(var(--i) * 140ms) backwards;
+  }
+  .presence-shell[data-reveal="in"] .presence-map__label {
+    animation: presence-fade 0.55s var(--presence-ease) calc(var(--i) * 140ms + 120ms) backwards;
+  }
+  .presence-shell[data-reveal="in"] .presence-map__arc {
+    animation: presence-draw 0.75s var(--presence-ease) calc(var(--i) * 150ms + 300ms) backwards;
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .presence-map__arc,
+  .presence-map__marker,
+  .presence-map__label strong,
+  .presence-section .presence-list strong,
+  .presence-list__pin {
+    transition: none;
+  }
+  .presence-map__marker {
+    scale: 1;
+  }
+}
+
+@keyframes presence-pop {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+}
+@keyframes presence-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes presence-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}

@@ -179,13 +179,16 @@ export const es: Dictionary = {
     },
     presence: {
       eyebrow: "Presencia internacional",
-      title: "Desde España hacia mercados internacionales.",
+      title: "Desde España hacia mercados",
+      titleAccent: "internacionales.",
       text: "Con sede en Murcia (España) y presencia en Türkiye y Dubái.",
-      headquarters: "Sede · Murcia"
+      headquarters: "Sede · Murcia",
+      presence: "Presencia"
     },
     cta: {
       eyebrow: "Una conversación práctica",
-      title: "Cuéntenos qué necesita resolver."
+      title: "Cuéntenos qué necesita resolver.",
+      text: "Compártanos sus requisitos y nuestro equipo se pondrá en contacto con usted para explorar la mejor forma de avanzar."
     }
   },
   contact: {

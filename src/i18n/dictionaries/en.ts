@@ -179,13 +179,16 @@ export const en = {
     },
     presence: {
       eyebrow: "International presence",
-      title: "From Spain to international markets.",
+      title: "From Spain to international",
+      titleAccent: "markets.",
       text: "Headquartered in Murcia, Spain, with a presence in Türkiye and Dubai.",
-      headquarters: "HQ · Murcia"
+      headquarters: "HQ · Murcia",
+      presence: "Presence"
     },
     cta: {
       eyebrow: "A practical conversation",
-      title: "Tell us what you need to solve."
+      title: "Tell us what you need to solve.",
+      text: "Share your requirements and our team will get back to you to explore the best way forward."
     }
   },
   contact: {

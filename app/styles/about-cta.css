@@ -1,0 +1,147 @@
+/*
+ * About GFB · Final CTA — desktop design (≥ 1100px). Imported by the About page only.
+ *
+ * Below 1100px the band matches the shared CtaBand (`cta-section` / `cta-panel` in
+ * globals.css). Here it gains the supporting copy, a wide editorial composition (copy left,
+ * dark pill right) and two fine lime curves with a node, behind the content. The copy and
+ * button enter once via RevealList (`data-reveal`), never under reduced motion.
+ */
+
+.about-cta__art,
+.about-cta__text {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .about-cta {
+    --about-cta-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: clip;
+    isolation: isolate;
+    padding-block: clamp(8rem, 10.8vw, 13.5rem) clamp(8.5rem, 11.6vw, 14.5rem);
+    background:
+      radial-gradient(ellipse 60% 75% at 18% 22%, rgba(255, 255, 255, 0.06), transparent 70%),
+      radial-gradient(ellipse 55% 70% at 88% 92%, rgba(9, 40, 140, 0.16), transparent 70%), var(--blue-500);
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+
+  .about-cta__art {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    display: block;
+    width: auto;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    pointer-events: none;
+  }
+  .about-cta__art--left {
+    left: 0;
+    aspect-ratio: 700 / 789;
+  }
+  .about-cta__art--right {
+    right: 0;
+    aspect-ratio: 893 / 789;
+  }
+  .about-cta__art path {
+    stroke: rgba(179, 236, 62, 0.85);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+  }
+  .about-cta__node {
+    fill: var(--brand-lime);
+  }
+  .about-cta__halo {
+    fill: rgba(179, 236, 62, 0.16);
+  }
+
+  /* Wider than the shell: ≈ 11.5vw from each edge, as in the approved composition. */
+  .about-cta .about-cta__panel {
+    width: min(calc(100% - 23vw), 96rem);
+    align-items: center;
+    gap: 4rem;
+  }
+  .about-cta .eyebrow {
+    margin-bottom: 2rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+  }
+  .about-cta .cta-panel h2 {
+    max-width: 8em;
+    font-size: clamp(3.5rem, 4.5vw, 5.625rem);
+    font-weight: 650;
+    line-height: 1.03;
+    letter-spacing: -0.035em;
+    text-wrap: wrap;
+  }
+  .about-cta__text {
+    display: block;
+    max-width: 26em;
+    margin: 2.4rem 0 0;
+    color: rgba(255, 255, 255, 0.94);
+    font-size: clamp(1.125rem, 1.3vw, 1.625rem);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  /* Dark pill: slight lift, deeper navy and arrow nudge on hover/focus. */
+  .about-cta__button.button {
+    flex: none;
+    min-height: clamp(3.5rem, 3.4vw, 4.25rem);
+    gap: 1.4rem;
+    padding: 0 clamp(1.75rem, 1.8vw, 2.1rem);
+    font-size: clamp(0.875rem, 0.82vw, 1rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: 0 0.6rem 1.5rem rgba(2, 10, 40, 0.18);
+    transition:
+      transform 0.35s var(--about-cta-ease),
+      background-color 0.35s var(--about-cta-ease),
+      box-shadow 0.35s var(--about-cta-ease),
+      opacity var(--motion-enter) var(--ease-out) 120ms,
+      translate var(--motion-enter) var(--ease-out) 120ms;
+  }
+  .about-cta__button.button svg {
+    transition: transform 0.35s var(--about-cta-ease);
+  }
+  .about-cta__button.button:is(:hover, :focus-visible) {
+    background: #0b1640;
+    box-shadow: 0 0.9rem 2rem rgba(2, 10, 40, 0.28);
+    transform: translateY(-2px);
+  }
+  .about-cta__button.button:is(:hover, :focus-visible) svg {
+    transform: translateX(4px);
+  }
+  .about-cta :focus-visible {
+    outline-color: var(--white);
+  }
+
+  .about-cta .cta-panel > div {
+    transition:
+      opacity var(--motion-enter) var(--ease-out),
+      translate var(--motion-enter) var(--ease-out);
+  }
+
+  /* Entrance: hidden until RevealList marks the panel as in view. Hiding is instant
+     (no transition), so nothing is ever caught half-faded. */
+  .about-cta [data-reveal="pending"] > div,
+  .about-cta [data-reveal="pending"] .about-cta__button {
+    opacity: 0;
+    translate: 0 1rem;
+    transition: none;
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .about-cta .cta-panel > div,
+  .about-cta__button.button,
+  .about-cta__button.button svg {
+    transition: none;
+  }
+  .about-cta__button.button:is(:hover, :focus-visible) {
+    transform: none;
+  }
+}
