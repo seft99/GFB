@@ -89,13 +89,6 @@
     font-size: clamp(1.25rem, 1.6vw, 1.75rem);
     line-height: 1.55;
   }
-  .division-overview .content-note {
-    margin-top: 2.25rem;
-    padding-left: 1.75rem;
-    border-left-color: var(--brand-lime);
-    color: var(--overview-muted);
-    font-size: 1rem;
-  }
 
   /* Criteria */
   .division-overview__framework {

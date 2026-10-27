@@ -17,7 +17,11 @@ export const serviceCategoriesId = "categories";
  */
 export function ServiceHero({ division, locale }: { division: Division; locale: Locale }) {
   const { hero } = division;
-  const style = { "--accent": division.accent, "--hero-focus": hero.focus } as CSSProperties;
+  const style = {
+    "--accent": division.accent,
+    "--hero-focus": hero.focus,
+    "--hero-media-offset": hero.mediaOffset ?? "0px"
+  } as CSSProperties;
 
   return (
     <section className="page-hero service-hero section-dark" data-overlay={hero.overlay} style={style}>

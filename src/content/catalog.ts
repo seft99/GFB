@@ -27,12 +27,13 @@ export const divisions: Division[] = [
       ),
       cta: t("Explore packaging", "Explorar envases"),
       image: "/images/packaging/service-hero.webp",
-      focus: "50% 62%",
+      focus: "50% 12%",
+      mediaOffset: "2.5rem",
       overlay: "standard"
     },
     overview: {
-      title: t("Options structured around the", "Opciones estructuradas en torno al"),
-      highlight: t("requirement.", "requisito."),
+      title: t("Packaging for your", "Embalaje para su"),
+      highlight: t("product and market.", "producto y mercado."),
       frameworkLabel: t("Decision framework", "Marco de decisión"),
       criteria: [
         {
@@ -65,6 +66,8 @@ export const divisions: Division[] = [
         "Desde envases primarios hasta cierres y etiquetas, una gama de opciones para los requisitos de embalaje de bebidas."
       )
     },
+    ctaTitle: t("Have a packaging requirement in mind?", "¿Tiene en mente una necesidad de embalaje?"),
+    detailSecondary: t("Explore the scope", "Ver el alcance"),
     accent: "#8ed116",
     categories: [
       {
@@ -81,6 +84,7 @@ export const divisions: Division[] = [
         ),
         image: "/images/packaging/cans.avif",
         showcase: { image: "/images/packaging/can-detail.webp", focus: "50% 40%" },
+        heroSecondary: t("Explore formats", "Ver formatos"),
         features: [
           t("Standard, slim and sleek profiles", "Perfiles estándar, slim y sleek"),
           t("Easy-open end options", "Opciones de tapas abre-fácil"),
@@ -189,15 +193,17 @@ export const divisions: Division[] = [
       ]
     },
     showcase: {
-      before: t("Concentrates for", "Concentrados y formatos para"),
+      before: t("Raw materials for", "Materias primas para"),
       highlight: t("food and beverage", "alimentación y bebidas"),
       after: t(" applications.", "."),
       countLabel: t("Three raw material families", "Tres familias de materias primas"),
       text: t(
-        "Fruit and vegetable concentrates, with particular expertise in grape, plant concentrates and IQF citrus formats.",
-        "Concentrados de frutas y vegetales, con especial experiencia en uva, concentrados de origen vegetal y formatos cítricos IQF."
+        "Explore fruit and vegetable concentrates, plant-based concentrates and IQF citrus formats, with particular expertise in grape concentrates.",
+        "Explore concentrados de frutas y vegetales, concentrados de origen vegetal y formatos cítricos IQF, con especial experiencia en concentrados de uva."
       )
     },
+    ctaTitle: t("Looking for a raw material for your application?", "¿Busca una materia prima para su aplicación?"),
+    detailSecondary: t("Explore the scope", "Ver el alcance"),
     accent: "#ffcf2f",
     categories: [
       {
@@ -213,7 +219,7 @@ export const divisions: Division[] = [
           "Concentrados organizados en familias cítricas, mediterráneas, tropicales, frutos rojos y vegetales. Las especificaciones, el origen y los formatos de envase se confirman en cada oferta comercial."
         ),
         image: "/images/raw-materials/fruit-concentrates.avif",
-        showcase: { image: "/images/raw-materials/fruit-vegetables.webp", focus: "50% 50%" },
+        showcase: { image: "/images/raw-materials/grapes.webp", focus: "45% 55%" },
         groups: [
           {
             title: t("Citrus", "Cítricos"),
@@ -343,36 +349,36 @@ export const divisions: Division[] = [
       overlay: "deep"
     },
     overview: {
-      title: t("Flavours organized by", "Sabores organizados por"),
-      highlight: t("application.", "aplicación."),
-      frameworkLabel: t("Application groups", "Grupos de aplicación"),
+      title: t("Flavour support built around your", "Apoyo en sabores pensado para su"),
+      highlight: t("product.", "producto."),
+      frameworkLabel: t("How GFB supports you", "Cómo le apoya GFB"),
       criteria: [
         {
-          id: "sweet",
-          title: t("Sweet", "Dulces"),
+          id: "development",
+          title: t("Development", "Desarrollo"),
           text: t(
-            "Confectionery, bakery, desserts, ice cream and dairy.",
-            "Confitería, panadería, postres, helados y lácteos."
-          ),
-          icon: "sweet"
-        },
-        {
-          id: "beverage",
-          title: t("Beverages", "Bebidas"),
-          text: t(
-            "Soft drinks, energy drinks, juices, waters, powders and syrups.",
-            "Refrescos, bebidas energéticas, zumos, aguas, polvos y jarabes."
+            "Flavour development for sweet, beverage and savoury products.",
+            "Desarrollo de sabores para productos dulces, bebidas y salados."
           ),
           icon: "drop"
         },
         {
-          id: "savoury",
-          title: t("Savoury", "Salados"),
+          id: "innovation",
+          title: t("Innovation", "Innovación"),
           text: t(
-            "Soups, noodles, stock cubes, snacks, meat, fish and ready meals.",
-            "Sopas, fideos, pastillas de caldo, snacks, carnes, pescados y platos preparados."
+            "Support with flavour choices for new products and innovation.",
+            "Apoyo en la elección de sabores para nuevos productos e innovación."
           ),
-          icon: "bowl"
+          icon: "growth"
+        },
+        {
+          id: "selection",
+          title: t("Flavour selection", "Selección de sabores"),
+          text: t(
+            "Guidance on the flavours that best suit each product.",
+            "Orientación sobre los sabores que mejor se adaptan a cada producto."
+          ),
+          icon: "search"
         }
       ]
     },
@@ -386,6 +392,8 @@ export const divisions: Division[] = [
         "Soluciones de sabor organizadas por aplicación, desde la confitería y los refrescos hasta las sopas y los platos preparados."
       )
     },
+    ctaTitle: t("Developing a new flavour profile?", "¿Está desarrollando un nuevo perfil de sabor?"),
+    detailSecondary: t("Explore the application", "Ver la aplicación"),
     accent: "#42c7ff",
     categories: [
       {
@@ -446,8 +454,8 @@ export const divisions: Division[] = [
       "Consultoría de procesos y maquinaria para la producción alimentaria e industrial."
     ),
     description: t(
-      "Tailored consulting for machinery and production processes across food, general industrial, environmental and pharmaceutical sectors. Scope and responsibilities are defined for each engagement.",
-      "Consultoría a medida para maquinaria y procesos productivos en los sectores alimentario, industrial, medioambiental y farmacéutico. El alcance y las responsabilidades se definen en cada proyecto."
+      "Tailored consulting for machinery and production processes across food, general industrial, environmental and pharmaceutical sectors.",
+      "Consultoría a medida para maquinaria y procesos productivos en los sectores alimentario, industrial, medioambiental y farmacéutico."
     ),
     heroImage: "/images/consulting/hero.avif",
     hero: {
@@ -501,6 +509,8 @@ export const divisions: Division[] = [
         "Consultoría de maquinaria y procesos de producción para operaciones alimentarias, industriales, medioambientales y farmacéuticas."
       )
     },
+    ctaTitle: t("Have a process or machinery challenge?", "¿Tiene un reto de proceso o maquinaria?"),
+    detailSecondary: t("Explore the sector scope", "Ver el alcance del sector"),
     accent: "#6fe08d",
     categories: [
       {
@@ -531,7 +541,7 @@ export const divisions: Division[] = [
           "Consultoría orientada a la eficiencia de fabricación, la reducción de paradas y la optimización del flujo de trabajo."
         ),
         image: "/images/consulting/process.avif",
-        showcase: { placeholder: "gear" }
+        showcase: { image: "/images/consulting/industrial-robotics.webp", focus: "50% 55%" }
       },
       {
         id: "environmental-sector",
@@ -546,7 +556,7 @@ export const divisions: Division[] = [
           "Apoyo en decisiones productivas donde importan la eficiencia de recursos y el impacto ambiental. Cada proyecto parte de un alcance definido."
         ),
         image: "/images/consulting/hero.avif",
-        showcase: { placeholder: "leaf" }
+        showcase: { image: "/images/consulting/environmental-treatment.webp", focus: "50% 55%" }
       },
       {
         id: "pharmaceutical-sector",

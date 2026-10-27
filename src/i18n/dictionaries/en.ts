@@ -117,11 +117,9 @@ export const en = {
   },
   division: {
     overviewEyebrow: "Overview",
-    note: "Availability, specifications and final suitability are confirmed during commercial review.",
     exploreEyebrow: "Explore this area",
     exploreTitle: "Find the relevant category.",
-    ctaEyebrow: "Commercial review",
-    ctaTitle: "Have a format or application in mind?"
+    ctaEyebrow: "Let's discuss your project"
   },
   category: {
     scopeEyebrow: "Scope",
@@ -129,6 +127,7 @@ export const en = {
     beforeQuoteTitle: "Before quotation",
     beforeQuoteText:
       "Share the application, format, volume, destination, processing conditions and required documentation.",
+    familiesLink: "Browse families",
     groupsEyebrow: "Product families",
     groupsTitle: "Browse by family.",
     ctaEyebrow: "Contextual inquiry",

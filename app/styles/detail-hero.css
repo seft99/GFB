@@ -1,0 +1,227 @@
+/*
+ * Category detail hero — light editorial desktop design (≥ 1100px). Imported by the
+ * category page only; component in components/sections/category-hero.tsx.
+ *
+ * Below 1100px the dark `detail-hero` layout from globals.css applies unchanged and the
+ * secondary link is hidden. From 1100px: one continuous photographic background behind the
+ * whole hero (below the navy header, breadcrumb included). The photo occupies the right part
+ * of that layer and fades into white on its left edge; a white-to-transparent veil keeps the
+ * copy column (left 46% of the shell: eyebrow, navy H1, slate description, blue pill and a
+ * quieter in-page link) readable without a visible panel. Framing per page via `heroFocus`.
+ */
+
+.detail-hero__secondary {
+  display: none;
+}
+.detail-hero__image--placeholder {
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.78);
+  background:
+    radial-gradient(70% 90% at 30% 20%, rgba(70, 120, 210, 0.45), transparent 70%),
+    linear-gradient(135deg, #0b2250 0%, #10306b 100%);
+}
+.detail-hero__image--placeholder svg {
+  width: clamp(4rem, 8vw, 6.5rem);
+}
+/* Photo layer inside the image box; fills it at every width (the box is the frame below 1100px). */
+.detail-hero__photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* Anchors from the hero clear the fixed header. */
+#scope,
+#families {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+@media (min-width: 1100px) {
+  .detail-hero--editorial.section-dark {
+    position: relative;
+    isolation: isolate;
+    min-height: clamp(38rem, 44vw, 46rem);
+    padding: calc(var(--header-h) + 2.5rem) 0 clamp(4rem, 5vw, 5.5rem);
+    color: var(--brand-ink);
+    background: #ffffff;
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+  .detail-hero--editorial :focus-visible {
+    outline-color: var(--blue-600);
+  }
+
+  /* Breadcrumb */
+  .detail-hero--editorial .breadcrumbs {
+    margin-bottom: clamp(2.5rem, 4vw, 3.75rem);
+    color: #5b6475;
+  }
+  .detail-hero--editorial .breadcrumbs li {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    opacity: 1;
+  }
+  .detail-hero--editorial .breadcrumbs li + li::before {
+    margin-right: 0.75rem;
+    opacity: 0.6;
+  }
+  .detail-hero--editorial .breadcrumbs ol {
+    gap: 0.75rem;
+  }
+  .detail-hero--editorial .breadcrumbs a {
+    color: #4a5263;
+    transition: color var(--motion-fast) ease;
+  }
+  .detail-hero--editorial .breadcrumbs a:hover {
+    color: var(--blue-600);
+  }
+  .detail-hero--editorial .breadcrumbs [aria-current] {
+    color: #5b6475;
+  }
+
+  /* Copy in the left 46% of the shell; the photo is the background layer, not a column. */
+  .detail-hero--editorial .detail-hero__grid {
+    grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+    gap: 0;
+    align-items: center;
+  }
+
+  /* Veil: white behind the copy, fading out before the subject. */
+  .detail-hero--editorial::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: var(--header-h) 0 0;
+    background: linear-gradient(
+      90deg,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.97) 34%,
+      rgba(255, 255, 255, 0.72) 46%,
+      rgba(255, 255, 255, 0.2) 56%,
+      rgba(255, 255, 255, 0) 64%
+    );
+    pointer-events: none;
+  }
+
+  .detail-hero--editorial .eyebrow {
+    margin-bottom: 1.75rem;
+    color: var(--blue-600);
+    font-size: 0.875rem;
+    letter-spacing: 0.16em;
+  }
+  .detail-hero--editorial h1 {
+    max-width: 10em;
+    margin: 0 0 1.75rem;
+    color: var(--brand-ink);
+    font-size: clamp(3.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+  .detail-hero--editorial .detail-hero__grid > div:first-child > p:not(.eyebrow) {
+    max-width: 32rem;
+    margin: 0;
+    color: #556074;
+    font-size: clamp(1.125rem, 1.3vw, 1.3125rem);
+    line-height: 1.5;
+  }
+
+  /* Actions: blue pill and a subordinate in-page link. */
+  .detail-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem 2.25rem;
+    margin-top: 2.5rem;
+  }
+  .detail-hero--editorial .detail-hero__primary.button {
+    min-height: 3.75rem;
+    gap: 1.4rem;
+    padding: 0 2rem;
+    color: var(--white);
+    background: var(--blue-600);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    transition:
+      transform var(--motion-fast) var(--ease-out),
+      background-color var(--motion-fast) ease;
+  }
+  .detail-hero--editorial .detail-hero__primary.button:hover {
+    background: #0f48b8;
+  }
+  .detail-hero--editorial .detail-hero__primary.button svg {
+    width: 1.25rem;
+  }
+  .detail-hero__secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.375rem;
+    color: var(--brand-ink);
+    font-size: 1.0625rem;
+    font-weight: 700;
+  }
+  .detail-hero__secondary svg {
+    width: 1.15rem;
+    rotate: 90deg;
+    transition: translate var(--motion-fast) var(--ease-out);
+  }
+  .detail-hero__secondary:hover {
+    color: var(--blue-600);
+  }
+  .detail-hero__secondary:hover svg {
+    translate: 0 3px;
+  }
+
+  /* Background layer across the whole hero below the header; no frame, corners or shadow. */
+  .detail-hero--editorial .detail-hero__image {
+    position: absolute;
+    z-index: -2;
+    inset: var(--header-h) 0 0;
+    min-height: 0;
+    border-radius: 0;
+    background: #ffffff;
+  }
+  /* The photo sits in the right 64% and fades into the white on its left edge. */
+  .detail-hero--editorial .detail-hero__photo {
+    left: auto;
+    width: 64%;
+    /* Left edge fades into the white; a short bottom fade hands over to the next section. */
+    mask-image:
+      linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.55) 16%, #000 34%),
+      linear-gradient(180deg, #000 82%, transparent 100%);
+    mask-composite: intersect;
+  }
+  .detail-hero--editorial .detail-hero__photo img {
+    object-fit: cover;
+  }
+
+  /* Without a suitable photo: a pale brand-blue field on the right with the outlined icon. */
+  .detail-hero--editorial .detail-hero__image--placeholder {
+    justify-items: end;
+    padding-right: max(4vw, calc((100vw - var(--shell)) / 2 + 6rem));
+    color: rgba(20, 87, 217, 0.55);
+    background: linear-gradient(90deg, #ffffff 30%, #eaf0fb 62%, #dce6f7 100%);
+  }
+  .detail-hero--editorial .detail-hero__image--placeholder svg {
+    width: clamp(8rem, 12vw, 12rem);
+  }
+
+  /* The next section follows directly. */
+  .detail-hero--editorial + .detail-content {
+    padding-top: clamp(4rem, 5.5vw, 5.5rem);
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .detail-hero--editorial .detail-hero__primary.button,
+  .detail-hero__secondary svg {
+    transition: none;
+  }
+  .detail-hero__secondary:hover svg {
+    translate: none;
+  }
+}

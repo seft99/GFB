@@ -19,9 +19,10 @@
     overflow: clip;
     isolation: isolate;
     padding-block: var(--space-section);
+    /* A deeper brand blue: white text stays at 6:1 or more over the whole gradient. */
     background:
-      radial-gradient(ellipse 60% 75% at 18% 22%, rgba(255, 255, 255, 0.06), transparent 70%),
-      radial-gradient(ellipse 55% 70% at 88% 92%, rgba(9, 40, 140, 0.16), transparent 70%), var(--blue-500);
+      radial-gradient(ellipse 55% 70% at 88% 92%, rgba(9, 40, 140, 0.22), transparent 70%),
+      linear-gradient(100deg, #1a5bd6 0%, #1656cc 60%, #1450c2 100%);
     font-family: var(--font-brand);
     font-stretch: 92%;
   }
@@ -67,17 +68,16 @@
   .closing-cta .cta-panel h2 {
     max-width: 11em;
     font-size: var(--type-h2-feature);
-    text-wrap: balance;
     font-weight: 650;
     line-height: 1.03;
     letter-spacing: -0.035em;
-    text-wrap: wrap;
+    text-wrap: balance;
   }
   .closing-cta__text {
     display: block;
     max-width: 26em;
     margin: 2.4rem 0 0;
-    color: rgba(255, 255, 255, 0.94);
+    color: var(--white);
     font-size: clamp(1.125rem, 1.25vw, 1.375rem);
     font-weight: 300;
     line-height: 1.55;

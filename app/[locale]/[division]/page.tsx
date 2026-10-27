@@ -55,7 +55,7 @@ export default async function DivisionPage({ params }: Props) {
       <CtaBand
         variant="compact"
         eyebrow={copy.ctaEyebrow}
-        title={copy.ctaTitle}
+        title={division.ctaTitle[locale]}
         href={paths.contact(locale, { interest: division.id })}
         label={common.inquire}
       />

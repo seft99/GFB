@@ -20,6 +20,10 @@ export type Category = {
   detail: LocalizedText;
   image: string;
   showcase?: CategoryShowcase;
+  /** Desktop object-position of the photo in the detail hero background (defaults to the showcase focus). */
+  heroFocus?: string;
+  /** Label of the detail hero's secondary link to the scope section, when more specific than the division's. */
+  heroSecondary?: LocalizedText;
   features?: LocalizedText[];
   groups?: CategoryGroup[];
 };
@@ -33,11 +37,25 @@ export type ServiceHero = {
   focus: string;
   /** "deep" adds a darker navy tint for bright or busy photographs. */
   overlay: "standard" | "deep";
+  /** Extra space between the header and the photo, for subjects that reach the top edge. */
+  mediaOffset?: string;
 };
 
 /** Icons available to overview criteria and showcase placeholders (a subset of components/ui/icon.tsx). */
 export type OverviewIcon =
-  "bottle" | "gear" | "cube" | "leaf" | "target" | "nodes" | "sweet" | "drop" | "bowl" | "document" | "capsule";
+  | "bottle"
+  | "gear"
+  | "cube"
+  | "leaf"
+  | "target"
+  | "nodes"
+  | "sweet"
+  | "drop"
+  | "bowl"
+  | "document"
+  | "capsule"
+  | "growth"
+  | "search";
 
 export type OverviewCriterion = { id: string; title: LocalizedText; text: LocalizedText; icon: OverviewIcon };
 
@@ -70,6 +88,10 @@ export type Division = {
   hero: ServiceHero;
   overview: DivisionOverview;
   showcase: DivisionShowcase;
+  /** Heading of the closing contact band on the division page. */
+  ctaTitle: LocalizedText;
+  /** Default label of the category detail hero's secondary link to the scope section. */
+  detailSecondary: LocalizedText;
   accent: string;
   categories: Category[];
 };

@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { CategoryHero, categorySectionIds } from "@/components/sections/category-hero";
 import { CtaBand } from "@/components/sections/cta-band";
-import { ButtonLink } from "@/components/ui/button-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon } from "@/components/ui/icon";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -12,6 +10,7 @@ import { isLocale, locales } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { localizedPaths, paths } from "@/src/i18n/routes";
 import { pageMetadata } from "@/src/lib/metadata";
+import "../../../styles/detail-hero.css";
 
 type Props = PageProps<"/[locale]/[division]/[category]">;
 
@@ -56,32 +55,9 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <main id="main-content">
-      <section className="detail-hero section-dark">
-        <div className="shell">
-          <Breadcrumbs
-            locale={locale}
-            items={[
-              { label: division.title[locale], href: paths.division(locale, division) },
-              { label: category.title[locale] }
-            ]}
-          />
-          <div className="detail-hero__grid">
-            <div>
-              <Eyebrow onDark>{division.title[locale]}</Eyebrow>
-              <h1>{category.title[locale]}</h1>
-              <p>{category.summary[locale]}</p>
-              <ButtonLink href={inquiryHref} variant="lime">
-                {common.inquire}
-              </ButtonLink>
-            </div>
-            <div className="detail-hero__image">
-              <Image src={category.image} alt="" fill priority sizes="(max-width: 900px) 100vw, 48vw" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <CategoryHero division={division} category={category} locale={locale} inquiryHref={inquiryHref} />
 
-      <section className="section detail-content">
+      <section id={categorySectionIds.scope} className="section detail-content">
         <div className="shell detail-content__grid">
           <div>
             <Eyebrow>{copy.scopeEyebrow}</Eyebrow>
@@ -108,7 +84,7 @@ export default async function CategoryPage({ params }: Props) {
       </section>
 
       {category.groups && (
-        <section className="section portfolio-groups">
+        <section id={categorySectionIds.families} className="section portfolio-groups">
           <div className="shell">
             <SectionHeading eyebrow={copy.groupsEyebrow} title={copy.groupsTitle} />
             <div className="group-grid">

@@ -14,6 +14,11 @@
   display: none;
 }
 
+/* The division page contact band follows the showcase: keep its button label on one line. */
+.category-showcase + .compact-cta .button {
+  white-space: nowrap;
+}
+
 @media (min-width: 1100px) {
   .category-showcase__legacy {
     display: none;
@@ -33,9 +38,6 @@
   }
   .category-showcase__desktop {
     display: block;
-  }
-  .category-showcase__desktop > .shell {
-    width: var(--container-desktop);
   }
 
   .category-showcase__curves {

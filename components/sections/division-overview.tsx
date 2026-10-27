@@ -9,8 +9,7 @@ import { ordinal } from "@/src/lib/format";
 
 /**
  * Overview of the four division pages, driven by `division.overview` in the catalog (headline,
- * highlighted ending, framework label and criteria) plus the division description and the
- * shared commercial-review note. The intro keeps the `split-intro` markup, so below 1100px it
+ * highlighted ending, framework label and criteria) plus the division description. The intro keeps the `split-intro` markup, so below 1100px it
  * renders as before; the criteria row, highlight colour and decoration are the desktop design
  * in app/styles/division-overview.css. Criteria are informational, not links.
  */
@@ -44,7 +43,6 @@ export function DivisionOverview({ division, locale }: { division: Division; loc
         </div>
         <div>
           <p className="lead">{division.description[locale]}</p>
-          <p className="content-note">{copy.note}</p>
         </div>
       </div>
 

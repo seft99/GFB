@@ -119,11 +119,9 @@ export const es: Dictionary = {
   },
   division: {
     overviewEyebrow: "Visión general",
-    note: "La disponibilidad, las especificaciones y la idoneidad final se confirman durante la revisión comercial.",
     exploreEyebrow: "Explore esta área",
     exploreTitle: "Encuentre la categoría adecuada.",
-    ctaEyebrow: "Revisión comercial",
-    ctaTitle: "¿Tiene un formato o aplicación en mente?"
+    ctaEyebrow: "Hablemos de su proyecto"
   },
   category: {
     scopeEyebrow: "Alcance",
@@ -131,6 +129,7 @@ export const es: Dictionary = {
     beforeQuoteTitle: "Antes de cotizar",
     beforeQuoteText:
       "Comparta la aplicación, el formato, el volumen, el destino, las condiciones de proceso y la documentación requerida.",
+    familiesLink: "Ver familias",
     groupsEyebrow: "Familias de producto",
     groupsTitle: "Explore por familia.",
     ctaEyebrow: "Consulta contextual",

@@ -38,9 +38,13 @@
 
   /* Photo: right 62% of the hero below the fixed header, its left edge fading into the navy. */
   .service-hero .service-hero__media {
-    inset: var(--header-h) 0 0 auto;
+    inset: calc(var(--header-h) + var(--hero-media-offset, 0px)) 0 0 auto;
     width: 62%;
-    mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.6) 16%, #000 36%);
+    /* Left edge fades into the navy; a small top fade softens the edge when the photo is offset. */
+    mask-image:
+      linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.6) 16%, #000 36%),
+      linear-gradient(180deg, transparent 0, #000 2.5rem);
+    mask-composite: intersect;
   }
   .service-hero .service-hero__media img {
     object-position: var(--hero-focus, 50% 50%);
