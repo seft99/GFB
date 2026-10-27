@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { RevealList } from "@/components/home/reveal-list";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { Icon, type IconName } from "@/components/ui/icon";
 import { company } from "@/src/content/company";
 import { isLocale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
@@ -12,6 +14,7 @@ import { ordinal } from "@/src/lib/format";
 import { pageMetadata } from "@/src/lib/metadata";
 import "../../styles/about-hero.css";
 import "../../styles/about-story.css";
+import "../../styles/about-mission.css";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/about">): Promise<Metadata> {
   const { locale } = await params;
@@ -29,6 +32,23 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const { about, common } = getDictionary(locale);
+  // Decorative curve and node per card, drawn in a 733 × 472 box anchored to its lower
+  // outer corner, so a taller card moves its copy away from the curve, never onto it.
+  const missionCards: { item: typeof about.mission; icon: IconName; curve: string; node: [number, number] }[] = [
+    {
+      item: about.mission,
+      icon: "target",
+      curve: "M-4 396C60 440 170 452 277 446C370 441 470 450 545 476",
+      node: [277, 446]
+    },
+    {
+      item: about.vision,
+      icon: "growth",
+      curve: "M737 262C716 290 704 306 692 330C670 400 600 460 380 482",
+      node: [692, 330]
+    }
+  ];
+
   return (
     <main id="main-content">
       {/*
@@ -118,16 +138,54 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
         </div>
       </section>
 
+      {/*
+        Below 1100px the cards keep their layout from globals.css; the intro, icons, brand
+        curves and the desktop card design are in app/styles/about-mission.css.
+      */}
       <section className="section mission-section">
-        <div className="shell mission-grid">
-          {[about.mission, about.vision].map((item, index) => (
-            <article key={item.eyebrow}>
-              <span aria-hidden="true">{ordinal(index)}</span>
-              <Eyebrow>{item.eyebrow}</Eyebrow>
-              <h2>{item.title}</h2>
-              <p>{item.text}</p>
-            </article>
-          ))}
+        <svg
+          className="mission-section__lines"
+          viewBox="0 0 1672 941"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M1422 -10C1370 70 1320 130 1258 156C1130 210 1000 250 936 362" />
+          <circle className="mission-section__halo" cx="1258" cy="156" r="15" />
+          <circle className="mission-section__node" cx="1258" cy="156" r="8.5" />
+        </svg>
+        <div className="shell mission-shell">
+          <header className="mission-intro">
+            <Eyebrow>{about.purpose.eyebrow}</Eyebrow>
+            <h2>
+              <span>{about.purpose.title}</span> <span>{about.purpose.titleMuted}</span>
+            </h2>
+          </header>
+          <RevealList as="div" className="mission-grid">
+            {missionCards.map(({ item, icon, curve, node }, index) => (
+              <article key={item.eyebrow}>
+                <svg
+                  className="mission-card__curve"
+                  viewBox="0 0 733 472"
+                  preserveAspectRatio={index === 0 ? "xMinYMax slice" : "xMaxYMax slice"}
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d={curve} />
+                  <circle className="mission-card__halo" cx={node[0]} cy={node[1]} r="14" />
+                  <circle className="mission-card__node" cx={node[0]} cy={node[1]} r="8" />
+                </svg>
+                <div className="mission-card__icon" aria-hidden="true">
+                  <Icon name={icon} strokeWidth={1.6} />
+                </div>
+                <span aria-hidden="true">{ordinal(index)}</span>
+                <Eyebrow>{item.eyebrow}</Eyebrow>
+                <h2>{item.title}</h2>
+                <p>{item.text}</p>
+              </article>
+            ))}
+            <span className="mission-grid__link" aria-hidden="true" />
+          </RevealList>
         </div>
       </section>
 

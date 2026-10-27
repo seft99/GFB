@@ -117,3 +117,9 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 - Desktop: dark navy editorial split that runs ≈ 4vw from each viewport edge — rounded photo on the left; eyebrow, three-line headline (`about.story.titleLines`, the line at `titleAccent` in lime), copy and badge on the right. The headline size follows its column (`cqi`), with a smaller factor for the longer Spanish lines, so each line fits on one row from 1280 px.
 - Photo: `home/global-sourcing.avif` stands in until an approved, high-resolution sourcing/warehouse photograph is supplied.
 - Scroll-driven entrance is transform-only (no opacity), so contrast is never reduced mid-animation; off under reduced motion and where `animation-timeline` is unsupported.
+
+## About GFB · Mission & Vision
+
+- Markup: `app/[locale]/about/page.tsx` (`mission-section`); desktop styles: `app/styles/about-mission.css` (≥ 1100 px, imported by the About page only). Below 1100 px the two cards from `globals.css` are unchanged; the "Our purpose" intro (`about.purpose`), icons, curves and the link node are desktop-only.
+- Desktop: intro aligned with the card copy, then two equal cards (white mission, pale blue vision) wider than the shell, each with an outlined icon (`target`, `growth` in `components/ui/icon.tsx`) and a curve anchored to its lower outer corner so it never runs into the copy.
+- The grid is a `RevealList`, so the cards enter once when scrolled into view; hover lifts a card by 4 px. Both are off under reduced motion. The cards are informational, not links.

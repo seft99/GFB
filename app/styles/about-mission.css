@@ -1,0 +1,270 @@
+/*
+ * About GFB · Mission & Vision — desktop design (≥ 1100px). Imported by the About page only.
+ *
+ * Below 1100px the two cards keep their layout from globals.css. Here the section gains an
+ * "Our purpose" intro and becomes two equal editorial cards (white mission, pale blue vision)
+ * with outlined icons in circles, fine brand curves and nodes, and a lime node linking both.
+ * The cards enter once via RevealList (`data-reveal`) and lift slightly on hover; they are
+ * informational, not links.
+ */
+
+.mission-section__lines,
+.mission-intro,
+.mission-card__curve,
+.mission-card__icon,
+.mission-grid__link {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .mission-section {
+    position: relative;
+    overflow: clip;
+    isolation: isolate;
+    padding-block: clamp(7rem, 9vw, 10rem) clamp(5.5rem, 6.4vw, 7.5rem);
+    background: #f4f5f8;
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+
+  /* Section curve: from the top edge, through a node, down behind the vision card. */
+  .mission-section__lines {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    pointer-events: none;
+  }
+  .mission-section__lines path {
+    stroke: rgba(150, 214, 30, 0.6);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+  }
+  .mission-section__node,
+  .mission-card__node {
+    fill: var(--brand-lime);
+  }
+  .mission-section__halo,
+  .mission-card__halo {
+    fill: rgba(179, 236, 62, 0.22);
+  }
+
+  /* Cards run wider than the shell; the intro lines up with the card copy. */
+  .mission-section .mission-shell {
+    --mission-pad: clamp(3rem, 4.2vw, 4.75rem);
+    width: min(calc(100% - 8vw), calc(var(--shell) + 10.5rem));
+  }
+
+  .mission-intro {
+    display: block;
+    margin: 0 0 2.6rem;
+    padding-inline: calc(var(--mission-pad) + 0.75rem);
+  }
+  .mission-intro .eyebrow {
+    margin-bottom: 1.6rem;
+    color: var(--blue-600);
+    font-size: 0.8125rem;
+    letter-spacing: 0.2em;
+  }
+  .mission-intro h2 {
+    margin: 0;
+    color: var(--brand-ink);
+    font-size: clamp(3.25rem, 3.95vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    text-wrap: wrap;
+  }
+  .mission-intro h2 span {
+    display: block;
+  }
+  .mission-intro h2 span + span {
+    color: #4a5571;
+  }
+
+  .mission-section .mission-grid {
+    position: relative;
+    gap: clamp(2.25rem, 3vw, 3.25rem);
+  }
+
+  /* Cards */
+  .mission-section .mission-grid article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-content: start;
+    overflow: hidden;
+    isolation: isolate;
+    padding: var(--mission-pad);
+    border: 1px solid rgba(10, 18, 41, 0.06);
+    border-radius: 1.625rem;
+    background: var(--white);
+    box-shadow: 0 1.75rem 3.5rem -2.25rem rgba(10, 18, 41, 0.2);
+    transition:
+      transform 0.55s var(--ease-out),
+      box-shadow 0.55s var(--ease-out),
+      opacity var(--motion-enter) var(--ease-out),
+      translate var(--motion-enter) var(--ease-out);
+  }
+  .mission-section .mission-grid article + article {
+    border-color: rgba(20, 87, 217, 0.1);
+    background: linear-gradient(160deg, #f3f7ff 0%, #ebf1fd 100%);
+    transition-delay: 0s, 0s, 120ms, 120ms;
+  }
+  .mission-section .mission-grid article > :is(h2, p) {
+    grid-column: 1 / -1;
+  }
+  .mission-section .mission-grid article:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 2.25rem 4.5rem -2.25rem rgba(10, 18, 41, 0.28);
+  }
+
+  /* "01 / Mission" label */
+  .mission-section .mission-grid article > span {
+    position: static;
+    grid-column: 1;
+    margin: 0 0 2.75rem;
+    color: #5b6070;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+  }
+  .mission-section .mission-grid article > span::after {
+    content: "/";
+    margin-inline: 0.5em;
+  }
+  .mission-section .mission-grid article > .eyebrow {
+    grid-column: 2;
+    margin: 0 0 2.75rem;
+    color: var(--blue-600);
+    font-size: 0.875rem;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+  }
+
+  .mission-section .mission-grid h2 {
+    max-width: 9.7em;
+    margin: 0 0 2.25rem;
+    color: var(--brand-ink);
+    font-size: clamp(2.5rem, 3.1vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    text-wrap: wrap;
+  }
+  /* Spanish titles are longer; a slightly wider measure keeps both cards at three lines. */
+  .mission-section:lang(es) .mission-grid h2 {
+    max-width: 10.6em;
+  }
+  .mission-section .mission-grid article > p:last-child {
+    max-width: 31rem;
+    margin: 0;
+    color: #555b6e;
+    font-size: clamp(1.0625rem, 1.12vw, 1.1875rem);
+    line-height: 1.6;
+  }
+
+  /* Icon in a soft circle, top right of each card. */
+  .mission-card__icon {
+    position: absolute;
+    top: clamp(2.25rem, 3vw, 3.25rem);
+    right: clamp(2.25rem, 3vw, 3.25rem);
+    display: grid;
+    place-items: center;
+    width: clamp(4.75rem, 5.7vw, 6rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    color: var(--blue-600);
+    background: #edf2fc;
+    transition:
+      background-color 0.55s var(--ease-out),
+      transform 0.55s var(--ease-out);
+  }
+  article + article .mission-card__icon {
+    background: var(--white);
+    box-shadow: 0 0.75rem 1.75rem -1.25rem rgba(20, 87, 217, 0.35);
+  }
+  .mission-card__icon svg {
+    width: 45%;
+    height: 45%;
+  }
+  .mission-section .mission-grid article:hover .mission-card__icon {
+    transform: translateY(-2px);
+  }
+  .mission-section .mission-grid article:first-child:hover .mission-card__icon {
+    background: #e4ecfb;
+  }
+
+  /* Card curves sit behind the copy along the lower edge. */
+  .mission-card__curve {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    pointer-events: none;
+  }
+  .mission-card__curve path {
+    stroke: rgba(150, 214, 30, 0.6);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+  }
+  article + article .mission-card__curve path {
+    stroke: rgba(20, 87, 217, 0.45);
+  }
+
+  /* Link between the cards: a short lime rule and node centred in the gap. */
+  .mission-grid__link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: clamp(2.25rem, 3vw, 3.25rem);
+    height: 1.5px;
+    background: rgba(150, 214, 30, 0.7);
+    translate: -50% -50%;
+    pointer-events: none;
+  }
+  .mission-grid__link::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--brand-lime);
+    box-shadow: 0 0 0 0.6rem rgba(179, 236, 62, 0.2);
+    translate: -50% -50%;
+  }
+
+  /* Entrance: hidden until RevealList marks the grid as in view. Hiding is instant
+     (no transition), so nothing is ever caught half-faded. */
+  .mission-grid[data-reveal="pending"] article {
+    opacity: 0;
+    translate: 0 1.75rem;
+    transition: none;
+  }
+  .mission-grid[data-reveal="pending"] .mission-grid__link {
+    opacity: 0;
+  }
+  .mission-grid__link {
+    transition: opacity var(--motion-enter) var(--ease-out) 300ms;
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .mission-section .mission-grid article,
+  .mission-card__icon {
+    transition: none;
+  }
+  .mission-section .mission-grid article:hover,
+  .mission-section .mission-grid article:hover .mission-card__icon {
+    transform: none;
+  }
+}

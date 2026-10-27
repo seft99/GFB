@@ -162,6 +162,11 @@ export const es: Dictionary = {
       imageAlt: "Cadena internacional de suministro de alimentos",
       contact: "Un único interlocutor"
     },
+    purpose: {
+      eyebrow: "Nuestro propósito",
+      title: "Un propósito claro.",
+      titleMuted: "Una dirección compartida."
+    },
     mission: {
       eyebrow: "Misión",
       title: "Aportar el producto y la solución adecuados en cada etapa.",

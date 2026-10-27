@@ -161,6 +161,11 @@ export const en = {
       imageAlt: "International food supply chain",
       contact: "One point of contact"
     },
+    purpose: {
+      eyebrow: "Our purpose",
+      title: "A clear purpose.",
+      titleMuted: "A shared direction."
+    },
     mission: {
       eyebrow: "Mission",
       title: "Bring the right product and solution to each stage.",
@@ -168,7 +173,8 @@ export const en = {
     },
     vision: {
       eyebrow: "Vision",
-      title: "Be a trusted, long-term multi-solution partner.",
+      // Non-breaking hyphen keeps "long‑term" together; the line may break after "multi-".
+      title: "Be a trusted, long‑term multi-solution partner.",
       text: "Adapt the portfolio and services as the food and beverage market evolves."
     },
     presence: {

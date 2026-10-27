@@ -14,7 +14,9 @@ export type IconName =
   | "bars"
   | "nodes"
   | "search"
-  | "document";
+  | "document"
+  | "target"
+  | "growth";
 
 const paths: Record<IconName, ReactNode> = {
   arrow: (
@@ -95,6 +97,22 @@ const paths: Record<IconName, ReactNode> = {
     <>
       <path d="M6 3.25h8.5l4.25 4.25v13.25H6Z" />
       <path d="M14.25 3.5v4.25h4.25M9.25 11.5h6.5M9.25 14.75h6.5M9.25 18h4" />
+    </>
+  ),
+  target: (
+    <>
+      <circle cx="11" cy="13" r="8.25" />
+      <circle cx="11" cy="13" r="4.75" />
+      <circle cx="11" cy="13" r="1.25" />
+      <path d="m11 13 8.5-8.5M16.75 3.75v3.5h3.5" />
+    </>
+  ),
+  growth: (
+    <>
+      <rect x="3.75" y="15.5" width="3.5" height="4.75" rx="0.75" />
+      <rect x="10.25" y="12.5" width="3.5" height="7.75" rx="0.75" />
+      <rect x="16.75" y="9.5" width="3.5" height="10.75" rx="0.75" />
+      <path d="M4 11.25 19.25 3.75M14.5 3.5h5v5" />
     </>
   )
 };
