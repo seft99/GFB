@@ -1,0 +1,182 @@
+/*
+ * About GFB hero — desktop design (≥ 1100px). Imported by the About page only.
+ *
+ * Below 1100px the hero keeps its dark layout from globals.css. Here it becomes a light
+ * editorial split: copy, lead and trust row on the left; a rounded photo on the right that
+ * runs past the content edge towards the viewport, with a fine lime orbit and node behind it.
+ */
+
+.about-hero__trust,
+.about-hero__media {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .about-hero.section-dark {
+    position: relative;
+    overflow: clip;
+    padding: calc(var(--header-h) + 4.25rem) 0 clamp(4.5rem, 5.5vw, 6.5rem);
+    color: var(--brand-ink);
+    background: #f4f5f6;
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+
+  .about-hero .breadcrumbs {
+    margin-bottom: 2.6rem;
+    color: #5b6070;
+  }
+  .about-hero .breadcrumbs li {
+    opacity: 1;
+  }
+  .about-hero .breadcrumbs a {
+    transition: color var(--motion-fast) ease;
+  }
+  .about-hero .breadcrumbs a:hover {
+    color: var(--brand-ink);
+  }
+
+  .about-hero .about-hero__grid {
+    grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "copy media"
+      "lead media"
+      "trust media";
+    gap: 0 clamp(3rem, 3.6vw, 4.25rem);
+    align-items: start;
+  }
+
+  /* Copy */
+  .about-hero__copy {
+    grid-area: copy;
+  }
+  .about-hero .eyebrow {
+    margin-bottom: 1.4rem;
+    /* --brand-lime-label is 4.4:1 on this grey; this shade is 5.4:1 for small text. */
+    color: #4b6e0b;
+    font-size: 0.8125rem;
+    letter-spacing: 0.16em;
+  }
+  .about-hero h1 {
+    max-width: 9.1em;
+    margin: 0 0 2.4rem;
+    color: var(--brand-ink);
+    font-size: clamp(3.375rem, 3.95vw, 4.25rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    text-wrap: wrap;
+  }
+  .about-hero__accent {
+    color: var(--brand-lime-text);
+  }
+  .about-hero .lead {
+    grid-area: lead;
+    max-width: 31rem;
+    margin: 0;
+    color: #3d4255;
+    font-size: clamp(1.125rem, 1.15vw, 1.3125rem);
+    line-height: 1.6;
+  }
+
+  .about-hero__trust {
+    grid-area: trust;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2.4rem 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--brand-ink);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .about-hero__trust li + li::before {
+    content: "";
+    display: inline-block;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-right: 1.5rem;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: var(--brand-lime);
+  }
+
+  /* Photo and orbit. The column runs past the shell towards the viewport edge (≈ 4.5vw gap). */
+  .about-hero__media {
+    grid-area: media;
+    position: relative;
+    display: block;
+    margin-top: 0.4rem;
+    margin-right: min(0px, calc((100vw - var(--shell)) / -2 + 4.5vw));
+  }
+  .about-hero__photo {
+    position: relative;
+    aspect-ratio: 1.6;
+    overflow: hidden;
+    border-radius: 2.75rem 0.5rem 2.75rem 0.5rem;
+    background: #d9dde3;
+  }
+  .about-hero__photo img {
+    object-fit: cover;
+    object-position: 50% 45%;
+  }
+  .about-hero__orbit {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    pointer-events: none;
+  }
+  .about-hero__orbit circle,
+  .about-hero__orbit path {
+    stroke: rgba(150, 214, 30, 0.55);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+  }
+  .about-hero__orbit .about-hero__node {
+    fill: var(--brand-lime);
+    stroke: none;
+  }
+
+  /* The orbit sits behind the photo, so the hero needs its own stacking context. */
+  .about-hero .about-hero__grid {
+    position: relative;
+    isolation: isolate;
+  }
+}
+
+/* Gentle entrance on load: transform only, so nothing waits on opacity before painting. */
+@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
+  .about-hero__copy,
+  .about-hero .lead,
+  .about-hero__trust {
+    animation: about-hero-rise var(--motion-enter) var(--ease-out) both;
+  }
+  .about-hero .lead {
+    animation-delay: 80ms;
+  }
+  .about-hero__trust {
+    animation-delay: 160ms;
+  }
+  .about-hero__photo img {
+    animation: about-hero-settle 1.2s var(--ease-out) both;
+  }
+}
+
+@keyframes about-hero-rise {
+  from {
+    translate: 0 0.9rem;
+  }
+}
+@keyframes about-hero-settle {
+  from {
+    scale: 1.045;
+  }
+}

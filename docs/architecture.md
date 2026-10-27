@@ -103,3 +103,10 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 - Component: `components/layout/site-footer.tsx`; desktop styles: `app/styles/footer.css` (≥ 1100 px). Below 1100 px the previous footer styles in `globals.css` apply unchanged.
 - Headline lines come from `footer.titleLines`; the address is split into street and city lines (same text as `formatAddress`). Both stack only on desktop.
 - Decoration: two `aria-hidden` SVG layers behind the content, sized from the page margin (`(100% - 86rem)`) so they never reach the text. They show from 1500 px; between 1100 and 1499 px only the background gradients remain. The stripe motif is an abstract nod to the brand mark, not the logo.
+
+## About GFB hero
+
+- Markup: `app/[locale]/about/page.tsx`; desktop styles: `app/styles/about-hero.css` (≥ 1100 px, imported by the About page only). Below 1100 px the dark hero from `globals.css` is unchanged; the photo, trust row and orbit are desktop-only, so the photo is not downloaded on smaller screens.
+- Desktop: light editorial split (copy, lead and trust row in grid areas on the left; rounded photo on the right running past the shell towards the viewport edge), with a lime orbit and node behind the photo.
+- Photo: `packaging/hero.avif` stands in until an approved, high-resolution bottling-line photograph is supplied.
+- Entrance on load is transform-only (no opacity), so it never delays the first paint; off under reduced motion.

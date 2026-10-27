@@ -141,9 +141,13 @@ export const en = {
     metaTitle: "About GFB",
     metaDescription: "Learn about GFB Solutions' approach, mission and international presence.",
     hero: {
-      eyebrow: "One company, several disciplines",
-      title: "Connecting technical detail to the commercial goal.",
-      lead: "GFB is a multi-solution partner for the food and beverage industry, with more than a decade of sector experience and a service adapted to each project."
+      eyebrow: "One company. Several disciplines",
+      title: "Connecting technical detail to the",
+      titleAccent: "commercial goal.",
+      lead: "GFB brings together specialized producers, industrial expertise and tailored solutions for food and beverage businesses.",
+      trustLabel: "GFB at a glance",
+      trust: ["10+ years experience", "Based in Murcia, Spain"],
+      imageAlt: "Glass beverage bottles with crown caps under warm production light"
     },
     story: {
       eyebrow: "How GFB works",

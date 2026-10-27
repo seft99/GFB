@@ -143,9 +143,13 @@ export const es: Dictionary = {
     metaTitle: "Sobre GFB",
     metaDescription: "Conozca el enfoque, la misión y la presencia internacional de GFB Solutions.",
     hero: {
-      eyebrow: "Una empresa, varias disciplinas",
-      title: "Conectar el detalle técnico con el objetivo comercial.",
-      lead: "GFB es un socio multisolución para la industria de alimentación y bebidas, con más de una década de experiencia en el sector y un servicio adaptado a cada proyecto."
+      eyebrow: "Una empresa. Varias disciplinas",
+      title: "Conectar el detalle técnico con el",
+      titleAccent: "objetivo comercial.",
+      lead: "GFB reúne productores especializados, conocimiento industrial y soluciones a medida para empresas de alimentación y bebidas.",
+      trustLabel: "GFB en breve",
+      trust: ["Más de 10 años de experiencia", "Con sede en Murcia, España"],
+      imageAlt: "Botellas de vidrio para bebidas con tapón corona bajo luz cálida de producción"
     },
     story: {
       eyebrow: "Cómo trabaja GFB",
