@@ -16,7 +16,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     <header className="site-header">
       <div className="site-header__inner shell-wide">
         <Link href={paths.home(locale)} className="brand" aria-label={common.homeLinkLabel}>
-          <Image src="/brand/gfb-logo.avif" alt="" width={187} height={77} loading="eager" />
+          <Image src="/brand/gfb-logo.png" alt="" width={154} height={64} loading="eager" />
         </Link>
         <HeaderNavigation
           items={primaryNavigation(locale)}

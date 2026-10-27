@@ -23,7 +23,7 @@
   }
 
   .world .world-grid {
-    width: min(calc(100% - 4rem), var(--shell-wide));
+    width: var(--container-desktop);
     grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
     gap: clamp(1.5rem, 3vw, 3rem);
   }
@@ -53,14 +53,14 @@
     background: var(--brand-lime);
   }
   .world .world-grid h2 {
-    max-width: 7.4em;
+    max-width: 9.5em;
     margin: 0 0 2rem;
     color: var(--white);
-    font-size: clamp(3.5rem, 4.45vw, 4.75rem);
+    font-size: var(--type-h2-feature);
     font-weight: 650;
     line-height: 1.07;
     letter-spacing: -0.03em;
-    text-wrap: wrap;
+    text-wrap: balance;
   }
   .world .world__copy > p {
     max-width: 26.5rem;
@@ -279,27 +279,6 @@
   .world__globe[data-reveal="pending"] .world__arc {
     stroke-dashoffset: 1;
     transition: none;
-  }
-}
-
-@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
-  .world__marker::before {
-    animation: world-halo 3.6s ease-in-out infinite alternate;
-  }
-  .world__place:nth-child(2) .world__marker::before {
-    animation-delay: -1.2s;
-  }
-  .world__place:nth-child(3) .world__marker::before {
-    animation-delay: -2.4s;
-  }
-}
-
-@keyframes world-halo {
-  from {
-    opacity: 0.55;
-  }
-  to {
-    opacity: 1;
   }
 }
 

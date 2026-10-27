@@ -32,7 +32,7 @@ test.describe("mobile navigation", () => {
 test.describe("contact form", () => {
   test("prefills context from the category link", async ({ page }) => {
     await page.goto("/es/soluciones-de-embalaje/latas");
-    await page.getByRole("main").getByRole("link", { name: "Iniciar una consulta" }).first().click();
+    await page.getByRole("main").getByRole("link", { name: "Hablemos de su proyecto" }).first().click();
     await expect(page).toHaveURL(/\/es\/contacto\?interest=packaging-solutions/);
     await expect(page.getByLabel("Área de interés")).toHaveValue("packaging-solutions");
     await expect(page.getByLabel("Producto, categoría o servicio")).toHaveValue("Latas y tapas de aluminio");
@@ -50,7 +50,8 @@ test.describe("contact form", () => {
   test("submits through the Server Action and reports that delivery is pending", async ({ page }) => {
     await page.goto("/en/contact");
     await page.getByLabel("Name").fill("Ana Buyer");
-    await page.getByLabel("Company").fill("Example Beverages");
+    // A role query: the footer's "Company" navigation also has that accessible name.
+    await page.getByRole("textbox", { name: "Company" }).fill("Example Beverages");
     await page.getByLabel("Business email").fill("ana@example.com");
     await page.getByLabel("Area of interest").selectOption("raw-materials");
     await page.getByLabel("Tell us about your project").fill("We need lemon concentrate for a new soft drink.");

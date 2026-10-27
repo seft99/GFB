@@ -49,90 +49,88 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 - Motion is limited to navigation, links and image scale; `prefers-reduced-motion` removes transitions.
 - Colour pairs are checked by the axe suite (WCAG 2.2 AA) on desktop and mobile.
 
+## Desktop scale and container
+
+- Tokens in `globals.css` `:root`: `--type-h1`, `--type-h2`, `--type-h2-feature` (the signature headlines and closing CTAs), `--type-h3`, `--type-lead`, `--type-eyebrow` / `--tracking-eyebrow`, `--space-section` / `--space-section-compact`, and `--container-desktop` (the header and footer width), used by every redesigned Home and About section from 1100 px. The concentrate feature is the one deliberate full-bleed exception.
+- Decoration keeps the connection motif in selected places (hero arcs, connection diagram, globe, CTA curve and the Home footer on Home; orbit, map and CTA curve on About), without looping glows.
+
+## Header and footer
+
+- Logo: `public/brand/gfb-logo.png`, the official 782 × 324 PNG from the GFB website (the old 187 × 77 `gfb-logo.avif` remains only as the favicon). It keeps its original proportions; no SVG source was available.
+- Primary CTA label everywhere: `common.inquire` ("Discuss your project"). The raw materials area is named "Raw materials" in the navigation (`shortTitle`), cards and footer.
+- Footer (`components/layout/site-footer.tsx`, `app/styles/footer.css`): identity (logo and a one-line descriptor), company links, the four solution areas, contact details and legal links, with no second contact invitation. Home has a desktop variant (see below).
+
 ## Homepage hero
 
 - Component: `components/home/home-hero.tsx`; styles: `app/styles/home-hero.css`; header styles: `app/styles/header.css`.
 - Background: `public/images/home/hero-background.webp` (approved photo, 1584 × 993, unmodified). The approved design reference lives in `docs/design/references/` and is never rendered.
-- The photo sits in a "stage" with its exact aspect ratio, filling the hero height and anchored right. Callouts are placed by their circle centre as a percentage of the photo (`callouts` in the component) and sized in stage container units, so they stay on the printed arcs at every size. To move one, change its `x`/`y` percentages.
-- Layouts: desktop ≥ 1280 px (composition), 900–1279 px (two columns, no callouts), ≤ 899 px (copy, then a crop of the product group); callouts are hidden ≤ 640 px. Below 1280 px the right-anchored photo would run under the copy.
-- Typeface: Noto Sans (variable, `wdth` 92 %) via `next/font`, scoped to the header and hero through `--font-brand`.
+- The photo sits in a "stage" with its exact aspect ratio, filling the hero height and anchored right. Callouts (the four solution areas, each linking to its page) are placed by their circle centre as a percentage of the photo and sized in stage container units, so they stay on the printed arcs at every size.
+- The lower strip carries trust information (experience, personalized service, international supply), distinct from the callouts. From 1100 px the lime accent continues the headline instead of starting its own line.
+- Layouts: desktop ≥ 1280 px (composition), 900–1279 px (two columns, no callouts), ≤ 899 px (copy, then a crop of the product group); callouts are hidden ≤ 640 px.
 
 ## Homepage "The value of connection"
 
-- Component: `components/home/home-connection.tsx`; styles: `app/styles/home-connection.css`; copy: `home.connection` in the dictionaries.
-- The network is an aspect-locked box (840 × 590) shared by the SVG `viewBox` and the percentage-positioned cards, so paths, nodes, hub and cards scale together. Path coordinates live in `links` in the component; cards fill the corners in `disciplines` order.
-- Card photos reuse the division images listed in `disciplines`; the hub uses `public/brand/gfb-logo.avif`.
-- Layouts: two columns ≥ 1100 px, stacked drawing 760–1099 px, hub plus card grid ≤ 759 px (one column ≤ 559 px).
-- Motion: scroll-driven entrance (`animation-timeline`, no JavaScript) and a slow glow on the hub nodes, both inside `prefers-reduced-motion: no-preference`. The section uses `overflow: clip` because `hidden` would make it a scroll container and break the view timeline.
+- Component: `components/home/home-connection.tsx`; styles: `app/styles/home-connection.css`; copy: `home.connection`. It explains how the four areas relate to a requirement; the cards below are the portfolio navigation.
+- The network is an aspect-locked box (840 × 590) shared by the SVG `viewBox` and the percentage-positioned cards, so paths, nodes, hub and cards scale together. Card photos are listed in `disciplines` (packaging uses `packaging/can-detail.webp`, consulting `consulting/production-line.webp`); the hub uses the official logo PNG.
+- Desktop refinements (≥ 1100 px, end of the stylesheet): shared content width, H2 below the hero H1, indicators that wrap so a long value never reaches the drawing, cards that enter by position only (fading them with the scroll left the diagram looking empty) and no looping node glow.
 
-## Homepage "Four divisions"
+## Homepage "Four solution areas"
 
 - Components: `components/home/home-divisions.tsx`, `components/cards/division-editorial-card.tsx` and the client `components/home/pointer-parallax-list.tsx`; styles: `app/styles/home-divisions.css`.
-- Desktop (≥ 1100 px) shows the editorial bento grid (12 columns, 7/5 then 5/7, cards 458 px tall). Below 1100 px the previous stacked `DivisionCard` list is rendered unchanged until the mobile redesign; only one variant is displayed, so the hidden one's lazy images are never requested. Remove `.divisions__legacy` when the mobile design lands.
-- Card data comes from the catalog (title, short title, eyebrow, summary, hero image). The lighter on-dark accent tints and per-card crop (`focus`) live in the components.
-- Pointer parallax writes `--mx`/`--my` on the hovered card once per animation frame, mouse only; there are no React state updates. Hover and `:focus-visible` share one state, and reduced motion removes every transform.
+- Desktop (≥ 1100 px) shows the editorial bento grid (12 columns, 7/5 then 5/7). Below 1100 px the previous stacked `DivisionCard` list is rendered unchanged until the mobile redesign; only one variant is displayed, so the hidden one's lazy images are never requested.
+- Card titles come from the catalog; descriptions from `home.solutions.cards`. Card photos differ from the division heroes where needed (`tiles` in the component): `packaging/can-detail.webp` (official GFB website, brand-free can detail) and `consulting/production-line.webp` (Wikimedia Commons, "Francis Ford Coppola Winery bottling plant, near Geyserville, 2011" by DimiTalen, CC0). Neither is presented as a GFB facility.
+- The whole card is the link; numbering and the arrow are decorative children. Reduced motion removes every transform.
 
-## Homepage "Portfolio discovery"
+## Homepage concentrate feature
 
-- Component: `components/home/home-showcase.tsx`; desktop styles: `app/styles/home-showcase.css` (≥ 1100 px). The markup keeps the previous `showcase-*` classes, so tablet and mobile still use the original rules in `globals.css`.
-- Desktop: full-bleed grid with the photo at 53.5 % from the viewport edge (rounded right corners) and the copy column keeping the page gutter. The headline is rendered as `titleLines` plus `titleAccent`; lines and lime accent only apply on desktop.
-- Photo: `raw-materials/fruit-concentrates.avif` (the category image). Hover zooms it to 1.045 over 1 s; none under reduced motion.
+- Component: `components/home/home-showcase.tsx`; desktop styles: `app/styles/home-showcase.css` (≥ 1100 px). The markup keeps the previous `showcase-*` classes for tablet and mobile.
+- Desktop: full-bleed grid with the photo at 53.5 % from the viewport edge; the headline is one sentence balanced over two lines; one CTA to the fruit concentrate category.
 
-## Homepage "Start with the application"
+## Homepage "Start with your application"
 
-- Components: `components/home/home-process.tsx` and the client `components/home/reveal-list.tsx`; desktop styles: `app/styles/home-process.css` (≥ 1100 px). The heading and `process-grid` list keep their classes, so tablet and mobile render as before; photo, lead, icon nodes and connectors are desktop-only.
-- Connectors are stretched SVG lines (no `vector-effect`, which would break the `pathLength` dash used for the draw-in) plus a fixed arrowhead.
-- Entrance: `RevealList` marks a list that starts below the fold as `data-reveal="pending"`, then `"in"` via `IntersectionObserver`; content is visible without JavaScript and under reduced motion. Steps are not links, so hover is the only interaction.
-- Photo: `public/images/home/process-honey.webp` (approved asset, 1672 × 941, WebP from the supplied PNG), decorative, cropped from the right so the spoon and honey stream stay clear of the faded left edge.
+- Components: `components/home/home-process.tsx` and the client `components/home/reveal-list.tsx`; desktop styles: `app/styles/home-process.css` (≥ 1100 px). Four informational items (product, application, requirements, options) with icon nodes and connectors: guidance for preparing a conversation, not a form or a company methodology.
+- The heading and lead stay in the left 44 %, clear of the honey photograph (`public/images/home/process-honey.webp`, decorative).
+- Entrance: `RevealList` marks a block that starts below the fold as `data-reveal="pending"`, then `"in"` as soon as its top is 10 % inside the viewport, so scrolling never passes a blank area; content is visible without JavaScript and under reduced motion.
 
-## Homepage "International coordination"
+## Homepage "International presence"
 
 - Components: `components/home/home-world.tsx` (with `RevealList as="div"`); desktop styles: `app/styles/home-world.css` (≥ 1100 px). Below 1100 px the original copy and elliptical location map are kept.
-- Globe: `public/images/home/globe-dots.svg` is generated by `npm run generate:globe` (`scripts/generate-globe.ts`) from simplified coastline polygons (about 1–2° accuracy) on a regular lat/lon grid. Regenerate after changing the polygons or the view.
-- `src/lib/globe.ts` holds the orthographic view shared by the generator and the markers, so markers sit on real coordinates. Murcia and Dubai are city coordinates; Türkiye is a country-level marker at the country's geographic centre (no city is implied). Arcs are screen-space curves from the headquarters.
-- Motion: globe fade/scale, staggered markers and drawn arcs once on reveal; a slow halo on the markers; hovering a place lights its arc. All motion is off under reduced motion.
+- Globe: `public/images/home/globe-dots.svg` is generated by `npm run generate:globe` (`scripts/generate-globe.ts`) from the coastline polygons in `scripts/land.ts` on a regular lat/lon grid. `src/lib/globe.ts` holds the orthographic view shared by the generator and the markers.
+- Murcia and Dubai are city coordinates; Türkiye is a country-level marker at the country's geographic centre. Labels: Spain · Murcia, Türkiye · Presence, Dubai · Presence. One indicator: 3 locations.
+- Motion: globe fade/scale, staggered markers and drawn arcs once on reveal; hovering a place lights its arc. No looping animation; all motion is off under reduced motion.
 
 ## Homepage closing CTA
 
-- Component: `components/home/home-cta.tsx`; desktop styles: `app/styles/home-cta.css` (≥ 1100 px). It keeps the shared `cta-section` / `cta-panel` markup, so tablet and mobile match `CtaBand`, which other pages still use unchanged.
-- Photo: `public/images/home/cta-droplet.webp` (approved asset, 1536 × 1024, WebP from the supplied PNG), anchored right at full section height with its plain-blue left edge masked into the background. The lime curve and node are an SVG above it, sliced to the right edge (`xMaxYMid slice`).
-- Entrance: once via `RevealList` (copy rises, the curve layer slides in); off under reduced motion.
+- Component: `components/home/home-cta.tsx`; desktop styles: `app/styles/home-cta.css` (≥ 1100 px). It keeps the shared `cta-section` / `cta-panel` markup, so tablet and mobile match `CtaBand`. The supporting line is desktop-only.
+- Photo: `public/images/home/cta-droplet.webp` (approved asset), decorative and anchored right; the lime curve and node are an SVG above it.
 
-## Site footer
+## Site footer (Home variant)
 
-- Component: `components/layout/site-footer.tsx`; desktop styles: `app/styles/footer.css` (≥ 1100 px). Below 1100 px the previous footer styles in `globals.css` apply unchanged.
-- Headline lines come from `footer.titleLines`; the address is split into street and city lines (same text as `formatAddress`). Both stack only on desktop.
-- Decoration: two `aria-hidden` SVG layers behind the content, sized from the page margin (`(100% - 86rem)`) so they never reach the text. They show from 1500 px; between 1100 and 1499 px only the background gradients remain. The stripe motif is an abstract nod to the brand mark, not the logo.
+- On the Home page from 1100 px (`body:has(.home-hero)` in `app/styles/footer.css`), the identity column shows a positioning headline (`footer.homeTitleLines`, `footer.homeTagline`) instead of the descriptor, and the brand decoration returns in the page margins from 1500 px. About and every other page keep the plain footer.
 
 ## About GFB hero
 
-- Markup: `app/[locale]/about/page.tsx`; desktop styles: `app/styles/about-hero.css` (≥ 1100 px, imported by the About page only). Below 1100 px the dark hero from `globals.css` is unchanged; the photo, trust row and orbit are desktop-only, so the photo is not downloaded on smaller screens.
-- Desktop: light editorial split (copy, lead and trust row in grid areas on the left; rounded photo on the right running past the shell towards the viewport edge), with a lime orbit and node behind the photo.
-- Photo: `packaging/hero.avif` stands in until an approved, high-resolution bottling-line photograph is supplied.
+- Markup: `app/[locale]/about/page.tsx`; desktop styles: `app/styles/about-hero.css` (≥ 1100 px, imported by the About page only). Below 1100 px the dark hero from `globals.css` is unchanged; the photo, trust row and orbit are desktop-only.
+- Photo: `public/images/about/grapes-still-life.webp` (official GFB website, 6048 × 4032 source, 2400 px WebP): a broader product image than the earlier packaging close-up.
 - Entrance on load is transform-only (no opacity), so it never delays the first paint; off under reduced motion.
 
 ## About GFB · How GFB works
 
-- Markup: `app/[locale]/about/page.tsx` (`story-section`); desktop styles: `app/styles/about-story.css` (≥ 1100 px, imported by the About page only). Below 1100 px the light layout from `globals.css` is unchanged; the brand lines and the "one point of contact" badge are desktop-only.
-- Desktop: dark navy editorial split that runs ≈ 4vw from each viewport edge — rounded photo on the left; eyebrow, three-line headline (`about.story.titleLines`, the line at `titleAccent` in lime), copy and badge on the right. The headline size follows its column (`cqi`), with a smaller factor for the longer Spanish lines, so each line fits on one row from 1280 px.
-- Photo: `home/global-sourcing.avif` stands in until an approved, high-resolution sourcing/warehouse photograph is supplied.
-- Scroll-driven entrance is transform-only (no opacity), so contrast is never reduced mid-animation; off under reduced motion and where `animation-timeline` is unsupported.
+- Markup: `app/[locale]/about/page.tsx` (`story-section`); desktop styles: `app/styles/about-story.css` (≥ 1100 px). Below 1100 px the light layout from `globals.css` is unchanged; the "Personalized service" label (plain text, not a button) is desktop-only.
+- Photo: `public/images/about/collaboration.webp` (official GFB website, 7500 × 4219 source): a team meeting, illustrating the working relationship rather than a product.
+- The headline size follows its column (`cqi`), so each line fits on one row from 1280 px. The scroll-driven entrance is transform-only.
 
 ## About GFB · Mission & Vision
 
-- Markup: `app/[locale]/about/page.tsx` (`mission-section`); desktop styles: `app/styles/about-mission.css` (≥ 1100 px, imported by the About page only). Below 1100 px the two cards from `globals.css` are unchanged; the "Our purpose" intro (`about.purpose`), icons, curves and the link node are desktop-only.
-- Desktop: intro aligned with the card copy, then two equal cards (white mission, pale blue vision) wider than the shell, each with an outlined icon (`target`, `growth` in `components/ui/icon.tsx`) and a curve anchored to its lower outer corner so it never runs into the copy.
-- The grid is a `RevealList`, so the cards enter once when scrolled into view; hover lifts a card by 4 px. Both are off under reduced motion. The cards are informational, not links.
+- Markup: `app/[locale]/about/page.tsx` (`mission-section`); desktop styles: `app/styles/about-mission.css`. Card headings are H3 under the section H2 (sized as before below 1100 px). Desktop: intro aligned with the card copy, two equal cards with outlined icons (`target`, `growth`); the cards enter once via `RevealList`.
 
 ## About GFB · International presence
 
 - Component: `components/about/about-presence.tsx`; desktop styles: `app/styles/about-presence.css` (≥ 1100 px, imported by the About page only). Below 1100 px the heading and location list from `globals.css` are unchanged; the map, pin icons and the "Presence" labels for Türkiye and Dubai are desktop-only.
-- Map: `public/images/about/world-dots.svg`, generated by `npm run generate:world-map` (`scripts/generate-world-map.ts`) on an even grid in a Miller projection (`src/lib/world-map.ts`), which the markers and route arcs share. Coastlines come from `scripts/land.ts`, shared with the homepage globe (its output is unchanged), plus regions the globe never shows (Australia, Japan, New Guinea…).
-- Markers use the same coordinates as the homepage globe: Murcia and Dubai are cities; Türkiye is the country's centre, not an office. Murcia is the headquarters; Türkiye and Dubai are labelled only "Presence".
-- The map is `aria-hidden`; the location list carries the information. Hovering a location highlights its marker and route (and the reverse) with `:has()` and an inherited `--active`, no client JavaScript; routes draw and markers appear once via `RevealList`, never under reduced motion.
+- Map: `public/images/about/world-dots.svg`, generated by `npm run generate:world-map` (`scripts/generate-world-map.ts`) on an even grid in a Miller projection (`src/lib/world-map.ts`), which the markers and route arcs share. Coastlines come from `scripts/land.ts` plus a few regions defined in the generator.
+- Murcia and Dubai are city coordinates; Türkiye is the country's centre, not an office. Murcia is the headquarters; Türkiye and Dubai are labelled only "Presence".
+- The map is `aria-hidden`; the location list carries the information. Hovering a location highlights its marker and route (and the reverse) with `:has()`, no client JavaScript; routes draw and markers appear once via `RevealList`, never under reduced motion.
 
-## About GFB · Final CTA
+## About GFB · Closing CTA
 
-- Component: `components/about/about-cta.tsx`; desktop styles: `app/styles/about-cta.css` (≥ 1100 px, imported by the About page only). It keeps the shared `cta-section` / `cta-panel` markup, so below 1100 px it matches `CtaBand`, which other pages still use unchanged; the supporting copy (`about.cta.text`) and curves are desktop-only.
-- Desktop: copy on the left, dark pill to `/contact` on the right, ≈ 11.5vw from each edge. Each lime curve is an SVG scaled by the section height and anchored to its own edge, so the left one stays clear of the copy and the node stays left of the button at any width.
-- Copy and button enter once via `RevealList`; the button lifts, darkens and nudges its arrow on hover and keyboard focus. Off under reduced motion.
+- Component: `components/sections/closing-cta.tsx`; desktop styles: `app/styles/closing-cta.css` (≥ 1100 px, imported by the About page). It keeps the shared `cta-section` / `cta-panel` markup, so below 1100 px it matches `CtaBand`; the supporting copy is desktop-only. One lime curve, scaled by the section height and set in from the right edge, keeps its node clear of the button.

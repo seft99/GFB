@@ -1,18 +1,24 @@
+import Image from "next/image";
 import Link from "next/link";
-import { TextLink } from "@/components/ui/button-link";
-import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon } from "@/components/ui/icon";
 import { divisions } from "@/src/content/catalog";
 import { company, telHref } from "@/src/content/company";
 import type { Locale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { paths } from "@/src/i18n/routes";
-import { primaryNavigation } from "@/src/lib/navigation";
 
+/**
+ * Site footer: identity, company and solution-area navigation, contact details and legal
+ * links. The closing call to action lives in the page above it, so the footer adds no second
+ * promotional invitation. On the Home page (desktop) the identity column also shows a
+ * positioning headline and the brand decoration; elsewhere it shows the logo and a
+ * descriptor. Styles in app/styles/footer.css.
+ */
 export function SiteFooter({ locale }: { locale: Locale }) {
-  const { footer } = getDictionary(locale);
+  const { footer, common } = getDictionary(locale);
   return (
     <footer className="site-footer">
+      {/* Decoration and identity headline below are the Home variant (see app/styles/footer.css). */}
       <svg
         className="footer-decor footer-decor--orbit"
         viewBox="0 0 360 711"
@@ -64,26 +70,30 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       </svg>
       <div className="shell footer-grid">
         <div className="footer-lead">
-          <Eyebrow onDark>{company.name}</Eyebrow>
-          <h2>
-            {footer.titleLines.map((line) => (
-              <span key={line}>{line} </span>
-            ))}
-          </h2>
-          <TextLink href={paths.page(locale, "contact")} tone="light">
-            {footer.cta}
-          </TextLink>
+          <Link href={paths.home(locale)} className="footer-brand" aria-label={common.homeLinkLabel}>
+            <Image src="/brand/gfb-logo.png" alt="" width={154} height={64} />
+          </Link>
+          <p className="footer-descriptor">{footer.descriptor}</p>
+          <div className="footer-home">
+            <h2 className="footer-home__title">
+              {footer.homeTitleLines.map((line) => (
+                <span key={line}>{line} </span>
+              ))}
+            </h2>
+            <p className="footer-home__tagline">{footer.homeTagline}</p>
+          </div>
         </div>
-        <nav aria-labelledby="footer-navigate">
-          <p className="footer-label" id="footer-navigate">
-            {footer.navigate}
+        <nav aria-labelledby="footer-company">
+          <p className="footer-label" id="footer-company">
+            {footer.company}
           </p>
           <ul>
-            {primaryNavigation(locale).map((item) => (
-              <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
-              </li>
-            ))}
+            <li>
+              <Link href={paths.page(locale, "about")}>{common.about}</Link>
+            </li>
+            <li>
+              <Link href={paths.page(locale, "contact")}>{common.contact}</Link>
+            </li>
           </ul>
         </nav>
         <nav aria-labelledby="footer-solutions">

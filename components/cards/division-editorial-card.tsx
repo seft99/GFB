@@ -27,10 +27,23 @@ type DivisionEditorialCardProps = {
   span: "wide" | "narrow";
   /** CSS object-position for the photo crop. */
   focus?: string;
+  /** Card photo, when it should differ from the division hero. */
+  image?: string;
+  /** Card description, when it should differ from the division summary. */
+  text?: string;
 };
 
 /** Full-bleed photo card for the homepage divisions grid; the whole card links to the division. */
-export function DivisionEditorialCard({ division, locale, index, total, span, focus }: DivisionEditorialCardProps) {
+export function DivisionEditorialCard({
+  division,
+  locale,
+  index,
+  total,
+  span,
+  focus,
+  image,
+  text
+}: DivisionEditorialCardProps) {
   const [firstWord, ...rest] = division.title[locale].split(" ");
 
   return (
@@ -41,7 +54,7 @@ export function DivisionEditorialCard({ division, locale, index, total, span, fo
       <Link href={paths.division(locale, division)} className="division-tile__link" data-parallax>
         <span className="division-tile__media" aria-hidden="true">
           <Image
-            src={division.heroImage}
+            src={image ?? division.heroImage}
             alt=""
             fill
             // Cover-cropped into a 458px-tall card, the ~2.2:1 photo renders about 1040px wide.
@@ -53,18 +66,14 @@ export function DivisionEditorialCard({ division, locale, index, total, span, fo
           <span className="division-tile__number">
             {ordinal(index)} / {ordinal(total - 1)}
           </span>
-          <span className="division-tile__chip">{division.shortTitle[locale]}</span>
         </span>
         <span className="division-tile__bottom">
-          <span className="division-tile__eyebrow" aria-hidden="true">
-            {division.eyebrow[locale]}
-          </span>
           <span className="division-tile__titleline">
             <span>
               <h3 className="division-tile__title">
                 <span>{firstWord}</span> {rest.join(" ")}
               </h3>
-              <p className="division-tile__text">{division.summary[locale]}</p>
+              <p className="division-tile__text">{text ?? division.summary[locale]}</p>
             </span>
             <span className="division-tile__arrow" aria-hidden="true">
               <Icon name="arrow" strokeWidth={1.7} />

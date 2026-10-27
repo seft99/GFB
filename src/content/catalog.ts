@@ -89,7 +89,7 @@ export const divisions: Division[] = [
     id: "raw-materials",
     slug: t("raw-materials", "materias-primas"),
     title: t("Raw materials", "Materias primas"),
-    shortTitle: t("Ingredients", "Ingredientes"),
+    shortTitle: t("Raw materials", "Materias primas"),
     eyebrow: t("From origin to application", "Del origen a la aplicación"),
     summary: t(
       "Fruit, vegetable and plant-based ingredient formats for industrial applications.",

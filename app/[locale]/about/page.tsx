@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { AboutCta } from "@/components/about/about-cta";
 import { AboutPresence } from "@/components/about/about-presence";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { ClosingCta } from "@/components/sections/closing-cta";
 import { RevealList } from "@/components/home/reveal-list";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon, type IconName } from "@/components/ui/icon";
@@ -16,7 +16,7 @@ import "../../styles/about-hero.css";
 import "../../styles/about-story.css";
 import "../../styles/about-mission.css";
 import "../../styles/about-presence.css";
-import "../../styles/about-cta.css";
+import "../../styles/closing-cta.css";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/about">): Promise<Metadata> {
   const { locale } = await params;
@@ -34,21 +34,9 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const { about, common } = getDictionary(locale);
-  // Decorative curve and node per card, drawn in a 733 × 472 box anchored to its lower
-  // outer corner, so a taller card moves its copy away from the curve, never onto it.
-  const missionCards: { item: typeof about.mission; icon: IconName; curve: string; node: [number, number] }[] = [
-    {
-      item: about.mission,
-      icon: "target",
-      curve: "M-4 396C60 440 170 452 277 446C370 441 470 450 545 476",
-      node: [277, 446]
-    },
-    {
-      item: about.vision,
-      icon: "growth",
-      curve: "M737 262C716 290 704 306 692 330C670 400 600 460 380 482",
-      node: [692, 330]
-    }
+  const missionCards: { item: typeof about.mission; icon: IconName }[] = [
+    { item: about.mission, icon: "target" },
+    { item: about.vision, icon: "growth" }
   ];
 
   return (
@@ -81,12 +69,13 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
               </svg>
               <div className="about-hero__photo">
                 {/* Hidden below 1100px, so it stays lazy; high priority as the desktop LCP. */}
+                {/* Grapes still life from the official GFB website (6048 × 4032 source). */}
                 <Image
-                  src="/images/packaging/hero.avif"
+                  src="/images/about/grapes-still-life.webp"
                   alt={about.hero.imageAlt}
                   fill
                   fetchPriority="high"
-                  sizes="72vw"
+                  sizes="58vw"
                 />
               </div>
             </div>
@@ -96,25 +85,14 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
 
       {/*
         Below 1100px the section keeps its light layout from globals.css; the dark editorial
-        desktop design, brand lines and contact callout are in app/styles/about-story.css.
+        desktop design and the label are in app/styles/about-story.css.
       */}
       <section className="section story-section">
-        <svg
-          className="story-section__lines"
-          viewBox="0 0 1672 900"
-          preserveAspectRatio="xMidYMid slice"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M830 0C868 48 918 88 978 100C1120 128 1310 128 1460 196C1560 242 1630 286 1700 344" />
-          <path d="M-20 616C110 700 270 820 430 920" />
-          <circle className="story-section__halo" cx="978" cy="100" r="17" />
-          <circle className="story-section__node" cx="978" cy="100" r="10" />
-        </svg>
         <div className="shell story-grid">
           <div className="story-image">
+            {/* Team photograph from the official GFB website (7500 × 4219 source). */}
             <Image
-              src="/images/home/global-sourcing.avif"
+              src="/images/about/collaboration.webp"
               alt={about.story.imageAlt}
               fill
               sizes="(max-width: 900px) 100vw, (max-width: 1099px) 50vw, 52vw"
@@ -132,30 +110,16 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
             {about.story.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
-            <p className="story-section__contact">
-              <span className="story-section__contact-node" aria-hidden="true" />
-              <span className="story-section__contact-label">{about.story.contact}</span>
-            </p>
+            <p className="story-section__label">{about.story.label}</p>
           </div>
         </div>
       </section>
 
       {/*
-        Below 1100px the cards keep their layout from globals.css; the intro, icons, brand
-        curves and the desktop card design are in app/styles/about-mission.css.
+        Below 1100px the cards keep their layout from globals.css; the intro, icons and the
+        desktop card design are in app/styles/about-mission.css.
       */}
       <section className="section mission-section">
-        <svg
-          className="mission-section__lines"
-          viewBox="0 0 1672 941"
-          preserveAspectRatio="xMidYMid slice"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M1422 -10C1370 70 1320 130 1258 156C1130 210 1000 250 936 362" />
-          <circle className="mission-section__halo" cx="1258" cy="156" r="15" />
-          <circle className="mission-section__node" cx="1258" cy="156" r="8.5" />
-        </svg>
         <div className="shell mission-shell">
           <header className="mission-intro">
             <Eyebrow>{about.purpose.eyebrow}</Eyebrow>
@@ -164,36 +128,30 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
             </h2>
           </header>
           <RevealList as="div" className="mission-grid">
-            {missionCards.map(({ item, icon, curve, node }, index) => (
+            {missionCards.map(({ item, icon }, index) => (
               <article key={item.eyebrow}>
-                <svg
-                  className="mission-card__curve"
-                  viewBox="0 0 733 472"
-                  preserveAspectRatio={index === 0 ? "xMinYMax slice" : "xMaxYMax slice"}
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <path d={curve} />
-                  <circle className="mission-card__halo" cx={node[0]} cy={node[1]} r="14" />
-                  <circle className="mission-card__node" cx={node[0]} cy={node[1]} r="8" />
-                </svg>
                 <div className="mission-card__icon" aria-hidden="true">
                   <Icon name={icon} strokeWidth={1.6} />
                 </div>
                 <span aria-hidden="true">{ordinal(index)}</span>
                 <Eyebrow>{item.eyebrow}</Eyebrow>
-                <h2>{item.title}</h2>
+                <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
             ))}
-            <span className="mission-grid__link" aria-hidden="true" />
           </RevealList>
         </div>
       </section>
 
       <AboutPresence locale={locale} />
 
-      <AboutCta locale={locale} />
+      <ClosingCta
+        eyebrow={about.cta.eyebrow}
+        title={about.cta.title}
+        text={about.cta.text}
+        href={paths.page(locale, "contact")}
+        label={common.inquire}
+      />
     </main>
   );
 }

@@ -32,7 +32,7 @@ const places: Place[] = [
 ];
 
 const headquarters = places[0]!;
-const indicatorIcons: IconName[] = ["pin", "globe"];
+const indicatorIcons: IconName[] = ["pin"];
 const viewBox = `${-globeExtent} ${-globeExtent} ${2 * globeExtent} ${2 * globeExtent}`;
 
 /**
@@ -119,8 +119,8 @@ export function HomeWorld({ locale }: { locale: Locale }) {
                     <span className="world__label">
                       <strong>{name}</strong>
                       <small>
-                        {place.city ? `${place.city} · ` : ""}
-                        {place.headquarters ? copy.headquarters : copy.presence}
+                        {/* Spain is labelled by its city; Türkiye and Dubai only as a presence. */}
+                        {place.city ?? copy.presence}
                       </small>
                     </span>
                   </li>

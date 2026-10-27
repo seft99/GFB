@@ -23,7 +23,7 @@ const callouts: { key: CalloutKey; division: DivisionId; icon: IconName; x: numb
   { key: "consulting", division: "industrial-consulting", icon: "nodes", x: 49.87, y: 84.39 }
 ];
 
-const valueIcons: IconName[] = ["cube", "leaf", "bars"];
+const valueIcons: IconName[] = ["bars", "check", "globe"];
 
 export function HomeHero({ locale }: { locale: Locale }) {
   const { home, common } = getDictionary(locale);

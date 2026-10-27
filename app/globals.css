@@ -34,6 +34,23 @@
   --motion-hover: 0.4s;
   --motion-enter: 0.65s;
   --motion-zoom: 1s;
+  /*
+   * Desktop editorial scale for the redesigned Home and About sections: one H1 size, one
+   * section H2 size (and a larger cap for the two signature headlines), card headings,
+   * lead copy and eyebrows, plus two section rhythms. Bounded so headings stop growing
+   * on wide screens.
+   */
+  --type-h1: clamp(3.5rem, 4.4vw, 4.5rem);
+  --type-h2: clamp(2.5rem, 3.3vw, 3.375rem);
+  --type-h2-feature: clamp(2.75rem, 3.9vw, 3.875rem);
+  --type-h3: clamp(1.75rem, 2.2vw, 2.25rem);
+  --type-lead: clamp(1.0625rem, 1.2vw, 1.25rem);
+  --type-eyebrow: 0.8125rem;
+  --tracking-eyebrow: 0.16em;
+  --space-section: clamp(5.5rem, 7.5vw, 8.5rem);
+  --space-section-compact: clamp(4rem, 5.5vw, 6rem);
+  /* One content width for those sections, aligned with the header and footer. */
+  --container-desktop: min(calc(100% - 4rem), var(--shell-wide));
 }
 
 * {

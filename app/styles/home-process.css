@@ -68,14 +68,12 @@
     transform: translate(-50%, -50%);
   }
 
-  /* Heading with the lead beside it, aligned to the last line. */
+  /* Heading with the lead below it, both kept in the left half, clear of the photograph. */
   .process__intro {
     display: grid;
-    grid-template-columns: auto minmax(0, 19.5rem);
-    justify-content: start;
-    align-items: end;
-    column-gap: clamp(3rem, 6vw, 6.5rem);
-    margin-bottom: clamp(3.5rem, 5vw, 4.75rem);
+    max-width: 44%;
+    row-gap: 1.5rem;
+    margin-bottom: clamp(3rem, 4.5vw, 4.25rem);
   }
   .process .section-heading {
     display: block;
@@ -98,21 +96,22 @@
     background: var(--brand-lime);
   }
   .process .section-heading h2 {
-    max-width: 7.2em;
+    max-width: 13em;
     margin: 0;
     color: var(--brand-ink);
-    font-size: clamp(3.25rem, 4vw, 4.25rem);
+    font-size: var(--type-h2);
     font-weight: 700;
-    line-height: 1.05;
+    line-height: 1.08;
     letter-spacing: -0.03em;
-    text-wrap: wrap;
+    text-wrap: balance;
   }
   .process__accent {
     color: var(--brand-lime-text);
   }
   .process__lead {
     display: block;
-    margin: 0 0 0.35rem;
+    max-width: 30rem;
+    margin: 0;
     color: var(--process-muted);
     font-size: 1.0625rem;
     line-height: 1.6;

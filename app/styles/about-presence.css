@@ -29,7 +29,7 @@
 
   .presence-section .presence-shell {
     display: grid;
-    width: min(calc(100% - 14vw), calc(var(--shell) + 5rem));
+    width: var(--container-desktop);
     grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
     grid-template-rows: auto auto;
     grid-template-areas:
@@ -67,14 +67,14 @@
     max-width: none;
     margin: 0 0 2rem;
     color: var(--white);
-    font-size: clamp(3.5rem, 15.2cqi, 5.75rem);
+    font-size: clamp(2.75rem, 11.5cqi, 4rem);
     font-weight: 700;
     line-height: 1.04;
     letter-spacing: -0.035em;
     text-wrap: wrap;
   }
   .presence-section:lang(es) .presence-heading h2 {
-    font-size: clamp(3.25rem, 12.4cqi, 5.25rem);
+    font-size: clamp(2.75rem, 9.8cqi, 3.75rem);
   }
   .presence-section__accent {
     color: var(--brand-lime);

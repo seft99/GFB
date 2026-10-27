@@ -23,8 +23,8 @@ test.describe("locale negotiation", () => {
 
 test.describe("localized routes", () => {
   for (const [locale, path, heading] of [
-    ["en", "/en/about", "Connecting technical detail"],
-    ["es", "/es/sobre-gfb", "Conectar el detalle técnico"],
+    ["en", "/en/about", "Experience and tailored solutions"],
+    ["es", "/es/sobre-gfb", "Experiencia y soluciones a medida"],
     ["es", "/es/materias-primas/concentrados-de-frutas", "Concentrados de frutas y vegetales"],
     ["es", "/es/legal/privacidad", "Privacidad"]
   ] as const) {

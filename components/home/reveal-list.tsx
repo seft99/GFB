@@ -9,7 +9,9 @@ type RevealListProps = { as?: "ol" | "ul" | "div"; className?: string; children:
  * into view. It renders
  * visible on the server; only a list that starts below the fold is switched to
  * `data-reveal="pending"` and then to `"in"`, so content never depends on JavaScript.
- * Nothing happens under reduced motion.
+ * It reveals as soon as its top edge is a little inside the viewport (not when a share of
+ * a tall block is visible), so scrolling never passes a blank area. Nothing happens under
+ * reduced motion.
  */
 export function RevealList({ as = "ol", className, children }: RevealListProps) {
   // One ref type that fits every allowed tag.
@@ -28,7 +30,7 @@ export function RevealList({ as = "ol", className, children }: RevealListProps) 
         list.dataset.reveal = "in";
         observer.disconnect();
       },
-      { threshold: 0.3 }
+      { rootMargin: "0px 0px -10% 0px" }
     );
     observer.observe(list);
     return () => observer.disconnect();

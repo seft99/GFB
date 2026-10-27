@@ -7,12 +7,17 @@ import type { Locale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { PointerParallaxList } from "./pointer-parallax-list";
 
-/** Desktop bento layout: 7/5 then 5/7 columns, plus the photo crop for each card. */
-const tiles: Record<DivisionId, { span: "wide" | "narrow"; focus?: string }> = {
-  "packaging-solutions": { span: "wide", focus: "center 52%" },
+/**
+ * Desktop bento layout: 7/5 then 5/7 columns, the photo crop for each card, and card photos
+ * that differ from the division page heroes: a brand-free can detail for packaging (official
+ * GFB site) and a bottling line for consulting (Wikimedia Commons, CC0), so each card shows
+ * the area it opens.
+ */
+const tiles: Record<DivisionId, { span: "wide" | "narrow"; focus?: string; image?: string }> = {
+  "packaging-solutions": { span: "wide", focus: "center 38%", image: "/images/packaging/can-detail.webp" },
   "raw-materials": { span: "narrow", focus: "center 46%" },
   "flavours-aromas": { span: "narrow", focus: "center 48%" },
-  "industrial-consulting": { span: "wide" }
+  "industrial-consulting": { span: "wide", focus: "center 58%", image: "/images/consulting/production-line.webp" }
 };
 
 /**
@@ -45,27 +50,13 @@ export function HomeDivisions({ locale }: { locale: Locale }) {
       </div>
 
       <div className="divisions__bento">
-        <p className="divisions__eyebrow">
-          {copy.eyebrow} <span>/ {copy.eyebrowContext}</span>
-        </p>
+        <p className="divisions__eyebrow">{copy.eyebrow}</p>
         <header className="divisions__intro">
-          <h2 className="divisions__title">
-            {copy.titleLines.map((line) => (
-              <span key={line}>{line} </span>
-            ))}
-            <span className="divisions__accent">{copy.titleAccent}</span>
-          </h2>
+          <h2 className="divisions__title">{copy.title}</h2>
           <div className="divisions__aside">
             <p>{copy.text}</p>
-            <p className="divisions__tagline">{copy.tagline}</p>
           </div>
         </header>
-        <p className="divisions__rail" aria-hidden="true">
-          <span>{copy.explore}</span>
-          <span>
-            01 <i /> {String(divisions.length).padStart(2, "0")}
-          </span>
-        </p>
         <PointerParallaxList className="divisions__grid">
           {divisions.map((division, index) => (
             <DivisionEditorialCard
@@ -74,13 +65,11 @@ export function HomeDivisions({ locale }: { locale: Locale }) {
               locale={locale}
               index={index}
               total={divisions.length}
+              text={copy.cards[division.id]}
               {...tiles[division.id]}
             />
           ))}
         </PointerParallaxList>
-        <p className="divisions__closing">
-          <strong>GFB Solutions</strong> <i aria-hidden="true" /> {copy.closing}
-        </p>
       </div>
     </section>
   );

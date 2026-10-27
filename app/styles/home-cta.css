@@ -8,7 +8,8 @@
  */
 
 .home-cta__art,
-.home-cta__photo {
+.home-cta__photo,
+.home-cta__text {
   display: none;
 }
 
@@ -18,7 +19,7 @@
     position: relative;
     isolation: isolate;
     overflow: clip;
-    min-height: clamp(32rem, 35.5vw, 44rem);
+    min-height: clamp(28rem, 31vw, 38rem);
     display: flex;
     align-items: center;
     padding-block: clamp(4.5rem, 6vw, 6rem);
@@ -66,10 +67,10 @@
 
   .home-cta .cta-panel {
     position: relative;
-    width: min(calc(100% - 4rem), var(--shell));
+    width: var(--container-desktop);
     flex-direction: column;
     align-items: flex-start;
-    gap: 2.5rem;
+    gap: 2.25rem;
   }
   .home-cta .cta-panel > div,
   .home-cta__button {
@@ -96,12 +97,21 @@
     background: var(--brand-lime);
   }
   .home-cta .cta-panel h2 {
-    max-width: 7.6em;
-    font-size: clamp(3.5rem, 4.15vw, 5.25rem);
-    font-weight: 600;
+    max-width: 10.5em;
+    font-size: var(--type-h2-feature);
+    font-weight: 650;
     line-height: 1.07;
     letter-spacing: -0.03em;
-    text-wrap: wrap;
+    text-wrap: balance;
+  }
+  /* Supporting line: white on the blue left half, clear of the photograph. */
+  .home-cta__text {
+    display: block;
+    max-width: 30rem;
+    margin: 1.5rem 0 0;
+    color: rgba(255, 255, 255, 0.94);
+    font-size: var(--type-lead);
+    line-height: 1.55;
   }
 
   .home-cta__button.button {

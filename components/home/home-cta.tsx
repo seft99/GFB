@@ -38,6 +38,7 @@ export function HomeCta({ locale }: { locale: Locale }) {
         <div>
           <Eyebrow>{copy.eyebrow}</Eyebrow>
           <h2>{copy.title}</h2>
+          <p className="home-cta__text">{copy.text}</p>
         </div>
         <ButtonLink href={paths.page(locale, "contact")} variant="dark" className="home-cta__button">
           {common.inquire}

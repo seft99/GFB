@@ -56,17 +56,18 @@
   }
 
   .showcase-section .showcase-title {
-    max-width: none;
+    max-width: 11em;
     margin: 0;
     color: var(--white);
-    font-size: clamp(3.25rem, 4.3vw, 4.75rem);
+    font-size: var(--type-h2-feature);
     font-weight: 680;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    text-wrap: wrap;
+    text-wrap: balance;
   }
+  /* One sentence, balanced over two lines; the accent stays inline. */
   .showcase-title > span {
-    display: block;
+    display: inline;
   }
   .showcase-title__accent {
     color: var(--brand-lime);

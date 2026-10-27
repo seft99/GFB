@@ -557,3 +557,55 @@
     font-size: 0.8125rem;
   }
 }
+
+/*
+ * Desktop refinement (≥ 1100px). The section H2 sits below the hero H1 in the shared scale,
+ * the drawing uses the shared content width, the cards enter by position only (fading them
+ * with the scroll left the diagram looking empty while it entered) and the node glow no
+ * longer loops. Smaller screens keep their existing rules.
+ */
+@media (min-width: 1100px) {
+  .connection__inner {
+    width: var(--container-desktop);
+  }
+  .connection__title {
+    max-width: 10em;
+    font-size: clamp(2.75rem, 9.4cqi, 3.875rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+  }
+  /* Three equal indicators that wrap their labels, so a long value never reaches the drawing. */
+  .connection__indicator {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: clamp(1rem, 2vw, 2.25rem);
+    font-size: 1rem;
+    white-space: normal;
+  }
+  .connection__indicator strong {
+    font-size: clamp(1.375rem, 1.9vw, 1.875rem);
+  }
+}
+@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
+  .connection__link .connection__node:last-of-type {
+    animation: none;
+  }
+  @supports (animation-timeline: view()) {
+    .connection__card {
+      animation-name: connection-settle;
+      animation-range: entry 0% entry 60%;
+    }
+    .connection__card:nth-child(2n) {
+      animation-range: entry 10% entry 70%;
+    }
+  }
+}
+@keyframes connection-settle {
+  from {
+    translate: 0 1rem;
+  }
+  to {
+    translate: 0 0;
+  }
+}

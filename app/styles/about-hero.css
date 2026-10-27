@@ -22,6 +22,9 @@
     font-stretch: 92%;
   }
 
+  .about-hero > .shell {
+    width: var(--container-desktop);
+  }
   .about-hero .breadcrumbs {
     margin-bottom: 2.6rem;
     color: #5b6070;
@@ -59,14 +62,14 @@
     letter-spacing: 0.16em;
   }
   .about-hero h1 {
-    max-width: 9.1em;
+    max-width: 11em;
     margin: 0 0 2.4rem;
     color: var(--brand-ink);
-    font-size: clamp(3.375rem, 3.95vw, 4.25rem);
+    font-size: clamp(3.25rem, 3.9vw, 4.25rem);
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -0.035em;
-    text-wrap: wrap;
+    text-wrap: balance;
   }
   .about-hero__accent {
     color: var(--brand-lime-text);
@@ -105,13 +108,12 @@
     background: var(--brand-lime);
   }
 
-  /* Photo and orbit. The column runs past the shell towards the viewport edge (≈ 4.5vw gap). */
+  /* Photo and orbit, aligned with the shared content width. */
   .about-hero__media {
     grid-area: media;
     position: relative;
     display: block;
     margin-top: 0.4rem;
-    margin-right: min(0px, calc((100vw - var(--shell)) / -2 + 4.5vw));
   }
   .about-hero__photo {
     position: relative;

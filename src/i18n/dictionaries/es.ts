@@ -11,10 +11,10 @@ export const es: Dictionary = {
     homeLinkLabel: "Inicio de GFB Solutions",
     about: "Sobre GFB",
     contact: "Contacto",
-    inquire: "Iniciar una consulta",
+    inquire: "Hablemos de su proyecto",
     explore: "Explorar soluciones",
     learnMore: "Explorar esta solución",
-    viewDivision: "Ver división",
+    viewDivision: "Explorar esta área",
     menuOpen: "Abrir navegación",
     menuClose: "Cerrar navegación",
     primaryNavigation: "Navegación principal",
@@ -28,102 +28,100 @@ export const es: Dictionary = {
     metaDescription: "Embalaje, materias primas, sabores y consultoría industrial coordinados para compradores B2B.",
     hero: {
       eyebrow: "Soluciones B2B para alimentación y bebidas",
-      title: "Soluciones para una cadena de suministro",
-      titleAccent: "mejor conectada.",
+      title: "Soluciones para alimentación y bebidas,",
+      titleAccent: "mejor conectadas.",
       intro:
-        "GFB coordina embalaje, ingredientes, sabores y conocimiento industrial para convertir necesidades complejas en decisiones comerciales claras.",
+        "GFB reúne embalaje, materias primas, sabores y consultoría industrial para responder a las necesidades de las empresas de alimentación y bebidas.",
       imageAlt:
         "Bolsa kraft, botella de zumo de vidrio y lata de aluminio junto a uvas, naranja, almendras y un ingrediente en polvo",
-      calloutsLabel: "Divisiones de GFB",
+      calloutsLabel: "Áreas de solución de GFB",
       callouts: {
-        packaging: ["Embalaje", "inteligente"],
-        ingredients: ["Ingredientes", "de calidad global"],
-        flavours: ["Sabores", "que inspiran"],
-        consulting: ["Consultoría", "que conecta"]
+        packaging: ["Soluciones de", "embalaje"],
+        ingredients: ["Materias", "primas"],
+        flavours: ["Sabores", "y aromas"],
+        consulting: ["Consultoría", "industrial"]
       },
-      valuesLabel: "Lo que aporta GFB",
+      valuesLabel: "GFB en breve",
       values: [
-        ["Embalaje", "que impulsa"],
-        ["Ingredientes", "con propósito"],
-        ["Conocimiento", "que conecta"]
+        ["Más de 10 años", "de experiencia en el sector"],
+        ["Servicio", "personalizado"],
+        ["Suministro", "internacional"]
       ]
     },
     connection: {
       eyebrow: "El valor de la conexión",
-      titleLead: "Un interlocutor.",
-      title: "Múltiples puntos críticos",
-      titleAccent: "resueltos.",
-      text: "Desde la selección del envase hasta la materia prima, el perfil de sabor o el proceso industrial, GFB parte de la aplicación y coordina la solución alrededor de ella. Combinamos abastecimiento, desarrollo de producto, coordinación de proyectos y consultoría para convertir la complejidad en decisiones comerciales claras.",
+      titleLead: "Un enfoque conectado",
+      title: "para su",
+      titleAccent: "proyecto.",
+      text: "El embalaje, las materias primas, los sabores y los procesos industriales implican requisitos distintos. GFB trabaja con productores y fabricantes especializados para ofrecer soluciones adaptadas a las necesidades de cada cliente.",
       approach: "Nuestro enfoque",
-      indicatorsLabel: "Una relación, varias disciplinas",
+      indicatorsLabel: "GFB en breve",
       indicators: [
-        { value: "1", label: "punto de contacto" },
-        { value: "4", label: "disciplinas clave" },
-        { value: "∞", label: "posibilidades más amplias" }
+        { value: "+10", label: "años de experiencia en el sector" },
+        { value: "4", label: "áreas de solución" },
+        { value: "Personalizado", label: "servicio" }
       ],
-      networkLabel: "Disciplinas coordinadas por GFB",
+      networkLabel: "Áreas de solución de GFB",
       disciplines: {
-        packaging: { title: "Embalaje", text: "Soluciones para cada requisito de envase" },
-        ingredients: { title: "Ingredientes", text: "Abastecimiento alineado con la aplicación" },
-        flavours: { title: "Sabores", text: "Perfiles de producto y sensoriales" },
-        consulting: { title: "Consultoría", text: "Coordinación técnica y de proyectos" }
+        packaging: { title: "Embalaje", text: "Requisitos de producto y envase" },
+        ingredients: { title: "Materias primas", text: "Ingredientes para su aplicación" },
+        flavours: { title: "Sabores", text: "Perfiles dulces, de bebidas y salados" },
+        consulting: { title: "Consultoría", text: "Maquinaria y procesos de producción" }
       }
     },
     solutions: {
-      eyebrow: "Cuatro divisiones",
-      eyebrowContext: "GFB Solutions",
-      title: "Una respuesta más completa al brief industrial.",
-      titleLines: ["Una respuesta", "más completa al"],
-      titleAccent: "brief industrial.",
-      text: "Explore cada área y llegue rápidamente a las soluciones que necesita su proyecto.",
-      tagline: "Cuatro disciplinas. Un solo socio.",
-      explore: "Explorar especialidades",
-      closing: "Experiencia integrada para la industria de alimentos y bebidas."
+      eyebrow: "Cuatro áreas de solución",
+      title: "Explore nuestras soluciones.",
+      text: "Encuentre embalaje, materias primas, sabores y consultoría industrial para su empresa.",
+      cards: {
+        "packaging-solutions": "Opciones de embalaje para bebidas y para las necesidades de cada mercado.",
+        "raw-materials": "Concentrados de frutas, vegetales y de origen vegetal, junto con productos de fruta IQF.",
+        "flavours-aromas": "Soluciones de sabor para aplicaciones dulces, de bebidas y saladas.",
+        "industrial-consulting": "Consultoría en maquinaria y procesos de producción."
+      }
     },
     showcase: {
-      eyebrow: "Descubrir el portafolio",
-      titleLines: ["Concentrados", "organizados", "como compra"],
-      titleAccent: "la industria.",
-      text: "Cítricos, mediterráneos, tropicales, frutos rojos y vegetales, organizados para que los equipos de compras y formulación encuentren rápidamente la referencia adecuada.",
-      cta: "Ver familias de concentrados",
-      imageAlt: "Vaso y botella de concentrado de frutos rojos junto a bayas frescas"
+      eyebrow: "Portafolio de concentrados",
+      titleLines: ["Concentrados para su"],
+      titleAccent: "aplicación.",
+      text: "Explore concentrados cítricos, mediterráneos, tropicales, de frutos rojos y vegetales, con especial experiencia en concentrados de uva.",
+      cta: "Explorar concentrados",
+      imageAlt: "Vaso y botella de concentrado de frutos del bosque junto a frutas frescas"
     },
     process: {
-      eyebrow: "Partir de la aplicación",
-      title: "La solución correcta empieza por las preguntas",
-      titleAccent: "correctas.",
-      text: "Trabajamos con método desde la primera conversación hasta una solución lista para el mercado, alineando los requisitos técnicos y comerciales.",
+      eyebrow: "Empiece por su aplicación",
+      title: "Las preguntas adecuadas dan forma",
+      titleAccent: "a su proyecto.",
+      text: "Cuéntenos sobre su producto, su aplicación y sus prioridades para que podamos explorar con usted las opciones relevantes.",
       steps: [
-        { title: "Descubrir", text: "Producto, proceso, mercado y objetivo comercial." },
-        { title: "Definir", text: "Formato, compatibilidad, perfil y requisitos técnicos." },
-        { title: "Coordinar", text: "Abastecimiento, desarrollo, documentación y logística." },
-        { title: "Acompañar", text: "Seguimiento comercial y técnico durante el proyecto." }
+        { title: "Producto", text: "¿Qué está desarrollando o buscando?" },
+        { title: "Aplicación", text: "¿Cómo y dónde se utilizará?" },
+        { title: "Requisitos", text: "¿Qué prioridades técnicas y comerciales son importantes?" },
+        { title: "Opciones", text: "¿Qué áreas de solución de GFB son relevantes para sus necesidades?" }
       ]
     },
     world: {
-      eyebrow: "Coordinación internacional",
-      title: "Con base en Murcia y una mirada global.",
-      text: "Con sede en Murcia (España) y presencia en Türkiye y Dubái, GFB conecta productores locales especializados con necesidades internacionales.",
-      cta: "Conocer GFB",
+      eyebrow: "Presencia internacional",
+      title: "Con base en Murcia. Conectados internacionalmente.",
+      text: "GFB tiene presencia en España, Türkiye y Dubái, y trabaja con productores y fabricantes locales para el suministro internacional.",
+      cta: "Conozca GFB",
       mapLabel: "Presencia internacional de GFB",
       headquarters: "Sede central",
       presence: "Presencia",
-      indicatorsLabel: "GFB en cifras",
-      indicators: [
-        { value: "3", label: "Ubicaciones" },
-        { value: "Global", label: "Perspectiva" }
-      ]
+      indicatorsLabel: "GFB en breve",
+      indicators: [{ value: "3", label: "Ubicaciones" }]
     },
     cta: {
       eyebrow: "Hablemos de su proyecto",
-      title: "Traiga el reto. Construyamos la ruta."
+      title: "Traiga sus requisitos. Explore las posibilidades.",
+      text: "Hable con nuestro equipo sobre los productos y soluciones relevantes para su empresa."
     }
   },
   division: {
     overviewEyebrow: "Visión general",
     overviewTitle: "Opciones estructuradas alrededor de la necesidad.",
     note: "La disponibilidad, las especificaciones y la idoneidad final se confirman durante la revisión comercial.",
-    exploreEyebrow: "Explorar la división",
+    exploreEyebrow: "Explore esta área",
     exploreTitle: "Encuentre la categoría adecuada.",
     ctaEyebrow: "Revisión comercial",
     ctaTitle: "¿Tiene un formato o aplicación en mente?"
@@ -143,24 +141,24 @@ export const es: Dictionary = {
     metaTitle: "Sobre GFB",
     metaDescription: "Conozca el enfoque, la misión y la presencia internacional de GFB Solutions.",
     hero: {
-      eyebrow: "Una empresa. Varias disciplinas",
-      title: "Conectar el detalle técnico con el",
-      titleAccent: "objetivo comercial.",
-      lead: "GFB reúne productores especializados, conocimiento industrial y soluciones a medida para empresas de alimentación y bebidas.",
+      eyebrow: "Sobre GFB Solutions",
+      title: "Experiencia y soluciones a medida",
+      titleAccent: "para alimentación y bebidas.",
+      lead: "GFB trabaja con productores y fabricantes especializados para ofrecer productos y servicios adaptados a las necesidades de las empresas de alimentación y bebidas.",
       trustLabel: "GFB en breve",
-      trust: ["Más de 10 años de experiencia", "Con sede en Murcia, España"],
-      imageAlt: "Botellas de vidrio para bebidas con tapón corona bajo luz cálida de producción"
+      trust: ["Más de 10 años de experiencia en el sector", "Murcia, España"],
+      imageAlt: "Uvas verdes, rojas y negras sobre una tabla de madera y en un cuenco de cristal"
     },
     story: {
       eyebrow: "Cómo trabaja GFB",
-      titleLines: ["Abastecimiento local.", "Coordinación global.", "Atención personal."],
+      titleLines: ["Abastecimiento local.", "Suministro global.", "Atención personal."],
       titleAccent: 1,
       paragraphs: [
-        "GFB trabaja con productores y fabricantes especializados para suministrar a nivel internacional, seleccionando la ruta más adecuada para cada necesidad.",
-        "Según la categoría, eso significa suministrar productos, desarrollar soluciones con socios o prestar consultoría, siempre con un único interlocutor."
+        "GFB trabaja con productores y fabricantes para suministrar a nivel internacional, adaptando productos y servicios a los requisitos de cada cliente.",
+        "Según la necesidad, su oferta incluye embalaje, materias primas, sabores y consultoría industrial."
       ],
-      imageAlt: "Cadena internacional de suministro de alimentos",
-      contact: "Un único interlocutor"
+      imageAlt: "Compañeros uniendo las manos sobre una mesa de reunión con portátiles y documentos",
+      label: "Servicio personalizado"
     },
     purpose: {
       eyebrow: "Nuestro propósito",
@@ -169,26 +167,26 @@ export const es: Dictionary = {
     },
     mission: {
       eyebrow: "Misión",
-      title: "Aportar el producto y la solución adecuados en cada etapa.",
-      text: "Coordinar soluciones personalizadas que favorezcan la satisfacción del cliente y relaciones comerciales duraderas."
+      title: "Las soluciones adecuadas en cada etapa.",
+      text: "Ofrecer productos adecuados y soluciones a medida a lo largo de la cadena de producción, favoreciendo la satisfacción del cliente y relaciones duraderas."
     },
     vision: {
       eyebrow: "Visión",
-      title: "Ser un socio multisolución confiable y de largo plazo.",
-      text: "Adaptar el portafolio y los servicios a medida que evoluciona el mercado de alimentos y bebidas."
+      title: "Un socio de confianza a largo plazo.",
+      text: "Crecer y adaptar nuestros productos y servicios a medida que evoluciona el mercado de alimentación y bebidas."
     },
     presence: {
       eyebrow: "Presencia internacional",
       title: "Desde España hacia mercados",
       titleAccent: "internacionales.",
-      text: "Con sede en Murcia (España) y presencia en Türkiye y Dubái.",
-      headquarters: "Sede · Murcia",
+      text: "Con base en Murcia (España) y presencia en Türkiye y Dubái.",
+      headquarters: "Murcia",
       presence: "Presencia"
     },
     cta: {
       eyebrow: "Una conversación práctica",
       title: "Cuéntenos qué necesita resolver.",
-      text: "Compártanos sus requisitos y nuestro equipo se pondrá en contacto con usted para explorar la mejor forma de avanzar."
+      text: "Comparta sus requisitos y nuestro equipo se pondrá en contacto con usted para explorar las opciones relevantes."
     }
   },
   contact: {
@@ -255,9 +253,10 @@ export const es: Dictionary = {
     contactText: "Las solicitudes relacionadas con privacidad deben dirigirse a"
   },
   footer: {
-    titleLines: ["Conectemos su", "próximo reto", "con la solución", "adecuada."],
-    cta: "Hablar con el equipo comercial",
-    navigate: "Navegación",
+    homeTitleLines: ["Soluciones especializadas.", "Perspectiva internacional."],
+    homeTagline: "Embalaje, materias primas, sabores y consultoría industrial.",
+    descriptor: "Embalaje, materias primas, sabores y consultoría industrial para empresas de alimentación y bebidas.",
+    company: "Empresa",
     solutions: "Soluciones",
     contact: "Contacto",
     privacy: "Privacidad",

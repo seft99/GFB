@@ -320,3 +320,35 @@
     font-size: 0.8rem;
   }
 }
+
+/*
+ * Desktop refinement (≥ 1100px): a bounded headline scale with natural wrapping. The lower
+ * strip carries trust information, distinct from the four solution callouts.
+ */
+@media (min-width: 1100px) {
+  /* The accent continues the sentence instead of starting a line of its own. */
+  .home-hero__title {
+    text-wrap: balance;
+  }
+  .home-hero__accent {
+    display: inline;
+    white-space: normal;
+  }
+  .home-hero__intro {
+    margin-bottom: clamp(1.75rem, 4.2vh, 2.5rem);
+  }
+}
+@media (min-width: 1280px) {
+  .home-hero__copy {
+    max-width: 40rem;
+  }
+  .home-hero__title {
+    max-width: 11em;
+    font-size: var(--type-h1);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+  .home-hero__callout-label {
+    font-weight: 500;
+  }
+}

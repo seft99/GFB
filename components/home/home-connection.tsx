@@ -12,10 +12,15 @@ type DisciplineKey = keyof ReturnType<typeof getDictionary>["home"]["connection"
 
 /** Reading order; on desktop the cards fill the corners around the hub in this order (TL, TR, BL, BR). */
 const disciplines: { key: DisciplineKey; division: DivisionId; icon: IconName; image: string }[] = [
-  { key: "packaging", division: "packaging-solutions", icon: "cube", image: "/images/packaging/hero.avif" },
+  { key: "packaging", division: "packaging-solutions", icon: "cube", image: "/images/packaging/can-detail.webp" },
   { key: "ingredients", division: "raw-materials", icon: "leaf", image: "/images/raw-materials/hero.avif" },
   { key: "flavours", division: "flavours-aromas", icon: "bars", image: "/images/flavours/beverage.avif" },
-  { key: "consulting", division: "industrial-consulting", icon: "nodes", image: "/images/consulting/hero.avif" }
+  {
+    key: "consulting",
+    division: "industrial-consulting",
+    icon: "nodes",
+    image: "/images/consulting/production-line.webp"
+  }
 ];
 
 /*
@@ -32,7 +37,7 @@ const links: { discipline: DisciplineKey; d: string; from: [number, number]; to:
 ];
 
 export function HomeConnection({ locale }: { locale: Locale }) {
-  const { home, common } = getDictionary(locale);
+  const { home } = getDictionary(locale);
   const copy = home.connection;
 
   return (
@@ -46,9 +51,6 @@ export function HomeConnection({ locale }: { locale: Locale }) {
           </h2>
           <p className="connection__text">{copy.text}</p>
           <div className="connection__actions">
-            <ButtonLink href={paths.page(locale, "contact")} variant="lime" className="connection__button">
-              {common.inquire}
-            </ButtonLink>
             <ButtonLink
               href={paths.page(locale, "about")}
               variant="ghost"
@@ -83,7 +85,7 @@ export function HomeConnection({ locale }: { locale: Locale }) {
           </svg>
 
           <div className="connection__hub">
-            <Image src="/brand/gfb-logo.avif" alt="GFB Solutions" width={187} height={77} />
+            <Image src="/brand/gfb-logo.png" alt="GFB Solutions" width={187} height={77} />
           </div>
 
           <ul className="connection__cards" aria-label={copy.networkLabel}>
