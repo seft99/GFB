@@ -2,7 +2,28 @@ import type { LocalizedText } from "../i18n/config.ts";
 
 export type DivisionId = "packaging-solutions" | "raw-materials" | "flavours-aromas" | "industrial-consulting";
 
-export type CategoryGroup = { title: LocalizedText; items: LocalizedText[] };
+/** Photograph of a product family in the family explorer; `fit: "contain"` for studio cut-outs on white. */
+export type GroupImage = { src: string; alt: LocalizedText; focus?: string; fit?: "cover" | "contain" };
+
+export type CategoryGroup = {
+  title: LocalizedText;
+  items: LocalizedText[];
+  /** Family explorer only (categories with `explorer`): panel heading, photo and selector thumbnail. */
+  heading?: LocalizedText;
+  image?: GroupImage;
+  thumb?: string;
+  /** English names of items shown with emphasis, and a short note below the list. */
+  highlights?: string[];
+  note?: LocalizedText;
+};
+
+/** Desktop family explorer that replaces the family grid; `defaultGroup` is the English title of the initial family. */
+export type CategoryExplorer = {
+  eyebrow: LocalizedText;
+  title: LocalizedText;
+  text: LocalizedText;
+  defaultGroup: string;
+};
 
 /**
  * How a category appears in the division page showcase. `image` overrides the category photo
@@ -18,14 +39,22 @@ export type Category = {
   title: LocalizedText;
   summary: LocalizedText;
   detail: LocalizedText;
+  /** Scope section: category-specific heading and the "project context" note below it. */
+  scope: { title: LocalizedText; context: { title: LocalizedText; text: LocalizedText } };
   image: string;
   showcase?: CategoryShowcase;
+  /**
+   * Desktop-only panoramic photo for the detail hero, composed with clean space for the copy on
+   * the left. It fills the whole hero background; `focus` is its object-position.
+   */
+  heroPanorama?: { image: string; width: number; height: number; focus: string };
   /** Desktop object-position of the photo in the detail hero background (defaults to the showcase focus). */
   heroFocus?: string;
   /** Label of the detail hero's secondary link to the scope section, when more specific than the division's. */
   heroSecondary?: LocalizedText;
   features?: LocalizedText[];
   groups?: CategoryGroup[];
+  explorer?: CategoryExplorer;
 };
 
 /** Service page hero: copy, CTA to the page's category section, photo and its desktop treatment. */

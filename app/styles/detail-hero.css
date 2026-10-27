@@ -31,6 +31,11 @@
   display: block;
 }
 
+/* Desktop-only panorama inside a placeholder category (the panel stays below 1100px). */
+.detail-hero__photo--desktop {
+  display: none;
+}
+
 /* Anchors from the hero clear the fixed header. */
 #scope,
 #families {
@@ -199,6 +204,37 @@
     object-fit: cover;
   }
 
+  /*
+   * Panoramic variant (cans): the photo already has clean space for the copy, so it fills the
+   * whole background without the veil or edge fades. The hero keeps roughly the photo's
+   * proportions so the cans stay whole; `--panorama-focus` frames the small remaining crop.
+   */
+  .detail-hero--panorama.section-dark {
+    min-height: calc(var(--header-h) + 100vw / 2.45);
+  }
+  .detail-hero--panorama::before {
+    display: none;
+  }
+  .detail-hero--panorama .detail-hero__photo {
+    left: 0;
+    width: 100%;
+    mask-image: none;
+  }
+  .detail-hero--panorama .detail-hero__photo img {
+    object-position: var(--panorama-focus, 50% 50%) !important;
+  }
+  /* A placeholder category with a panorama shows the photo instead of the icon panel. */
+  .detail-hero--panorama .detail-hero__image--placeholder {
+    padding: 0;
+    background: #ffffff;
+  }
+  .detail-hero--panorama .detail-hero__image--placeholder > svg {
+    display: none;
+  }
+  .detail-hero--panorama .detail-hero__photo--desktop {
+    display: block;
+  }
+
   /* Without a suitable photo: a pale brand-blue field on the right with the outlined icon. */
   .detail-hero--editorial .detail-hero__image--placeholder {
     justify-items: end;
@@ -208,11 +244,6 @@
   }
   .detail-hero--editorial .detail-hero__image--placeholder svg {
     width: clamp(8rem, 12vw, 12rem);
-  }
-
-  /* The next section follows directly. */
-  .detail-hero--editorial + .detail-content {
-    padding-top: clamp(4rem, 5.5vw, 5.5rem);
   }
 }
 

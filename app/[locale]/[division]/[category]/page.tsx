@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import type { CSSProperties } from "react";
 import { CategoryHero, categorySectionIds } from "@/components/sections/category-hero";
+import { ConcentrateExplorer } from "@/components/sections/concentrate-explorer";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon } from "@/components/ui/icon";
@@ -11,8 +13,12 @@ import { getDictionary } from "@/src/i18n/dictionaries";
 import { localizedPaths, paths } from "@/src/i18n/routes";
 import { pageMetadata } from "@/src/lib/metadata";
 import "../../../styles/detail-hero.css";
+import "../../../styles/detail-scope.css";
 
 type Props = PageProps<"/[locale]/[division]/[category]">;
+
+/** Stable id for a family from its English title ("Red fruits" -> "red-fruits"). */
+const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -57,35 +63,79 @@ export default async function CategoryPage({ params }: Props) {
     <main id="main-content">
       <CategoryHero division={division} category={category} locale={locale} inquiryHref={inquiryHref} />
 
-      <section id={categorySectionIds.scope} className="section detail-content">
-        <div className="shell detail-content__grid">
-          <div>
-            <Eyebrow>{copy.scopeEyebrow}</Eyebrow>
-            <h2>{copy.scopeTitle}</h2>
-          </div>
-          <div>
+      <section
+        id={categorySectionIds.scope}
+        className="section detail-content detail-scope"
+        aria-labelledby="scope-title"
+      >
+        <div className="shell">
+          <div className="detail-content__grid">
+            <div>
+              <Eyebrow>{copy.scopeEyebrow}</Eyebrow>
+              <h2 id="scope-title">{category.scope.title[locale]}</h2>
+            </div>
             <p className="lead">{category.detail[locale]}</p>
-            {category.features && (
-              <ul className="check-list">
-                {category.features.map((feature) => (
-                  <li key={feature.en}>
-                    <Icon name="check" />
-                    {feature[locale]}
-                  </li>
-                ))}
-              </ul>
-            )}
-            <aside className="verification-box">
-              <strong>{copy.beforeQuoteTitle}</strong>
-              <p>{copy.beforeQuoteText}</p>
+          </div>
+          {category.features && category.features.length > 0 && (
+            <ul
+              className="check-list detail-scope__features"
+              style={{ "--feature-count": category.features.length } as CSSProperties}
+            >
+              {category.features.map((feature) => (
+                <li key={feature.en}>
+                  <Icon name="check" />
+                  {feature[locale]}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div className="detail-scope__context">
+          <div className="shell">
+            <aside className="verification-box" aria-labelledby="scope-context-title">
+              <span className="detail-scope__label">{copy.contextLabel}</span>
+              <div>
+                <strong id="scope-context-title">{category.scope.context.title[locale]}</strong>
+                <p>{category.scope.context.text[locale]}</p>
+              </div>
             </aside>
           </div>
         </div>
       </section>
 
       {category.groups && (
-        <section id={categorySectionIds.families} className="section portfolio-groups">
-          <div className="shell">
+        <section
+          id={categorySectionIds.families}
+          className={
+            category.explorer ? "section portfolio-groups portfolio-groups--explorer" : "section portfolio-groups"
+          }
+        >
+          {category.explorer && (
+            <ConcentrateExplorer
+              eyebrow={category.explorer.eyebrow[locale]}
+              title={category.explorer.title[locale]}
+              text={category.explorer.text[locale]}
+              defaultId={slugify(category.explorer.defaultGroup)}
+              labels={{ count: copy.explorerCount, cta: copy.explorerCta, tabs: copy.explorerTabs }}
+              families={category.groups.map((group) => ({
+                id: slugify(group.title.en),
+                name: group.title[locale],
+                heading: (group.heading ?? group.title)[locale],
+                items: group.items.map((item) => ({
+                  label: item[locale],
+                  highlight: group.highlights?.includes(item.en) ?? false
+                })),
+                note: group.note?.[locale],
+                image: group.image && { ...group.image, alt: group.image.alt[locale] },
+                thumb: group.thumb,
+                href: paths.contact(locale, {
+                  interest: division.id,
+                  category: `${category.title[locale]} – ${group.title[locale]}`
+                })
+              }))}
+            />
+          )}
+          <div className="shell concentrates__legacy">
             <SectionHeading eyebrow={copy.groupsEyebrow} title={copy.groupsTitle} />
             <div className="group-grid">
               {category.groups.map((group) => (

@@ -1,0 +1,258 @@
+/*
+ * Family explorer of the fruit & vegetable concentrates page (components/sections/concentrate-explorer.tsx).
+ *
+ * Desktop only: below 1100px the explorer is hidden and the existing family grid of the
+ * `#families` section stays as it was. From 1100px the grid is hidden and the explorer shows a
+ * ~1280px container on a subtly tinted section: intro (heading left, text right), five family
+ * tabs in one row (thumbnail, name, count; active tab cobalt on pale blue with a blue underline)
+ * and a 45/55 panel (photograph | heading, two-column list, optional note, blue CTA). The list
+ * reserves the rows of the longest family (`--rows`), so the panel height never changes.
+ */
+
+.concentrates {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .portfolio-groups--explorer.section {
+    padding-block: clamp(5rem, 6vw, 6rem);
+    background: #f6f8fb;
+  }
+  .portfolio-groups--explorer .concentrates__legacy {
+    display: none;
+  }
+
+  .concentrates {
+    display: block;
+    max-width: 80rem;
+  }
+
+  /* Intro */
+  .concentrates__intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 4vw, 5rem);
+    align-items: end;
+  }
+  .concentrates__intro h2 {
+    max-width: 21ch;
+    margin: 0;
+    color: var(--brand-ink);
+    font-size: clamp(3.25rem, 4.1vw, 4.25rem);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  .concentrates__intro > p {
+    max-width: 27rem;
+    margin: 0 0 0.4rem;
+    color: #4a5063;
+    font-size: clamp(1.15rem, 1.35vw, 1.3rem);
+    line-height: 1.55;
+  }
+  .concentrates__eyebrow {
+    margin-bottom: 1.25rem;
+  }
+
+  /* Family tabs */
+  .concentrates__tabs {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: clamp(2.75rem, 3.5vw, 3.5rem);
+  }
+  .concentrates__tab {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.75rem, 1vw, 0.95rem);
+    min-width: 0;
+    padding: 0.85rem clamp(0.6rem, 0.8vw, 0.8rem);
+    border: 0;
+    border-bottom: 3px solid transparent;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    color: var(--brand-ink);
+    background: transparent;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .concentrates__tab:hover {
+    background: rgba(36, 110, 233, 0.05);
+  }
+  .concentrates__tab[aria-selected="true"] {
+    border-bottom-color: var(--blue-600);
+    color: var(--blue-600);
+    background: #e8f0fd;
+  }
+  .concentrates__tab:focus-visible {
+    outline: 3px solid var(--blue-500);
+    outline-offset: 2px;
+  }
+  .concentrates__thumb {
+    position: relative;
+    flex: none;
+    width: clamp(4.5rem, 5.6vw, 5rem);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow:
+      0 0 0 1px rgba(10, 18, 41, 0.06),
+      0 8px 18px -10px rgba(10, 18, 41, 0.35);
+  }
+  .concentrates__thumb img {
+    object-fit: contain;
+    padding: 7%;
+  }
+  .concentrates__tab-text {
+    display: grid;
+    gap: 0.3rem;
+    min-width: 0;
+  }
+  .concentrates__tab-name {
+    font-size: clamp(1.1rem, 1.3vw, 1.2rem);
+    font-weight: 650;
+    line-height: 1.15;
+  }
+  .concentrates__tab-count {
+    color: #5c6275;
+    font-size: 0.98rem;
+  }
+  .concentrates__tab[aria-selected="true"] .concentrates__tab-count {
+    color: var(--blue-600);
+  }
+
+  /* Panel: 45% photograph, 55% content */
+  .concentrates__panel {
+    display: grid;
+    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+    margin-top: 1rem;
+    overflow: hidden;
+    border: 1px solid #e3e7ee;
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    box-shadow: 0 24px 50px -36px rgba(10, 18, 41, 0.35);
+  }
+  .concentrates__media {
+    position: relative;
+    min-height: 100%;
+    background: #ffffff;
+  }
+  .concentrates__photo {
+    object-fit: cover;
+    animation: concentrates-fade 240ms ease both;
+  }
+  .concentrates__photo.is-studio {
+    object-fit: contain;
+    padding: 9%;
+  }
+  .concentrates__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(2.25rem, 2.8vw, 2.75rem) clamp(2.25rem, 3vw, 3rem);
+    animation: concentrates-in 220ms ease both;
+  }
+  .concentrates__content .concentrates__eyebrow {
+    margin-bottom: 0.9rem;
+  }
+  .concentrates__content h3 {
+    margin: 0;
+    color: var(--brand-ink);
+    font-size: clamp(2.1rem, 2.6vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  /* List and note keep the space of the longest family, so the panel height never changes. */
+  .concentrates__body {
+    width: 100%;
+    min-height: calc(var(--rows) * 3rem + 4.45rem);
+  }
+  /* Two columns, filled top to bottom. */
+  .concentrates__list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(var(--list-rows), 3rem);
+    align-content: start;
+    column-gap: clamp(2rem, 3vw, 2.75rem);
+    width: 100%;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .concentrates__list li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e3e7ee;
+    color: #20263a;
+    font-size: 1.08rem;
+  }
+  .concentrates__list li.is-highlight {
+    color: var(--blue-600);
+    font-weight: 700;
+  }
+  .concentrates__note {
+    min-height: 1.6rem;
+    margin-top: 1.25rem;
+  }
+  .concentrates__note p {
+    margin: 0;
+    color: #5c6275;
+    font-size: 1rem;
+  }
+  .concentrates__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding: 0.95rem 1.6rem;
+    border-radius: 999px;
+    color: #ffffff;
+    background: var(--blue-600);
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background 0.2s ease;
+  }
+  .concentrates__cta:hover {
+    background: #0f47b5;
+  }
+  .concentrates__cta:focus-visible {
+    outline: 3px solid var(--blue-500);
+    outline-offset: 3px;
+  }
+  .concentrates__cta svg {
+    width: 1.1rem;
+    transition: translate 0.2s ease;
+  }
+  .concentrates__cta:hover svg {
+    translate: 3px 0;
+  }
+}
+
+@keyframes concentrates-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@keyframes concentrates-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .concentrates__photo,
+  .concentrates__content {
+    animation: none;
+  }
+  .concentrates__cta svg {
+    transition: none;
+  }
+}

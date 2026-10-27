@@ -1,5 +1,6 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -11,6 +12,48 @@ import { paths } from "@/src/i18n/routes";
 
 /** Ids of the category page sections the hero's secondary link can scroll to. */
 export const categorySectionIds = { scope: "scope", families: "families" } as const;
+
+type Panorama = NonNullable<Category["heroPanorama"]>;
+
+/** Transparent pixel: the fallback of a desktop-only panorama, so smaller screens load nothing. */
+const emptyPixel = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
+/**
+ * Art direction through the image pipeline: from 1100px the browser loads the panoramic
+ * photo at full width; below it the regular photo, exactly as before. Without a regular
+ * photo (a placeholder category) nothing loads below 1100px.
+ */
+function PanoramaPicture({
+  panorama,
+  photo,
+  sizes,
+  focus
+}: {
+  panorama: Panorama;
+  photo?: string;
+  sizes: string;
+  focus?: string;
+}) {
+  const {
+    props: { srcSet: desktop }
+  } = getImageProps({ src: panorama.image, alt: "", width: panorama.width, height: panorama.height, sizes: "100vw" });
+  const { props } = photo
+    ? getImageProps({ src: photo, alt: "", fill: true, priority: true, sizes })
+    : {
+        props: {
+          src: emptyPixel,
+          decoding: "async" as const,
+          fetchPriority: "high" as const,
+          style: { position: "absolute" as const, inset: 0, width: "100%", height: "100%" }
+        }
+      };
+  return (
+    <picture>
+      <source media="(min-width: 1100px)" srcSet={desktop} sizes="100vw" />
+      <img {...props} alt="" style={{ ...props.style, ...(focus ? { objectPosition: focus } : {}) }} />
+    </picture>
+  );
+}
 
 type CategoryHeroProps = { division: Division; category: Category; locale: Locale; inquiryHref: string };
 
@@ -30,9 +73,19 @@ export function CategoryHero({ division, category, locale, inquiryHref }: Catego
     : { label: (category.heroSecondary ?? division.detailSecondary)[locale], target: categorySectionIds.scope };
   const placeholder = category.showcase?.placeholder;
   const focus = category.heroFocus ?? category.showcase?.focus;
+  const photo = category.showcase?.image ?? category.image;
+  const photoSizes = "(max-width: 900px) 100vw, 64vw";
+  const { heroPanorama: panorama } = category;
 
   return (
-    <section className="detail-hero detail-hero--editorial section-dark">
+    <section
+      className={
+        panorama
+          ? "detail-hero detail-hero--editorial detail-hero--panorama section-dark"
+          : "detail-hero detail-hero--editorial section-dark"
+      }
+      style={panorama ? ({ "--panorama-focus": panorama.focus } as CSSProperties) : undefined}
+    >
       <div className="shell">
         <Breadcrumbs
           locale={locale}
@@ -59,18 +112,27 @@ export function CategoryHero({ division, category, locale, inquiryHref }: Catego
           {placeholder ? (
             <div className="detail-hero__image detail-hero__image--placeholder" aria-hidden="true">
               <Icon name={placeholder} strokeWidth={1} />
+              {panorama && (
+                <span className="detail-hero__photo detail-hero__photo--desktop">
+                  <PanoramaPicture panorama={panorama} sizes={photoSizes} />
+                </span>
+              )}
             </div>
           ) : (
             <div className="detail-hero__image">
               <span className="detail-hero__photo">
-                <Image
-                  src={category.showcase?.image ?? category.image}
-                  alt=""
-                  fill
-                  priority
-                  sizes="(max-width: 900px) 100vw, 64vw"
-                  style={focus ? { objectPosition: focus } : undefined}
-                />
+                {panorama ? (
+                  <PanoramaPicture panorama={panorama} photo={photo} sizes={photoSizes} focus={focus} />
+                ) : (
+                  <Image
+                    src={photo}
+                    alt=""
+                    fill
+                    priority
+                    sizes={photoSizes}
+                    style={focus ? { objectPosition: focus } : undefined}
+                  />
+                )}
               </span>
             </div>
           )}

@@ -125,13 +125,13 @@ export const es: Dictionary = {
   },
   category: {
     scopeEyebrow: "Alcance",
-    scopeTitle: "Qué cubre esta solución.",
-    beforeQuoteTitle: "Antes de cotizar",
-    beforeQuoteText:
-      "Comparta la aplicación, el formato, el volumen, el destino, las condiciones de proceso y la documentación requerida.",
+    contextLabel: "Contexto del proyecto",
     familiesLink: "Ver familias",
     groupsEyebrow: "Familias de producto",
     groupsTitle: "Explore por familia.",
+    explorerCount: "productos",
+    explorerCta: "Consultar esta familia",
+    explorerTabs: "Familias de concentrados",
     ctaEyebrow: "Consulta contextual",
     ctaTitle: "Comparta los requisitos de esta categoría."
   },

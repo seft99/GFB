@@ -79,16 +79,27 @@ export const divisions: Division[] = [
           "Formatos estándar, slim y sleek con tapas abre-fácil compatibles."
         ),
         detail: t(
-          "Aluminium beverage cans in multiple profiles and nominal volumes, supplied together with matching can ends. Dimensions, internal coatings and filling-line compatibility are confirmed for each project.",
-          "Latas de aluminio para bebidas en múltiples perfiles y volúmenes nominales, suministradas junto con sus tapas compatibles. Las dimensiones, los recubrimientos internos y la compatibilidad con la línea de llenado se confirman en cada proyecto."
+          "GFB supplies aluminium cans and can ends for beverage packaging. Explore the available profiles and end options for the product you need to package.",
+          "GFB suministra latas de aluminio y tapas para el envasado de bebidas. Explore los perfiles y las opciones de tapa disponibles para el producto que necesita envasar."
         ),
+        scope: {
+          title: t("Formats and options.", "Formatos y opciones."),
+          context: {
+            title: t("Tell us about your application.", "Cuéntenos su aplicación."),
+            text: t(
+              "Share the beverage type and the packaging format you are considering.",
+              "Indique el tipo de bebida y el formato de envase que está considerando."
+            )
+          }
+        },
         image: "/images/packaging/cans.avif",
         showcase: { image: "/images/packaging/can-detail.webp", focus: "50% 40%" },
         heroSecondary: t("Explore formats", "Ver formatos"),
+        heroPanorama: { image: "/images/packaging/cans-panorama.png", width: 1914, height: 822, focus: "50% 55%" },
         features: [
           t("Standard, slim and sleek profiles", "Perfiles estándar, slim y sleek"),
-          t("Easy-open end options", "Opciones de tapas abre-fácil"),
-          t("Format selection support", "Asistencia en la selección del formato")
+          t("Easy-open can ends", "Tapas abre-fácil"),
+          t("Beverage packaging options", "Opciones de envase para bebidas")
         ]
       },
       {
@@ -100,10 +111,21 @@ export const divisions: Division[] = [
           "Formatos de botella para agua, refrescos y bebidas alcohólicas."
         ),
         detail: t(
-          "Glass packaging for beverages where product protection, transparency and a premium on-shelf presence matter. Availability and performance specifications are matched to each brief.",
-          "Envases de vidrio para bebidas donde importan la protección del producto, la transparencia y una presencia premium en el lineal. La disponibilidad y las especificaciones se ajustan a cada proyecto."
+          "Glass bottles for water, soft drinks and alcoholic beverages. Transparent glass makes the contents visible and gives the product a clear visual presence.",
+          "Botellas de vidrio para agua, refrescos y bebidas alcohólicas. El vidrio transparente deja ver el contenido y da al producto una presencia visual clara."
         ),
-        image: "/images/packaging/bottles.avif"
+        scope: {
+          title: t("Glass for your application.", "Vidrio para su aplicación."),
+          context: {
+            title: t("Tell us about your application.", "Cuéntenos su aplicación."),
+            text: t(
+              "Share the beverage type and the bottle format you are considering.",
+              "Indique el tipo de bebida y el formato de botella que está considerando."
+            )
+          }
+        },
+        image: "/images/packaging/bottles.avif",
+        heroPanorama: { image: "/images/packaging/bottles-panorama.png", width: 1914, height: 822, focus: "50% 40%" }
       },
       {
         id: "closures",
@@ -114,10 +136,21 @@ export const divisions: Division[] = [
           "Tapas corona, cierres ring-pull y opciones específicas por aplicación."
         ),
         detail: t(
-          "The range includes crown cork bottle caps, RipCap ring-pull formats and sport caps. Material, liner, decoration and sealing requirements are defined together during technical review.",
-          "La gama incluye tapas corona, formatos RipCap con anilla y tapas deportivas. El material, el liner, la decoración y el sellado se definen conjuntamente durante la revisión técnica."
+          "Crown corks, ring-pull closures and other cap options for beverage bottles. The closure is the final barrier against oxygen and moisture, so it is chosen together with the bottle and the product.",
+          "Tapas corona, cierres de anilla y otras opciones de tapón para botellas de bebidas. El cierre es la última barrera frente al oxígeno y la humedad, por eso se elige junto con la botella y el producto."
         ),
-        image: "/images/packaging/closures.avif"
+        scope: {
+          title: t("Closures for your bottle.", "Cierres para su botella."),
+          context: {
+            title: t("Tell us about your bottle.", "Cuéntenos su botella."),
+            text: t(
+              "Share the bottle and the beverage the closure is for.",
+              "Indique la botella y la bebida para las que necesita el cierre."
+            )
+          }
+        },
+        image: "/images/packaging/closures.avif",
+        heroPanorama: { image: "/images/packaging/closures-panorama.png", width: 1914, height: 822, focus: "80% 35%" }
       },
       {
         id: "labels",
@@ -128,9 +161,19 @@ export const divisions: Division[] = [
           "Soluciones de manga retráctil, wash-off y etiquetas de cola húmeda."
         ),
         detail: t(
-          "Label options built for visual impact, bottling efficiency and removal requirements, including 360-degree shrink sleeves, wash-off labels and wet-glue paper labels.",
-          "Opciones de etiquetado pensadas para el impacto visual, la eficiencia en embotellado y los requisitos de retirada, incluidas mangas retráctiles 360°, etiquetas wash-off y etiquetas de papel con cola húmeda."
+          "Shrink sleeve, wash-off and wet-glue labels for beverage packaging, chosen for their print quality and for how they perform on the labelling line.",
+          "Etiquetas sleeve retráctiles, wash-off y de cola húmeda para envases de bebidas, elegidas por su calidad de impresión y su comportamiento en la línea de etiquetado."
         ),
+        scope: {
+          title: t("Labels for your packaging.", "Etiquetas para su envase."),
+          context: {
+            title: t("Tell us about your packaging.", "Cuéntenos su envase."),
+            text: t(
+              "Share the container, the label type and the labelling process you use.",
+              "Indique el envase, el tipo de etiqueta y el proceso de etiquetado que utiliza."
+            )
+          }
+        },
         image: "/images/packaging/labels.avif",
         showcase: { image: "/images/packaging/labels-wash-off.webp", focus: "50% 50%" }
       }
@@ -215,14 +258,44 @@ export const divisions: Division[] = [
           "Un portafolio amplio organizado por origen y aplicación."
         ),
         detail: t(
-          "Concentrates organized across citrus, Mediterranean, tropical, red-fruit and vegetable families. Specifications, origin and pack formats are confirmed with each commercial offer.",
-          "Concentrados organizados en familias cítricas, mediterráneas, tropicales, frutos rojos y vegetales. Las especificaciones, el origen y los formatos de envase se confirman en cada oferta comercial."
+          "Fruit and vegetable concentrates made by removing water from freshly squeezed juice, organized in citrus, Mediterranean, tropical, red fruit and vegetable families, with particular expertise in grape concentrates.",
+          "Concentrados de frutas y vegetales obtenidos al retirar el agua del zumo recién exprimido, organizados en familias cítricas, mediterráneas, tropicales, de frutos rojos y vegetales, con especial experiencia en concentrados de uva."
         ),
+        scope: {
+          title: t("Concentrate families.", "Familias de concentrados."),
+          context: {
+            title: t("Tell us about your application.", "Cuéntenos su aplicación."),
+            text: t(
+              "Share the product you are developing and the fruit or vegetable you are looking for.",
+              "Indique el producto que está desarrollando y la fruta o el vegetal que busca."
+            )
+          }
+        },
         image: "/images/raw-materials/fruit-concentrates.avif",
         showcase: { image: "/images/raw-materials/grapes.webp", focus: "45% 55%" },
+        explorer: {
+          eyebrow: t("Concentrate portfolio", "Portafolio de concentrados"),
+          title: t("Find the concentrate for your application.", "Encuentre el concentrado para su aplicación."),
+          text: t(
+            "Explore five families of fruit and vegetable concentrates, with particular expertise in grape.",
+            "Explore cinco familias de concentrados de frutas y vegetales, con especial experiencia en uva."
+          ),
+          defaultGroup: "Mediterranean"
+        },
         groups: [
           {
             title: t("Citrus", "Cítricos"),
+            heading: t("Citrus concentrates", "Concentrados cítricos"),
+            image: {
+              src: "/images/raw-materials/citrus.webp",
+              alt: t(
+                "Halved oranges, blood oranges, lemons and limes",
+                "Naranjas, naranjas sanguinas, limones y limas partidos"
+              ),
+              focus: "62% 50%",
+              fit: "cover"
+            },
+            thumb: "/images/raw-materials/concentrates/citrus-thumb.webp",
             items: [
               t("Orange", "Naranja"),
               t("White grapefruit", "Pomelo blanco"),
@@ -235,6 +308,16 @@ export const divisions: Division[] = [
           },
           {
             title: t("Mediterranean", "Mediterráneos"),
+            heading: t("Mediterranean concentrates", "Concentrados mediterráneos"),
+            image: {
+              src: "/images/raw-materials/grapes.webp",
+              alt: t("A bunch of grapes with water droplets", "Un racimo de uvas con gotas de agua"),
+              focus: "45% 55%",
+              fit: "cover"
+            },
+            thumb: "/images/raw-materials/concentrates/mediterranean-thumb.webp",
+            highlights: ["White grape", "Red grape"],
+            note: t("A particular focus on grape.", "Una atención especial a la uva."),
             items: [
               t("Apple", "Manzana"),
               t("White grape", "Uva blanca"),
@@ -250,6 +333,14 @@ export const divisions: Division[] = [
           },
           {
             title: t("Tropical", "Tropicales"),
+            heading: t("Tropical concentrates", "Concentrados tropicales"),
+            image: {
+              src: "/images/raw-materials/concentrates/tropical.webp",
+              alt: t("A whole mango and a mango cut into cubes", "Un mango entero y un mango cortado en dados"),
+              focus: "50% 50%",
+              fit: "contain"
+            },
+            thumb: "/images/raw-materials/concentrates/tropical-thumb.webp",
             items: [
               t("Passion fruit", "Maracuyá"),
               t("White guava", "Guayaba blanca"),
@@ -263,6 +354,14 @@ export const divisions: Division[] = [
           },
           {
             title: t("Red fruits", "Frutos rojos"),
+            heading: t("Red fruit concentrates", "Concentrados de frutos rojos"),
+            image: {
+              src: "/images/raw-materials/concentrates/red-fruits.webp",
+              alt: t("Raspberries on raspberry leaves", "Frambuesas sobre hojas de frambueso"),
+              focus: "50% 50%",
+              fit: "contain"
+            },
+            thumb: "/images/raw-materials/concentrates/red-fruits-thumb.webp",
             items: [
               t("Cranberry", "Arándano rojo"),
               t("Blueberry", "Arándano"),
@@ -274,6 +373,14 @@ export const divisions: Division[] = [
           },
           {
             title: t("Vegetables", "Vegetales"),
+            heading: t("Vegetable concentrates", "Concentrados de vegetales"),
+            image: {
+              src: "/images/raw-materials/concentrates/vegetables.webp",
+              alt: t("Red, yellow and green peppers", "Pimientos rojos, amarillos y verdes"),
+              focus: "50% 50%",
+              fit: "contain"
+            },
+            thumb: "/images/raw-materials/concentrates/vegetables-thumb.webp",
             items: [
               t("Turnip", "Nabo"),
               t("Pumpkin", "Calabaza"),
@@ -300,9 +407,19 @@ export const divisions: Division[] = [
           "Concentrados de avena y almendra para bebidas vegetales."
         ),
         detail: t(
-          "Oat and almond concentrates for plant-based beverage development. Composition, allergen, processing and application data are provided in the commercial specification for each project.",
-          "Concentrados de avena y almendra para el desarrollo de bebidas vegetales. Los datos de composición, alérgenos, procesado y aplicación se facilitan en la especificación comercial de cada proyecto."
+          "Oat and almond concentrates for the development of plant-based drinks.",
+          "Concentrados de avena y almendra para el desarrollo de bebidas de origen vegetal."
         ),
+        scope: {
+          title: t("Oat and almond concentrates.", "Concentrados de avena y almendra."),
+          context: {
+            title: t("Tell us about your product.", "Cuéntenos su producto."),
+            text: t(
+              "Share the plant-based product you are developing and the concentrate you need.",
+              "Indique el producto de origen vegetal que está desarrollando y el concentrado que necesita."
+            )
+          }
+        },
         image: "/images/raw-materials/plant-based.avif",
         showcase: { image: "/images/raw-materials/oat-almond.webp", focus: "50% 50%" }
       },
@@ -315,11 +432,27 @@ export const divisions: Division[] = [
           "Rodajas, cortes, ralladura y piel para food service y uso industrial."
         ),
         detail: t(
-          "IQF lemon and orange formats including slices, half slices, sticks, cuts, zest and peel. Storage, packaging and technical requirements are agreed before supply.",
-          "Formatos IQF de limón y naranja que incluyen rodajas, medias rodajas, bastones, cortes, ralladura y piel. El almacenamiento, el envase y los requisitos técnicos se acuerdan antes del suministro."
+          "Frozen lemon and orange in slices, half slices, sticks, cuts, zest and peel, for food-service and industrial use.",
+          "Limón y naranja congelados en rodajas, medias rodajas, bastones, trozos, ralladura y piel, para food service y uso industrial."
         ),
+        scope: {
+          title: t("IQF citrus formats.", "Formatos de cítricos IQF."),
+          context: {
+            title: t("Tell us about your use.", "Cuéntenos su uso."),
+            text: t(
+              "Share the citrus, the format and the application you have in mind.",
+              "Indique el cítrico, el formato y la aplicación que tiene en mente."
+            )
+          }
+        },
         image: "/images/raw-materials/iqf-fruit.avif",
-        showcase: { image: "/images/raw-materials/citrus.webp", focus: "60% 50%" }
+        showcase: { image: "/images/raw-materials/citrus.webp", focus: "60% 50%" },
+        heroPanorama: {
+          image: "/images/raw-materials/iqf-citrus-panorama.png",
+          width: 1914,
+          height: 822,
+          focus: "80% 45%"
+        }
       }
     ]
   },
@@ -405,9 +538,19 @@ export const divisions: Division[] = [
           "Confitería, panadería, postres, helados y lácteos."
         ),
         detail: t(
-          "Flavours for confectionery, baked goods, desserts, ice cream and dairy. Profiles and formats are developed against the customer's product brief.",
-          "Sabores para confitería, productos horneados, postres, helados y lácteos. Los perfiles y formatos se desarrollan según el brief de producto del cliente."
+          "Flavours for confectionery, bakery, desserts, ice cream and dairy products.",
+          "Sabores para confitería, panadería, postres, helados y productos lácteos."
         ),
+        scope: {
+          title: t("Flavours for sweet products.", "Sabores para productos dulces."),
+          context: {
+            title: t("Tell us about your product.", "Cuéntenos su producto."),
+            text: t(
+              "Share the sweet product and the flavour profile you are looking for.",
+              "Indique el producto dulce y el perfil de sabor que busca."
+            )
+          }
+        },
         image: "/images/flavours/sweet.avif",
         showcase: { image: "/images/flavours/sweet-ice-cream.webp", focus: "50% 42%" }
       },
@@ -420,9 +563,19 @@ export const divisions: Division[] = [
           "Refrescos, bebidas energéticas, zumos, aguas, polvos y jarabes."
         ),
         detail: t(
-          "Flavour development for soft drinks, energy drinks, juices, flavoured waters, powder beverages and syrups. Suitability is assessed for the intended formulation and process.",
-          "Desarrollo de sabores para refrescos, bebidas energéticas, zumos, aguas saborizadas, bebidas en polvo y jarabes. La idoneidad se evalúa para la formulación y el proceso previstos."
+          "Flavours for soft drinks, energy drinks, juices, flavoured waters, powdered drinks and syrups.",
+          "Sabores para refrescos, bebidas energéticas, zumos, aguas saborizadas, bebidas en polvo y jarabes."
         ),
+        scope: {
+          title: t("Flavours for beverages.", "Sabores para bebidas."),
+          context: {
+            title: t("Tell us about your beverage.", "Cuéntenos su bebida."),
+            text: t(
+              "Share the beverage and the flavour profile you are looking for.",
+              "Indique la bebida y el perfil de sabor que busca."
+            )
+          }
+        },
         image: "/images/flavours/beverage.avif",
         showcase: { image: "/images/flavours/beverage-citrus.webp", focus: "65% 50%" }
       },
@@ -435,9 +588,19 @@ export const divisions: Division[] = [
           "Sopas, noodles, caldos, snacks, carne, pescado y platos preparados."
         ),
         detail: t(
-          "Flavours for soups, noodles, stock cubes, snacks, meat and fish applications, and ready meals. Development starts from the target profile, base matrix and processing conditions.",
-          "Sabores para sopas, noodles, cubitos de caldo, snacks, aplicaciones de carne y pescado y platos preparados. El desarrollo parte del perfil objetivo, la matriz base y las condiciones de proceso."
+          "Flavours for soups, noodles, stock cubes, snacks, meat and fish, and ready meals.",
+          "Sabores para sopas, fideos, pastillas de caldo, snacks, carnes y pescados, y platos preparados."
         ),
+        scope: {
+          title: t("Flavours for savoury products.", "Sabores para productos salados."),
+          context: {
+            title: t("Tell us about your product.", "Cuéntenos su producto."),
+            text: t(
+              "Share the savoury product and the flavour profile you are looking for.",
+              "Indique el producto salado y el perfil de sabor que busca."
+            )
+          }
+        },
         image: "/images/flavours/hero.avif",
         showcase: { image: "/images/flavours/savoury-board.webp", focus: "50% 50%" }
       }
@@ -522,9 +685,19 @@ export const divisions: Division[] = [
           "Revisión de procesos productivos con foco en seguridad alimentaria y eficiencia."
         ),
         detail: t(
-          "Engagements can address machinery selection, production flow and process improvement. Deliverables are agreed in the consulting scope.",
-          "Los proyectos pueden abordar la selección de maquinaria, el flujo productivo y la mejora de procesos. Los entregables se acuerdan en el alcance de la consultoría."
+          "Consulting on machinery and production processes in food manufacturing, with food safety, efficiency and industry standards in view.",
+          "Consultoría sobre maquinaria y procesos de producción en la fabricación de alimentos, con la seguridad alimentaria, la eficiencia y las normas del sector presentes."
         ),
+        scope: {
+          title: t("Food processes.", "Procesos alimentarios."),
+          context: {
+            title: t("Tell us about your process.", "Cuéntenos su proceso."),
+            text: t(
+              "Share the process, the challenge you face and the objectives you want to reach.",
+              "Indique el proceso, el reto que afronta y los objetivos que quiere alcanzar."
+            )
+          }
+        },
         image: "/images/consulting/process.avif",
         showcase: { image: "/images/consulting/production-line.webp", focus: "55% 55%" }
       },
@@ -537,9 +710,19 @@ export const divisions: Division[] = [
           "Análisis de flujo, paradas y eficiencia productiva."
         ),
         detail: t(
-          "Consulting aimed at manufacturing efficiency, downtime reduction and workflow optimization.",
-          "Consultoría orientada a la eficiencia de fabricación, la reducción de paradas y la optimización del flujo de trabajo."
+          "Consulting on machinery and production processes aimed at manufacturing efficiency, less downtime and a smoother workflow.",
+          "Consultoría sobre maquinaria y procesos de producción orientada a la eficiencia de fabricación, a reducir paradas y a un flujo de trabajo más fluido."
         ),
+        scope: {
+          title: t("Industrial processes.", "Procesos industriales."),
+          context: {
+            title: t("Tell us about your process.", "Cuéntenos su proceso."),
+            text: t(
+              "Share the process, the challenge you face and the objectives you want to reach.",
+              "Indique el proceso, el reto que afronta y los objetivos que quiere alcanzar."
+            )
+          }
+        },
         image: "/images/consulting/process.avif",
         showcase: { image: "/images/consulting/industrial-robotics.webp", focus: "50% 55%" }
       },
@@ -552,9 +735,19 @@ export const divisions: Division[] = [
           "Consideraciones de eficiencia de recursos e impacto ambiental."
         ),
         detail: t(
-          "Support for production decisions where resource efficiency and environmental impact matter. Each engagement starts with a defined project scope.",
-          "Apoyo en decisiones productivas donde importan la eficiencia de recursos y el impacto ambiental. Cada proyecto parte de un alcance definido."
+          "Consulting on production processes where resource efficiency and environmental impact matter.",
+          "Consultoría sobre procesos de producción en los que importan la eficiencia de los recursos y el impacto ambiental."
         ),
+        scope: {
+          title: t("Environmental performance.", "Desempeño ambiental."),
+          context: {
+            title: t("Tell us about your process.", "Cuéntenos su proceso."),
+            text: t(
+              "Share the process, the challenge you face and the objectives you want to reach.",
+              "Indique el proceso, el reto que afronta y los objetivos que quiere alcanzar."
+            )
+          }
+        },
         image: "/images/consulting/hero.avif",
         showcase: { image: "/images/consulting/environmental-treatment.webp", focus: "50% 55%" }
       },
@@ -567,11 +760,27 @@ export const divisions: Division[] = [
           "Consultoría de procesos donde la calidad y el cumplimiento son centrales."
         ),
         detail: t(
-          "Process consulting for pharmaceutical manufacturing environments. Deliverables and compliance responsibilities are agreed in writing for each engagement.",
-          "Consultoría de procesos para entornos de fabricación farmacéutica. Los entregables y las responsabilidades de cumplimiento se acuerdan por escrito en cada proyecto."
+          "Process consulting for pharmaceutical manufacturing, with quality and regulatory requirements in view.",
+          "Consultoría de procesos para la fabricación farmacéutica, con los requisitos de calidad y normativos presentes."
         ),
+        scope: {
+          title: t("Pharmaceutical processes.", "Procesos farmacéuticos."),
+          context: {
+            title: t("Tell us about your process.", "Cuéntenos su proceso."),
+            text: t(
+              "Share the process, the challenge you face and the objectives you want to reach.",
+              "Indique el proceso, el reto que afronta y los objetivos que quiere alcanzar."
+            )
+          }
+        },
         image: "/images/consulting/process.avif",
-        showcase: { placeholder: "capsule" }
+        showcase: { placeholder: "capsule" },
+        heroPanorama: {
+          image: "/images/consulting/pharmaceutical-filling-panorama.png",
+          width: 1914,
+          height: 822,
+          focus: "70% 50%"
+        }
       }
     ]
   }

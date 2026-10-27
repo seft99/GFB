@@ -40,7 +40,15 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     title: { default: meta.siteTitle, template: "%s | GFB Solutions" },
     description: meta.siteDescription,
     applicationName: "GFB Solutions",
-    icons: { icon: "/brand/gfb-logo.avif" }
+    // Favicon: the circular GFB mark (cropped from the logo), not the full horizontal logo.
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48" },
+        { url: "/brand/gfb-icon-32.png", type: "image/png", sizes: "32x32" },
+        { url: "/brand/gfb-icon-192.png", type: "image/png", sizes: "192x192" }
+      ],
+      apple: { url: "/brand/apple-touch-icon.png", sizes: "180x180" }
+    }
   };
 }
 

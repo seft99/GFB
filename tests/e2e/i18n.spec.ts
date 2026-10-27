@@ -72,5 +72,5 @@ test("the language switcher keeps the visitor on the equivalent page", async ({ 
   await page.getByRole("link", { name: "Ver en español" }).click();
   await expect(page).toHaveURL(/\/es\/materias-primas\/concentrados-de-frutas$/);
   await expect(page.locator("html")).toHaveAttribute("lang", "es");
-  await expect(page.getByRole("listitem").filter({ hasText: "Naranja sanguina" })).toBeVisible();
+  await expect(page.getByRole("listitem").filter({ hasText: "Uva blanca" })).toBeVisible();
 });

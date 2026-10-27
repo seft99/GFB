@@ -123,13 +123,13 @@ export const en = {
   },
   category: {
     scopeEyebrow: "Scope",
-    scopeTitle: "What this solution covers.",
-    beforeQuoteTitle: "Before quotation",
-    beforeQuoteText:
-      "Share the application, format, volume, destination, processing conditions and required documentation.",
+    contextLabel: "Project context",
     familiesLink: "Browse families",
     groupsEyebrow: "Product families",
     groupsTitle: "Browse by family.",
+    explorerCount: "products",
+    explorerCta: "Discuss this family",
+    explorerTabs: "Concentrate families",
     ctaEyebrow: "Contextual inquiry",
     ctaTitle: "Share the requirements for this category."
   },
