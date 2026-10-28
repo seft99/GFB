@@ -20,7 +20,9 @@ const content = JSON.parse(await readFile(new URL("../src/migration/legacy-conte
 
 const failures = [];
 const checks = { total: 0 };
-const fail = (url, issue, detail) => failures.push({ url, issue, ...(detail ? { detail } : {}) });
+const fail = (url, issue, detail) => {
+  failures.push({ url, issue, ...(detail ? { detail } : {}) });
+};
 const count = (name) => (checks[name] = (checks[name] || 0) + 1);
 
 const decode = (value = "") =>

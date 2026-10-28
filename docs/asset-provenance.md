@@ -34,8 +34,19 @@ All photographs are illustrative; none shows GFB products, facilities or process
 `tropical-thumb.webp` (pineapple), `red-fruits-thumb.webp` (strawberries) and
 `vegetables-thumb.webp` (carrots): studio cut-outs from the product images of
 https://www.gfb-solutions.com/fruits-concentrates, resized to 480 px WebP.
+The technical product library reuses these thumbnails and adds `red-grape-thumb.webp` (red
+grapes, same official product image set, 480 px WebP).
 Usage rights: **to confirm with GFB** (published on the company's own site; the original
 photographer or stock licence is not documented).
+
+### Frozen fruits library thumbnails — official GFB website
+
+`public/images/raw-materials/iqf/iqf-lemon-thumb.webp`, `iqf-orange-thumb.webp`,
+`iqf-lime-thumb.webp` and `iqf-grapefruit-thumb.webp`: 480 px square WebP crops of the official
+GFB IQF slice photos (static.wixstatic.com media `bb6094_092bb083…`, `bb6094_61ecff8f…`,
+`bb6094_fb249469…`, `bb6094_76817ca1…`, as published on the IQF product pages of
+https://www.gfb-solutions.com). Crop and resize only; no generated or edited content.
+Usage rights: **to confirm with GFB** (same status as the other images from the company's site).
 
 ### Not used by the explorer any more
 

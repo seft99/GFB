@@ -5,6 +5,7 @@ import { CategoryHero, categorySectionIds } from "@/components/sections/category
 import { ConcentrateExplorer } from "@/components/sections/concentrate-explorer";
 import { CtaBand } from "@/components/sections/cta-band";
 import { LegacyCatalogue } from "@/components/sections/legacy-catalogue";
+import { TechnicalLibrary } from "@/components/sections/technical-library";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon } from "@/components/ui/icon";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -13,6 +14,7 @@ import { isLocale, locales } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { localizedPaths, paths } from "@/src/i18n/routes";
 import { pageMetadata } from "@/src/lib/metadata";
+import { categoryLibrary } from "@/src/migration/technical-library";
 import "../../../styles/detail-hero.css";
 import "../../../styles/detail-scope.css";
 
@@ -59,6 +61,7 @@ export default async function CategoryPage({ params }: Props) {
   const { locale, division, category } = resolved;
   const { category: copy, common } = getDictionary(locale);
   const inquiryHref = paths.contact(locale, { interest: division.id, category: category.title[locale] });
+  const library = categoryLibrary(category.id, locale);
 
   return (
     <main id="main-content">
@@ -155,7 +158,11 @@ export default async function CategoryPage({ params }: Props) {
         </section>
       )}
 
-      <LegacyCatalogue locale={locale} parent={{ division: division.id, category: category.id }} />
+      {library ? (
+        <TechnicalLibrary config={library} labels={getDictionary(locale).library} />
+      ) : (
+        <LegacyCatalogue locale={locale} parent={{ division: division.id, category: category.id }} />
+      )}
 
       <CtaBand
         variant="compact"

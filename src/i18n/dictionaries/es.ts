@@ -273,6 +273,47 @@ export const es: Dictionary = {
     indexMeta:
       "Índice de páginas de producto, especificaciones y aplicaciones de GFB Solutions, agrupadas por categoría y familia."
   },
+  library: {
+    eyebrow: "Índice técnico de productos",
+    title: "Fichas de producto y especificaciones",
+    text: "Explore nuestros concentrados de frutas y vegetales, con sus fichas de producto y especificaciones técnicas publicadas.",
+    families: "Familias de producto",
+    searchLabel: "Buscar productos, variedades o códigos",
+    searchPlaceholder: "Buscar productos, variedades o especificaciones…",
+    clearSearch: "Borrar búsqueda",
+    typeFilter: "Tipo de recurso",
+    all: "Todos los recursos",
+    product: "Fichas de producto",
+    technical: "Fichas técnicas",
+    productLink: "Ficha de producto",
+    technicalLink: "Ficha técnica",
+    products: "productos",
+    records: "referencias",
+    pages: "páginas",
+    results: "Resultados de búsqueda",
+    resultsIn: "Coincidencias en",
+    allFamilies: "Todas las familias",
+    showAllFamilies: "Ver coincidencias en todas las familias",
+    resultCount: "{count} referencias encontradas",
+    resultCountOne: "1 referencia encontrada",
+    familyEyebrow: "Familia de producto",
+    groupEyebrow: "Grupo de documentación técnica",
+    noResults: "No se encontraron referencias.",
+    noResultsHint: "Pruebe con otro producto, variedad o código, o borre la búsqueda y los filtros.",
+    reset: "Borrar búsqueda y filtros",
+    noTechnical: "Esta familia no tiene fichas técnicas publicadas por separado.",
+    noTechnicalHint: "Sus fichas de producto indican los formatos publicados para cada concentrado.",
+    showAllResources: "Ver todos los recursos",
+    grapeEyebrow: "Especificaciones de uva tinta",
+    grapeTitle: "¿Busca una especificación de uva concreta?",
+    grapeText: "Abra el grupo de uva tinta: fichas de cada variedad y fichas técnicas con análisis y microbiología.",
+    grapeAction: "Ver especificaciones de uva"
+  },
+  libraryFrozen: {
+    text: "Explore nuestros cítricos congelados IQF — limón, naranja, lima y pomelo — con la página publicada de cada corte, ralladura y piel.",
+    noTechnicalHint:
+      "Sus páginas de producto muestran la presentación y la conservación publicadas para cada referencia."
+  },
   notFound: {
     metaTitle: "Página no encontrada",
     title: "Esa página no está en el portafolio.",

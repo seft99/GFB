@@ -1,11 +1,11 @@
 {
  "summary": {
   "origin": "http://localhost:3000",
-  "host": "(request host)",
-  "expectIndexable": false,
+  "host": "www.gfb-solutions.com",
+  "expectIndexable": true,
   "manifestRows": 289,
   "checks": {
-   "total": 630,
+   "total": 631,
    "retained": 280,
    "contentIdentity": 248,
    "redirects": 6,
@@ -16,7 +16,7 @@
    "crawlerUserAgent": 2,
    "sitemapUrls": 292,
    "internalLinks": 568,
-   "images": 52
+   "images": 57
   },
   "sitemapUrls": 292,
   "failures": 0,
