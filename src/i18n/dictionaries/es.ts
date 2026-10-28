@@ -266,6 +266,8 @@ export const es: Dictionary = {
     allProducts: "Fichas de producto y especificaciones",
     allProductsText: "Páginas técnicas y de producto de esta categoría, con sus especificaciones publicadas.",
     backTo: "Volver a",
+    references: "Referencias de producto",
+    viewProduct: "Ver ficha de producto",
     specs: "Especificaciones",
     indexTitle: "Índice de productos",
     indexText:
@@ -286,6 +288,7 @@ export const es: Dictionary = {
     product: "Fichas de producto",
     technical: "Fichas técnicas",
     productLink: "Ficha de producto",
+    overviewLink: "Página general",
     technicalLink: "Ficha técnica",
     products: "productos",
     records: "referencias",
@@ -308,6 +311,25 @@ export const es: Dictionary = {
     grapeTitle: "¿Busca una especificación de uva concreta?",
     grapeText: "Abra el grupo de uva tinta: fichas de cada variedad y fichas técnicas con análisis y microbiología.",
     grapeAction: "Ver especificaciones de uva"
+  },
+  resources: {
+    count: "{count} recursos",
+    countOne: "1 recurso",
+    items: "Recursos de producto",
+    previewMeta: "Vista previa de desarrollo de las variantes de recursos de producto.",
+    previewEyebrow: "Vista previa de desarrollo",
+    previewTitle: "Variantes de recursos de producto",
+    previewText:
+      "Dos presentaciones reutilizables de datos verificados del catálogo. Sin enlaces desde el sitio, sin indexar y aún sin asignar a ninguna página de categoría.",
+    previewVariant: "Variante"
+  },
+  resourceIntro: {
+    cans: "Explore nuestros formatos de lata de aluminio y sus tapas compatibles, con sus fichas de producto y especificaciones técnicas publicadas.",
+    closures:
+      "Explore nuestras tapas corona y RipCaps, con sus fichas de producto y especificaciones técnicas publicadas.",
+    bottles: "Explore nuestros formatos de botella de vidrio por bebida, con sus fichas de producto publicadas.",
+    labels: "Explore nuestras soluciones de etiquetado para bebidas, con sus fichas de producto publicadas.",
+    plantBased: "Explore nuestros concentrados de origen vegetal, con sus fichas de producto publicadas."
   },
   libraryFrozen: {
     text: "Explore nuestros cítricos congelados IQF — limón, naranja, lima y pomelo — con la página publicada de cada corte, ralladura y piel.",

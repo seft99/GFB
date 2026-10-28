@@ -116,6 +116,16 @@ test.describe("technical product library", () => {
     await expect(page).toHaveURL(/lang=es/);
   });
 
+  test("a search across all families keeps its scope after a reload", async ({ page }) => {
+    await family(page, "Tropical").click();
+    await page.getByRole("searchbox", { name: "Search products, varieties or codes" }).fill("merlot");
+    await expect(page).toHaveURL(/\?q=merlot$/);
+    await page.reload();
+    await expect(cards(page).getByRole("heading")).toHaveText(["Merlot"]);
+    await page.getByRole("button", { name: "Clear search" }).click();
+    await expect(page).toHaveURL(/family=citrus/);
+  });
+
   test("an unknown family or type falls back to the defaults", async ({ page }) => {
     await page.goto("/fruits-concentrates?family=lemon&type=bogus");
     await expect(family(page, "Citrus")).toHaveAttribute("aria-pressed", "true");

@@ -198,3 +198,48 @@
     transition: none;
   }
 }
+
+/* Product references restored from the legacy hub pages (lightweight link rows) */
+.legacy-detail__refs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: 0 1.5rem;
+  max-width: 46rem;
+  margin: 0.25rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+.legacy-detail__refs a,
+.legacy-detail__section-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.75rem;
+  border-bottom: 1px solid #e3e8f0;
+  color: var(--brand-ink);
+  font-weight: 600;
+  transition: color var(--motion-fast) ease;
+}
+.legacy-detail__section-link {
+  display: inline-flex;
+  justify-content: flex-start;
+  min-height: 2.5rem;
+  border-bottom: 0;
+  color: var(--blue-600);
+  font-weight: 700;
+}
+.legacy-detail__refs a svg,
+.legacy-detail__section-link svg {
+  flex: none;
+  width: 0.95rem;
+  color: var(--blue-600);
+  transition: translate var(--motion-fast) var(--ease-out);
+}
+.legacy-detail__refs a:hover {
+  color: var(--blue-600);
+}
+.legacy-detail__refs a:hover svg,
+.legacy-detail__section-link:hover svg {
+  translate: 3px 0;
+}

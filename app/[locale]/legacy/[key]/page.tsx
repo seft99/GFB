@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Icon } from "@/components/ui/icon";
 import { JsonLd } from "@/components/ui/json-ld";
 import { getDivisionById } from "@/src/content/catalog";
-import { isLocale, locales } from "@/src/i18n/config";
+import { isLocale, locales, type Locale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { paths } from "@/src/i18n/routes";
 import { pageMetadata } from "@/src/lib/metadata";
@@ -60,9 +60,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-function SpecItem({ item }: { item: Item }) {
+type LegacyCopy = ReturnType<typeof getDictionary>["legacy"];
+
+function SpecItem({ item, locale, copy }: { item: Item; locale: Locale; copy: LegacyCopy }) {
   const lang = "lang" in item ? item.lang : undefined;
   switch (item.type) {
+    case "links":
+      // Product references the original page linked to, as compact rows.
+      return (
+        <ul className="legacy-detail__refs" aria-label={copy.references}>
+          {item.paths.map((path) => (
+            <li key={path}>
+              <Link href={publicUrl(path, locale)} prefetch={false}>
+                <span>{legacyLinkLabel(path, locale)}</span>
+                <Icon name="arrow" strokeWidth={1.6} />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      );
     case "p":
       return <p lang={lang}>{item.text}</p>;
     case "h3":
@@ -91,8 +107,18 @@ function SpecItem({ item }: { item: Item }) {
   }
 }
 
-function ContentSection({ section, id }: { section: Section; id: string }) {
-  const items = section.items.map((item, index) => <SpecItem key={index} item={item} />);
+function ContentSection({
+  section,
+  id,
+  locale,
+  copy
+}: {
+  section: Section;
+  id: string;
+  locale: Locale;
+  copy: LegacyCopy;
+}) {
+  const items = section.items.map((item, index) => <SpecItem key={index} item={item} locale={locale} copy={copy} />);
   if (!section.heading) return <div className="legacy-detail__section">{items}</div>;
   return (
     <section className="legacy-detail__section" aria-labelledby={id}>
@@ -100,9 +126,25 @@ function ContentSection({ section, id }: { section: Section; id: string }) {
         {section.heading}
       </h2>
       {items}
+      {section.link && (
+        <Link href={publicUrl(section.link, locale)} prefetch={false} className="legacy-detail__section-link">
+          {copy.viewProduct}
+          <span className="visually-hidden">: {legacyLinkLabel(section.link, locale)}</span>
+          <Icon name="arrow" strokeWidth={1.8} />
+        </Link>
+      )}
     </section>
   );
 }
+
+/** Legacy paths linked from the page content (restored product references). */
+const contentLinks = (sections: Section[]) =>
+  new Set(
+    sections.flatMap((section) => [
+      ...(section.link ? [section.link] : []),
+      ...section.items.flatMap((item) => (item.type === "links" ? item.paths : []))
+    ])
+  );
 
 export default async function LegacyDetailPage({ params }: Props) {
   const resolved = await resolve(params);
@@ -123,7 +165,9 @@ export default async function LegacyDetailPage({ params }: Props) {
       : []),
     { label: content.h1 }
   ];
-  const siblings = family.paths.filter((item) => item !== path);
+  // Family pages not already linked from the content (no duplicated link lists on hubs).
+  const linked = contentLinks(content.sections);
+  const siblings = family.paths.filter((item) => item !== path && !linked.has(item));
   const isHub = family.hub === path || path === "/fruit-concentrates";
   const firstParagraph = content.sections[0]?.items[0];
   const showLead = !(
@@ -166,7 +210,13 @@ export default async function LegacyDetailPage({ params }: Props) {
           <div className="shell">
             <div className="legacy-detail__content">
               {content.sections.map((section, index) => (
-                <ContentSection key={index} section={section} id={`legacy-section-${index}`} />
+                <ContentSection
+                  key={index}
+                  section={section}
+                  id={`legacy-section-${index}`}
+                  locale={locale}
+                  copy={legacy}
+                />
               ))}
             </div>
           </div>

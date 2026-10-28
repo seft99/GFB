@@ -1,6 +1,6 @@
 import type { Locale, LocalizedText } from "../i18n/config.ts";
 import { getDictionary } from "../i18n/dictionaries/index.ts";
-import { families, type Family } from "./families.ts";
+import { families, familyOf, type Family } from "./families.ts";
 import type { DocumentType, LibraryConfig, LibraryFamily, LibraryProduct, LibraryResource } from "./library-search.ts";
 import { legacyLinkLabel, legacyPage } from "./manifest.ts";
 import { publicUrl } from "./public-paths.ts";
@@ -35,13 +35,22 @@ export function documentType(path: string): DocumentType {
 /** Display name: single-line page H1 (Wix sometimes breaks codes over two lines). */
 const pageName = (path: string, locale: Locale) => (legacyPage(path)?.[locale].h1 ?? path).replace(/\s*\n\s*/g, " ");
 
+/**
+ * General pages that are not one product reference: each family hub plus the two other overview
+ * pages of the catalogue (/frozen-lemon lists the lemon range and its features; /fruit-concentrates
+ * introduces the red grape concentrates).
+ */
+const OVERVIEW_PAGES = new Set(["/frozen-lemon", "/fruit-concentrates"]);
+export const isOverview = (path: string) => familyOf(path)?.hub === path || OVERVIEW_PAGES.has(path);
+
 function resource(path: string, locale: Locale): LibraryResource {
   return {
     id: `${locale}:${path}`,
     type: documentType(path),
     title: pageName(path, locale),
     href: publicUrl(path, locale),
-    path
+    path,
+    ...(isOverview(path) ? { overview: true } : {})
   };
 }
 
@@ -64,12 +73,19 @@ type GroupSource = {
   products: (locale: Locale) => LibraryProduct[];
   /** Groups whose records combine product overviews and technical sheets. */
   documentGroup?: boolean;
+  /** Groups whose pages include general pages: counts references and pages separately. */
+  countReferences?: boolean;
 };
 
 function buildGroup(source: GroupSource, locale: Locale): LibraryFamily {
   const { library } = getDictionary(locale);
   const products = source.products(locale);
   const resourceCount = products.reduce((sum, product) => sum + product.resources.length, 0);
+  // References: records that are one product, i.e. not only general (overview) pages.
+  const references = source.countReferences
+    ? products.filter((product) => !product.resources.every((item) => item.overview)).length
+    : products.length;
+  const split = source.documentGroup || source.countReferences;
   return {
     id: source.id,
     slug: source.slug,
@@ -78,12 +94,12 @@ function buildGroup(source: GroupSource, locale: Locale): LibraryFamily {
     eyebrow: source.documentGroup ? library.groupEyebrow : library.familyEyebrow,
     description: source.description[locale],
     thumb: source.thumb,
-    productCount: products.length,
+    productCount: references,
     resourceCount,
-    countLabel: source.documentGroup
-      ? `${products.length} ${library.records} · ${resourceCount} ${library.pages}`
-      : `${products.length} ${library.products}`,
-    countNoun: source.documentGroup ? library.pages : library.products,
+    countLabel: split
+      ? `${references} ${library.records} · ${resourceCount} ${library.pages}`
+      : `${references} ${library.products}`,
+    countNoun: split ? library.pages : library.products,
     products
   };
 }
@@ -218,8 +234,8 @@ export function cutAliases(name: string): string[] {
 }
 
 const IQF_DESCRIPTION: LocalizedText = {
-  en: "Each product page shows the information published for that IQF reference.",
-  es: "Cada página de producto muestra la información publicada para esa referencia IQF."
+  en: "The overview page presents the range; each product page shows the information published for one IQF reference.",
+  es: "La página general presenta la gama; cada ficha de producto muestra la información publicada de una referencia IQF."
 };
 
 const iqfGroup = (id: string, slug: string, title: LocalizedText): GroupSource => ({
@@ -229,6 +245,7 @@ const iqfGroup = (id: string, slug: string, title: LocalizedText): GroupSource =
   heading: familyById(id).label,
   thumb: `/images/raw-materials/iqf/${id}-thumb.webp`,
   description: IQF_DESCRIPTION,
+  countReferences: true,
   products: (locale) =>
     pagesOf(
       id,

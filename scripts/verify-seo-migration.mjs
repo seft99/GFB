@@ -134,7 +134,15 @@ async function verifyRetained(row) {
   if (legacy) {
     const facts = legacy.sections
       .flatMap((section) => section.items)
-      .flatMap((item) => (item.type === "specs" ? item.rows.flat() : item.type === "ul" ? item.items : [item.text]))
+      .flatMap((item) =>
+        item.type === "specs"
+          ? item.rows.flat()
+          : item.type === "ul"
+            ? item.items
+            : item.type === "links"
+              ? []
+              : [item.text]
+      )
       .filter((text) => text.length > 3)
       .slice(0, 6);
     const missing = facts.filter((fact) => !page.text.includes(fact.replace(/\s+/g, " ")));

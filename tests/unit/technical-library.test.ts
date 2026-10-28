@@ -147,10 +147,10 @@ test("frozen fruits: four IQF groups with the verified published pages, product 
   assert.deepEqual(
     frozen.map((family) => [family.id, family.slug, family.productCount, family.resourceCount]),
     [
-      ["iqf-lemon", "lemon", 11, 11],
-      ["iqf-orange", "orange", 11, 11],
-      ["iqf-lime", "lime", 7, 7],
-      ["iqf-grapefruit", "grapefruit", 5, 5]
+      ["iqf-lemon", "lemon", 9, 11],
+      ["iqf-orange", "orange", 10, 11],
+      ["iqf-lime", "lime", 6, 7],
+      ["iqf-grapefruit", "grapefruit", 4, 5]
     ]
   );
   const resources = resourcesOf(frozenFruitsLibrary("en"));
@@ -158,8 +158,20 @@ test("frozen fruits: four IQF groups with the verified published pages, product 
   assert.ok(resources.every((resource) => resource.type === "product" && documentType(resource.path) === "product"));
   for (const family of frozen) {
     assert.equal(family.thumb, `/images/raw-materials/iqf/${family.id}-thumb.webp`);
-    assert.equal(family.countLabel, `${family.productCount} products`);
+    assert.equal(family.countLabel, `${family.productCount} references · ${family.resourceCount} pages`);
   }
+  // General pages are told apart from product references (hubs + /frozen-lemon).
+  assert.deepEqual(
+    resources.filter((resource) => resource.overview).map((resource) => resource.path),
+    ["/iqf-lemon", "/frozen-lemon", "/iqf-orange", "/iqf-lime", "/iqf-grapefruit"]
+  );
+});
+
+test("frozen reference counts match the references each official IQF page lists", () => {
+  // "We handle the following references: …" on /iqf-lemon, /iqf-orange, /iqf-lime and
+  // /iqf-grapefruit ("Slices … and Half Slices …" is two references).
+  const listed = { "iqf-lemon": 9, "iqf-orange": 10, "iqf-lime": 6, "iqf-grapefruit": 4 };
+  for (const family of frozen) assert.equal(family.productCount, listed[family.id as keyof typeof listed], family.id);
 });
 
 test("frozen fruits carry no concentrate or grape content and no banner", () => {

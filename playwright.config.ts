@@ -19,6 +19,8 @@ export default defineConfig({
     command: `npm run start -- --port ${port}`,
     url: `${baseURL}/`,
     reuseExistingServer: !process.env.CI,
+    // Enables the development-only component preview (app/[locale]/component-preview).
+    env: { GFB_COMPONENT_PREVIEW: "1" },
     timeout: 60_000
   }
 });

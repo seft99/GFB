@@ -48,6 +48,22 @@ GFB IQF slice photos (static.wixstatic.com media `bb6094_092bb083…`, `bb6094_6
 https://www.gfb-solutions.com). Crop and resize only; no generated or edited content.
 Usage rights: **to confirm with GFB** (same status as the other images from the company's site).
 
+### Product-resource previews — official GFB website
+
+`public/images/packaging/resources/`: crops and resizes (WebP, ≤ 1200 px) of official GFB product
+photographs, each from the page that publishes it (static.wixstatic.com media id):
+`standard-can-card.webp` (`/aluminum-cans/std-can-d66mm`, `bb6094_38521d80…`),
+`sleek-can-card.webp` (`/aluminum-cans/sleek-can-d57mm`, `bb6094_26e8d0de…`),
+`slim-can-card.webp` and `aluminium-cans-thumb.webp` (`/aluminum-cans/slim-can-d53mm`,
+`bb6094_74f4dbfb…`), `can-end-52mm-card.webp` and `can-ends-thumb.webp`
+(`/aluminium-can-ends/52mm-(202)-dia-aluminium-end`, `bb6094_a7a2952c…`, 597 px source) and
+`can-end-52mm-ise-card.webp` (`/aluminium-can-ends/52mm-(202)-dia-ise-aluminium-end`,
+`bb6094_ea304975…`, 550 px source). Plain, unbranded cans and ends; no generated content.
+The label photographs of `/shrink-sleeve-labels`, `/washoff-labels` and `/wet-glue-labels` were
+not used: they show third-party brands or a stock mockup. The preview CTA reuses the approved
+`packaging/cans-card.webp`.
+Usage rights: **to confirm with GFB** (same status as the other images from the company's site).
+
 ### Not used by the explorer any more
 
 `public/images/raw-materials/citrus.webp` (official GFB website) and

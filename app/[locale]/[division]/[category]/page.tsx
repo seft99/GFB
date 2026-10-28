@@ -5,6 +5,7 @@ import { CategoryHero, categorySectionIds } from "@/components/sections/category
 import { ConcentrateExplorer } from "@/components/sections/concentrate-explorer";
 import { CtaBand } from "@/components/sections/cta-band";
 import { LegacyCatalogue } from "@/components/sections/legacy-catalogue";
+import { ProductResourceSection } from "@/components/sections/product-resources/product-resource-section";
 import { TechnicalLibrary } from "@/components/sections/technical-library";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon } from "@/components/ui/icon";
@@ -14,6 +15,7 @@ import { isLocale, locales } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { localizedPaths, paths } from "@/src/i18n/routes";
 import { pageMetadata } from "@/src/lib/metadata";
+import { categoryResources } from "@/src/migration/category-resources";
 import { categoryLibrary } from "@/src/migration/technical-library";
 import "../../../styles/detail-hero.css";
 import "../../../styles/detail-scope.css";
@@ -62,6 +64,8 @@ export default async function CategoryPage({ params }: Props) {
   const { category: copy, common } = getDictionary(locale);
   const inquiryHref = paths.contact(locale, { interest: division.id, category: category.title[locale] });
   const library = categoryLibrary(category.id, locale);
+  // Extensive catalogues keep the technical library; other assigned categories use a variant.
+  const resources = library ? undefined : categoryResources(category.id, locale);
 
   return (
     <main id="main-content">
@@ -160,6 +164,8 @@ export default async function CategoryPage({ params }: Props) {
 
       {library ? (
         <TechnicalLibrary config={library} labels={getDictionary(locale).library} />
+      ) : resources ? (
+        <ProductResourceSection config={resources} locale={locale} />
       ) : (
         <LegacyCatalogue locale={locale} parent={{ division: division.id, category: category.id }} />
       )}

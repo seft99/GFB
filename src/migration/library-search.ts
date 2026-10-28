@@ -5,7 +5,15 @@
 
 export type DocumentType = "product" | "technical";
 
-export type LibraryResource = { id: string; type: DocumentType; title: string; href: string; path: string };
+export type LibraryResource = {
+  id: string;
+  type: DocumentType;
+  title: string;
+  href: string;
+  path: string;
+  /** General page of a group (hub or overview), not one product reference. */
+  overview?: boolean;
+};
 
 export type LibraryProduct = {
   id: string;

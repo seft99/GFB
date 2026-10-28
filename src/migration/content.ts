@@ -12,15 +12,21 @@ export type Item =
   | { type: "p"; text: string; lang?: "en" }
   | { type: "h3"; text: string; lang?: "en" }
   | { type: "ul"; items: string[]; lang?: "en" }
-  | { type: "specs"; rows: [string, string][]; lang?: "en" };
+  | { type: "specs"; rows: [string, string][]; lang?: "en" }
+  /** Product references the legacy page linked to (legacy paths, labelled at render time). */
+  | { type: "links"; paths: string[] };
 
-export type Section = { heading?: string; headingLang?: "en"; items: Item[] };
+/** `link`: legacy path the original page linked from this section's heading. */
+export type Section = { heading?: string; headingLang?: "en"; link?: string; items: Item[] };
 
 export type Processed = {
   h1: string;
   eyebrow?: string;
   sections: Section[];
-  excluded: { text: string; reason: "health-claim" | "manufacturing-claim" | "benefits-section" }[];
+  excluded: {
+    text: string;
+    reason: "health-claim" | "manufacturing-claim" | "benefits-section" | "empty-heading";
+  }[];
 };
 
 const IGNORED = new Set(["contact us", "read more", "contáctanos", "contactanos", "leer más", "ver más", "more"]);
@@ -108,10 +114,25 @@ export function cleanText(value: string): string {
   ).trim();
 }
 
+/**
+ * "Healthy (hand-)selected grapes" describes the raw material (sound fruit), not a health
+ * benefit: it is ignored by the health-claim check so product overviews are not withheld.
+ */
+const SOUND_FRUIT =
+  /\bhealthy\b(?=,?\s+(?:and\s+)?(?:hand-|carefully\s+)?selected\b)|(?<=\bselected,?\s+)healthy\b(?=\s+grapes\b)/gi;
 const isHeadingLike = (text: string) => text.length <= 70 && !text.includes("\n") && !/[.!?]$/.test(text);
 const isProse = (line: string) => line.length > 60 && !/^[^:]{2,40}:\s/.test(line);
 const claimReason = (text: string) =>
-  MANUFACTURING.test(text) ? "manufacturing-claim" : isProse(text) && HEALTH.test(text) ? "health-claim" : null;
+  MANUFACTURING.test(text)
+    ? "manufacturing-claim"
+    : isProse(text) && HEALTH.test(text.replace(SOUND_FRUIT, ""))
+      ? "health-claim"
+      : null;
+
+/** Start of the "available formats" heading pairs of concentrate pages. */
+const FORMATS_START = /^(concentrates?|concentrados?|available formats|formatos disponibles)$/i;
+/** Product-type labels Wix repeats as a lone heading further down some pages. */
+const TYPE_LABEL = /^(frozen fruits|frutas congeladas)$/i;
 
 /** Parses a multi-line paragraph into label/value rows, bullet lists, subheadings and prose. */
 function parseLines(text: string, excluded: Processed["excluded"]): Item[] {
@@ -160,7 +181,51 @@ function shortRun(run: string[]): Item {
   return { type: "ul", items: flat };
 }
 
-export function processBlocks(blocks: RawBlock[], options: { formatsHeading: string }): Processed {
+/**
+ * Removes headings with nothing under them. A run of empty section headings that the legacy
+ * page linked to product pages becomes a list of links in the preceding section; a lone
+ * product-type label becomes the eyebrow; any other empty heading is recorded and dropped.
+ * An `h3` directly followed by another `h3` (or by nothing) is dropped the same way.
+ */
+function dropEmptyHeadings(processed: Processed): Processed {
+  const excluded = [...processed.excluded];
+  let eyebrow = processed.eyebrow;
+  const sections: Section[] = [];
+  for (const section of processed.sections) {
+    const items = section.items.filter((item, index, all) => {
+      const next = all[index + 1];
+      if (item.type !== "h3" || (next && next.type !== "h3")) return true;
+      excluded.push({ text: item.text, reason: "empty-heading" });
+      return false;
+    });
+    if (items.length > 0) {
+      sections.push({ ...section, items });
+      continue;
+    }
+    if (section.link) {
+      let host = sections.at(-1);
+      if (!host) sections.push((host = { items: [] }));
+      const last = host.items.at(-1);
+      if (last?.type === "links") last.paths.push(section.link);
+      else host.items.push({ type: "links", paths: [section.link] });
+      continue;
+    }
+    if (section.heading && TYPE_LABEL.test(section.heading)) eyebrow ??= section.heading;
+    else if (section.heading) excluded.push({ text: section.heading, reason: "empty-heading" });
+  }
+  return { ...processed, eyebrow, sections, excluded };
+}
+
+export function processBlocks(
+  blocks: RawBlock[],
+  options: {
+    formatsHeading: string;
+    /** Legacy path the original page linked from a heading with this text, if any. */
+    linkFor?: (heading: string) => string | undefined;
+    /** Drop empty headings (see dropEmptyHeadings); otherwise they are kept as crawled. */
+    dropEmpty?: boolean;
+  }
+): Processed {
   const cleaned = blocks
     .map((block) => ({ tag: block.tag, text: cleanText(block.text) }))
     .filter((block) => block.text && !IGNORED.has(block.text.toLowerCase()));
@@ -180,20 +245,25 @@ export function processBlocks(blocks: RawBlock[], options: { formatsHeading: str
   let eyebrow: string | undefined;
   // Product-type label right after the H1 (e.g. "Frozen Fruits", "Ring Pull Closure").
   const firstH3 = rest[0];
-  if (firstH3?.tag === "h3" && firstH3.text.length <= 40 && !/^(concentrates?|concentrados?)$/i.test(firstH3.text)) {
+  if (firstH3?.tag === "h3" && firstH3.text.length <= 40 && !FORMATS_START.test(firstH3.text)) {
     eyebrow = displayCase(firstH3.text);
     index = 1;
   }
 
-  // Concentrate pages: pairs of h3 (format family, available forms).
-  if (rest[index]?.tag === "h3" && /^(concentrates?|concentrados?)$/i.test(rest[index].text)) {
+  // Concentrate pages: pairs of h3 (format family, available forms). Some pages open with
+  // "Available formats" + a sentence instead of a "Concentrate" row.
+  if (rest[index]?.tag === "h3" && FORMATS_START.test(rest[index].text)) {
     const rows: [string, string][] = [];
+    const items: Item[] = [];
     while (rest[index]?.tag === "h3" && rest[index + 1]?.tag === "h3") {
+      const label = rest[index].text;
       const value = rest[index + 1].text.replace(/\n/g, ", ");
-      if (!/^not apply$/i.test(value)) rows.push([displayCase(rest[index].text), value]);
+      if (/^(available formats|formatos disponibles)$/i.test(label)) items.push({ type: "p", text: value });
+      else if (!/^not apply$/i.test(value)) rows.push([displayCase(label), value]);
       index += 2;
     }
-    sections.push({ heading: options.formatsHeading, items: [{ type: "specs", rows }] });
+    if (rows.length) items.push({ type: "specs", rows });
+    sections.push({ heading: options.formatsHeading, items });
   }
 
   let skippingBenefits = false;
@@ -216,6 +286,8 @@ export function processBlocks(blocks: RawBlock[], options: { formatsHeading: str
       skippingBenefits = false;
       flush();
       section.heading = displayCase(text);
+      const link = options.linkFor?.(text);
+      if (link) section.link = link;
       continue;
     }
     if (skippingBenefits) {
@@ -244,6 +316,7 @@ export function processBlocks(blocks: RawBlock[], options: { formatsHeading: str
   }
   flushRun();
   flush();
+  if (options.dropEmpty) return dropEmptyHeadings({ h1, eyebrow, sections, excluded });
   return { h1, eyebrow, sections: sections.filter((item) => item.items.length > 0 || item.heading), excluded };
 }
 
@@ -265,7 +338,13 @@ export function looksEnglish(value: string): boolean {
 }
 
 const itemText = (item: Item) =>
-  item.type === "specs" ? item.rows.flat().join(" ") : item.type === "ul" ? item.items.join(" ") : item.text;
+  item.type === "specs"
+    ? item.rows.flat().join(" ")
+    : item.type === "ul"
+      ? item.items.join(" ")
+      : item.type === "links"
+        ? ""
+        : item.text;
 
 /**
  * Marks items of a Spanish page that are still English (identical to the English page or
@@ -281,7 +360,9 @@ export function markUntranslated(processed: Processed, english: Processed): Proc
     sections: processed.sections.map((section) => ({
       ...section,
       ...(section.heading && isEnglish(section.heading) ? { headingLang: "en" as const } : {}),
-      items: section.items.map((item) => (isEnglish(itemText(item)) ? { ...item, lang: "en" as const } : item))
+      items: section.items.map((item) =>
+        item.type !== "links" && isEnglish(itemText(item)) ? { ...item, lang: "en" as const } : item
+      )
     }))
   };
 }

@@ -265,6 +265,8 @@ export const en = {
     allProducts: "Product and specification pages",
     allProductsText: "Technical and product pages of this category, with their published specifications.",
     backTo: "Back to",
+    references: "Product references",
+    viewProduct: "View product page",
     specs: "Specifications",
     indexTitle: "Product index",
     indexText:
@@ -284,6 +286,7 @@ export const en = {
     product: "Product pages",
     technical: "Technical sheets",
     productLink: "Product page",
+    overviewLink: "Overview page",
     technicalLink: "Technical sheet",
     products: "products",
     records: "references",
@@ -306,6 +309,24 @@ export const en = {
     grapeTitle: "Looking for a specific grape specification?",
     grapeText: "Open the red grape group: variety overviews and technical sheets with analysis and microbiology.",
     grapeAction: "Browse grape specifications"
+  },
+  resources: {
+    count: "{count} resources",
+    countOne: "1 resource",
+    items: "Product resources",
+    previewMeta: "Development preview of the product resource variants.",
+    previewEyebrow: "Development preview",
+    previewTitle: "Product resource variants",
+    previewText:
+      "Two reusable presentations of verified catalogue data. Not linked from the site, not indexed and not assigned to any category page yet.",
+    previewVariant: "Variant"
+  },
+  resourceIntro: {
+    cans: "Explore our aluminium can formats and compatible ends, with their published product pages and technical specifications.",
+    closures: "Explore our crown corks and RipCaps, with their published product pages and technical specifications.",
+    bottles: "Explore our glass bottle formats by beverage, with their published product pages.",
+    labels: "Explore our beverage label solutions, with their published product pages.",
+    plantBased: "Explore our plant-based concentrates, with their published product pages."
   },
   libraryFrozen: {
     text: "Explore our IQF frozen citrus — lemon, orange, lime and grapefruit — with the published page of each cut, zest and peel reference.",

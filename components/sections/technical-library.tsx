@@ -24,6 +24,7 @@ export type LibraryLabels = {
   product: string;
   technical: string;
   productLink: string;
+  overviewLink: string;
   technicalLink: string;
   results: string;
   resultsIn: string;
@@ -61,7 +62,9 @@ function readUrl(families: LibraryFamily[], fallback: State, filterable: boolean
 function writeUrl(state: State, families: LibraryFamily[], mode: "push" | "replace") {
   const url = new URL(window.location.href);
   const family = families.find((item) => item.id === state.familyId) ?? families[0];
-  url.searchParams.set("family", family.slug);
+  // A search across all families has no `family`, so a reload keeps the same scope.
+  if (state.query && state.scope === "all") url.searchParams.delete("family");
+  else url.searchParams.set("family", family.slug);
   if (state.type === "all") url.searchParams.delete("type");
   else url.searchParams.set("type", state.type);
   if (state.query) url.searchParams.set("q", state.query);
@@ -444,7 +447,11 @@ function ResultGrid({
                 <Link href={resource.href} prefetch={false} className={`tech-library__resource is-${resource.type}`}>
                   <Icon name="document" strokeWidth={1.6} />
                   <span>
-                    {resource.type === "technical" ? labels.technicalLink : labels.productLink}
+                    {resource.type === "technical"
+                      ? labels.technicalLink
+                      : resource.overview
+                        ? labels.overviewLink
+                        : labels.productLink}
                     <span className="visually-hidden">: {resource.title}</span>
                   </span>
                   <Icon name="arrow" strokeWidth={1.8} />

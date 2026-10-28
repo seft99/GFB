@@ -31,6 +31,7 @@ import {
   redesignedPaths,
   type Family
 } from "../src/migration/families.ts";
+import { correctText, corrections, type Correction } from "../src/migration/corrections.ts";
 import { formatLabelEs, formatRowEs, productNameEs } from "../src/migration/glossary-es.ts";
 import { publicUrl, redesignedRoutes } from "../src/migration/public-paths.ts";
 
@@ -136,12 +137,42 @@ const content: Record<
 
 const titles = new Map<string, string[]>();
 
+const TIDY_CATEGORIES = new Set(["fruit-concentrates", "iqf-frozen-fruits"]);
+
+// Compact names for matching a legacy heading to the H1 of the page it linked to.
+const compactName = (value: string) => value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+const h1Names = (path: string) =>
+  (["en", "es"] as const).map((locale) => compactName(byKey.get(`${path}|${locale}`)?.h1 ?? "")).filter(Boolean);
+
+/**
+ * Heading → linked page of the same family, only where the original page really linked that
+ * page (verified in its outbound links) and the heading is that page's H1.
+ */
+function linkResolver(path: string, family: Family) {
+  const linked = new Set(byKey.get(`${path}|en`)!.internalOutboundLinks.map(pathOf));
+  const candidates = family.paths.filter((item) => item !== path && linked.has(item));
+  return (heading: string) => candidates.find((item) => h1Names(item).includes(compactName(heading)));
+}
+
+/** Raw blocks with the editorial corrections of src/migration/corrections.ts applied. */
+const appliedCorrections = new Set<Correction>();
+function corrected(row: CrawlRow, path: string): RawBlock[] {
+  return row.contentBlocks.map((block) => {
+    const { text, applied } = correctText(path, block.text);
+    if (row.locale === "en") applied.forEach((item) => appliedCorrections.add(item));
+    return { ...block, text };
+  });
+}
+
 for (const family of (await import("../src/migration/families.ts")).families)
   for (const path of family.paths) {
     const en = byKey.get(`${path}|en`)!;
     const es = byKey.get(`${path}|es`)!;
-    const processedEn = processBlocks(en.contentBlocks, { formatsHeading: formatsHeading.en });
-    const processedEsRaw = processBlocks(es.contentBlocks, { formatsHeading: formatsHeading.es });
+    // Empty-heading cleanup and restored product links: concentrate and frozen-fruit pages only.
+    const tidy = TIDY_CATEGORIES.has(family.parent.category ?? "");
+    const options = { linkFor: tidy ? linkResolver(path, family) : undefined, dropEmpty: tidy };
+    const processedEn = processBlocks(corrected(en, path), { formatsHeading: formatsHeading.en, ...options });
+    const processedEsRaw = processBlocks(corrected(es, path), { formatsHeading: formatsHeading.es, ...options });
     const name = concentrateName(family, path);
     const processedEs = markUntranslated(
       name ? translateFormats(processedEsRaw, name.fruit) : processedEsRaw,
@@ -199,6 +230,10 @@ for (const family of (await import("../src/migration/families.ts")).families)
       titles.set(`${locale}|${title}`, [...(titles.get(`${locale}|${title}`) ?? []), path]);
     }
   }
+
+const staleCorrections = corrections.filter((item) => !appliedCorrections.has(item));
+if (staleCorrections.length)
+  throw new Error(`Corrections no longer found on the source page: ${JSON.stringify(staleCorrections, null, 1)}`);
 
 // Title collisions: a flat technical sheet that shares its name with a nested page gets
 // "(technical sheet)"; other same-name pages (e.g. a hub and an overview) are told apart by
@@ -363,6 +398,14 @@ const matrix = Object.entries(content).flatMap(([path, entry]) =>
       specRows: items.reduce((sum, item) => sum + (item.type === "specs" ? item.rows.length : 0), 0),
       paragraphs: items.filter((item) => item.type === "p").length,
       listItems: items.reduce((sum, item) => sum + (item.type === "ul" ? item.items.length : 0), 0),
+      productLinks: [
+        ...new Set(
+          page.sections.flatMap((section) => [
+            ...(section.link ? [section.link] : []),
+            ...section.items.flatMap((item) => (item.type === "links" ? item.paths : []))
+          ])
+        )
+      ].length,
       untranslatedItems: page.untranslatedItems,
       withheld: page.excluded.map((item) => `${item.reason}: ${item.text.slice(0, 80)}`).join(" | "),
       review: entry.review ?? ""
@@ -381,6 +424,7 @@ const redesignedMatrix = Object.entries(redesignedPaths).flatMap(([path]) =>
       specRows: 0,
       paragraphs: 0,
       listItems: 0,
+      productLinks: 0,
       untranslatedItems: 0,
       withheld: "",
       review: `Redesigned page; legacy topics: ${row.contentBlocks
