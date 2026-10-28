@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { CtaBand } from "@/components/sections/cta-band";
-import { ButtonLink } from "@/components/ui/button-link";
+import { ProductDetailHero } from "@/components/sections/product-detail-hero";
 import { Icon } from "@/components/ui/icon";
 import { JsonLd } from "@/components/ui/json-ld";
 import { getDivisionById } from "@/src/content/catalog";
@@ -14,7 +13,10 @@ import { pageMetadata } from "@/src/lib/metadata";
 import type { Item, Section } from "@/src/migration/content";
 import { familyOf, legacyKey, pathFromKey, type Family } from "@/src/migration/families";
 import { detailPaths, legacyCanonical, legacyLinkLabel, legacyName, legacyPage } from "@/src/migration/manifest";
+import { productHeroImage } from "@/src/migration/product-hero-images";
+import { isTechnicalResource } from "@/src/migration/product-resources";
 import { publicUrl } from "@/src/migration/public-paths";
+import { categoryLibrary } from "@/src/migration/technical-library";
 import "../../../styles/legacy-detail.css";
 
 type Props = PageProps<"/[locale]/legacy/[key]">;
@@ -137,6 +139,17 @@ function ContentSection({
   );
 }
 
+/**
+ * Hero lead: the page description without its leading "<name> from GFB Solutions," (the title
+ * already names the product), e.g. "Available as concentrates, juices & purees, …".
+ */
+function heroDescription(description: string, name: string, locale: Locale) {
+  const prefix = `${name} ${locale === "es" ? "de" : "from"} GFB Solutions, `;
+  if (!description.startsWith(prefix)) return description;
+  const rest = description.slice(prefix.length);
+  return rest.charAt(0).toUpperCase() + rest.slice(1);
+}
+
 /** Legacy paths linked from the page content (restored product references). */
 const contentLinks = (sections: Section[]) =>
   new Set(
@@ -174,6 +187,20 @@ export default async function LegacyDetailPage({ params }: Props) {
     firstParagraph?.type === "p" && content.metaDescription.startsWith(firstParagraph.text.slice(0, 40))
   );
 
+  // Hero: technical specification pages get the technical-document variant; product pages
+  // their licensed or approved photograph when one exists (src/migration/product-hero-images.ts).
+  const technical = isTechnicalResource(path);
+  const photo = productHeroImage(path);
+  const groupName =
+    (category
+      ? categoryLibrary(category.id, locale)?.families.find((item) => item.id === family.id)?.title
+      : undefined) ?? family.label[locale];
+
+  const heroEyebrow = technical ? legacy.heroTechnical : (content.eyebrow ?? family.label[locale]);
+  const lead = showLead ? heroDescription(content.metaDescription, content.h1, locale) : undefined;
+  // A lead that only repeats the eyebrow (e.g. "SOT - Large Aperture (Botcherby)") is left out.
+  const heroLead = lead && lead !== heroEyebrow ? lead : undefined;
+
   const schema = {
     "@context": "https://schema.org",
     "@type": isHub ? "CollectionPage" : "Product",
@@ -187,23 +214,23 @@ export default async function LegacyDetailPage({ params }: Props) {
   return (
     <main id="main-content" className="legacy-detail">
       <JsonLd data={schema} />
-      <section className="legacy-detail__hero">
-        <div className="shell">
-          <Breadcrumbs locale={locale} items={crumbs} />
-          <p className="eyebrow">{content.eyebrow ?? family.label[locale]}</p>
-          <h1>{content.h1}</h1>
-          {showLead && <p className="legacy-detail__lead">{content.metaDescription}</p>}
-          <div className="legacy-detail__actions">
-            <ButtonLink href={inquiryHref} variant="dark" className="legacy-detail__primary">
-              {common.inquire}
-            </ButtonLink>
-            <Link href={parentHref} className="legacy-detail__back">
-              {legacy.backTo} {parentTitle}
-              <Icon name="arrow" strokeWidth={1.8} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ProductDetailHero
+        locale={locale}
+        config={{
+          variant: technical ? "technical-document" : "product",
+          eyebrow: heroEyebrow,
+          title: content.h1,
+          description: heroLead,
+          breadcrumbs: crumbs,
+          image:
+            !technical && photo
+              ? { src: photo.src, alt: photo.alt[locale], objectPosition: photo.position }
+              : undefined,
+          primaryAction: { label: common.inquire, href: inquiryHref },
+          secondaryAction: { label: `${legacy.backTo} ${parentTitle}`, href: parentHref },
+          identifier: `${technical ? legacy.heroTechnical : legacy.heroProduct} / ${groupName}`
+        }}
+      />
 
       {content.sections.length > 0 && (
         <section className="section legacy-detail__body" aria-label={legacy.specs}>

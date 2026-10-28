@@ -19,13 +19,16 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <Image src="/brand/gfb-logo.png" alt="" width={154} height={64} loading="eager" />
         </Link>
         <HeaderNavigation
+          // Remounts on a language switch, so no menu stays open with stale labels.
+          key={locale}
           items={primaryNavigation(locale)}
           labels={{
             primary: common.primaryNavigation,
             mobile: common.mobileNavigation,
             open: common.menuOpen,
             close: common.menuClose,
-            inquire: common.inquire
+            inquire: common.inquire,
+            toggle: common.megaMenu.toggle
           }}
           contactHref={paths.page(locale, "contact")}
           languageSwitcher={<LanguageSwitcher target={target} label={common.switchLanguage} tree={slugTree} />}

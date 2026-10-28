@@ -148,12 +148,13 @@ export function displayIndexes(groups: ProductResourceGroup[]): Record<string, n
 }
 
 /**
- * Advisory default for a future page assignment (not applied automatically): 1–5 items →
- * compact-groups, 6–12 → visual-cards, 13+ → the technical library. Manual configuration
- * always wins.
+ * Advisory default from the number of unique products (never applied automatically): 1–5 →
+ * visual-cards, 6–12 → compact-groups, 13+ → the technical library. The explicit per-category
+ * assignment (src/migration/category-resources.ts) decides, e.g. a few products with many
+ * technical sheets use compact-groups.
  */
-export function suggestedVariant(items: number): ResourceVariant | "technical-library" {
-  if (items <= 5) return "compact-groups";
-  if (items <= 12) return "visual-cards";
+export function suggestedVariant(uniqueProducts: number): ResourceVariant | "technical-library" {
+  if (uniqueProducts <= 5) return "visual-cards";
+  if (uniqueProducts <= 12) return "compact-groups";
   return "technical-library";
 }

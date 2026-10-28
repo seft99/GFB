@@ -572,3 +572,8 @@
     transform: none;
   }
 }
+
+/* Deep links from the header (`?family=…#concentrates-library-title`) land below the fixed header. */
+.tech-library__intro h2 {
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+}

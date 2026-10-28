@@ -1,0 +1,359 @@
+/*
+ * Header mega menus (components/layout/header-navigation.tsx). The closed navbar looks exactly
+ * as before; each division adds a small chevron. Open panel: white floating surface under the
+ * header with a fine lime top line, soft shadow, blue column headings, icon rows with dividers
+ * and a pale blue-gray "Explore all" strip. Layouts: three-column (Raw materials), two-column
+ * (Packaging), compact (Flavours, Consulting). Motion: 220ms opacity + 8px rise; none under
+ * reduced motion. Mobile uses accordions inside the existing full-screen menu.
+ */
+
+/* Division item: link + disclosure button */
+.desktop-nav__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.desktop-nav__toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 1.15rem;
+  height: 1.75rem;
+  margin-right: -0.35rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.35rem;
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.desktop-nav__toggle svg {
+  width: 0.7rem;
+  height: 0.7rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 220ms var(--ease-out);
+}
+.desktop-nav__toggle:hover,
+.desktop-nav__item.is-expanded .desktop-nav__toggle {
+  color: var(--brand-lime);
+}
+.desktop-nav__item.is-expanded .desktop-nav__toggle svg {
+  transform: rotate(180deg);
+}
+.desktop-nav__toggle:focus-visible {
+  outline: 2px solid var(--brand-lime);
+  outline-offset: 2px;
+}
+/* Expanded (not current) division: the same lime underline as hover. */
+.desktop-nav__item.is-expanded > a {
+  color: var(--white);
+}
+.desktop-nav__item.is-expanded > a::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Panel */
+.mega-menu {
+  --mega-line: #e6ebf2;
+  --mega-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  left: 50%;
+  translate: -50% 0;
+  z-index: 1;
+  width: min(66rem, calc(100vw - 3rem));
+  overflow: visible;
+  border-top: 2px solid var(--brand-lime);
+  border-radius: 0.2rem 0.2rem 0.9rem 0.9rem;
+  color: var(--brand-ink);
+  background: #ffffff;
+  box-shadow:
+    0 28px 60px -28px rgba(6, 18, 44, 0.45),
+    0 8px 18px -12px rgba(6, 18, 44, 0.25);
+  font-stretch: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 220ms var(--mega-ease),
+    transform 220ms var(--mega-ease),
+    visibility 0s linear 220ms;
+}
+.mega-menu.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 220ms var(--mega-ease),
+    transform 220ms var(--mega-ease),
+    visibility 0s;
+}
+/* Hover bridge between the trigger and the panel, and the small caret under the trigger. */
+.mega-menu::before {
+  content: "";
+  position: absolute;
+  inset: -1.4rem 0 100%;
+}
+.mega-menu::after {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  left: var(--caret-x, 50%);
+  width: 0.8rem;
+  height: 0.8rem;
+  border-top: 2px solid var(--brand-lime);
+  border-left: 2px solid var(--brand-lime);
+  background: #ffffff;
+  transform: translateX(-50%) rotate(45deg);
+}
+/* The panel sits inside .desktop-nav: undo the navbar link styling (white, nowrap, underline). */
+.desktop-nav .mega-menu a {
+  position: static;
+  white-space: normal;
+  letter-spacing: 0;
+}
+.desktop-nav .mega-menu a::after {
+  content: none;
+}
+.mega-menu--two-column {
+  width: min(44rem, calc(100vw - 3rem));
+}
+.mega-menu--compact {
+  width: min(24rem, calc(100vw - 3rem));
+}
+
+.mega-menu__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 1.6rem 0 1.4rem;
+}
+.mega-menu--three-column .mega-menu__columns {
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.95fr) minmax(0, 1.1fr);
+}
+.mega-menu--two-column .mega-menu__columns {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+}
+.mega-menu__section {
+  min-width: 0;
+  padding: 0 2.1rem;
+}
+.mega-menu__section + .mega-menu__section {
+  border-left: 1px solid var(--mega-line);
+}
+.mega-menu__heading {
+  margin: 0 0 0.85rem;
+  color: var(--blue-600);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.mega-menu__section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mega-menu__section li + li {
+  border-top: 1px solid var(--mega-line);
+}
+.desktop-nav .mega-menu__link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.35rem 0.55rem 0;
+  border-radius: 0.4rem;
+  color: var(--brand-ink);
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.3;
+  transition:
+    color 200ms var(--mega-ease),
+    background 200ms var(--mega-ease);
+}
+.mega-menu__link:has(.mega-menu__icon) {
+  grid-template-columns: 1.8rem minmax(0, 1fr) auto;
+  gap: 1rem;
+}
+.mega-menu__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.desktop-nav .is-featured .mega-menu__link {
+  min-height: 3.6rem;
+}
+.mega-menu__link > svg:last-child {
+  width: 0.95rem;
+  color: var(--blue-600);
+  transition: translate 200ms var(--mega-ease);
+}
+.desktop-nav .mega-menu__link:hover {
+  color: var(--blue-600);
+}
+.mega-menu__link:hover > svg:last-child {
+  translate: 3px 0;
+}
+.mega-menu__link:focus-visible,
+.mega-menu__footer:focus-visible {
+  outline: 2px solid var(--blue-500);
+  outline-offset: 2px;
+}
+/* Category column: bold titles, taller rows. */
+.desktop-nav .mega-menu__section--categories .mega-menu__link {
+  min-height: 4.1rem;
+  font-size: 1.06rem;
+  font-weight: 650;
+}
+.desktop-nav .mega-menu--compact .mega-menu__section--categories .mega-menu__link {
+  min-height: 3.4rem;
+}
+
+.desktop-nav .mega-menu__footer {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.15rem 2.1rem;
+  border-top: 1px solid var(--mega-line);
+  border-radius: 0 0 0.9rem 0.9rem;
+  color: var(--brand-ink);
+  background: #eef2f8;
+  font-size: 0.95rem;
+  font-weight: 650;
+  transition: background 200ms var(--mega-ease);
+}
+.mega-menu__footer svg {
+  width: 1.05rem;
+  transition: translate 200ms var(--mega-ease);
+}
+.mega-menu__footer:hover {
+  background: #e5ebf5;
+}
+.mega-menu__footer:hover svg {
+  translate: 3px 0;
+}
+
+/* Narrow desktop: the four chevrons need a little room; tighten the item spacing only here. */
+@media (min-width: 1181px) and (max-width: 1320px) {
+  .desktop-nav {
+    gap: 1rem;
+  }
+  .header-actions {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 1366px) {
+  .mega-menu__section {
+    padding: 0 1.6rem;
+  }
+  .mega-menu__footer {
+    padding-inline: 1.6rem;
+  }
+}
+
+/* Mobile: accordions inside the existing full-screen menu */
+@media (max-width: 1180px) {
+  .mega-menu {
+    display: none;
+  }
+  .mobile-menu__group {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .mobile-menu__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+  .mobile-menu__row > a {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.05rem 0;
+    color: var(--white);
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .mobile-menu__row > a[aria-current="page"] {
+    color: var(--brand-lime);
+  }
+  .mobile-menu__row > a span {
+    color: var(--brand-lime);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .mobile-menu__toggle {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .mobile-menu__toggle svg {
+    width: 0.8rem;
+    height: 0.8rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 220ms ease;
+  }
+  .mobile-menu__toggle[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+  }
+  .mobile-menu__toggle:focus-visible {
+    outline: 2px solid var(--brand-lime);
+    outline-offset: 2px;
+  }
+  .mobile-menu__links {
+    margin: 0 0 1rem 3.25rem;
+    padding: 0;
+    list-style: none;
+  }
+  .mobile-menu__links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 2.9rem;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 1.02rem;
+    font-weight: 500;
+  }
+  .mobile-menu__links a svg {
+    width: 1rem;
+    color: var(--brand-lime);
+  }
+  .mobile-menu__links .mobile-menu__all {
+    color: var(--brand-lime);
+    font-weight: 650;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mega-menu,
+  .mega-menu.is-open,
+  .desktop-nav__toggle svg,
+  .mega-menu__link,
+  .mega-menu__link > svg:last-child,
+  .mega-menu__footer,
+  .mega-menu__footer svg {
+    transition: none;
+  }
+  .mega-menu {
+    transform: none;
+  }
+}

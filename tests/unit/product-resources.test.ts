@@ -3,7 +3,7 @@ import { existsSync } from "node:fs";
 import test from "node:test";
 import { families } from "../../src/migration/families.ts";
 import { legacyPage } from "../../src/migration/manifest.ts";
-import { categoryResources, resourceAssignments } from "../../src/migration/category-resources.ts";
+import { categoryAudit, categoryResources, resourceAssignments } from "../../src/migration/category-resources.ts";
 import { familyResourceGroup, isSpecificationPage, specificationPairs } from "../../src/migration/product-resources.ts";
 import { publicUrl } from "../../src/migration/public-paths.ts";
 import { componentPreviewEnabled, resourcePreviews } from "../../src/migration/resource-previews.ts";
@@ -136,10 +136,10 @@ test("filters appear only when the data has both resource types", () => {
 
 test("variant suggestion is advisory only", () => {
   assert.deepEqual([1, 5, 6, 12, 13].map(suggestedVariant), [
-    "compact-groups",
-    "compact-groups",
     "visual-cards",
     "visual-cards",
+    "compact-groups",
+    "compact-groups",
     "technical-library"
   ]);
 });
@@ -166,16 +166,20 @@ test("preview fixtures use local assets, existing routes and an explicit gate", 
 
 test("category assignments are explicit and keep every family page", () => {
   assert.deepEqual(resourceAssignments, {
+    "fruit-concentrates": "technical-library",
+    "iqf-frozen-fruits": "technical-library",
     cans: "compact-groups",
     closures: "compact-groups",
-    bottles: "compact-groups",
+    bottles: "visual-cards",
     labels: "visual-cards",
-    "plant-based-concentrates": "compact-groups"
+    "plant-based-concentrates": "visual-cards"
   });
   assert.equal(categoryResources("fruit-concentrates", "en"), undefined);
   assert.equal(categoryResources("iqf-frozen-fruits", "en"), undefined);
   for (const locale of ["en", "es"] as const)
-    for (const categoryId of Object.keys(resourceAssignments)) {
+    for (const categoryId of Object.keys(resourceAssignments).filter(
+      (id) => resourceAssignments[id] !== "technical-library"
+    )) {
       const config = categoryResources(categoryId, locale)!;
       const expected = families
         .filter((item) => item.parent.category === categoryId)
@@ -186,4 +190,51 @@ test("category assignments are explicit and keep every family page", () => {
       for (const image of config.groups.flatMap((group) => [group.image, ...group.items.map((item) => item.image)]))
         if (image) assert.ok(existsSync(`public${image}`), image);
     }
+});
+
+test("category audit separates unique products from published resources", () => {
+  const rows = Object.fromEntries(
+    Object.keys(resourceAssignments).map((id) => {
+      const audit = categoryAudit(id);
+      return [id, [audit.uniqueProductCount, audit.resourceCount, audit.technicalResourceCount, audit.groupCount]];
+    })
+  );
+  assert.deepEqual(rows, {
+    "fruit-concentrates": [50, 59, 7, 6],
+    "iqf-frozen-fruits": [29, 34, 0, 4],
+    cans: [5, 12, 4, 2],
+    closures: [4, 9, 3, 1],
+    bottles: [3, 3, 0, 1],
+    labels: [3, 3, 0, 1],
+    "plant-based-concentrates": [2, 2, 0, 1]
+  });
+  // Explicit overrides of the advisory heuristic are documented.
+  for (const id of ["cans", "closures"]) {
+    assert.equal(suggestedVariant(categoryAudit(id).uniqueProductCount), "visual-cards");
+    assert.equal(resourceAssignments[id], "compact-groups");
+    assert.match(categoryAudit(id).selectionReason, /technical sheet/);
+  }
+});
+
+test("only licensed or approved images are used by category pages", () => {
+  const approved = new Set([
+    "/images/packaging/resources/aluminium-cans-group.webp",
+    "/images/packaging/resources/can-ends-group.webp",
+    "/images/packaging/closures-card.webp",
+    "/images/packaging/resources/bottles-soft-drinks-card.webp",
+    "/images/packaging/resources/bottles-alcoholic-card.webp",
+    "/images/packaging/resources/bottles-water-card.webp",
+    "/images/packaging/labels-wash-off.webp",
+    "/images/raw-materials/resources/oat-card.webp",
+    "/images/raw-materials/resources/almond-card.webp"
+  ]);
+  const used = Object.keys(resourceAssignments).flatMap((id) =>
+    (categoryResources(id, "en")?.groups ?? []).flatMap((group) => [
+      group.image,
+      ...group.items.map((item) => item.image)
+    ])
+  );
+  for (const image of used.filter(Boolean)) assert.ok(approved.has(image!), `${image} is not in the provenance list`);
+  // Withdrawn: photographs taken from the GFB website without confirmed reuse rights.
+  assert.equal(existsSync("public/images/packaging/resources/standard-can-card.webp"), false);
 });

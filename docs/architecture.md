@@ -4,7 +4,7 @@
 
 - Next.js 16 App Router, React 19, strict TypeScript.
 - Every content route is statically generated with `generateStaticParams`. Only the contact page renders per request (it reads inquiry context from the query string).
-- Server Components by default. Client components: `HeaderNavigation` (active state, mobile menu), `LanguageSwitcher`, `ContactForm` and the localized 404 picker. Each receives only the strings it needs as props; dictionaries never ship whole to the browser.
+- Server Components by default. Client components: `HeaderNavigation` (active state, mega menus, mobile menu), `LanguageSwitcher`, `ContactForm` and the localized 404 picker. Each receives only the strings it needs as props; dictionaries never ship whole to the browser.
 
 ## Internationalization
 
@@ -206,11 +206,39 @@ Defined in `next.config.ts`: CSP (no `unsafe-eval` in production, `object-src 'n
 
 ## Product-resource sections (`compact-groups`, `visual-cards`)
 
-Reusable presentations for small and medium product collections; extensive catalogues keep the technical product library above. Assigned per category in `src/migration/category-resources.ts`: `/cans`, `/closures`, `/bottles` and `/plant-based-concentrate` use `compact-groups`, `/labels` uses `visual-cards`; categories not listed keep the technical library or the plain product index (`LegacyCatalogue`). The category page keeps its own closing CTA, so these sections have no section CTA.
+Reusable presentations for product collections. `src/migration/category-resources.ts` holds the explicit presentation of each category (`assignments`, with `selectionReason`) and the canonical inventory (`categoryAudit`: unique products — a product page and its technical sheet, or two pages of one product, count once; overview pages are not products — resources, technical sheets, groups):
+
+| Route                      | Products | Resources | Technical | Groups | Variant                                      |
+| -------------------------- | -------: | --------: | --------: | -----: | -------------------------------------------- |
+| `/fruits-concentrates`     |       50 |        59 |         7 |      6 | technical-library                            |
+| `/frozen-fruits`           |       29 |        34 |         0 |      4 | technical-library                            |
+| `/cans`                    |        5 |        12 |         4 |      2 | compact-groups (override: technical density) |
+| `/closures`                |        4 |         9 |         3 |      1 | compact-groups (override: technical density) |
+| `/bottles`                 |        3 |         3 |         0 |      1 | visual-cards                                 |
+| `/labels`                  |        3 |         3 |         0 |      1 | visual-cards                                 |
+| `/plant-based-concentrate` |        2 |         2 |         0 |      1 | visual-cards                                 |
+
+Other categories have no product pages and keep `LegacyCatalogue` (which renders nothing without families). The category page keeps its own closing CTA, so these sections have no section CTA.
 
 - Entry point: `components/sections/product-resources/product-resource-section.tsx` → `<ProductResourceSection config={config} locale={locale} />`. `config.variant` is `"compact-groups"` (white group panels with numbered rows and resource-type badges) or `"visual-cards"` (photographic product cards). Styles: `app/styles/product-resources.css`.
 - Contract and logic (client-safe): `src/migration/resource-section.ts` — `ResourceSectionConfig` (id, variant, eyebrow, title, description?, groups, showSearch?, showResourceFilters?, cta?), `ProductResourceGroup`, `ProductResourceItem`, `ResourceLink` (kind `product` | `technical`), plus the shared `filterResourceGroups` (search reuses the library normalisation: case/accent-insensitive, partial, compact identifiers) and `displayIndexes`.
 - Rendering: the section, CTA and variant markup (`resource-views.tsx`) are server components; `resource-browser.tsx` is the only client island and is used only when search or filters are enabled. Type filters appear only when the data has both product pages and technical sheets.
 - Data: `familyResourceGroup(familyId, locale, { photos, image, eyebrow })` in `src/migration/product-resources.ts` builds a group from a migration family: every page once at its public URL, titles from the page H1, descriptions as the first sentence of the page's own text (omitted on Spanish pages whose text is still English). Technical sheets are only verified pairs (`specificationPairs`): a flat page without prose, with ≥ 3 attribute sections, named like a nested product page of the family (packaging: 7 pairs).
-- Preview: `/en/component-preview` and `/es/component-preview` (`app/[locale]/component-preview`, fixtures in `src/migration/resource-previews.ts`) — only under `next dev` or with `GFB_COMPONENT_PREVIEW=1` (set for the e2e server); 404 otherwise, `noindex`, not linked or in sitemaps.
-- Changing a category's variant: edit its entry in `assignments` (`src/migration/category-resources.ts`) — variant, family groups, optional group image and product photos, search/filters; add an entry (and a `resourceIntro` text) to give another category a section. `suggestedVariant(items)` gives the advisory default (1–5 compact-groups, 6–12 visual-cards, 13+ technical library); the explicit entry always decides.
+- Preview: `/en/component-preview` and `/es/component-preview` (`app/[locale]/component-preview`; the live category configs plus edge cases, `src/migration/resource-previews.ts`) — only under `next dev` or with `GFB_COMPONENT_PREVIEW=1` (set for the e2e server); 404 otherwise, `noindex`, not linked or in sitemaps.
+- Changing a category's variant: edit its entry in `assignments` (`src/migration/category-resources.ts`) — variant, family groups, optional group image and product photos, search/filters; add an entry (and a `resourceIntro` text) to give another category a section. `suggestedVariant(uniqueProducts)` gives the advisory default (1–5 visual-cards, 6–12 compact-groups, 13+ technical library); the explicit entry always decides. Images: only licensed or approved assets listed in `docs/asset-provenance.md`; without one a card shows the neutral fallback.
+
+## Product detail hero
+
+- Every product-detail page (`app/[locale]/legacy/[key]/page.tsx`, 124 pages × EN/ES) renders `<ProductDetailHero config locale />` (`components/sections/product-detail-hero.tsx`, server component; styles in `app/styles/product-detail-hero.css`). Only the hero changed: content sections, related links and the closing CTA are as before; the product index keeps the previous `legacy-detail__hero` styles.
+- Config from the existing data: title = page H1, eyebrow = page eyebrow or family label, lead = page description without its leading "<name> from GFB Solutions," (omitted when it repeats the first paragraph or the eyebrow), breadcrumbs = the existing trail, actions = the inquiry route and "Back to <parent category>" from the route hierarchy, identifier = "Product / <library group or family>".
+- Variants: `product` (photograph in the arc), the same without a photograph (neutral panel), and `technical-document` for technical specification pages (`isTechnicalResource`: the 7 analysis sheets and 7 packaging specification pages), compact with a technical grid and no photography.
+- Photographs: `productHeroImage(path)` (`src/migration/product-hero-images.ts`) maps each page to a subject photograph in `public/images/products/hero/` (licensed, documented in `docs/asset-provenance.md`) or an approved packaging image; zest/peel, RipCaps and a few fruits without a suitable photograph use the image-free layout. The hero image loads eagerly with `fetchPriority="high"` (LCP); motion is CSS only and off under reduced motion.
+
+## Header mega navigation
+
+- Config: `primaryNavigation(locale)` (`src/lib/navigation.ts`) adds a `MegaMenuConfig` to each division, built only from the catalogue, route helpers and dictionaries (`common.megaMenu`), so every link is an existing public URL in the current language. Layouts: `three-column` (Raw materials: categories · concentrate families · quick access), `two-column` (Packaging: categories · quick access to the cans, can ends and crown corks hubs) and `compact` (Flavours, Consulting: categories only). Each panel ends with "Explore all <division>" → the division page.
+- Family links are deep links into the concentrates technical library: `<category URL>?family=<slug>#concentrates-library-title` (slugs = the library's `family` URL state). The library reads the URL on load, on Back/Forward and, for same-page links, through a tiny `useSearchParams` listener behind its own Suspense boundary (the library itself stays prerendered). The concentrate explorer is not URL-driven and is unchanged.
+- Component: `components/layout/header-navigation.tsx` (client), icons in `mega-menu-icons.tsx` (inline SVG, `aria-hidden`), styles in `app/styles/mega-menu.css`. Each division keeps its label as a real link; a separate disclosure button (`aria-expanded`, `aria-controls`) toggles the panel. No `role="menu"`: panels are plain lists of links grouped under headings.
+- Behaviour: hover on mouse pointers (60 ms open, 180 ms close, a hover bridge lets the pointer travel into the panel), one panel at a time, Escape closes and returns focus to the chevron, clicks outside the header, a destination link or any navigation close it. Raw materials is centred under the header; the other panels are anchored under their trigger and clamped 24 px from the viewport edges.
+- SEO/performance: all panels are in the server HTML (closed ones `inert` and hidden), menu links do not prefetch, no new dependencies. `NavItem.route` holds the internal route because `usePathname()` reports it on rewritten legacy URLs; it marks a division current on its own pages and categories (e.g. `/cans` → Packaging).
+- Mobile (≤ 1180 px): the existing full-screen menu with an accordion per division (link + separate expand button) listing categories, quick access and "Explore all"; family deep links are desktop-only.

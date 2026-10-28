@@ -17,6 +17,13 @@ export const en = {
     menuClose: "Close navigation",
     primaryNavigation: "Primary navigation",
     mobileNavigation: "Mobile navigation",
+    megaMenu: {
+      families: "Concentrate families",
+      quickAccess: "Quick access",
+      exploreAll: "Explore all {name}",
+      toggle: "{name}: show menu",
+      categories: "Categories"
+    },
     breadcrumb: "Breadcrumb",
     switchLanguage: "Ver en español",
     legalDraft: "Draft for legal review"
@@ -265,6 +272,8 @@ export const en = {
     allProducts: "Product and specification pages",
     allProductsText: "Technical and product pages of this category, with their published specifications.",
     backTo: "Back to",
+    heroProduct: "Product",
+    heroTechnical: "Technical specification",
     references: "Product references",
     viewProduct: "View product page",
     specs: "Specifications",

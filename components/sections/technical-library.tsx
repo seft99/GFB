@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type Ref } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type Ref } from "react";
 import { Icon } from "@/components/ui/icon";
 import {
   matchesQuery,
@@ -112,6 +113,11 @@ export function TechnicalLibrary({ config, labels }: { config: LibraryConfig; la
     return () => window.removeEventListener("popstate", sync);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- the catalogue is static per render
   }, [families]);
+  const followUrl = useCallback(
+    () => setState(readUrl(families, initial, filterable)),
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- the catalogue is static per render
+    [families]
+  );
 
   const update = useCallback(
     (next: Partial<State>, mode: "push" | "replace" = "push") => {
@@ -174,6 +180,9 @@ export function TechnicalLibrary({ config, labels }: { config: LibraryConfig; la
 
   return (
     <section className="section tech-library" aria-labelledby={`${ids}-title`} data-library={config.id}>
+      <Suspense fallback={null}>
+        <FamilyLinkSync onFamily={followUrl} />
+      </Suspense>
       <div className="shell tech-library__inner">
         <header className="tech-library__intro">
           <p className="eyebrow">{config.intro.eyebrow}</p>
@@ -463,4 +472,20 @@ function ResultGrid({
       ))}
     </ol>
   );
+}
+
+/**
+ * Same-page links (e.g. a header family link) change the query with a client navigation, which
+ * fires no `popstate`; follow `family` changes from the router. Isolated behind its own Suspense
+ * boundary so the library itself stays in the prerendered HTML.
+ */
+function FamilyLinkSync({ onFamily }: { onFamily: () => void }) {
+  const family = useSearchParams().get("family");
+  const seen = useRef(family);
+  useEffect(() => {
+    if (family === seen.current) return;
+    seen.current = family;
+    onFamily();
+  }, [family, onFamily]);
+  return null;
 }

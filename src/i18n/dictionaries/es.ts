@@ -19,6 +19,13 @@ export const es: Dictionary = {
     menuClose: "Cerrar navegación",
     primaryNavigation: "Navegación principal",
     mobileNavigation: "Navegación móvil",
+    megaMenu: {
+      families: "Familias de concentrados",
+      quickAccess: "Acceso rápido",
+      exploreAll: "Explorar {name}",
+      toggle: "{name}: mostrar menú",
+      categories: "Categorías"
+    },
     breadcrumb: "Ruta de navegación",
     switchLanguage: "View in English",
     legalDraft: "Borrador para revisión legal"
@@ -266,6 +273,8 @@ export const es: Dictionary = {
     allProducts: "Fichas de producto y especificaciones",
     allProductsText: "Páginas técnicas y de producto de esta categoría, con sus especificaciones publicadas.",
     backTo: "Volver a",
+    heroProduct: "Producto",
+    heroTechnical: "Especificación técnica",
     references: "Referencias de producto",
     viewProduct: "Ver ficha de producto",
     specs: "Especificaciones",

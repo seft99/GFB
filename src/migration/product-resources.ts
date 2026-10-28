@@ -60,15 +60,20 @@ export function specificationPairs(family: Family): { product: string; technical
 const kindOf = (path: string, paired: Set<string>) =>
   paired.has(path) || documentType(path) === "technical" ? "technical" : "product";
 
-/** First sentence of the page's first paragraph in that language, if it has one. */
-function firstSentence(path: string, locale: Locale): { text: string; lang?: "en" } | undefined {
+/**
+ * A sentence (first by default) of the page's first paragraph in that language, if it has one.
+ * `index` selects a later sentence of the same published paragraph.
+ */
+function firstSentence(path: string, locale: Locale, index = 0): { text: string; lang?: "en" } | undefined {
   for (const section of legacyPage(path)?.[locale].sections ?? [])
     for (const item of section.items) {
       if (item.type !== "p" || item.text.length <= 60) continue;
       // English text left untranslated on a Spanish page is not used as a Spanish description.
       if (locale === "es" && item.lang === "en") return undefined;
-      const sentence = item.text.match(/^.+?[.!?](?=\s|$)/)?.[0] ?? item.text;
-      return { text: truncate(sentence, 180) };
+      // Sentence ends are punctuation followed by a space, so "57.4 mm" stays in one sentence.
+      const sentences = item.text.split(/(?<=[.!?])\s+/);
+      const sentence = sentences[index];
+      return sentence ? { text: truncate(sentence, 180) } : undefined;
     }
   return undefined;
 }
@@ -79,8 +84,13 @@ export type FamilyGroupOptions = {
   eyebrow?: LocalizedText;
   /** Representative image of the group (header thumbnail). */
   image?: ResourcePhoto;
-  /** Product photographs by legacy path (the page that published the photo). */
+  /** Product photographs by legacy path (licensed or published images, see docs/asset-provenance.md). */
   photos?: Record<string, ResourcePhoto>;
+  /**
+   * Sentence of the page's first paragraph used as the card description, by legacy path, when
+   * the first one does not describe that page (e.g. /soft-drinks opens with a sentence about water).
+   */
+  descriptionSentence?: Record<string, number>;
 };
 
 /** One resource group from a migration family, in the family's display order. */
@@ -107,7 +117,8 @@ export function familyResourceGroup(
     .map((path) => {
       const paths = [path, ...(technicalOf.has(path) ? [technicalOf.get(path)!] : [])];
       // The hub's first sentence describes the whole group, so it is not repeated on its item.
-      const description = path === family.hub ? undefined : firstSentence(path, locale);
+      const description =
+        path === family.hub ? undefined : firstSentence(path, locale, options.descriptionSentence?.[path]);
       const photo = options.photos?.[path];
       return {
         id: path.split("/").filter(Boolean).join("--"),
@@ -142,3 +153,10 @@ export function familyResourceGroup(
     items
   };
 }
+
+/** Technical specification pages: analysis sheets and paired specification pages of every family. */
+const technicalPaths = new Set([
+  ...families.flatMap((family) => family.paths.filter((path) => documentType(path) === "technical")),
+  ...families.flatMap((family) => specificationPairs(family).map((pair) => pair.technical))
+]);
+export const isTechnicalResource = (path: string) => technicalPaths.has(path);
