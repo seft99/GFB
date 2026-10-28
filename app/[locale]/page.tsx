@@ -12,7 +12,7 @@ import { isLocale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { localizedPaths, paths } from "@/src/i18n/routes";
 import { pageMetadata } from "@/src/lib/metadata";
-import { organizationSchema } from "@/src/lib/structured-data";
+import { organizationSchema, websiteSchema } from "@/src/lib/structured-data";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
@@ -33,6 +33,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   return (
     <main id="main-content">
       <JsonLd data={organizationSchema()} />
+      <JsonLd data={websiteSchema(locale)} />
 
       <HomeHero locale={locale} />
 

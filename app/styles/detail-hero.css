@@ -223,6 +223,10 @@
   .detail-hero--panorama .detail-hero__photo img {
     object-position: var(--panorama-focus, 50% 50%) !important;
   }
+  /* Desktop-only framing (`heroDesktop.focus`); below 1100px the inline position applies. */
+  .detail-hero--desktop-focus .detail-hero__photo img {
+    object-position: var(--hero-desktop-focus) !important;
+  }
   /* A placeholder category with a panorama shows the photo instead of the icon panel. */
   .detail-hero--panorama .detail-hero__image--placeholder {
     padding: 0;

@@ -12,8 +12,9 @@ import { translatePathname, type SlugTree } from "@/src/i18n/routes";
  */
 export function LanguageSwitcher({ target, label, tree }: { target: Locale; label: string; tree: SlugTree }) {
   const pathname = usePathname();
+  const href = translatePathname(pathname, target, tree);
   return (
-    <Link href={translatePathname(pathname, target, tree)} className="language-link" hrefLang={target} lang={target}>
+    <Link href={href} className="language-link" hrefLang={target} lang={target}>
       <Icon name="globe" />
       <span>{target.toUpperCase()}</span>
       <span className="visually-hidden">: {label}</span>

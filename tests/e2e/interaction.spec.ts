@@ -4,7 +4,7 @@ test.describe("mobile navigation", () => {
   test.skip(({ isMobile }) => !isMobile, "mobile only");
 
   test("opens, closes with Escape and closes after navigating", async ({ page }) => {
-    await page.goto("/es");
+    await page.goto("/?lang=es");
     const toggle = page.getByRole("button", { name: "Abrir navegación" });
     await toggle.click();
     await expect(page.getByRole("button", { name: "Cerrar navegación" })).toHaveAttribute("aria-expanded", "true");
@@ -16,12 +16,17 @@ test.describe("mobile navigation", () => {
       .getByRole("navigation", { name: "Navegación móvil" })
       .getByRole("link", { name: /Sobre GFB/ })
       .click();
-    await expect(page).toHaveURL(/\/es\/sobre-gfb$/);
+    await expect(page).toHaveURL(/\/about-us\?lang=es$/);
     await expect(page.getByRole("button", { name: "Abrir navegación" })).toHaveAttribute("aria-expanded", "false");
   });
 
   test("pages never scroll horizontally", async ({ page }) => {
-    for (const path of ["/es", "/es/materias-primas/concentrados-de-frutas", "/es/contacto"]) {
+    for (const path of [
+      "/?lang=es",
+      "/fruits-concentrates?lang=es",
+      "/aluminum-cans/std-can-d66mm?lang=es",
+      "/es/contacto"
+    ]) {
       await page.goto(path);
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       expect(overflow, path).toBeLessThanOrEqual(0);
@@ -31,7 +36,7 @@ test.describe("mobile navigation", () => {
 
 test.describe("contact form", () => {
   test("prefills context from the category link", async ({ page }) => {
-    await page.goto("/es/soluciones-de-embalaje/latas");
+    await page.goto("/cans?lang=es");
     await page.getByRole("main").getByRole("link", { name: "Hablemos de su proyecto" }).first().click();
     await expect(page).toHaveURL(/\/es\/contacto\?interest=packaging-solutions/);
     await expect(page.getByLabel("Área de interés")).toHaveValue("packaging-solutions");

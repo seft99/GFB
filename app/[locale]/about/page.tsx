@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { AboutPresence } from "@/components/about/about-presence";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { ArtDirectedImage } from "@/components/ui/art-directed-image";
 import { ClosingCta } from "@/components/sections/closing-cta";
 import { RevealList } from "@/components/home/reveal-list";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -90,12 +91,15 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       <section className="section story-section">
         <div className="shell story-grid">
           <div className="story-image">
-            {/* Team photograph from the official GFB website (7500 × 4219 source). */}
-            <Image
-              src="/images/about/collaboration.webp"
+            {/*
+              Below 1100px: team photograph from the official GFB website (7500 × 4219 source).
+              From 1100px: a working-session photograph without a digital overlay (Unsplash,
+              see docs/asset-provenance.md).
+            */}
+            <ArtDirectedImage
               alt={about.story.imageAlt}
-              fill
-              sizes="(max-width: 900px) 100vw, (max-width: 1099px) 50vw, 52vw"
+              desktop={{ src: "/images/about/collaboration-desk.webp", width: 2400, height: 1602, sizes: "52vw" }}
+              mobile={{ src: "/images/about/collaboration.webp", sizes: "(max-width: 900px) 100vw, 50vw" }}
             />
           </div>
           <div className="story-copy">

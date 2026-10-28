@@ -1,0 +1,26 @@
+{
+ "summary": {
+  "origin": "http://localhost:3000",
+  "host": "www.gfb-solutions.com",
+  "expectIndexable": true,
+  "manifestRows": 289,
+  "checks": {
+   "total": 632,
+   "retained": 280,
+   "contentIdentity": 248,
+   "redirects": 6,
+   "brokenHistorical": 3,
+   "edgeCases": 18,
+   "queryVariants": 4,
+   "alternatingLanguage": 24,
+   "crawlerUserAgent": 2,
+   "sitemapUrls": 292,
+   "internalLinks": 568,
+   "images": 52
+  },
+  "sitemapUrls": 292,
+  "failures": 0,
+  "failedUrls": 0
+ },
+ "failures": []
+}

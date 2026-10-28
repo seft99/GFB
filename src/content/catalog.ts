@@ -93,7 +93,11 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/packaging/cans.avif",
-        showcase: { image: "/images/packaging/can-detail.webp", focus: "50% 40%" },
+        showcase: {
+          image: "/images/packaging/can-detail.webp",
+          focus: "50% 40%",
+          card: { image: "/images/packaging/cans-card.webp", focus: "62% 55%" }
+        },
         heroSecondary: t("Explore formats", "Ver formatos"),
         heroPanorama: { image: "/images/packaging/cans-panorama.png", width: 1914, height: 822, focus: "50% 55%" },
         features: [
@@ -125,7 +129,8 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/packaging/bottles.avif",
-        heroPanorama: { image: "/images/packaging/bottles-panorama.png", width: 1914, height: 822, focus: "50% 40%" }
+        heroPanorama: { image: "/images/packaging/bottles-panorama.png", width: 1914, height: 822, focus: "50% 40%" },
+        showcase: { card: { image: "/images/packaging/bottles-card.webp", focus: "50% 60%" } }
       },
       {
         id: "closures",
@@ -142,15 +147,21 @@ export const divisions: Division[] = [
         scope: {
           title: t("Closures for your bottle.", "Cierres para su botella."),
           context: {
-            title: t("Tell us about your bottle.", "Cuéntenos su botella."),
+            title: t("Tell us about your packaging.", "Cuéntenos su envase."),
             text: t(
-              "Share the bottle and the beverage the closure is for.",
-              "Indique la botella y la bebida para las que necesita el cierre."
+              "Share the bottle, the beverage and the closure you are considering.",
+              "Indique la botella, la bebida y el cierre que está considerando."
             )
           }
         },
         image: "/images/packaging/closures.avif",
-        heroPanorama: { image: "/images/packaging/closures-panorama.png", width: 1914, height: 822, focus: "80% 35%" }
+        heroPanorama: {
+          image: "/images/packaging/closures-crowns-panorama.webp",
+          width: 1914,
+          height: 822,
+          focus: "70% 45%"
+        },
+        showcase: { card: { image: "/images/packaging/closures-card.webp", focus: "50% 60%" } }
       },
       {
         id: "labels",
@@ -287,13 +298,9 @@ export const divisions: Division[] = [
             title: t("Citrus", "Cítricos"),
             heading: t("Citrus concentrates", "Concentrados cítricos"),
             image: {
-              src: "/images/raw-materials/citrus.webp",
-              alt: t(
-                "Halved oranges, blood oranges, lemons and limes",
-                "Naranjas, naranjas sanguinas, limones y limas partidos"
-              ),
-              focus: "62% 50%",
-              fit: "cover"
+              src: "/images/raw-materials/concentrates/citrus-sliced.webp",
+              alt: t("Sliced oranges, lemons and grapefruit", "Naranjas, limones y pomelos en rodajas"),
+              focus: "50% 50%"
             },
             thumb: "/images/raw-materials/concentrates/citrus-thumb.webp",
             items: [
@@ -310,10 +317,12 @@ export const divisions: Division[] = [
             title: t("Mediterranean", "Mediterráneos"),
             heading: t("Mediterranean concentrates", "Concentrados mediterráneos"),
             image: {
-              src: "/images/raw-materials/grapes.webp",
-              alt: t("A bunch of grapes with water droplets", "Un racimo de uvas con gotas de agua"),
-              focus: "45% 55%",
-              fit: "cover"
+              src: "/images/raw-materials/concentrates/mediterranean-still-life.webp",
+              alt: t(
+                "An apple, a bunch of red grapes and two pears",
+                "Una manzana, un racimo de uvas tintas y dos peras"
+              ),
+              focus: "50% 60%"
             },
             thumb: "/images/raw-materials/concentrates/mediterranean-thumb.webp",
             highlights: ["White grape", "Red grape"],
@@ -335,10 +344,9 @@ export const divisions: Division[] = [
             title: t("Tropical", "Tropicales"),
             heading: t("Tropical concentrates", "Concentrados tropicales"),
             image: {
-              src: "/images/raw-materials/concentrates/tropical.webp",
-              alt: t("A whole mango and a mango cut into cubes", "Un mango entero y un mango cortado en dados"),
-              focus: "50% 50%",
-              fit: "contain"
+              src: "/images/raw-materials/concentrates/tropical-market.webp",
+              alt: t("Mangoes and bananas at a market stall", "Mangos y plátanos en un puesto de mercado"),
+              focus: "32% 50%"
             },
             thumb: "/images/raw-materials/concentrates/tropical-thumb.webp",
             items: [
@@ -356,10 +364,12 @@ export const divisions: Division[] = [
             title: t("Red fruits", "Frutos rojos"),
             heading: t("Red fruit concentrates", "Concentrados de frutos rojos"),
             image: {
-              src: "/images/raw-materials/concentrates/red-fruits.webp",
-              alt: t("Raspberries on raspberry leaves", "Frambuesas sobre hojas de frambueso"),
-              focus: "50% 50%",
-              fit: "contain"
+              src: "/images/raw-materials/concentrates/red-fruits-mixed.webp",
+              alt: t(
+                "Strawberries, raspberries, blackberries and blueberries",
+                "Fresas, frambuesas, moras y arándanos"
+              ),
+              focus: "50% 50%"
             },
             thumb: "/images/raw-materials/concentrates/red-fruits-thumb.webp",
             items: [
@@ -375,10 +385,9 @@ export const divisions: Division[] = [
             title: t("Vegetables", "Vegetales"),
             heading: t("Vegetable concentrates", "Concentrados de vegetales"),
             image: {
-              src: "/images/raw-materials/concentrates/vegetables.webp",
-              alt: t("Red, yellow and green peppers", "Pimientos rojos, amarillos y verdes"),
-              focus: "50% 50%",
-              fit: "contain"
+              src: "/images/raw-materials/concentrates/vegetables-roots.webp",
+              alt: t("Carrots and beets at a market stall", "Zanahorias y remolachas en un puesto de mercado"),
+              focus: "62% 60%"
             },
             thumb: "/images/raw-materials/concentrates/vegetables-thumb.webp",
             items: [
@@ -413,10 +422,10 @@ export const divisions: Division[] = [
         scope: {
           title: t("Oat and almond concentrates.", "Concentrados de avena y almendra."),
           context: {
-            title: t("Tell us about your product.", "Cuéntenos su producto."),
+            title: t("Tell us about your application.", "Cuéntenos su aplicación."),
             text: t(
-              "Share the plant-based product you are developing and the concentrate you need.",
-              "Indique el producto de origen vegetal que está desarrollando y el concentrado que necesita."
+              "Share the product you are developing and the concentrate it requires.",
+              "Indique el producto que está desarrollando y el concentrado que necesita."
             )
           }
         },
@@ -438,7 +447,7 @@ export const divisions: Division[] = [
         scope: {
           title: t("IQF citrus formats.", "Formatos de cítricos IQF."),
           context: {
-            title: t("Tell us about your use.", "Cuéntenos su uso."),
+            title: t("Tell us about your application.", "Cuéntenos su aplicación."),
             text: t(
               "Share the citrus, the format and the application you have in mind.",
               "Indique el cítrico, el formato y la aplicación que tiene en mente."
@@ -446,7 +455,11 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/raw-materials/iqf-fruit.avif",
-        showcase: { image: "/images/raw-materials/citrus.webp", focus: "60% 50%" },
+        showcase: {
+          image: "/images/raw-materials/citrus.webp",
+          focus: "60% 50%",
+          card: { image: "/images/raw-materials/iqf-citrus-card.webp", focus: "55% 55%" }
+        },
         heroPanorama: {
           image: "/images/raw-materials/iqf-citrus-panorama.png",
           width: 1914,
@@ -544,7 +557,7 @@ export const divisions: Division[] = [
         scope: {
           title: t("Flavours for sweet products.", "Sabores para productos dulces."),
           context: {
-            title: t("Tell us about your product.", "Cuéntenos su producto."),
+            title: t("Tell us about your application.", "Cuéntenos su aplicación."),
             text: t(
               "Share the sweet product and the flavour profile you are looking for.",
               "Indique el producto dulce y el perfil de sabor que busca."
@@ -552,7 +565,15 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/flavours/sweet.avif",
-        showcase: { image: "/images/flavours/sweet-ice-cream.webp", focus: "50% 42%" }
+        showcase: {
+          image: "/images/flavours/sweet-ice-cream.webp",
+          focus: "50% 42%",
+          card: { image: "/images/flavours/sweet-tarts.webp", focus: "60% 55%" }
+        },
+        heroDesktop: {
+          image: { src: "/images/flavours/sweet-tarts.webp", width: 2400, height: 1350 },
+          focus: "60% 55%"
+        }
       },
       {
         id: "beverage-applications",
@@ -577,7 +598,15 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/flavours/beverage.avif",
-        showcase: { image: "/images/flavours/beverage-citrus.webp", focus: "65% 50%" }
+        showcase: {
+          image: "/images/flavours/beverage-citrus.webp",
+          focus: "65% 50%",
+          card: { image: "/images/flavours/beverage-citrus-drink.webp", focus: "55% 60%" }
+        },
+        heroDesktop: {
+          image: { src: "/images/flavours/beverage-citrus-drink.webp", width: 2400, height: 1600 },
+          focus: "55% 60%"
+        }
       },
       {
         id: "savoury-applications",
@@ -594,7 +623,7 @@ export const divisions: Division[] = [
         scope: {
           title: t("Flavours for savoury products.", "Sabores para productos salados."),
           context: {
-            title: t("Tell us about your product.", "Cuéntenos su producto."),
+            title: t("Tell us about your application.", "Cuéntenos su aplicación."),
             text: t(
               "Share the savoury product and the flavour profile you are looking for.",
               "Indique el producto salado y el perfil de sabor que busca."
@@ -602,7 +631,15 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/flavours/hero.avif",
-        showcase: { image: "/images/flavours/savoury-board.webp", focus: "50% 50%" }
+        showcase: {
+          image: "/images/flavours/savoury-board.webp",
+          focus: "50% 50%",
+          card: { image: "/images/flavours/savoury-soup.webp", focus: "62% 55%" }
+        },
+        heroDesktop: {
+          image: { src: "/images/flavours/savoury-soup.webp", width: 2400, height: 1599 },
+          focus: "62% 55%"
+        }
       }
     ]
   },
@@ -774,7 +811,10 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/consulting/process.avif",
-        showcase: { placeholder: "capsule" },
+        showcase: {
+          placeholder: "capsule",
+          card: { image: "/images/consulting/pharmaceutical-filling-card.webp", focus: "60% 50%" }
+        },
         heroPanorama: {
           image: "/images/consulting/pharmaceutical-filling-panorama.png",
           width: 1914,
@@ -800,6 +840,7 @@ export function getCategoryBySlug(division: Division, locale: Locale, slug: stri
 
 /** Slug-only projection, small enough to hand to client components. */
 export const slugTree: SlugTree = divisions.map((division) => ({
+  id: division.id,
   slug: division.slug,
-  categories: division.categories.map((category) => ({ slug: category.slug }))
+  categories: division.categories.map((category) => ({ id: category.id, slug: category.slug }))
 }));

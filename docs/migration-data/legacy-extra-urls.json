@@ -1,0 +1,56 @@
+[
+ {
+  "locale": "en",
+  "sourceUrl": "https://www.gfb-solutions.com/food-tech-solutions/",
+  "observedAt": "2026-10-28T00:19:49.446Z",
+  "provenance": "internal link on an official sitemap page",
+  "linkedFrom": [
+   "https://www.gfb-solutions.com",
+   "https://www.gfb-solutions.com/?lang=es"
+  ],
+  "sourceStatus": 404,
+  "redirectChain": [
+   {
+    "url": "https://www.gfb-solutions.com/food-tech-solutions/",
+    "status": 301
+   }
+  ],
+  "finalUrl": "https://www.gfb-solutions.com/food-tech-solutions"
+ },
+ {
+  "locale": "en",
+  "sourceUrl": "https://www.gfb-solutions.com/ingredients-and-chemicals/",
+  "observedAt": "2026-10-28T00:19:49.446Z",
+  "provenance": "internal link on an official sitemap page",
+  "linkedFrom": [
+   "https://www.gfb-solutions.com",
+   "https://www.gfb-solutions.com/?lang=es"
+  ],
+  "sourceStatus": 404,
+  "redirectChain": [
+   {
+    "url": "https://www.gfb-solutions.com/ingredients-and-chemicals/",
+    "status": 301
+   }
+  ],
+  "finalUrl": "https://www.gfb-solutions.com/ingredients-and-chemicals"
+ },
+ {
+  "locale": "en",
+  "sourceUrl": "https://www.gfb-solutions.com/engineering-and-machinery/",
+  "observedAt": "2026-10-28T00:19:49.446Z",
+  "provenance": "internal link on an official sitemap page",
+  "linkedFrom": [
+   "https://www.gfb-solutions.com",
+   "https://www.gfb-solutions.com/?lang=es"
+  ],
+  "sourceStatus": 404,
+  "redirectChain": [
+   {
+    "url": "https://www.gfb-solutions.com/engineering-and-machinery/",
+    "status": 301
+   }
+  ],
+  "finalUrl": "https://www.gfb-solutions.com/engineering-and-machinery"
+ }
+]

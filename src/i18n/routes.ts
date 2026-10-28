@@ -1,3 +1,4 @@
+import { publicPathFor, publicUrl } from "../migration/public-paths.ts";
 import { isLocale, locales, type Locale, type LocalizedText } from "./config.ts";
 
 /**
@@ -8,12 +9,18 @@ import { isLocale, locales, type Locale, type LocalizedText } from "./config.ts"
  * and permanently redirects folder names that are not the public slug for that locale.
  * Division and category slugs are resolved directly by their dynamic segments.
  *
+ * Pages that replace a legacy (Wix) page keep the legacy URL as their public canonical
+ * (`/cans`, `/cans?lang=es`, see src/migration/public-paths.ts); `paths` returns that URL, so
+ * every internal link, alternate and sitemap entry points at the final canonical. The
+ * localized folders remain the internal routes (`routes`).
+ *
  * This module is pure and client-safe: it never imports the content catalog.
  */
 
 export const staticPages = {
   about: { en: "about", es: "sobre-gfb" },
-  contact: { en: "contact", es: "contacto" }
+  contact: { en: "contact", es: "contacto" },
+  "product-index": { en: "product-index", es: "indice-de-productos" }
 } as const satisfies Record<string, LocalizedText>;
 
 export type StaticPage = keyof typeof staticPages;
@@ -26,15 +33,33 @@ export const legalPolicies = {
 export type LegalPolicy = keyof typeof legalPolicies;
 
 /** Minimal slug tree needed to translate catalog URLs between locales. */
-export type SlugTree = { slug: LocalizedText; categories: { slug: LocalizedText }[] }[];
+export type SlugTree = { id?: string; slug: LocalizedText; categories: { id?: string; slug: LocalizedText }[] }[];
 
-export const paths = {
+type DivisionRef = { id?: string; slug: LocalizedText };
+type CategoryRef = { id?: string; slug: LocalizedText };
+
+/** Localized App Router paths (internal routes; also the public URL of pages without a legacy URL). */
+export const routes = {
   home: (locale: Locale) => `/${locale}`,
   page: (locale: Locale, page: StaticPage) => `/${locale}/${staticPages[page][locale]}`,
+  division: (locale: Locale, division: DivisionRef) => `/${locale}/${division.slug[locale]}`,
+  category: (locale: Locale, division: DivisionRef, category: CategoryRef) =>
+    `/${locale}/${division.slug[locale]}/${category.slug[locale]}`
+};
+
+const legacyOr = (key: string, locale: Locale, fallback: string) => {
+  const path = publicPathFor(key);
+  return path ? publicUrl(path, locale) : fallback;
+};
+
+export const paths = {
+  home: (locale: Locale) => legacyOr("home", locale, routes.home(locale)),
+  page: (locale: Locale, page: StaticPage) => legacyOr(`page:${page}`, locale, routes.page(locale, page)),
   legal: (locale: Locale, policy: LegalPolicy) => `/${locale}/legal/${legalPolicies[policy][locale]}`,
-  division: (locale: Locale, division: { slug: LocalizedText }) => `/${locale}/${division.slug[locale]}`,
-  category: (locale: Locale, division: { slug: LocalizedText }, category: { slug: LocalizedText }) =>
-    `/${locale}/${division.slug[locale]}/${category.slug[locale]}`,
+  division: (locale: Locale, division: DivisionRef) =>
+    legacyOr(`division:${division.id}`, locale, routes.division(locale, division)),
+  category: (locale: Locale, division: DivisionRef, category: CategoryRef) =>
+    legacyOr(`category:${division.id}/${category.id}`, locale, routes.category(locale, division, category)),
   contact: (locale: Locale, context?: { interest?: string; category?: string }) => {
     const query = new URLSearchParams();
     if (context?.interest) query.set("interest", context.interest);
@@ -70,11 +95,14 @@ export function resolveStaticSegment(locale: Locale, segment: string | undefined
 
 /**
  * Translates a public pathname into the equivalent page in another locale.
- * Unknown paths fall back to the target locale's home page.
+ * Legacy public paths (no locale prefix) keep their path and switch the `lang` query; the
+ * address bar of a rewritten legacy page shows that path. Unknown localized paths fall back
+ * to the target locale's home page.
  */
 export function translatePathname(pathname: string, to: Locale, tree: SlugTree): string {
   const [from, first, second, ...rest] = pathname.split("/").filter(Boolean);
-  if (!isLocale(from) || !first) return paths.home(to);
+  if (!isLocale(from)) return publicUrl(pathname.split("?")[0] || "/", to);
+  if (!first) return paths.home(to);
 
   for (const page of Object.keys(staticPages) as StaticPage[]) {
     if (staticPages[page][from] === first && !second) return paths.page(to, page);

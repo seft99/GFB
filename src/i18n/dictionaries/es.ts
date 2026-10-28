@@ -132,7 +132,7 @@ export const es: Dictionary = {
     explorerCount: "productos",
     explorerCta: "Consultar esta familia",
     explorerTabs: "Familias de concentrados",
-    ctaEyebrow: "Consulta contextual",
+    ctaEyebrow: "Hablemos de su proyecto",
     ctaTitle: "Comparta los requisitos de esta categoría."
   },
   about: {
@@ -155,7 +155,7 @@ export const es: Dictionary = {
         "GFB trabaja con productores y fabricantes para suministrar a nivel internacional, adaptando productos y servicios a los requisitos de cada cliente.",
         "Según la necesidad, su oferta incluye embalaje, materias primas, sabores y consultoría industrial."
       ],
-      imageAlt: "Compañeros uniendo las manos sobre una mesa de reunión con portátiles y documentos",
+      imageAlt: "Compañeros trabajando juntos en una mesa de reunión con portátiles y documentos",
       label: "Servicio personalizado"
     },
     purpose: {
@@ -258,7 +258,20 @@ export const es: Dictionary = {
     solutions: "Soluciones",
     contact: "Contacto",
     privacy: "Privacidad",
-    cookies: "Cookies"
+    cookies: "Cookies",
+    productIndex: "Índice de productos"
+  },
+  legacy: {
+    related: "Más en esta familia",
+    allProducts: "Fichas de producto y especificaciones",
+    allProductsText: "Páginas técnicas y de producto de esta categoría, con sus especificaciones publicadas.",
+    backTo: "Volver a",
+    specs: "Especificaciones",
+    indexTitle: "Índice de productos",
+    indexText:
+      "Todas las páginas de producto, especificación y aplicación de GFB, agrupadas por familia. Cada página conserva su contenido publicado y enlaza con su categoría.",
+    indexMeta:
+      "Índice de páginas de producto, especificaciones y aplicaciones de GFB Solutions, agrupadas por categoría y familia."
   },
   notFound: {
     metaTitle: "Página no encontrada",

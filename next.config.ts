@@ -1,5 +1,15 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { NextConfig } from "next";
-import { legacyRedirects } from "./src/i18n/legacy-redirects.ts";
+
+/**
+ * Child sitemaps of the legacy Wix site (docs/migration-data/legacy-sitemaps.json). They are
+ * not reproduced: each one redirects to the sitemap of its language, so a known endpoint never
+ * returns unrelated HTML. The two index URLs are served by the app.
+ */
+const legacySitemaps: { url: string; type: "index" | "child"; locale: "en" | "es" }[] = JSON.parse(
+  readFileSync(join(process.cwd(), "docs/migration-data/legacy-sitemaps.json"), "utf8")
+);
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -41,10 +51,17 @@ const nextConfig: NextConfig = {
     deviceSizes: [320, 375, 430, 768, 1024, 1280, 1440, 1920]
   },
   async headers() {
+    // The page-level X-Robots-Tag for preview/unknown hosts comes from proxy.ts (host + environment).
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
   async redirects() {
-    return legacyRedirects();
+    return legacySitemaps
+      .filter((sitemap) => sitemap.type === "child")
+      .map((sitemap) => ({
+        source: new URL(sitemap.url).pathname,
+        destination: sitemap.locale === "es" ? "/es_es-sitemap.xml" : "/sitemap.xml",
+        statusCode: 301 as const
+      }));
   }
 };
 

@@ -3,10 +3,16 @@
  *
  * Desktop only: below 1100px the explorer is hidden and the existing family grid of the
  * `#families` section stays as it was. From 1100px the grid is hidden and the explorer shows a
- * ~1280px container on a subtly tinted section: intro (heading left, text right), five family
- * tabs in one row (thumbnail, name, count; active tab cobalt on pale blue with a blue underline)
- * and a 45/55 panel (photograph | heading, two-column list, optional note, blue CTA). The list
- * reserves the rows of the longest family (`--rows`), so the panel height never changes.
+ * ~1280px container on a tinted section:
+ * - intro on the same five-column grid as the tabs (heading over three columns, text from the
+ *   fourth), with a short lime rule before the eyebrow;
+ * - five family tabs on a hairline: thumbnail, name and count; the active tab is pale blue with
+ *   a blue underline that grows in and a lime ring around its thumbnail;
+ * - a 46/54 panel (photograph | content) whose height follows the list (with a floor that keeps
+ *   the photograph balanced), numbered product rows in two columns read top to bottom, an
+ *   optional note and the blue CTA. Product rows are text; only real product pages would be
+ *   links (with an arrow and hover).
+ * Motion: tab state 280ms, photo crossfade 450ms, content reveal 380ms; none under reduced motion.
  */
 
 .concentrates {
@@ -15,7 +21,7 @@
 
 @media (min-width: 1100px) {
   .portfolio-groups--explorer.section {
-    padding-block: clamp(5rem, 6vw, 6rem);
+    padding-block: clamp(5rem, 6.25vw, 6.5rem);
     background: #f6f8fb;
   }
   .portfolio-groups--explorer .concentrates__legacy {
@@ -23,212 +29,306 @@
   }
 
   .concentrates {
+    --conc-gap: 0.75rem;
+    --conc-line: #e3e8f0;
+    --conc-muted: #5d6578;
+    --conc-ease: cubic-bezier(0.16, 1, 0.3, 1);
     display: block;
     max-width: 80rem;
   }
 
-  /* Intro */
+  /* Intro: shares the tab grid, so the text starts above the fourth family. */
   .concentrates__intro {
     display: grid;
-    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-    gap: clamp(2.5rem, 4vw, 5rem);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: var(--conc-gap);
     align-items: end;
   }
+  .concentrates__intro-heading {
+    grid-column: 1 / 4;
+  }
   .concentrates__intro h2 {
-    max-width: 21ch;
     margin: 0;
     color: var(--brand-ink);
     font-size: clamp(3.25rem, 4.1vw, 4.25rem);
-    line-height: 1;
+    line-height: 1.02;
     letter-spacing: -0.035em;
     text-wrap: balance;
   }
-  .concentrates__intro > p {
-    max-width: 27rem;
-    margin: 0 0 0.4rem;
-    color: #4a5063;
-    font-size: clamp(1.15rem, 1.35vw, 1.3rem);
-    line-height: 1.55;
+  .concentrates__intro-text {
+    grid-column: 4 / 6;
+    max-width: 26rem;
+    margin: 0 0 0.35rem;
+    padding-left: clamp(0.6rem, 0.8vw, 0.8rem);
+    color: var(--conc-muted);
+    font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+    line-height: 1.6;
+    text-wrap: pretty;
   }
-  .concentrates__eyebrow {
-    margin-bottom: 1.25rem;
+  .concentrates__intro .concentrates__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.4rem;
+  }
+  .concentrates__intro .concentrates__eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--lime-500);
   }
 
   /* Family tabs */
   .concentrates__tabs {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 0.5rem;
-    margin-top: clamp(2.75rem, 3.5vw, 3.5rem);
+    gap: var(--conc-gap);
+    margin-top: clamp(2.75rem, 3.6vw, 3.5rem);
+    border-bottom: 1px solid var(--conc-line);
   }
   .concentrates__tab {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: clamp(0.75rem, 1vw, 0.95rem);
+    gap: 0.9rem;
     min-width: 0;
-    padding: 0.85rem clamp(0.6rem, 0.8vw, 0.8rem);
+    padding: 0.85rem clamp(0.6rem, 0.8vw, 0.8rem) 1rem;
     border: 0;
-    border-bottom: 3px solid transparent;
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    border-radius: 0.9rem 0.9rem 0 0;
     color: var(--brand-ink);
     background: transparent;
     font: inherit;
     text-align: left;
     cursor: pointer;
     transition:
-      background 0.2s ease,
-      border-color 0.2s ease,
-      color 0.2s ease;
+      background 280ms var(--conc-ease),
+      color 280ms var(--conc-ease);
+  }
+  .concentrates__tab::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    background: var(--blue-600);
+    transform: scaleX(0);
+    transition: transform 280ms var(--conc-ease);
   }
   .concentrates__tab:hover {
-    background: rgba(36, 110, 233, 0.05);
+    background: rgba(255, 255, 255, 0.85);
   }
   .concentrates__tab[aria-selected="true"] {
-    border-bottom-color: var(--blue-600);
     color: var(--blue-600);
-    background: #e8f0fd;
+    background: #ebf2fe;
+  }
+  .concentrates__tab[aria-selected="true"]::after {
+    transform: scaleX(1);
   }
   .concentrates__tab:focus-visible {
-    outline: 3px solid var(--blue-500);
+    outline: 2px solid var(--blue-500);
     outline-offset: 2px;
   }
   .concentrates__thumb {
     position: relative;
     flex: none;
-    width: clamp(4.5rem, 5.6vw, 5rem);
+    width: clamp(4.25rem, 4.9vw, 4.75rem);
     aspect-ratio: 1;
     overflow: hidden;
+    border: 1px solid var(--conc-line);
     border-radius: 50%;
     background: #ffffff;
-    box-shadow:
-      0 0 0 1px rgba(10, 18, 41, 0.06),
-      0 8px 18px -10px rgba(10, 18, 41, 0.35);
+    transition: box-shadow 280ms var(--conc-ease);
   }
   .concentrates__thumb img {
     object-fit: contain;
-    padding: 7%;
+    padding: 8%;
+    transition: transform 260ms var(--conc-ease);
+  }
+  .concentrates__tab:hover .concentrates__thumb img {
+    transform: scale(1.06);
+  }
+  .concentrates__tab[aria-selected="true"] .concentrates__thumb {
+    box-shadow:
+      0 0 0 3px #ebf2fe,
+      0 0 0 5px var(--lime-500);
   }
   .concentrates__tab-text {
     display: grid;
-    gap: 0.3rem;
+    gap: 0.25rem;
     min-width: 0;
   }
   .concentrates__tab-name {
-    font-size: clamp(1.1rem, 1.3vw, 1.2rem);
+    font-size: clamp(1.08rem, 1.25vw, 1.2rem);
     font-weight: 650;
     line-height: 1.15;
   }
   .concentrates__tab-count {
-    color: #5c6275;
-    font-size: 0.98rem;
+    color: var(--conc-muted);
+    font-size: 0.92rem;
+    font-variant-numeric: tabular-nums;
   }
   .concentrates__tab[aria-selected="true"] .concentrates__tab-count {
     color: var(--blue-600);
   }
 
-  /* Panel: 45% photograph, 55% content */
+  /* Panel: content-driven height with a floor that keeps the photograph balanced. */
   .concentrates__panel {
     display: grid;
-    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
-    margin-top: 1rem;
+    grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+    min-height: clamp(31rem, 36vw, 34rem);
+    margin-top: 1.5rem;
     overflow: hidden;
-    border: 1px solid #e3e7ee;
-    border-radius: var(--radius-md);
+    border: 1px solid var(--conc-line);
+    border-radius: 1.375rem;
     background: #ffffff;
-    box-shadow: 0 24px 50px -36px rgba(10, 18, 41, 0.35);
+    box-shadow:
+      0 1px 2px rgba(10, 18, 41, 0.04),
+      0 32px 64px -48px rgba(10, 18, 41, 0.4);
   }
   .concentrates__media {
     position: relative;
-    min-height: 100%;
-    background: #ffffff;
+    overflow: hidden;
+    background: #eef2f6;
   }
   .concentrates__photo {
+    z-index: 1;
     object-fit: cover;
-    animation: concentrates-fade 240ms ease both;
+    opacity: 0;
+    transition: opacity 450ms var(--conc-ease);
   }
-  .concentrates__photo.is-studio {
-    object-fit: contain;
-    padding: 9%;
+  .concentrates__photo.is-loaded {
+    opacity: 1;
   }
+  .concentrates__photo.is-previous {
+    z-index: 0;
+    opacity: 1;
+    transition: none;
+  }
+
   .concentrates__content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: clamp(2.25rem, 2.8vw, 2.75rem) clamp(2.25rem, 3vw, 3rem);
-    animation: concentrates-in 220ms ease both;
+    justify-content: center;
+    padding: clamp(2.25rem, 3vw, 3rem) clamp(2.25rem, 3.4vw, 3.5rem);
+    animation: concentrates-in 380ms var(--conc-ease) both;
   }
   .concentrates__content .concentrates__eyebrow {
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.8rem;
   }
   .concentrates__content h3 {
     margin: 0;
     color: var(--brand-ink);
-    font-size: clamp(2.1rem, 2.6vw, 2.6rem);
+    font-size: clamp(2rem, 2.5vw, 2.5rem);
     line-height: 1.1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 
-  /* List and note keep the space of the longest family, so the panel height never changes. */
-  .concentrates__body {
-    width: 100%;
-    min-height: calc(var(--rows) * 3rem + 4.45rem);
-  }
-  /* Two columns, filled top to bottom. */
+  /* Product rows: two balanced columns, filled top to bottom. */
   .concentrates__list {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(var(--list-rows), 3rem);
-    align-content: start;
-    column-gap: clamp(2rem, 3vw, 2.75rem);
+    grid-template-rows: repeat(var(--list-rows), auto);
+    column-gap: clamp(1.75rem, 2.6vw, 2.5rem);
     width: 100%;
-    margin: 1.6rem 0 0;
+    margin: 1.75rem 0 0;
     padding: 0;
     list-style: none;
   }
-  .concentrates__list li {
-    display: flex;
+  .concentrates__item,
+  .concentrates__item-link {
+    display: grid;
+    grid-template-columns: 2.1rem minmax(0, 1fr) auto;
     align-items: center;
-    border-bottom: 1px solid #e3e7ee;
-    color: #20263a;
-    font-size: 1.08rem;
+    min-height: 3.05rem;
   }
-  .concentrates__list li.is-highlight {
+  .concentrates__item {
+    border-bottom: 1px solid #e7ebf1;
+  }
+  .concentrates__index {
+    color: #687083;
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.06em;
+  }
+  .concentrates__name {
+    color: #172038;
+    font-size: 1.06rem;
+    line-height: 1.3;
+  }
+  .concentrates__item.is-highlight .concentrates__name {
     color: var(--blue-600);
     font-weight: 700;
   }
+  .concentrates__item.is-highlight .concentrates__index {
+    color: var(--blue-500);
+  }
+
+  /* Only rendered for products with a real page. */
+  .concentrates__item-link {
+    color: inherit;
+    text-decoration: none;
+  }
+  .concentrates__item-link svg {
+    width: 1rem;
+    color: var(--blue-600);
+    transition: translate 220ms var(--conc-ease);
+  }
+  .concentrates__item-link:hover .concentrates__name {
+    color: var(--blue-600);
+  }
+  .concentrates__item-link:hover svg {
+    translate: 3px 0;
+  }
+  .concentrates__item-link:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: 2px;
+  }
+
   .concentrates__note {
-    min-height: 1.6rem;
-    margin-top: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1.25rem 0 0;
+    color: var(--conc-muted);
+    font-size: 0.98rem;
   }
-  .concentrates__note p {
-    margin: 0;
-    color: #5c6275;
-    font-size: 1rem;
+  .concentrates__note::before {
+    content: "";
+    width: 1rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--lime-500);
   }
+
   .concentrates__cta {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    margin-top: 1.5rem;
-    padding: 0.95rem 1.6rem;
+    min-height: 3.25rem;
+    margin-top: 1.75rem;
+    padding: 0 1.6rem;
     border-radius: 999px;
     color: #ffffff;
     background: var(--blue-600);
     font-size: 1rem;
     font-weight: 700;
-    transition: background 0.2s ease;
+    transition: background 220ms var(--conc-ease);
   }
   .concentrates__cta:hover {
     background: #0f47b5;
   }
   .concentrates__cta:focus-visible {
-    outline: 3px solid var(--blue-500);
+    outline: 2px solid var(--blue-500);
     outline-offset: 3px;
   }
   .concentrates__cta svg {
     width: 1.1rem;
-    transition: translate 0.2s ease;
+    transition: translate 220ms var(--conc-ease);
   }
   .concentrates__cta:hover svg {
     translate: 3px 0;
@@ -238,21 +338,25 @@
 @keyframes concentrates-in {
   from {
     opacity: 0;
-    transform: translateY(6px);
-  }
-}
-@keyframes concentrates-fade {
-  from {
-    opacity: 0;
+    transform: translateY(8px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .concentrates__tab,
+  .concentrates__tab::after,
+  .concentrates__thumb,
+  .concentrates__thumb img,
   .concentrates__photo,
-  .concentrates__content {
-    animation: none;
-  }
+  .concentrates__item-link svg,
+  .concentrates__cta,
   .concentrates__cta svg {
     transition: none;
+  }
+  .concentrates__tab:hover .concentrates__thumb img {
+    transform: none;
+  }
+  .concentrates__content {
+    animation: none;
   }
 }

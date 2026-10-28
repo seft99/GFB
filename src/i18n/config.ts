@@ -15,4 +15,7 @@ export function otherLocale(locale: Locale): Locale {
   return locale === "en" ? "es" : "en";
 }
 
-export const openGraphLocale: Record<Locale, string> = { en: "en_GB", es: "es_ES" };
+export const openGraphLocale: Record<Locale, string> = { en: "en_US", es: "es_ES" };
+
+/** hreflang codes, as published by the legacy site (kept to avoid changing regional targeting). */
+export const hreflang: Record<Locale, string> = { en: "en-US", es: "es-ES" };

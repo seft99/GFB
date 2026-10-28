@@ -2,6 +2,7 @@ import Image, { getImageProps } from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { ArtDirectedImage } from "@/components/ui/art-directed-image";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon } from "@/components/ui/icon";
@@ -9,6 +10,7 @@ import type { Category, Division } from "@/src/content/types";
 import type { Locale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { paths } from "@/src/i18n/routes";
+import { cx } from "@/src/lib/cx";
 
 /** Ids of the category page sections the hero's secondary link can scroll to. */
 export const categorySectionIds = { scope: "scope", families: "families" } as const;
@@ -75,16 +77,20 @@ export function CategoryHero({ division, category, locale, inquiryHref }: Catego
   const focus = category.heroFocus ?? category.showcase?.focus;
   const photo = category.showcase?.image ?? category.image;
   const photoSizes = "(max-width: 900px) 100vw, 64vw";
-  const { heroPanorama: panorama } = category;
+  const { heroPanorama: panorama, heroDesktop } = category;
+  const sectionStyle = {
+    ...(panorama ? { "--panorama-focus": panorama.focus } : {}),
+    ...(heroDesktop?.focus ? { "--hero-desktop-focus": heroDesktop.focus } : {})
+  } as CSSProperties;
 
   return (
     <section
-      className={
-        panorama
-          ? "detail-hero detail-hero--editorial detail-hero--panorama section-dark"
-          : "detail-hero detail-hero--editorial section-dark"
-      }
-      style={panorama ? ({ "--panorama-focus": panorama.focus } as CSSProperties) : undefined}
+      className={cx(
+        "detail-hero detail-hero--editorial section-dark",
+        panorama && "detail-hero--panorama",
+        heroDesktop?.focus && "detail-hero--desktop-focus"
+      )}
+      style={panorama || heroDesktop?.focus ? sectionStyle : undefined}
     >
       <div className="shell">
         <Breadcrumbs
@@ -123,6 +129,14 @@ export function CategoryHero({ division, category, locale, inquiryHref }: Catego
               <span className="detail-hero__photo">
                 {panorama ? (
                   <PanoramaPicture panorama={panorama} photo={photo} sizes={photoSizes} focus={focus} />
+                ) : heroDesktop?.image ? (
+                  <ArtDirectedImage
+                    alt=""
+                    desktop={{ ...heroDesktop.image, sizes: "64vw" }}
+                    mobile={{ src: photo, sizes: photoSizes }}
+                    priority
+                    style={focus ? { objectPosition: focus } : undefined}
+                  />
                 ) : (
                   <Image
                     src={photo}

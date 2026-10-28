@@ -40,6 +40,13 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     title: { default: meta.siteTitle, template: "%s | GFB Solutions" },
     description: meta.siteDescription,
     applicationName: "GFB Solutions",
+    // Search engine ownership tags published by the legacy site (public values, kept so the
+    // existing Search Console / Bing / Yandex properties stay verified after the cutover).
+    verification: {
+      google: "7PiVqg96_UzmbwwrXLGTOT9K7aiSCudnN4SN4TUAVLM",
+      yandex: "b8ae05bb2eec23a5",
+      other: { "msvalidate.01": "F483BC0C4330FDBD41BF5896267891F0" }
+    },
     // Favicon: the circular GFB mark (cropped from the logo), not the full horizontal logo.
     icons: {
       icon: [

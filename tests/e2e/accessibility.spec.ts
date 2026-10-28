@@ -2,11 +2,14 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 const pages = [
-  "/en",
-  "/es",
-  "/es/sobre-gfb",
-  "/en/packaging-solutions",
-  "/es/materias-primas/concentrados-de-frutas",
+  "/",
+  "/?lang=es",
+  "/about-us?lang=es",
+  "/packaging-solutions",
+  "/fruits-concentrates?lang=es",
+  "/malbec?lang=es",
+  "/aluminum-cans/std-can-d66mm",
+  "/es/indice-de-productos",
   "/en/contact",
   "/es/legal/privacidad"
 ];

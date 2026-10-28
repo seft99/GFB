@@ -5,3 +5,6 @@ next-env.d.ts
 playwright-report
 test-results
 public
+# Generated migration data (crawler/builder output; regenerate instead of editing)
+docs/migration-data
+src/migration/legacy-content.json

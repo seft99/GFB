@@ -1,0 +1,117 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { headers } from "next/headers";
+import { notFound } from "next/navigation";
+import { ButtonLink } from "@/components/ui/button-link";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { JsonLd } from "@/components/ui/json-ld";
+import { company } from "@/src/content/company";
+import { isLocale } from "@/src/i18n/config";
+import { getDictionary } from "@/src/i18n/dictionaries";
+import {
+  findMigrationRow,
+  internalHref,
+  legacyAlternates,
+  legacyCanonical,
+  productionOrigin
+} from "@/src/migration/manifest";
+import "../../../styles/legacy-detail.css";
+
+type Props = PageProps<"/[locale]/migration-entry/[...segments]">;
+
+async function resolveRequest(params: Props["params"]) {
+  const { locale } = await params;
+  if (!isLocale(locale)) return null;
+  const requestHeaders = await headers();
+  if (requestHeaders.get("x-gfb-legacy-rewrite") !== "1") return null;
+  const pathname = requestHeaders.get("x-gfb-legacy-path") || "/";
+  const row = findMigrationRow(pathname, locale);
+  return row ? { locale, pathname, row } : null;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const resolved = await resolveRequest(params);
+  if (!resolved) return {};
+  const { locale, pathname, row } = resolved;
+  const title = row.title || row.h1 || "GFB Solutions";
+  const description = row.description || `${title} — GFB Solutions`;
+  const canonical = legacyCanonical(pathname, locale);
+  return {
+    title,
+    description,
+    alternates: { canonical, languages: legacyAlternates(pathname) },
+    openGraph: { title, description, type: "website", siteName: "GFB Solutions", url: canonical },
+    twitter: { card: "summary_large_image", title, description }
+  };
+}
+
+export default async function LegacyLandingPage({ params }: Props) {
+  const resolved = await resolveRequest(params);
+  if (!resolved) notFound();
+  const { locale, pathname, row } = resolved;
+  const { common } = getDictionary(locale);
+  const title = row.h1 || row.title || pathname.split("/").filter(Boolean).at(-1)?.replaceAll("-", " ") || company.name;
+  const description = row.description || row.keyContent?.find((item) => item !== title) || "";
+  const headings = [...new Set(row.keyContent || [])].filter((item) => item && item !== title).slice(0, 24);
+  const related = [...new Set(row.internalOutboundLinks || [])]
+    .map(internalHref)
+    .filter((href) => href.startsWith("/") && href !== pathname)
+    .slice(0, 12);
+  const canonical = legacyCanonical(pathname, locale);
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": canonical,
+    url: canonical,
+    name: title,
+    description,
+    inLanguage: locale === "es" ? "es-ES" : "en-US",
+    isPartOf: { "@type": "WebSite", "@id": `${productionOrigin}/#website`, name: company.name, url: productionOrigin }
+  };
+
+  return (
+    <main id="main-content" className="legacy-detail">
+      <JsonLd data={schema} />
+      <section className="legacy-detail__hero section-dark">
+        <div className="shell legacy-detail__hero-inner">
+          <Eyebrow onDark>{company.name}</Eyebrow>
+          <h1>{title}</h1>
+          {description && <p className="lead">{description}</p>}
+          <ButtonLink href={`/${locale}/${locale === "es" ? "contacto" : "contact"}`} variant="lime">
+            {common.inquire}
+          </ButtonLink>
+        </div>
+      </section>
+      <section className="section legacy-detail__content">
+        <div className="shell">
+          {headings.length > 0 && (
+            <div className="legacy-detail__facts" aria-labelledby="legacy-facts-title">
+              <h2 id="legacy-facts-title">{locale === "es" ? "Información del producto" : "Product information"}</h2>
+              <ul>
+                {headings.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {related.length > 0 && (
+            <nav
+              className="legacy-detail__related"
+              aria-label={locale === "es" ? "Páginas relacionadas" : "Related pages"}
+            >
+              <h2>{locale === "es" ? "Explore opciones relacionadas" : "Explore related options"}</h2>
+              <ul>
+                {related.map((href) => (
+                  <li key={href}>
+                    <Link href={href}>{href.split("/").filter(Boolean).at(-1)?.replaceAll("-", " ")}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+        </div>
+      </section>
+    </main>
+  );
+}

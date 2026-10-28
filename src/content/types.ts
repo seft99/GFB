@@ -2,8 +2,8 @@ import type { LocalizedText } from "../i18n/config.ts";
 
 export type DivisionId = "packaging-solutions" | "raw-materials" | "flavours-aromas" | "industrial-consulting";
 
-/** Photograph of a product family in the family explorer; `fit: "contain"` for studio cut-outs on white. */
-export type GroupImage = { src: string; alt: LocalizedText; focus?: string; fit?: "cover" | "contain" };
+/** Photograph of a product family in the family explorer; `focus` is its object-position. */
+export type GroupImage = { src: string; alt: LocalizedText; focus?: string };
 
 export type CategoryGroup = {
   title: LocalizedText;
@@ -30,7 +30,13 @@ export type CategoryExplorer = {
  * there only (the category page keeps its own); `placeholder` shows a neutral panel with that
  * icon when no relevant approved photograph exists.
  */
-export type CategoryShowcase = { image?: string; focus?: string; placeholder?: OverviewIcon };
+export type CategoryShowcase = {
+  image?: string;
+  focus?: string;
+  placeholder?: OverviewIcon;
+  /** Desktop showcase card only: its own photo and framing, independent of the hero and mobile views. */
+  card?: { image: string; focus?: string };
+};
 
 export type Category = {
   /** Stable identifier, independent of the public slug; used in inquiries and tests. */
@@ -48,6 +54,11 @@ export type Category = {
    * the left. It fills the whole hero background; `focus` is its object-position.
    */
   heroPanorama?: { image: string; width: number; height: number; focus: string };
+  /**
+   * Desktop-only detail hero photo and/or framing (art-directed from 1100px); below 1100px the
+   * hero keeps its regular photo and position.
+   */
+  heroDesktop?: { image?: { src: string; width: number; height: number }; focus?: string };
   /** Desktop object-position of the photo in the detail hero background (defaults to the showcase focus). */
   heroFocus?: string;
   /** Label of the detail hero's secondary link to the scope section, when more specific than the division's. */

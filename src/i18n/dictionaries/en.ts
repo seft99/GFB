@@ -130,7 +130,7 @@ export const en = {
     explorerCount: "products",
     explorerCta: "Discuss this family",
     explorerTabs: "Concentrate families",
-    ctaEyebrow: "Contextual inquiry",
+    ctaEyebrow: "Let's discuss your project",
     ctaTitle: "Share the requirements for this category."
   },
   about: {
@@ -154,7 +154,7 @@ export const en = {
         "GFB works with producers and manufacturers to supply internationally, tailoring products and services to customer requirements.",
         "Depending on the requirement, its offering includes packaging, raw materials, flavours and industrial consulting."
       ],
-      imageAlt: "Colleagues joining hands above a meeting table with laptops and documents",
+      imageAlt: "Colleagues working together at a meeting table with laptops and documents",
       label: "Personalized service"
     },
     purpose: {
@@ -257,7 +257,19 @@ export const en = {
     solutions: "Solutions",
     contact: "Contact",
     privacy: "Privacy",
-    cookies: "Cookies"
+    cookies: "Cookies",
+    productIndex: "Product index"
+  },
+  legacy: {
+    related: "More in this family",
+    allProducts: "Product and specification pages",
+    allProductsText: "Technical and product pages of this category, with their published specifications.",
+    backTo: "Back to",
+    specs: "Specifications",
+    indexTitle: "Product index",
+    indexText:
+      "Every GFB product, specification and application page, grouped by family. Each page keeps its published content and links back to its category.",
+    indexMeta: "Index of GFB Solutions product, specification and application pages, grouped by category and family."
   },
   notFound: {
     metaTitle: "Page not found",

@@ -14,9 +14,25 @@ import { serviceCategoriesId } from "./service-hero";
 
 type CardProps = { category: Category; href: string; index: number; locale: Locale };
 
-/** Photo for a showcase card, or a neutral panel with an icon when no relevant photo exists. */
+/**
+ * Photo for a showcase card (its own `showcase.card` derivative when set), or a neutral panel
+ * with an icon when no relevant photo exists.
+ */
 function CardMedia({ category, sizes }: { category: Category; sizes: string }) {
   const { showcase } = category;
+  if (showcase?.card) {
+    return (
+      <span className="showcase-card__media" aria-hidden="true">
+        <Image
+          src={showcase.card.image}
+          alt=""
+          fill
+          sizes={sizes}
+          style={showcase.card.focus ? { objectPosition: showcase.card.focus } : undefined}
+        />
+      </span>
+    );
+  }
   if (showcase?.placeholder) {
     return (
       <span className="showcase-card__media showcase-card__media--placeholder" aria-hidden="true">

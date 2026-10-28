@@ -1,0 +1,93 @@
+/*
+ * Compact closing band of the division and category pages (components/sections/cta-band.tsx).
+ *
+ * Below 1100px the dark strip from globals.css applies unchanged and only the generic title is
+ * shown. From 1100px the `compact-cta--blue` tone uses the About closing CTA blue with white
+ * copy and a navy pill; with a `context`, the page-specific prompt and its sentence replace the
+ * generic title (one visible heading at a time, so only one reaches assistive technology).
+ */
+
+.compact-cta__title--desktop,
+.compact-cta__text {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .compact-cta__title--mobile {
+    display: none;
+  }
+  .compact-cta .compact-cta__title--desktop {
+    display: block;
+  }
+
+  .compact-cta--blue.section-dark {
+    padding-block: clamp(4.5rem, 5.5vw, 5.75rem);
+    color: var(--white);
+    /* Same blue as the About closing CTA: white text stays at 6:1 or more over the gradient. */
+    background: linear-gradient(100deg, #1a5bd6 0%, #1656cc 60%, #1450c2 100%);
+  }
+  .compact-cta--blue .compact-cta__inner {
+    gap: clamp(3rem, 5vw, 6rem);
+  }
+  .compact-cta--blue .eyebrow {
+    margin-bottom: 1.25rem;
+    color: var(--white);
+  }
+  .compact-cta--blue h2 {
+    max-width: 24ch;
+    font-size: clamp(2.5rem, 3.3vw, 3.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .compact-cta__text {
+    display: block;
+    max-width: 38rem;
+    margin: 1.1rem 0 0;
+    color: var(--white);
+    font-size: clamp(1.1rem, 1.25vw, 1.25rem);
+    line-height: 1.55;
+  }
+
+  /* Navy pill with white text; lift and arrow nudge on hover/focus. */
+  .compact-cta--blue .compact-cta__button.button {
+    flex: none;
+    min-height: 3.5rem;
+    padding: 0 1.75rem;
+    border-color: transparent;
+    color: var(--white);
+    background: var(--brand-navy);
+    font-size: 0.875rem;
+    white-space: nowrap;
+    box-shadow: 0 0.6rem 1.5rem rgba(2, 10, 40, 0.2);
+    transition:
+      transform 220ms var(--ease-out),
+      background-color 220ms var(--ease-out),
+      box-shadow 220ms var(--ease-out);
+  }
+  .compact-cta--blue .compact-cta__button.button svg {
+    transition: transform 220ms var(--ease-out);
+  }
+  .compact-cta--blue .compact-cta__button.button:is(:hover, :focus-visible) {
+    background: #0b1640;
+    box-shadow: 0 0.9rem 2rem rgba(2, 10, 40, 0.28);
+    transform: translateY(-2px);
+  }
+  .compact-cta--blue .compact-cta__button.button:is(:hover, :focus-visible) svg {
+    transform: translateX(3px);
+  }
+  .compact-cta--blue :focus-visible {
+    outline-color: var(--white);
+  }
+}
+
+@media (min-width: 1100px) and (prefers-reduced-motion: reduce) {
+  .compact-cta--blue .compact-cta__button.button,
+  .compact-cta--blue .compact-cta__button.button svg {
+    transition: none;
+  }
+  .compact-cta--blue .compact-cta__button.button:is(:hover, :focus-visible),
+  .compact-cta--blue .compact-cta__button.button:is(:hover, :focus-visible) svg {
+    transform: none;
+  }
+}

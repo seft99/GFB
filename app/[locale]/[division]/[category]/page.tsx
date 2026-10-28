@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import { CategoryHero, categorySectionIds } from "@/components/sections/category-hero";
 import { ConcentrateExplorer } from "@/components/sections/concentrate-explorer";
 import { CtaBand } from "@/components/sections/cta-band";
+import { LegacyCatalogue } from "@/components/sections/legacy-catalogue";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Icon } from "@/components/ui/icon";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -122,6 +123,7 @@ export default async function CategoryPage({ params }: Props) {
                 name: group.title[locale],
                 heading: (group.heading ?? group.title)[locale],
                 items: group.items.map((item) => ({
+                  id: slugify(item.en),
                   label: item[locale],
                   highlight: group.highlights?.includes(item.en) ?? false
                 })),
@@ -153,10 +155,14 @@ export default async function CategoryPage({ params }: Props) {
         </section>
       )}
 
+      <LegacyCatalogue locale={locale} parent={{ division: division.id, category: category.id }} />
+
       <CtaBand
         variant="compact"
+        tone="blue"
         eyebrow={copy.ctaEyebrow}
         title={copy.ctaTitle}
+        context={{ title: category.scope.context.title[locale], text: category.scope.context.text[locale] }}
         href={inquiryHref}
         label={common.inquire}
       />

@@ -2,11 +2,12 @@
  * Scope section of the category detail pages (app/[locale]/[division]/[category]/page.tsx).
  *
  * Below 1100px the stacked layout from globals.css applies unchanged (heading, description,
- * check list, and the context note as a cloud box); the "Project context" label is desktop-only.
- * From 1100px: a white editorial section with a 35/65 grid (blue eyebrow and navy H2 | larger
- * description), an optional full-width strip of features with rules and vertical dividers (one
- * column per item, via `--feature-count`), and a full-width pale-blue band that closes the section
- * with a short blue accent, the label on the left and the category-specific prompt on the right.
+ * check list, and the context note as a cloud box); the "Project context" label is never shown.
+ * From 1100px: a navy section between the clear hero and the blue closing CTA, with a 35/65 grid
+ * (lime eyebrow and white H2 | light description) and, only when the category has features, a
+ * full-width strip with light rules, dividers and lime checks (one column per item, via
+ * `--feature-count`). The context note is hidden here: the closing CTA carries its prompt.
+ * Height follows the content; nothing is reserved for an absent feature strip.
  */
 
 .detail-scope__label {
@@ -15,8 +16,9 @@
 
 @media (min-width: 1100px) {
   .detail-scope.section {
-    padding: clamp(5rem, 6vw, 6rem) 0 0;
-    background: #ffffff;
+    padding-block: clamp(4.5rem, 5.5vw, 5.75rem);
+    color: var(--white);
+    background: var(--brand-navy);
   }
 
   .detail-scope .detail-content__grid {
@@ -24,35 +26,40 @@
     gap: 0 clamp(3rem, 5vw, 6rem);
     align-items: start;
   }
+  .detail-scope .eyebrow {
+    color: var(--brand-lime);
+  }
   .detail-scope .detail-content__grid h2 {
     max-width: none;
-    margin-top: 1rem;
-    color: var(--brand-ink);
-    font-size: clamp(3rem, 3.6vw, 3.5rem);
-    line-height: 1.05;
+    margin-top: 0.75rem;
+    color: var(--white);
+    font-size: clamp(2.5rem, 3vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
     text-wrap: balance;
   }
   .detail-scope .lead {
     max-width: 44rem;
     margin: 0;
-    padding-top: 2.4rem;
-    color: #3d4356;
-    font-size: clamp(1.25rem, 1.45vw, 1.375rem);
+    padding-top: 2.15rem;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: clamp(1.2rem, 1.4vw, 1.3125rem);
     line-height: 1.6;
+    text-wrap: pretty;
   }
 
-  /* Features: one row across the container, rules above and below, dividers between items. */
+  /* Features: one row across the container, light rules above and below, dividers between items. */
   .detail-scope__features.check-list {
     display: grid;
     grid-template-columns: repeat(var(--feature-count, 3), minmax(0, 1fr));
-    margin-top: clamp(3.5rem, 4.5vw, 4.5rem);
-    border-block: 1px solid var(--line);
+    margin-top: clamp(3rem, 4vw, 4rem);
+    border-block: 1px solid rgba(255, 255, 255, 0.16);
   }
   .detail-scope__features.check-list li {
     gap: 0.85rem;
-    padding: 1.6rem 1.75rem;
+    padding: 1.5rem 1.75rem;
     border-bottom: 0;
-    color: var(--brand-ink);
+    color: var(--white);
     font-size: 1.05rem;
     font-weight: 600;
   }
@@ -60,54 +67,16 @@
     padding-left: 0;
   }
   .detail-scope__features.check-list li + li {
-    border-left: 1px solid var(--line);
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
   }
   .detail-scope__features.check-list svg {
     flex: none;
     width: 1.25rem;
+    color: var(--brand-lime);
   }
 
-  /* Context band: full width, content aligned to the shell. */
+  /* The closing CTA carries the project-context prompt on desktop. */
   .detail-scope__context {
-    margin-top: clamp(4.5rem, 5.5vw, 5.5rem);
-    background: #eef3fc;
-  }
-  .detail-scope__context .verification-box {
-    display: grid;
-    grid-template-columns: minmax(0, 35fr) minmax(0, 65fr);
-    gap: 0 clamp(3rem, 5vw, 6rem);
-    align-items: center;
-    margin: 0;
-    padding: clamp(2.75rem, 3.4vw, 3.5rem) 0;
-    background: none;
-    border: 0;
-  }
-  .detail-scope__label {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: var(--blue-600);
-    font-size: var(--type-eyebrow);
-    font-weight: 700;
-    letter-spacing: var(--tracking-eyebrow);
-    text-transform: uppercase;
-  }
-  .detail-scope__label::before {
-    content: "";
-    width: 3px;
-    height: 2.75rem;
-    background: var(--blue-500);
-  }
-  .detail-scope__context strong {
-    margin-bottom: 0.4rem;
-    color: var(--brand-ink);
-    font-size: clamp(1.5rem, 1.8vw, 1.75rem);
-    font-weight: 700;
-    line-height: 1.25;
-  }
-  .detail-scope__context p {
-    color: #4a5063;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    display: none;
   }
 }

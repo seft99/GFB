@@ -1,10 +1,15 @@
 import { company } from "../content/company.ts";
 import { absoluteUrl, siteOrigin } from "./metadata.ts";
 
+/** Stable production identities reused across pages. */
+export const organizationId = `${siteOrigin}/#organization`;
+export const websiteId = `${siteOrigin}/#website`;
+
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": organizationId,
     name: company.name,
     url: siteOrigin,
     logo: absoluteUrl("/brand/gfb-logo.png"),
@@ -17,6 +22,18 @@ export function organizationSchema() {
       addressLocality: company.address.locality,
       addressCountry: company.address.countryCode
     }
+  };
+}
+
+export function websiteSchema(locale: "en" | "es") {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": websiteId,
+    name: company.name,
+    url: `${siteOrigin}/`,
+    inLanguage: locale === "es" ? "es-ES" : "en-US",
+    publisher: { "@id": organizationId }
   };
 }
 

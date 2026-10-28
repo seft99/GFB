@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { divisions, slugTree } from "../../src/content/catalog.ts";
 import { locales, otherLocale, type Locale } from "../../src/i18n/config.ts";
-import { legacyPaths, legacyRedirects } from "../../src/i18n/legacy-redirects.ts";
 import { negotiateLocale } from "../../src/i18n/negotiate.ts";
 import {
   legalPolicies,
@@ -56,10 +55,12 @@ test("every page translates to its counterpart and back", () => {
   }
 });
 
-test("unknown paths translate to the target home page", () => {
-  assert.equal(translatePathname("/en/nope", "es", slugTree), "/es");
-  assert.equal(translatePathname("/", "es", slugTree), "/es");
-  assert.equal(translatePathname("/es/materias-primas/nope", "en", slugTree), "/en/raw-materials");
+test("unknown localized paths translate to the target home page; legacy paths switch the lang query", () => {
+  assert.equal(translatePathname("/en/nope", "es", slugTree), paths.home("es"));
+  assert.equal(translatePathname("/", "es", slugTree), "/?lang=es");
+  assert.equal(translatePathname("/citrics/orange-concentrate", "es", slugTree), "/citrics/orange-concentrate?lang=es");
+  assert.equal(translatePathname("/citrics/orange-concentrate", "en", slugTree), "/citrics/orange-concentrate");
+  assert.equal(translatePathname("/es/materias-primas/nope", "en", slugTree), "/raw-materials");
 });
 
 test("contact links carry inquiry context", () => {
@@ -70,16 +71,11 @@ test("contact links carry inquiry context", () => {
   assert.equal(paths.contact("en"), "/en/contact");
 });
 
-test("legacy redirects resolve to real pages, Spanish rules first", () => {
-  const known = new Set(locales.flatMap(everyPublicPath));
-  const redirects = legacyRedirects();
-  for (const redirect of redirects)
-    assert.ok(known.has(redirect.destination), `${redirect.source} → ${redirect.destination}`);
-  for (const source of Object.keys(legacyPaths)) {
-    const rules = redirects.filter((redirect) => redirect.source === source);
-    assert.equal(rules.length, 2);
-    assert.ok(rules[0].has, `${source}: the query-matched Spanish rule must come first`);
-    assert.match(rules[0].destination, /^\/es\//);
-    assert.match(rules[1].destination, /^\/en\//);
-  }
+test("redesigned pages keep their legacy URL as public canonical", () => {
+  const cans = divisions[0].categories.find((category) => category.id === "cans")!;
+  assert.equal(paths.category("en", divisions[0], cans), "/cans");
+  assert.equal(paths.category("es", divisions[0], cans), "/cans?lang=es");
+  assert.equal(paths.home("en"), "/");
+  assert.equal(paths.page("es", "about"), "/about-us?lang=es");
+  assert.equal(paths.page("es", "contact"), "/es/contacto");
 });

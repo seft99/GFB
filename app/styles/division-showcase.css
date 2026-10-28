@@ -4,9 +4,10 @@
  * overrides in `category.showcase` (src/content/catalog.ts).
  *
  * Below 1100px the previous heading and two-column category grid render unchanged. From
- * 1100px: an editorial intro (headline with a lime phrase; count label and text beside a
+ * 1100px, on a corporate navy surface (between the white overview and the blue closing CTA):
+ * an editorial intro (white headline with a lime phrase; count label and light text beside a
  * divider), then a grid with the first category as a featured full-bleed card spanning the
- * height of the stacked secondary cards. The stack has `--secondary` equal rows (two or
+ * height of the stacked secondary cards, which stay white with navy text. The stack has `--secondary` equal rows (two or
  * three), and the grid keeps one total height, so every division shares its proportions.
  */
 
@@ -28,11 +29,13 @@
     --showcase-ease: cubic-bezier(0.16, 1, 0.3, 1);
     --showcase-navy: #061430;
     --showcase-muted: #5b6070;
+    --showcase-motion: 220ms;
     position: relative;
     isolation: isolate;
     overflow: clip;
     padding-block: clamp(4.5rem, 6vw, 6.5rem);
-    background: radial-gradient(40% 50% at 0% 30%, rgba(214, 226, 247, 0.45), transparent 70%), #f5f7fa;
+    color: var(--white);
+    background: var(--brand-navy);
     font-family: var(--font-brand);
     font-stretch: 92%;
   }
@@ -50,7 +53,7 @@
     pointer-events: none;
   }
   .category-showcase__curves path {
-    stroke: rgba(150, 214, 30, 0.55);
+    stroke: rgba(179, 236, 62, 0.3);
     stroke-width: 1.25;
     vector-effect: non-scaling-stroke;
   }
@@ -68,7 +71,7 @@
     align-items: center;
     gap: 1.25rem;
     margin-bottom: 1.75rem;
-    color: var(--blue-600);
+    color: var(--brand-lime);
     font-size: var(--type-eyebrow);
     letter-spacing: 0.2em;
   }
@@ -81,7 +84,7 @@
   .category-showcase__intro h2 {
     max-width: 14em;
     margin: 0;
-    color: var(--brand-ink);
+    color: var(--white);
     font-size: clamp(2.75rem, 3.8vw, 4.25rem);
     font-weight: 700;
     line-height: 1.05;
@@ -89,18 +92,18 @@
     text-wrap: balance;
   }
   .category-showcase__highlight {
-    color: var(--brand-lime-text);
+    color: var(--brand-lime);
   }
   .category-showcase__aside {
     padding: 0.5rem 0 0.5rem clamp(2rem, 3.4vw, 3.5rem);
-    border-left: 1px solid #d9dfe8;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
   }
   .category-showcase__count {
     display: flex;
     align-items: center;
     gap: 1.25rem;
     margin: 0 0 1.25rem;
-    color: #5b6575;
+    color: rgba(255, 255, 255, 0.78);
     font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -116,7 +119,7 @@
   .category-showcase__aside > p:last-child {
     max-width: 30rem;
     margin: 0;
-    color: var(--showcase-muted);
+    color: rgba(255, 255, 255, 0.82);
     font-size: 1.0625rem;
     line-height: 1.65;
   }
@@ -145,12 +148,12 @@
     border-radius: 1.375rem;
     color: inherit;
     transition:
-      transform 0.6s var(--showcase-ease),
-      box-shadow 0.6s var(--showcase-ease),
-      border-color 0.6s var(--showcase-ease);
+      transform var(--showcase-motion) var(--showcase-ease),
+      box-shadow var(--showcase-motion) var(--showcase-ease),
+      border-color var(--showcase-motion) var(--showcase-ease);
   }
   .showcase-card__link:focus-visible {
-    outline: 3px solid var(--blue-600);
+    outline: 3px solid var(--white);
     outline-offset: 3px;
   }
   .showcase-card__media {
@@ -160,7 +163,7 @@
   }
   .showcase-card__media img {
     object-fit: cover;
-    transition: transform 1s var(--showcase-ease);
+    transition: transform var(--showcase-motion) var(--showcase-ease);
   }
   /* Neutral panel when no relevant approved photograph exists. */
   .showcase-card__media--placeholder {
@@ -173,7 +176,7 @@
   }
   .showcase-card__media--placeholder svg {
     width: clamp(3rem, 4vw, 4.25rem);
-    transition: transform 1s var(--showcase-ease);
+    transition: transform var(--showcase-motion) var(--showcase-ease);
   }
 
   .showcase-card__number {
@@ -198,10 +201,10 @@
     place-items: center;
     border-radius: 50%;
     transition:
-      transform 0.5s var(--showcase-ease),
-      background-color 0.5s var(--showcase-ease),
-      border-color 0.5s var(--showcase-ease),
-      color 0.5s var(--showcase-ease);
+      transform var(--showcase-motion) var(--showcase-ease),
+      background-color var(--showcase-motion) var(--showcase-ease),
+      border-color var(--showcase-motion) var(--showcase-ease),
+      color var(--showcase-motion) var(--showcase-ease);
   }
   .showcase-card__arrow svg {
     width: 42%;
@@ -212,6 +215,8 @@
     align-items: center;
     color: var(--white);
     background: var(--showcase-navy);
+    /* Clear edge against the navy section. */
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
   }
   .showcase-card--featured .showcase-card__media {
     position: absolute;
@@ -226,7 +231,7 @@
     background:
       linear-gradient(90deg, rgba(6, 20, 48, 0.9) 0%, rgba(6, 20, 48, 0.7) 34%, rgba(6, 20, 48, 0.12) 72%),
       linear-gradient(0deg, rgba(6, 20, 48, 0.45) 0%, transparent 45%);
-    transition: opacity 0.8s var(--showcase-ease);
+    transition: opacity var(--showcase-motion) var(--showcase-ease);
   }
   .showcase-card--featured .showcase-card__body {
     display: grid;
@@ -267,9 +272,9 @@
   /* Secondary cards */
   .showcase-card--secondary .showcase-card__link {
     align-items: center;
-    border: 1px solid rgba(10, 18, 41, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     background: var(--white);
-    box-shadow: 0 1rem 2.5rem -2rem rgba(10, 18, 41, 0.28);
+    box-shadow: 0 1.25rem 2.5rem -1.75rem rgba(0, 0, 0, 0.55);
   }
   .showcase-card--secondary .showcase-card__media {
     flex: 0 0 41%;
@@ -321,7 +326,7 @@
     transform: translateY(-3px);
   }
   .showcase-card--featured .showcase-card__link:hover .showcase-card__media img {
-    transform: scale(1.07);
+    transform: scale(1.04);
   }
   .showcase-card--featured .showcase-card__link:hover::before {
     opacity: 0.92;
@@ -333,12 +338,12 @@
     background: var(--brand-lime);
   }
   .showcase-card--secondary .showcase-card__link:hover {
-    border-color: rgba(20, 87, 217, 0.14);
-    box-shadow: 0 1.5rem 3rem -2rem rgba(10, 18, 41, 0.38);
+    border-color: rgba(179, 236, 62, 0.55);
+    box-shadow: 0 1.5rem 3rem -1.75rem rgba(0, 0, 0, 0.65);
   }
   .showcase-card--secondary .showcase-card__link:hover .showcase-card__media img,
   .showcase-card--secondary .showcase-card__link:hover .showcase-card__media--placeholder svg {
-    transform: scale(1.05);
+    transform: scale(1.04);
   }
   .showcase-card--secondary .showcase-card__link:hover .showcase-card__arrow {
     border-color: var(--brand-lime);

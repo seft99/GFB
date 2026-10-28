@@ -6,6 +6,9 @@ import type { Locale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { paths } from "@/src/i18n/routes";
 
+/** Same GFB photograph as the concentrates category image, from its 1286 × 600 original. */
+const featureImage = "/images/raw-materials/fruit-concentrates-juice.webp";
+
 /**
  * Homepage "Portfolio discovery": the fruit-concentrate category, photo left and copy right.
  * The markup keeps the previous classes so the existing tablet/mobile styles still apply;
@@ -22,7 +25,7 @@ export function HomeShowcase({ locale }: { locale: Locale }) {
     <section className="section showcase-section section-dark" aria-labelledby="showcase-title">
       <div className="shell showcase-grid">
         <div className="showcase-image">
-          <Image src={concentrates.image} alt={copy.imageAlt} fill sizes="(max-width: 900px) 100vw, 54vw" />
+          <Image src={featureImage} alt={copy.imageAlt} fill sizes="(max-width: 900px) 100vw, 54vw" />
         </div>
         <div className="showcase-copy">
           <Eyebrow onDark>{copy.eyebrow}</Eyebrow>

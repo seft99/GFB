@@ -94,6 +94,9 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <li>
               <Link href={paths.page(locale, "contact")}>{common.contact}</Link>
             </li>
+            <li>
+              <Link href={paths.page(locale, "product-index")}>{footer.productIndex}</Link>
+            </li>
           </ul>
         </nav>
         <nav aria-labelledby="footer-solutions">
