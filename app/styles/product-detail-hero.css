@@ -92,6 +92,17 @@
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
+/* Code or format published in the H1 (second line): smaller and quieter than the name. */
+.product-hero__code {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--hero-muted);
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: 0;
+  white-space: pre-line;
+}
 .product-hero__lead {
   max-width: 34rem;
   margin: clamp(1.25rem, 2vw, 1.75rem) 0 0;

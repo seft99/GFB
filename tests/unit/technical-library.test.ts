@@ -54,15 +54,18 @@ test("the five portfolio families keep their verified counts; red grape is a sep
       ["tropical-concentrates", 8, 8],
       ["red-fruit-concentrates", 6, 6],
       ["vegetable-concentrates", 12, 12],
-      ["red-grape-concentrates", 9, 16]
+      // Products exclude the two red grape overviews; the 16 pages include them.
+      ["red-grape-concentrates", 7, 16]
     ]
   );
   assert.deepEqual(
     library.map((family) => family.slug),
     ["citrus", "mediterranean", "tropical", "red-fruits", "vegetables", "red-grape"]
   );
-  assert.equal(byId("red-grape-concentrates").countLabel, "9 references · 16 pages");
+  assert.equal(byId("red-grape-concentrates").countLabel, "7 products · 7 specifications");
   assert.equal(byId("citrus-concentrates").countLabel, "7 products");
+  // Same default family as the concentrate explorer (catalog explorer.defaultGroup).
+  assert.equal(concentratesLibrary("en").defaultFamilyId, "mediterranean-concentrates");
   assert.equal(concentratesLibrary("en").banner?.groupId, "red-grape-concentrates");
 });
 
@@ -158,7 +161,7 @@ test("frozen fruits: four IQF groups with the verified published pages, product 
   assert.ok(resources.every((resource) => resource.type === "product" && documentType(resource.path) === "product"));
   for (const family of frozen) {
     assert.equal(family.thumb, `/images/raw-materials/iqf/${family.id}-thumb.webp`);
-    assert.equal(family.countLabel, `${family.productCount} references · ${family.resourceCount} pages`);
+    assert.equal(family.countLabel, `${family.productCount} formats`);
   }
   // General pages are told apart from product references (hubs + /frozen-lemon).
   assert.deepEqual(
@@ -189,12 +192,14 @@ test("frozen search finds fruits, formats and cuts written either way", () => {
   assert.equal(names("lemon").length, 11);
   assert.equal(names("IQF orange").length, 11);
   assert.deepEqual(names("13x13 sticks"), ["IQF orange 13 x 13 sticks", "IQF lime 13 x 13 sticks"]);
+  // Displayed as "1/4 cut" everywhere; the published "one fourths" wording still matches.
   assert.deepEqual(names("1/4 cut"), [
-    "IQF lemon one fourths cut",
+    "IQF lemon 1/4 cut",
     "IQF orange 1/4 cut",
     "IQF lime 1/4 cut",
-    "IQF grapefruit one fourths cut"
+    "IQF grapefruit 1/4 cut"
   ]);
+  assert.equal(names("one eights").length, 4);
   assert.equal(names("slices").length, 8);
   assert.ok(names("slices").includes("IQF lime slice 6 / 9 mm"));
   assert.deepEqual(names("zest"), [

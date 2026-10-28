@@ -69,11 +69,11 @@ test.describe("catalogue product pages", () => {
     await expect(page.locator(content)).toContainText("IQF Lime 1/8 Cut");
   });
 
-  test("frozen library labels references, pages and overview pages", async ({ page }) => {
+  test("frozen library counts formats and lists range overviews apart", async ({ page }) => {
     await page.goto("/frozen-fruits");
     const panel = page.locator(".tech-library__family-panel:visible");
-    await expect(panel.locator(".tech-library__count")).toHaveText("9 references · 11 pages");
-    await expect(panel.getByRole("link", { name: /^Overview page/ })).toHaveCount(2);
-    await expect(panel.getByRole("link", { name: /^Product page/ })).toHaveCount(9);
+    await expect(panel.locator(".tech-library__count")).toHaveText("9 formats");
+    await expect(panel.getByRole("link", { name: /^Explore range/ })).toHaveCount(2);
+    await expect(panel.getByRole("link", { name: /^View product/ })).toHaveCount(9);
   });
 });

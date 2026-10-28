@@ -94,15 +94,37 @@ export function resolveStaticSegment(locale: Locale, segment: string | undefined
 }
 
 /**
+ * Decodes the key of the internal legacy detail route (`/{locale}/legacy/{key}`, base64url of the
+ * legacy path; src/migration/families.ts `legacyKey`). Runtime-neutral (no Buffer), so the
+ * server render and the browser give the same result.
+ */
+function legacyPathFromKey(key: string): string | undefined {
+  try {
+    const base64 = key.replace(/-/g, "+").replace(/_/g, "/");
+    const binary = atob(base64 + "=".repeat((4 - (base64.length % 4)) % 4));
+    const path = new TextDecoder().decode(Uint8Array.from(binary, (char) => char.charCodeAt(0)));
+    return path.startsWith("/") ? path : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/**
  * Translates a public pathname into the equivalent page in another locale.
  * Legacy public paths (no locale prefix) keep their path and switch the `lang` query; the
- * address bar of a rewritten legacy page shows that path. Unknown localized paths fall back
- * to the target locale's home page.
+ * address bar of a rewritten legacy page shows that path. During the server render of a
+ * product page `usePathname()` reports the internal `/{locale}/legacy/{key}` route, which maps
+ * back to the same legacy path, so the server HTML and the hydrated link agree. Unknown
+ * localized paths fall back to the target locale's home page.
  */
 export function translatePathname(pathname: string, to: Locale, tree: SlugTree): string {
   const [from, first, second, ...rest] = pathname.split("/").filter(Boolean);
   if (!isLocale(from)) return publicUrl(pathname.split("?")[0] || "/", to);
   if (!first) return paths.home(to);
+  if (first === "legacy" && second && rest.length === 0) {
+    const legacyPath = legacyPathFromKey(second);
+    if (legacyPath) return publicUrl(legacyPath, to);
+  }
 
   for (const page of Object.keys(staticPages) as StaticPage[]) {
     if (staticPages[page][from] === first && !second) return paths.page(to, page);

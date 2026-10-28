@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/sections/cta-band";
+import { ProductDetailContent } from "@/components/sections/product-detail-content";
 import { ProductDetailHero } from "@/components/sections/product-detail-hero";
 import { Icon } from "@/components/ui/icon";
 import { JsonLd } from "@/components/ui/json-ld";
@@ -10,9 +11,10 @@ import { isLocale, locales, type Locale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { paths } from "@/src/i18n/routes";
 import { pageMetadata } from "@/src/lib/metadata";
-import type { Item, Section } from "@/src/migration/content";
+import type { Section } from "@/src/migration/content";
 import { familyOf, legacyKey, pathFromKey, type Family } from "@/src/migration/families";
 import { detailPaths, legacyCanonical, legacyLinkLabel, legacyName, legacyPage } from "@/src/migration/manifest";
+import { productContent } from "@/src/migration/product-content";
 import { productHeroImage } from "@/src/migration/product-hero-images";
 import { isTechnicalResource } from "@/src/migration/product-resources";
 import { publicUrl } from "@/src/migration/public-paths";
@@ -62,83 +64,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-type LegacyCopy = ReturnType<typeof getDictionary>["legacy"];
-
-function SpecItem({ item, locale, copy }: { item: Item; locale: Locale; copy: LegacyCopy }) {
-  const lang = "lang" in item ? item.lang : undefined;
-  switch (item.type) {
-    case "links":
-      // Product references the original page linked to, as compact rows.
-      return (
-        <ul className="legacy-detail__refs" aria-label={copy.references}>
-          {item.paths.map((path) => (
-            <li key={path}>
-              <Link href={publicUrl(path, locale)} prefetch={false}>
-                <span>{legacyLinkLabel(path, locale)}</span>
-                <Icon name="arrow" strokeWidth={1.6} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      );
-    case "p":
-      return <p lang={lang}>{item.text}</p>;
-    case "h3":
-      return <h3 lang={lang}>{item.text}</h3>;
-    case "ul":
-      return (
-        <ul className="legacy-detail__list" lang={lang}>
-          {item.items.map((entry, index) => (
-            <li key={`${index}-${entry}`}>{entry}</li>
-          ))}
-        </ul>
-      );
-    case "specs":
-      return (
-        <table className="legacy-detail__specs" lang={lang}>
-          <tbody>
-            {item.rows.map(([label, value], index) => (
-              <tr key={`${index}-${label}`}>
-                <th scope="row">{label}</th>
-                <td>{value}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-  }
-}
-
-function ContentSection({
-  section,
-  id,
-  locale,
-  copy
-}: {
-  section: Section;
-  id: string;
-  locale: Locale;
-  copy: LegacyCopy;
-}) {
-  const items = section.items.map((item, index) => <SpecItem key={index} item={item} locale={locale} copy={copy} />);
-  if (!section.heading) return <div className="legacy-detail__section">{items}</div>;
-  return (
-    <section className="legacy-detail__section" aria-labelledby={id}>
-      <h2 id={id} lang={section.headingLang}>
-        {section.heading}
-      </h2>
-      {items}
-      {section.link && (
-        <Link href={publicUrl(section.link, locale)} prefetch={false} className="legacy-detail__section-link">
-          {copy.viewProduct}
-          <span className="visually-hidden">: {legacyLinkLabel(section.link, locale)}</span>
-          <Icon name="arrow" strokeWidth={1.8} />
-        </Link>
-      )}
-    </section>
-  );
-}
-
 /**
  * Hero lead: the page description without its leading "<name> from GFB Solutions," (the title
  * already names the product), e.g. "Available as concentrates, juices & purees, …".
@@ -170,6 +95,7 @@ export default async function LegacyDetailPage({ params }: Props) {
   const parentTitle = (category ?? division).title[locale];
   const inquiryHref = paths.contact(locale, { interest: division.id, category: content.h1 });
   const canonical = legacyCanonical(path, locale);
+  // Hero and breadcrumb name: product name; the code/format goes to the eyebrow (see below).
   const crumbs = [
     { label: division.title[locale], href: paths.division(locale, division) },
     ...(category ? [{ label: category.title[locale], href: parentHref }] : []),
@@ -196,6 +122,8 @@ export default async function LegacyDetailPage({ params }: Props) {
       ? categoryLibrary(category.id, locale)?.families.find((item) => item.id === family.id)?.title
       : undefined) ?? family.label[locale];
 
+  // Roles: title = the published name (its code, if any, on a second line), eyebrow = the
+  // published identifier or the document type, lead = availability/application.
   const heroEyebrow = technical ? legacy.heroTechnical : (content.eyebrow ?? family.label[locale]);
   const lead = showLead ? heroDescription(content.metaDescription, content.h1, locale) : undefined;
   // A lead that only repeats the eyebrow (e.g. "SOT - Large Aperture (Botcherby)") is left out.
@@ -233,21 +161,11 @@ export default async function LegacyDetailPage({ params }: Props) {
       />
 
       {content.sections.length > 0 && (
-        <section className="section legacy-detail__body" aria-label={legacy.specs}>
-          <div className="shell">
-            <div className="legacy-detail__content">
-              {content.sections.map((section, index) => (
-                <ContentSection
-                  key={index}
-                  section={section}
-                  id={`legacy-section-${index}`}
-                  locale={locale}
-                  copy={legacy}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        <ProductDetailContent
+          content={productContent(path, content.sections)}
+          locale={locale}
+          labels={{ ...legacy.content, viewProduct: legacy.viewProduct }}
+        />
       )}
 
       {siblings.length > 0 && (

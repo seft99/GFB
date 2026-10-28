@@ -27,6 +27,21 @@ export type ProductHeroConfig = {
 const titleSize = (title: string) => (title.length > 46 ? "is-xlong" : title.length > 24 ? "is-long" : "");
 
 /**
+ * The published H1 is the page identity (checked by scripts/verify-seo-migration.mjs) and is
+ * rendered verbatim. When it also carries a code or format (lines after the first, as in
+ * "Slim can / D53 mm / 200# cap/lid", or the part after " / " in "52mm (202) Dia ISE Aluminium
+ * End / SOT - Large Aperture (Botcherby)"), that part is shown as a smaller second line:
+ * product name first, code below, same text content.
+ */
+function splitTitle(title: string): { name: string; separator?: string; code?: string } {
+  const newline = title.indexOf("\n");
+  if (newline > 0) return { name: title.slice(0, newline), separator: "\n", code: title.slice(newline + 1) };
+  const slash = title.indexOf(" / ");
+  if (slash > 0) return { name: title.slice(0, slash), separator: " / ", code: title.slice(slash + 3) };
+  return { name: title };
+}
+
+/**
  * Hero of every product-detail page (app/[locale]/legacy/[key]): breadcrumbs, family eyebrow,
  * display title, short description and the inquiry / back actions on the left, the product
  * photograph inside a large arc on the right with thin lime curves. Without a photograph the arc
@@ -35,9 +50,10 @@ const titleSize = (title: string) => (title.length > 46 ? "is-xlong" : title.len
  */
 export function ProductDetailHero({ config, locale }: { config: ProductHeroConfig; locale: Locale }) {
   const { variant, image } = config;
+  const title = splitTitle(config.title);
   return (
     <section
-      className={["product-hero", `product-hero--${variant}`, image ? "has-image" : "no-image", titleSize(config.title)]
+      className={["product-hero", `product-hero--${variant}`, image ? "has-image" : "no-image", titleSize(title.name)]
         .filter(Boolean)
         .join(" ")}
     >
@@ -73,7 +89,15 @@ export function ProductDetailHero({ config, locale }: { config: ProductHeroConfi
         <div className="product-hero__copy">
           <Breadcrumbs locale={locale} items={config.breadcrumbs} />
           <p className="product-hero__eyebrow">{config.eyebrow}</p>
-          <h1>{config.title}</h1>
+          <h1>
+            {title.name}
+            {title.code && (
+              <>
+                <span className="visually-hidden">{title.separator}</span>
+                <span className="product-hero__code">{title.code}</span>
+              </>
+            )}
+          </h1>
           {config.description && <p className="product-hero__lead">{config.description}</p>}
           <div className="product-hero__actions">
             <ButtonLink href={config.primaryAction.href} variant="dark" className="product-hero__primary">

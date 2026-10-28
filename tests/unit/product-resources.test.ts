@@ -4,7 +4,12 @@ import test from "node:test";
 import { families } from "../../src/migration/families.ts";
 import { legacyPage } from "../../src/migration/manifest.ts";
 import { categoryAudit, categoryResources, resourceAssignments } from "../../src/migration/category-resources.ts";
-import { familyResourceGroup, isSpecificationPage, specificationPairs } from "../../src/migration/product-resources.ts";
+import {
+  familyResourceGroup,
+  isSpecificationPage,
+  specificationPairs,
+  verifiedSpecificationPairs
+} from "../../src/migration/product-resources.ts";
 import { publicUrl } from "../../src/migration/public-paths.ts";
 import { componentPreviewEnabled, resourcePreviews } from "../../src/migration/resource-previews.ts";
 import {
@@ -31,6 +36,8 @@ test("packaging specification pages are paired only with their own product page"
   assert.deepEqual(pairs, [
     { product: "/aluminum-cans/sleek-can-d57mm", technical: "/sleek-can-d57mm" },
     { product: "/aluminum-cans/slim-can-d53mm", technical: "/slim-can-d53mm" },
+    // Verified by content (below), not by name.
+    { product: "/aluminum-cans/std-can-d66mm", technical: "/std-can-d66mm" },
     { product: "/aluminium-can-ends/52mm-(202)-dia-aluminium-end", technical: "/aluminum-can-end-52mm-202-std-sot" },
     {
       product: "/aluminium-can-ends/52mm-(202)-dia-ise-aluminium-end",
@@ -40,8 +47,16 @@ test("packaging specification pages are paired only with their own product page"
     { product: "/ripcap/26-mm-ring-crown-cap", technical: "/26mm-ring-crown-cap" },
     { product: "/ripcap/42-mm-ripcap", technical: "/42mm-ripcap" }
   ]);
-  // A flat page repeating the product prose is not a specification page.
+  // A flat page repeating the product prose is not detected as a specification page; the one
+  // such pair is listed explicitly because both pages publish the same English text (the
+  // Spanish flat page has no content of its own).
   assert.equal(isSpecificationPage("/std-can-d66mm"), false);
+  for (const pair of verifiedSpecificationPairs)
+    assert.deepEqual(
+      legacyPage(pair.technical)!.en.sections.flatMap((section) => section.items),
+      legacyPage(pair.product)!.en.sections.flatMap((section) => section.items),
+      pair.technical
+    );
   assert.equal(isSpecificationPage("/crown-corks-caps"), false);
   // The nested Std end page is paired with the Std (Korinthos) sheet, not the ISE one.
   assert.equal(
@@ -70,19 +85,18 @@ test("every family page appears once, at its public URL, with a verified type", 
         if (item.resources.some((link) => link.kind === "technical"))
           assert.equal(item.resources[0].kind, "product", item.title);
     }
-  assert.deepEqual([resourceCount([cans]), itemCount([cans])], [7, 5]);
-  assert.deepEqual([resourceCount([ends]), itemCount([ends])], [5, 3]);
-  assert.deepEqual([resourceCount([crowns]), itemCount([crowns])], [9, 6]);
+  // Counts are products (range overviews excluded); resources are destination pages.
+  assert.deepEqual([resourceCount([cans]), itemCount([cans])], [7, 3]);
+  assert.deepEqual([resourceCount([ends]), itemCount([ends])], [5, 2]);
+  assert.deepEqual([resourceCount([crowns]), itemCount([crowns])], [9, 5]);
+  assert.deepEqual(
+    [cans, ends, crowns].map((group) => group.items.filter((item) => item.overview).map((item) => item.title)),
+    [["Aluminium cans"], ["Aluminium cans ends"], ["Crown corks"]]
+  );
 });
 
 test("titles and descriptions come from the pages themselves", () => {
-  assert.deepEqual(titles([cans]), [
-    "Aluminium cans",
-    "Standard can",
-    "Sleek can",
-    "Slim can",
-    "Standard can D66 mm 202# cap/lid"
-  ]);
+  assert.deepEqual(titles([cans]), ["Aluminium cans", "Standard can", "Sleek can", "Slim can"]);
   assert.ok(titles([crowns]).includes("Crown Cork Bottle Caps: Characteristics"));
   assert.equal(new Set(titles([crowns])).size, crowns.items.length);
   for (const locale of ["en", "es"] as const)
@@ -101,30 +115,28 @@ test("titles and descriptions come from the pages themselves", () => {
 test("search is partial, accent-insensitive and matches identifiers and measurements", () => {
   const groups = [cans, ends];
   assert.deepEqual(titles(filterResourceGroups(groups, "  SLEEK ", "all")), ["Sleek can"]);
-  assert.deepEqual(titles(filterResourceGroups(groups, "d66", "all")), ["Standard can D66 mm 202# cap/lid"]);
+  assert.deepEqual(titles(filterResourceGroups(groups, "d66", "all")), ["Standard can"]);
   assert.deepEqual(titles(filterResourceGroups(groups, "52mm 202 ise", "all")), ["52mm (202) Dia ISE Aluminium End"]);
   assert.deepEqual(titles(filterResourceGroups(groups, "korinthos", "all")), ["52mm (202) Dia Aluminium End"]);
   assert.deepEqual(titles(filterResourceGroups([crowns], "ripcap26", "all")), ["26 mm RipCap"]);
   const spanish = [familyResourceGroup("aluminium-cans", "es")];
-  assert.deepEqual(titles(filterResourceGroups(spanish, "estandar", "all")), [
-    "Lata estándar",
-    "Lata estándar D66 mm 202# tapa/tapa"
-  ]);
+  assert.deepEqual(titles(filterResourceGroups(spanish, "estandar", "all")), ["Lata estándar"]);
   assert.deepEqual(filterResourceGroups(groups, "no such reference", "all"), []);
 });
 
 test("resource-type filtering combines with search and never invents sheets", () => {
   const technical = filterResourceGroups([cans, ends], "", "technical");
-  assert.equal(resourceCount(technical), 4);
+  assert.equal(resourceCount(technical), 5);
   assert.ok(
     technical.every((group) => group.items.every((item) => item.resources.every((l) => l.kind === "technical")))
   );
   assert.deepEqual(titles(filterResourceGroups([cans], "slim", "technical")), ["Slim can"]);
-  assert.deepEqual(filterResourceGroups([cans], "standard", "technical"), []);
-  assert.equal(resourceCount(filterResourceGroups([cans, ends], "", "product")), 8);
-  // Filtered views keep the numbering of the full collection.
+  assert.deepEqual(titles(filterResourceGroups([cans], "standard", "technical")), ["Standard can"]);
+  assert.equal(resourceCount(filterResourceGroups([cans, ends], "", "product")), 7);
+  // Filtered views keep the numbering of the full collection; overviews are not numbered.
   const indexes = displayIndexes([cans]);
-  assert.equal(indexes["aluminium-cans/aluminum-cans--slim-can-d53mm"], 4);
+  assert.equal(indexes["aluminium-cans/aluminum-cans--slim-can-d53mm"], 3);
+  assert.equal(indexes["aluminium-cans/aluminium-cans"], undefined);
 });
 
 test("filters appear only when the data has both resource types", () => {
@@ -202,7 +214,7 @@ test("category audit separates unique products from published resources", () => 
   assert.deepEqual(rows, {
     "fruit-concentrates": [50, 59, 7, 6],
     "iqf-frozen-fruits": [29, 34, 0, 4],
-    cans: [5, 12, 4, 2],
+    cans: [5, 12, 5, 2],
     closures: [4, 9, 3, 1],
     bottles: [3, 3, 0, 1],
     labels: [3, 3, 0, 1],

@@ -38,6 +38,8 @@ export type CategoryShowcase = {
   card?: { image: string; focus?: string };
 };
 
+export type ScopeGroup = { title: LocalizedText; items: LocalizedText[] };
+
 export type Category = {
   /** Stable identifier, independent of the public slug; used in inquiries and tests. */
   id: string;
@@ -64,6 +66,11 @@ export type Category = {
   /** Label of the detail hero's secondary link to the scope section, when more specific than the division's. */
   heroSecondary?: LocalizedText;
   features?: LocalizedText[];
+  /**
+   * Structured scope content condensed from the official page (application groups, documented
+   * capabilities, formats); shown as titled lists after the description. No invented services.
+   */
+  scopeGroups?: ScopeGroup[];
   groups?: CategoryGroup[];
   explorer?: CategoryExplorer;
 };

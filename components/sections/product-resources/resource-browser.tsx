@@ -28,7 +28,8 @@ export type ResourceBrowserLabels = ResourceViewLabels & {
 };
 
 /**
- * Search and resource-type filters shared by both variants. The only client state is the query
+ * Search and resource-type filters shared by both variants. Counts refer to products (a product
+ * with a product page and a specification page is one result). The only client state is the query
  * and the selected type; results come from the same pure filter (filterResourceGroups) and the
  * same markup (ResourceView) as the server-rendered sections. Every link is in the initial HTML.
  */
@@ -70,10 +71,10 @@ export function ResourceBrowser({
     if (event.key === "Enter") event.preventDefault();
   }
 
-  const filters: { value: ResourceFilter; label: string; icon: "bars" | "document" }[] = [
-    { value: "all", label: labels.all, icon: "bars" },
-    { value: "product", label: labels.product, icon: "document" },
-    { value: "technical", label: labels.technical, icon: "document" }
+  const filters: { value: ResourceFilter; label: string }[] = [
+    { value: "all", label: labels.all },
+    { value: "product", label: labels.product },
+    { value: "technical", label: labels.technical }
   ];
 
   return (
@@ -112,19 +113,23 @@ export function ResourceBrowser({
           </div>
         )}
         {showFilters && (
-          <div className="resource-filters" role="group" aria-label={labels.typeFilter}>
+          // One type at a time: a radio group (arrow keys move the selection natively).
+          <fieldset className="resource-filters">
+            <legend className="visually-hidden">{labels.typeFilter}</legend>
             {filters.map((filter) => (
-              <button
-                key={filter.value}
-                type="button"
-                aria-pressed={type === filter.value}
-                onClick={() => setType(filter.value)}
-              >
-                <Icon name={filter.icon} strokeWidth={1.6} />
+              <label key={filter.value}>
+                <input
+                  type="radio"
+                  className="resource-filters__radio"
+                  name={`${idPrefix}-type`}
+                  value={filter.value}
+                  checked={type === filter.value}
+                  onChange={() => setType(filter.value)}
+                />
                 {filter.label}
-              </button>
+              </label>
             ))}
-          </div>
+          </fieldset>
         )}
       </div>
 

@@ -21,13 +21,14 @@ import "../../../app/styles/product-resources.css";
  * technical product library (components/sections/technical-library.tsx).
  */
 export function ProductResourceSection({ config, locale }: { config: ResourceSectionConfig; locale: Locale }) {
-  const { library, resources } = getDictionary(locale);
+  const { library } = getDictionary(locale);
   const idPrefix = `${config.id}-resources`;
   const labels: ResourceBrowserLabels = {
-    count: resources.count,
-    countOne: resources.countOne,
     productLink: library.productLink,
     technicalLink: library.technicalLink,
+    overviewLink: library.overviewLink,
+    products: library.units.products,
+    specifications: library.specifications,
     searchLabel: library.searchLabel,
     searchPlaceholder: library.searchPlaceholder,
     clearSearch: library.clearSearch,

@@ -54,12 +54,34 @@
   min-width: 0;
 }
 
-/* Family navigator */
+/* Family navigator (radio group) */
 .tech-library__families {
+  min-width: 0;
+  margin: 0;
   padding: 1.25rem 1rem;
   border: 1px solid var(--lib-line);
   border-radius: 1.25rem;
   background: #ffffff;
+}
+/* Floated so the legend sits inside the panel instead of on its border. */
+.tech-library__families > legend {
+  float: left;
+  width: calc(100% - 1rem);
+  padding: 0;
+}
+.tech-library__families ul {
+  clear: both;
+}
+/* Native radios keep keyboard behaviour and semantics; the label is the visible control. */
+.tech-library__radio {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 .tech-library__label {
   margin: 0.25rem 0.5rem 1rem;
@@ -112,14 +134,14 @@
 .tech-library__family:hover {
   background: #f5f8fd;
 }
-.tech-library__family[aria-pressed="true"] {
+.tech-library__family:has(:checked) {
   color: var(--blue-600);
   background: #ebf2fe;
 }
-.tech-library__family[aria-pressed="true"]::before {
+.tech-library__family:has(:checked)::before {
   transform: scaleY(1);
 }
-.tech-library__family:focus-visible {
+.tech-library__family:has(:focus-visible) {
   outline: 2px solid var(--blue-500);
   outline-offset: 2px;
 }
@@ -146,7 +168,7 @@
   font-size: 0.92rem;
   font-variant-numeric: tabular-nums;
 }
-.tech-library__family[aria-pressed="true"] .tech-library__family-count {
+.tech-library__family:has(:checked) .tech-library__family-count {
   color: var(--blue-600);
 }
 .tech-library__family > svg {
@@ -224,11 +246,16 @@
   width: 1rem;
 }
 .tech-library__types {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-.tech-library__types button {
+.tech-library__types label {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -247,18 +274,15 @@
     background 220ms var(--lib-ease),
     color 220ms var(--lib-ease);
 }
-.tech-library__types button svg {
-  width: 1rem;
-}
-.tech-library__types button:hover {
+.tech-library__types label:hover {
   border-color: #c4d3ee;
 }
-.tech-library__types button[aria-pressed="true"] {
+.tech-library__types label:has(:checked) {
   border-color: var(--blue-500);
   color: var(--blue-600);
   background: #ebf2fe;
 }
-.tech-library__types button:focus-visible {
+.tech-library__types label:has(:focus-visible) {
   outline: 2px solid var(--blue-500);
   outline-offset: 2px;
 }
@@ -324,6 +348,55 @@
   text-decoration: underline;
   text-underline-offset: 3px;
   cursor: pointer;
+}
+
+/* Range overviews: general pages listed apart from the products. */
+.tech-library__overviews {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-top: 1rem;
+}
+.tech-library__overviews-label {
+  margin: 0;
+  color: var(--lib-muted);
+  font-size: 0.85rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.tech-library__overviews ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tech-library__overview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  border: 1px solid #c4d3ee;
+  border-radius: 999px;
+  color: var(--blue-600);
+  background: #f5f8fd;
+  font-size: 0.92rem;
+  font-weight: 650;
+  transition: background 220ms var(--lib-ease);
+}
+.tech-library__overview svg {
+  width: 0.9rem;
+}
+.tech-library__overview:hover {
+  background: #ebf2fe;
+}
+.tech-library__overview:focus-visible {
+  outline: 2px solid var(--blue-500);
+  outline-offset: 2px;
 }
 
 .tech-library__grid {
@@ -561,7 +634,8 @@
   .tech-library__family::before,
   .tech-library__family > svg,
   .tech-library__search input,
-  .tech-library__types button,
+  .tech-library__types label,
+  .tech-library__overview,
   .tech-library__card,
   .tech-library__resource svg,
   .tech-library__banner-action,

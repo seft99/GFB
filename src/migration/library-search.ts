@@ -33,10 +33,10 @@ export type LibraryFamily = {
   eyebrow: string;
   description: string;
   thumb: string;
-  /** Product records and published resources (pages) — not the same thing for every group. */
+  /** Product records (range overviews excluded) and published resources (pages). */
   productCount: number;
   resourceCount: number;
-  /** Localized counts: the panel pill ("7 products", "9 references · 16 pages") and the noun of `resourceCount`. */
+  /** Localized counts: the panel pill ("7 products · 7 specifications", "9 formats") and the noun of `productCount`. */
   countLabel: string;
   countNoun: string;
   products: LibraryProduct[];
@@ -47,6 +47,8 @@ export type LibraryConfig = {
   id: string;
   intro: { eyebrow: string; title: string; text: string };
   families: LibraryFamily[];
+  /** Family shown without a `family` URL parameter (defaults to the first). */
+  defaultFamilyId?: string;
   /** Explains a family without technical sheets (only relevant when the library has some). */
   noTechnicalHint: string;
   /** Optional contextual banner that opens one group of the same library. */

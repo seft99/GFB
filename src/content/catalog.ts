@@ -141,8 +141,8 @@ export const divisions: Division[] = [
           "Tapas corona, cierres ring-pull y opciones específicas por aplicación."
         ),
         detail: t(
-          "Crown corks, ring-pull closures and other cap options for beverage bottles. The closure is the final barrier against oxygen and moisture, so it is chosen together with the bottle and the product.",
-          "Tapas corona, cierres de anilla y otras opciones de tapón para botellas de bebidas. El cierre es la última barrera frente al oxígeno y la humedad, por eso se elige junto con la botella y el producto."
+          "Crown corks, RipCaps and ring crown caps for glass beverage bottles, in steel or aluminium, with standard colours or customer-designed printing. The closure is chosen together with the bottle and the beverage.",
+          "Tapas corona, RipCaps y tapas corona con anilla para botellas de vidrio, en acero o aluminio, con colores estándar o impresión con diseño del cliente. El cierre se elige junto con la botella y la bebida."
         ),
         scope: {
           title: t("Closures for your bottle.", "Cierres para su botella."),
@@ -416,8 +416,8 @@ export const divisions: Division[] = [
           "Concentrados de avena y almendra para bebidas vegetales."
         ),
         detail: t(
-          "Oat and almond concentrates for the development of plant-based drinks.",
-          "Concentrados de avena y almendra para el desarrollo de bebidas de origen vegetal."
+          "Concentrates obtained from oats and almonds, available as cloudy or clear juice concentrate and supplied in frozen, aseptic or bulk packaging.",
+          "Concentrados obtenidos de la avena y la almendra, disponibles como concentrado de zumo turbio o clarificado y suministrados en envase congelado, aséptico o a granel."
         ),
         scope: {
           title: t("Oat and almond concentrates.", "Concentrados de avena y almendra."),
@@ -430,6 +430,27 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/raw-materials/plant-based.avif",
+        // Formats from the oat and almond pages; packaging from the official plant-based page.
+        scopeGroups: [
+          {
+            title: t("Formats", "Formatos"),
+            items: [
+              t("Cloudy juice concentrate", "Concentrado de zumo turbio"),
+              t("Clear juice concentrate", "Concentrado de zumo clarificado")
+            ]
+          },
+          {
+            title: t("Packaging", "Envase"),
+            items: [
+              t("Frozen: drums of 160 to 270 kg", "Congelado: bidones de 160 a 270 kg"),
+              t(
+                "Aseptic: drums of 180 to 270 kg, bag-in-box of 5 to 25 kg, bins up to 1,000 kg",
+                "Aséptico: bidones de 180 a 270 kg, bag-in-box de 5 a 25 kg, contenedores de hasta 1.000 kg"
+              ),
+              t("Bulk: tank trucks", "Granel: camiones cisterna")
+            ]
+          }
+        ],
         showcase: { image: "/images/raw-materials/oat-almond.webp", focus: "50% 50%" }
       },
       {
@@ -441,8 +462,8 @@ export const divisions: Division[] = [
           "Rodajas, cortes, ralladura y piel para food service y uso industrial."
         ),
         detail: t(
-          "Frozen lemon and orange in slices, half slices, sticks, cuts, zest and peel, for food-service and industrial use.",
-          "Limón y naranja congelados en rodajas, medias rodajas, bastones, trozos, ralladura y piel, para food service y uso industrial."
+          "Lemon, orange, lime and grapefruit frozen piece by piece (IQF) with a physical process and no additives, for cocktails, desserts, cooking and industrial use.",
+          "Limón, naranja, lima y pomelo congelados pieza a pieza (IQF) mediante un proceso físico y sin aditivos, para cócteles, postres, cocina y uso industrial."
         ),
         scope: {
           title: t("IQF citrus formats.", "Formatos de cítricos IQF."),
@@ -455,6 +476,22 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/raw-materials/iqf-fruit.avif",
+        // From the official IQF page and the published format pages of each fruit.
+        scopeGroups: [
+          {
+            title: t("Citrus", "Cítricos"),
+            items: [t("Lemon", "Limón"), t("Orange", "Naranja"), t("Lime", "Lima"), t("Grapefruit", "Pomelo")]
+          },
+          {
+            title: t("Formats", "Formatos"),
+            items: [
+              t("Slices and half slices: all four fruits", "Rodajas y medias rodajas: las cuatro frutas"),
+              t("1/4 and 1/8 cuts: all four fruits", "Cortes en cuartos y octavos: las cuatro frutas"),
+              t("Sticks and zest: lemon, orange and lime", "Bastones y ralladura: limón, naranja y lima"),
+              t("Peel shells and squares: lemon and orange", "Cáscaras y piel en cuadrados: limón y naranja")
+            ]
+          }
+        ],
         showcase: {
           image: "/images/raw-materials/citrus.webp",
           focus: "60% 50%",
@@ -551,8 +588,8 @@ export const divisions: Division[] = [
           "Confitería, panadería, postres, helados y lácteos."
         ),
         detail: t(
-          "Flavours for confectionery, bakery, desserts, ice cream and dairy products.",
-          "Sabores para confitería, panadería, postres, helados y productos lácteos."
+          "GFB develops flavours for sweet product lines, from the first idea to delivery, drawing on an extensive raw material palette.",
+          "GFB desarrolla sabores para líneas de productos dulces, desde la idea hasta la entrega, a partir de una amplia paleta de materias primas."
         ),
         scope: {
           title: t("Flavours for sweet products.", "Sabores para productos dulces."),
@@ -565,6 +602,33 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/flavours/sweet.avif",
+        // Condensed from the official /sweets page (product groups and capabilities).
+        scopeGroups: [
+          {
+            title: t("Applications", "Aplicaciones"),
+            items: [
+              t("Confectionery and lollies", "Confitería y caramelos"),
+              t("Baked goods and desserts", "Productos de panadería y postres"),
+              t("Ice cream", "Helados"),
+              t("Dairy products", "Productos lácteos")
+            ]
+          },
+          {
+            title: t("Development", "Desarrollo"),
+            items: [
+              t("Bespoke flavours for a product line", "Sabores a medida para una línea de producto"),
+              t("Extensive raw material palette", "Amplia paleta de materias primas"),
+              t("Quick project development", "Desarrollo rápido de proyectos")
+            ]
+          },
+          {
+            title: t("Logistics", "Logística"),
+            items: [
+              t("Pallet and container optimisation", "Optimización de palés y contenedores"),
+              t("Flexible packaging and logistics options", "Opciones flexibles de envase y logística")
+            ]
+          }
+        ],
         showcase: {
           image: "/images/flavours/sweet-ice-cream.webp",
           focus: "50% 42%",
@@ -584,8 +648,8 @@ export const divisions: Division[] = [
           "Refrescos, bebidas energéticas, zumos, aguas, polvos y jarabes."
         ),
         detail: t(
-          "Flavours for soft drinks, energy drinks, juices, flavoured waters, powdered drinks and syrups.",
-          "Sabores para refrescos, bebidas energéticas, zumos, aguas saborizadas, bebidas en polvo y jarabes."
+          "GFB develops bespoke flavours for specific beverage lines, with attention to photostability and colourant composition so that drinks keep their appearance over time.",
+          "GFB desarrolla sabores a medida para líneas de bebidas concretas, con atención a la fotoestabilidad y a la composición de colorantes para que las bebidas mantengan su aspecto con el tiempo."
         ),
         scope: {
           title: t("Flavours for beverages.", "Sabores para bebidas."),
@@ -598,6 +662,33 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/flavours/beverage.avif",
+        // Condensed from the official /beverages page (product groups and capabilities).
+        scopeGroups: [
+          {
+            title: t("Applications", "Aplicaciones"),
+            items: [
+              t("Soft drinks and soft drink powders", "Refrescos y refrescos en polvo"),
+              t("Energy drinks and energy drink powders", "Bebidas energéticas y en polvo"),
+              t("Juices and waters", "Zumos y aguas"),
+              t("Syrups", "Jarabes")
+            ]
+          },
+          {
+            title: t("Development", "Desarrollo"),
+            items: [
+              t("Bespoke flavours for a product line", "Sabores a medida para una línea de producto"),
+              t("Photostability and colourant composition", "Fotoestabilidad y composición de colorantes"),
+              t("Quick project development for market entry", "Desarrollo rápido para la entrada en el mercado")
+            ]
+          },
+          {
+            title: t("Logistics", "Logística"),
+            items: [
+              t("Pallet and container optimisation", "Optimización de palés y contenedores"),
+              t("Flexible logistics and tailor-made packaging", "Logística flexible y envase a medida")
+            ]
+          }
+        ],
         showcase: {
           image: "/images/flavours/beverage-citrus.webp",
           focus: "65% 50%",
@@ -617,8 +708,8 @@ export const divisions: Division[] = [
           "Sopas, noodles, caldos, snacks, carne, pescado y platos preparados."
         ),
         detail: t(
-          "Flavours for soups, noodles, stock cubes, snacks, meat and fish, and ready meals.",
-          "Sabores para sopas, fideos, pastillas de caldo, snacks, carnes y pescados, y platos preparados."
+          "GFB develops bespoke savoury flavours, from the kitchen to flavour creation, and supports the project from concept to shelf.",
+          "GFB desarrolla sabores salados a medida, de la cocina a la creación del sabor, y acompaña el proyecto desde el concepto hasta el lineal."
         ),
         scope: {
           title: t("Flavours for savoury products.", "Sabores para productos salados."),
@@ -631,6 +722,33 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/flavours/hero.avif",
+        // Condensed from the official /savoury page (product groups and capabilities).
+        scopeGroups: [
+          {
+            title: t("Applications", "Aplicaciones"),
+            items: [
+              t("Soups, noodles and stock cubes", "Sopas, fideos y pastillas de caldo"),
+              t("Snacks and ready meals", "Snacks y platos preparados"),
+              t("Meat and fish", "Carnes y pescados"),
+              t("Fresh and preserved foods, edible oils", "Alimentos frescos y en conserva, aceites comestibles")
+            ]
+          },
+          {
+            title: t("Development", "Desarrollo"),
+            items: [
+              t("Bespoke flavour development", "Desarrollo de sabores a medida"),
+              t("Extensive raw material palette", "Amplia paleta de materias primas"),
+              t("Quick project development", "Desarrollo rápido de proyectos")
+            ]
+          },
+          {
+            title: t("Logistics", "Logística"),
+            items: [
+              t("Pallet and container optimisation", "Optimización de palés y contenedores"),
+              t("Flexible packaging and logistics options", "Opciones flexibles de envase y logística")
+            ]
+          }
+        ],
         showcase: {
           image: "/images/flavours/savoury-board.webp",
           focus: "50% 50%",
@@ -736,6 +854,17 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/consulting/process.avif",
+        // From the official consulting page's food sector text.
+        scopeGroups: [
+          {
+            title: t("Focus", "Enfoque"),
+            items: [
+              t("Production processes, from farm to fork", "Procesos de producción, de la granja a la mesa"),
+              t("Food safety and efficiency", "Seguridad alimentaria y eficiencia"),
+              t("Industry regulations and standards", "Normativa y estándares del sector")
+            ]
+          }
+        ],
         showcase: { image: "/images/consulting/production-line.webp", focus: "55% 55%" }
       },
       {
@@ -761,6 +890,17 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/consulting/process.avif",
+        // From the official consulting page's industrial sector text.
+        scopeGroups: [
+          {
+            title: t("Focus", "Enfoque"),
+            items: [
+              t("Manufacturing efficiency", "Eficiencia de fabricación"),
+              t("Less downtime", "Menos paradas"),
+              t("Workflow optimisation", "Optimización del flujo de trabajo")
+            ]
+          }
+        ],
         showcase: { image: "/images/consulting/industrial-robotics.webp", focus: "50% 55%" }
       },
       {
@@ -786,6 +926,17 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/consulting/hero.avif",
+        // From the official consulting page's environmental sector text.
+        scopeGroups: [
+          {
+            title: t("Focus", "Enfoque"),
+            items: [
+              t("Sustainable process solutions", "Soluciones de proceso sostenibles"),
+              t("Lower environmental impact", "Menor impacto ambiental"),
+              t("Resource efficiency", "Eficiencia de los recursos")
+            ]
+          }
+        ],
         showcase: { image: "/images/consulting/environmental-treatment.webp", focus: "50% 55%" }
       },
       {
@@ -811,6 +962,17 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/consulting/process.avif",
+        // From the official consulting page's pharmaceutical sector text.
+        scopeGroups: [
+          {
+            title: t("Focus", "Enfoque"),
+            items: [
+              t("Quality in pharmaceutical manufacturing", "Calidad en la fabricación farmacéutica"),
+              t("Stringent regulatory requirements", "Requisitos normativos exigentes"),
+              t("Process innovation", "Innovación de procesos")
+            ]
+          }
+        ],
         showcase: {
           placeholder: "capsule",
           card: { image: "/images/consulting/pharmaceutical-filling-card.webp", focus: "60% 50%" }

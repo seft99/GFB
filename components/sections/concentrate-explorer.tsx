@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import { Icon } from "@/components/ui/icon";
+import { readFamilyParam, subscribeFamilyChange, writeFamilyParam } from "@/src/lib/family-url";
 import "../../app/styles/concentrate-explorer.css";
 
 /** A catalogue entry; `href` only when a real product page exists (none today). */
@@ -20,9 +21,11 @@ export type ExplorerFamily = {
   thumb?: string;
   /** Contact link carrying the family in the `category` parameter. */
   href: string;
+  /** The same family in the technical library of the page (`?family=…#…`). */
+  libraryHref?: string;
 };
 
-type Labels = { count: string; cta: string; tabs: string };
+type Labels = { count: string; cta: string; tabs: string; library: string };
 
 type ConcentrateExplorerProps = {
   eyebrow: string;
@@ -30,6 +33,11 @@ type ConcentrateExplorerProps = {
   text: string;
   families: ExplorerFamily[];
   defaultId: string;
+  /**
+   * `family` URL values of the page's technical library that are not an explorer family, mapped
+   * to the explorer family that contains them (e.g. the red grape group → Mediterranean).
+   */
+  aliases?: Record<string, string>;
   labels: Labels;
 };
 
@@ -41,11 +49,38 @@ const panelId = "concentrate-panel";
  * app/styles/concentrate-explorer.css): editorial intro, five family tabs and one panel with
  * the active family's photograph, numbered product list and inquiry link. The only state is
  * the selected family; the panel follows its content height (with a floor), so short
- * families do not leave blank space.
+ * families do not leave blank space. The selected family is the page's `family` URL parameter,
+ * shared with the technical library (src/lib/family-url.ts): a deep link, Back/Forward or a
+ * selection in either component shows the same family in both.
  */
-export function ConcentrateExplorer({ eyebrow, title, text, families, defaultId, labels }: ConcentrateExplorerProps) {
+export function ConcentrateExplorer({
+  eyebrow,
+  title,
+  text,
+  families,
+  defaultId,
+  aliases = {},
+  labels
+}: ConcentrateExplorerProps) {
   const [activeId, setActiveId] = useState(defaultId);
   const active = families.find((family) => family.id === activeId) ?? families[0];
+
+  useEffect(() => {
+    const sync = () => {
+      const slug = readFamilyParam();
+      const id = slug && (families.some((family) => family.id === slug) ? slug : aliases[slug]);
+      setActiveId(id || defaultId);
+    };
+    sync();
+    return subscribeFamilyChange(sync);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- families and aliases are static per render
+  }, [defaultId]);
+
+  // Clicks add a history entry; arrow-key moves between tabs replace it.
+  const select = (id: string, mode: "push" | "replace") => {
+    setActiveId(id);
+    writeFamilyParam(id, mode);
+  };
 
   return (
     <div className="concentrates shell">
@@ -56,8 +91,8 @@ export function ConcentrateExplorer({ eyebrow, title, text, families, defaultId,
         </div>
         <p className="concentrates__intro-text">{text}</p>
       </div>
-      <ConcentrateFamilyTabs families={families} activeId={active.id} onSelect={setActiveId} labels={labels} />
-      <ConcentrateFamilyPanel family={active} ctaLabel={labels.cta} />
+      <ConcentrateFamilyTabs families={families} activeId={active.id} onSelect={select} labels={labels} />
+      <ConcentrateFamilyPanel family={active} ctaLabel={labels.cta} libraryLabel={labels.library} />
     </div>
   );
 }
@@ -74,7 +109,7 @@ function ConcentrateFamilyTabs({
 }: {
   families: ExplorerFamily[];
   activeId: string;
-  onSelect: (id: string) => void;
+  onSelect: (id: string, mode: "push" | "replace") => void;
   labels: Labels;
 }) {
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -90,7 +125,7 @@ function ConcentrateFamilyTabs({
     const next = keys[event.key];
     if (next === undefined) return;
     event.preventDefault();
-    onSelect(families[next].id);
+    onSelect(families[next].id, "replace");
     tabs.current[next]?.focus();
   }
 
@@ -111,7 +146,7 @@ function ConcentrateFamilyTabs({
             aria-controls={panelId}
             tabIndex={selected ? 0 : -1}
             className="concentrates__tab"
-            onClick={() => onSelect(family.id)}
+            onClick={() => onSelect(family.id, "push")}
             onKeyDown={(event) => onKeyDown(event, index)}
           >
             <span className="concentrates__thumb" aria-hidden="true">
@@ -135,7 +170,15 @@ function ConcentrateFamilyTabs({
  * one once it has loaded (a crossfade without a blank frame); the previous one is unmounted
  * when the fade ends, so at most two family photos are ever mounted.
  */
-function ConcentrateFamilyPanel({ family, ctaLabel }: { family: ExplorerFamily; ctaLabel: string }) {
+function ConcentrateFamilyPanel({
+  family,
+  ctaLabel,
+  libraryLabel
+}: {
+  family: ExplorerFamily;
+  ctaLabel: string;
+  libraryLabel: string;
+}) {
   const [shown, setShown] = useState(family);
   const [previous, setPrevious] = useState<ExplorerFamily | null>(null);
   const [loaded, setLoaded] = useState(true);
@@ -174,10 +217,18 @@ function ConcentrateFamilyPanel({ family, ctaLabel }: { family: ExplorerFamily; 
         <h3>{family.heading}</h3>
         <ConcentrateProductList items={family.items} />
         {family.note && <p className="concentrates__note">{family.note}</p>}
-        <Link href={family.href} className="concentrates__cta">
-          {ctaLabel}
-          <Icon name="arrow" strokeWidth={1.8} />
-        </Link>
+        <div className="concentrates__actions">
+          <Link href={family.href} className="concentrates__cta">
+            {ctaLabel}
+            <Icon name="arrow" strokeWidth={1.8} />
+          </Link>
+          {family.libraryHref && (
+            <Link href={family.libraryHref} className="concentrates__library-link">
+              {libraryLabel}
+              <Icon name="arrow" strokeWidth={1.8} />
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

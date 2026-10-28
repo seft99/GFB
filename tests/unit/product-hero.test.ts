@@ -29,13 +29,19 @@ test("photographs match the product; presentations without one get none", () => 
   assert.equal(subject("/iqf-orange-frozen/iqf-orange-13-x-13-sticks"), "iqf-orange.webp");
   assert.equal(subject("/plant-based-concentrate-1/oat-concentrate"), "oat.webp");
   assert.equal(subject("/soft-drinks"), "soft-drinks.webp");
-  assert.equal(subject("/aluminum-cans/sleek-can-d57mm"), "cans-card.webp");
+  assert.equal(subject("/aluminum-cans/sleek-can-d57mm"), "slim-can.webp");
+  assert.equal(subject("/aluminum-cans/std-can-d66mm"), "cans-pair.webp");
+  assert.equal(subject("/aluminium-can-ends/52mm-(202)-dia-aluminium-end"), "can-ends.webp");
+  assert.equal(subject("/tropical/white-guava"), "white-guava.webp");
+  assert.equal(subject("/tropical/tamarind"), "tamarind.webp");
+  assert.equal(subject("/iqf-lemon-peel-zest/iqf-lemon-zest"), "lemon-zest.webp");
+  assert.equal(subject("/iqf-orange-frozen/iqf-orange-peel-shells"), "citrus-peel.webp");
   for (const path of [
     "/citrics/white-grapefruit-concentrate",
-    "/tropical/white-guava",
-    "/tropical/tamarind",
-    "/iqf-lemon-peel-zest/iqf-lemon-zest",
-    "/iqf-orange-frozen/iqf-orange-peel-shells",
+    "/iqf-lemon-peel-zest/iqf-lemon-peel-square",
+    "/iqf-lemon-peel-zest/frozen-block-lemon-zest",
+    "/iqf-orange-frozen/iqf-orange-zest",
+    "/iqf-lime-slices/iqf-lime-zest",
     "/ripcap/26-mm-ripcap",
     "/shrink-sleeve-labels",
     "/additives"
@@ -59,6 +65,7 @@ test("technical specification pages are told apart from product pages", () => {
     "/rgjc-red-600",
     "/sleek-can-d57mm",
     "/slim-can-d53mm",
+    "/std-can-d66mm",
     "/tintorera-red-4000"
   ]);
 });

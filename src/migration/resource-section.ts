@@ -15,6 +15,8 @@ export type ResourceVariant = "compact-groups" | "visual-cards";
 /** Same resource types as the technical library: product page or technical specification page. */
 export type ResourceKind = DocumentType;
 
+export type ResourceIllustration = "shrink-sleeve" | "wet-glue";
+
 export type ResourceLink = {
   id: string;
   /** Title of the destination page (its H1), used for search and the accessible name. */
@@ -26,6 +28,12 @@ export type ResourceLink = {
 export type ProductResourceItem = {
   id: string;
   title: string;
+  /** Factual identifier from the item's own page (e.g. "D66 mm | 202# cap/lid"). */
+  meta?: string;
+  /** The family's range overview page (shown as "Explore range", not as a product). */
+  overview?: boolean;
+  /** Designed illustration used when no suitable photograph exists (see resource-views.tsx). */
+  illustration?: ResourceIllustration;
   /** Verbatim from the item's own page; omitted when that page has no usable text. */
   description?: string;
   /** Set when the description is English text shown on a Spanish page. */
@@ -81,7 +89,21 @@ export type ResourceFilter = "all" | ResourceKind;
 export const resourceCount = (groups: ProductResourceGroup[]) =>
   groups.reduce((sum, group) => sum + group.items.reduce((total, item) => total + item.resources.length, 0), 0);
 
-export const itemCount = (groups: ProductResourceGroup[]) => groups.reduce((sum, group) => sum + group.items.length, 0);
+/** Products (range overviews excluded): what visible and announced counts refer to. */
+export const itemCount = (groups: ProductResourceGroup[]) =>
+  groups.reduce((sum, group) => sum + group.items.filter((item) => !item.overview).length, 0);
+
+/** Product and specification counts of one group, e.g. "4 products · 2 specifications". */
+export function groupCounts(group: ProductResourceGroup) {
+  const products = group.items.filter((item) => !item.overview);
+  return {
+    products: products.length,
+    specifications: products.reduce(
+      (sum, item) => sum + item.resources.filter((link) => link.kind === "technical").length,
+      0
+    )
+  };
+}
 
 /** Resource types present in the data. */
 export function resourceKinds(groups: ProductResourceGroup[]): Set<ResourceKind> {
@@ -132,17 +154,14 @@ export function filterResourceGroups(
 }
 
 /**
- * 1-based display index of every item and resource in its group, from the full (unfiltered)
- * data, so filtered views keep the same numbers. Keys: `group/item` and `group/item/resource`.
+ * 1-based display index of every product in its group (range overviews are not numbered), from
+ * the full (unfiltered) data, so filtered views keep the same numbers. Key: `group/item`.
  */
 export function displayIndexes(groups: ProductResourceGroup[]): Record<string, number> {
   const indexes: Record<string, number> = {};
   for (const group of groups) {
-    let resource = 0;
-    group.items.forEach((item, index) => {
-      indexes[`${group.id}/${item.id}`] = index + 1;
-      for (const link of item.resources) indexes[`${group.id}/${item.id}/${link.id}`] = ++resource;
-    });
+    let index = 0;
+    for (const item of group.items) if (!item.overview) indexes[`${group.id}/${item.id}`] = ++index;
   }
   return indexes;
 }

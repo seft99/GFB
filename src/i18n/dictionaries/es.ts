@@ -139,6 +139,9 @@ export const es: Dictionary = {
     explorerCount: "productos",
     explorerCta: "Consultar esta familia",
     explorerTabs: "Familias de concentrados",
+    explorerLibrary: "Ver productos y especificaciones",
+    relatedLabel: "Más en {division}",
+    relatedOverview: "Resumen de {division}",
     ctaEyebrow: "Hablemos de su proyecto",
     ctaTitle: "Comparta los requisitos de esta categoría."
   },
@@ -278,6 +281,21 @@ export const es: Dictionary = {
     references: "Referencias de producto",
     viewProduct: "Ver ficha de producto",
     specs: "Especificaciones",
+    content: {
+      eyebrow: "Información de producto",
+      formatsTitle: "Formatos disponibles y presentación",
+      formatsPanel: "Formatos disponibles",
+      overview: "Presentación del producto",
+      factsTitle: "Datos del producto y aplicaciones",
+      details: "Usos y detalles",
+      technicalTitle: "Especificaciones técnicas",
+      parameter: "Parámetro",
+      specification: "Especificación",
+      rangeTitle: "Gama y características",
+      featuresTitle: "Descripción del producto",
+      references: "{count} referencias publicadas",
+      productReferences: "Referencias de producto"
+    },
     indexTitle: "Índice de productos",
     indexText:
       "Todas las páginas de producto, especificación y aplicación de GFB, agrupadas por familia. Cada página conserva su contenido publicado y enlaza con su categoría.",
@@ -285,45 +303,46 @@ export const es: Dictionary = {
       "Índice de páginas de producto, especificaciones y aplicaciones de GFB Solutions, agrupadas por categoría y familia."
   },
   library: {
-    eyebrow: "Índice técnico de productos",
-    title: "Fichas de producto y especificaciones",
-    text: "Explore nuestros concentrados de frutas y vegetales, con sus fichas de producto y especificaciones técnicas publicadas.",
+    eyebrow: "Biblioteca técnica",
+    title: "Encuentre productos y especificaciones técnicas",
+    text: "Recorra las familias de concentrados o busque por producto, variedad o código. Las variedades de uva tinta también tienen especificaciones con análisis y microbiología.",
     families: "Familias de producto",
     searchLabel: "Buscar productos, variedades o códigos",
     searchPlaceholder: "Buscar productos, variedades o especificaciones…",
     clearSearch: "Borrar búsqueda",
-    typeFilter: "Tipo de recurso",
-    all: "Todos los recursos",
-    product: "Fichas de producto",
-    technical: "Fichas técnicas",
-    productLink: "Ficha de producto",
-    overviewLink: "Página general",
-    technicalLink: "Ficha técnica",
-    products: "productos",
-    records: "referencias",
-    pages: "páginas",
+    typeFilter: "Mostrar",
+    all: "Todo",
+    product: "Productos",
+    technical: "Especificaciones",
+    productLink: "Ver producto",
+    overviewLink: "Ver la gama",
+    technicalLink: "Ver especificaciones",
+    units: {
+      products: { one: "producto", other: "productos" },
+      formats: { one: "formato", other: "formatos" }
+    },
+    specifications: "especificaciones",
+    rangeOverview: "Presentación de la gama",
     results: "Resultados de búsqueda",
     resultsIn: "Coincidencias en",
     allFamilies: "Todas las familias",
     showAllFamilies: "Ver coincidencias en todas las familias",
-    resultCount: "{count} referencias encontradas",
-    resultCountOne: "1 referencia encontrada",
+    resultCount: "{count} resultados",
+    resultCountOne: "1 resultado",
     familyEyebrow: "Familia de producto",
-    groupEyebrow: "Grupo de documentación técnica",
-    noResults: "No se encontraron referencias.",
+    groupEyebrow: "Grupo de especificaciones",
+    noResults: "No se encontraron productos.",
     noResultsHint: "Pruebe con otro producto, variedad o código, o borre la búsqueda y los filtros.",
     reset: "Borrar búsqueda y filtros",
-    noTechnical: "Esta familia no tiene fichas técnicas publicadas por separado.",
-    noTechnicalHint: "Sus fichas de producto indican los formatos publicados para cada concentrado.",
-    showAllResources: "Ver todos los recursos",
+    noTechnical: "Esta familia no tiene especificaciones publicadas por separado.",
+    noTechnicalHint: "Sus fichas de producto indican los formatos en los que se suministra cada concentrado.",
+    showAllResources: "Ver todos los productos",
     grapeEyebrow: "Especificaciones de uva tinta",
     grapeTitle: "¿Busca una especificación de uva concreta?",
     grapeText: "Abra el grupo de uva tinta: fichas de cada variedad y fichas técnicas con análisis y microbiología.",
     grapeAction: "Ver especificaciones de uva"
   },
   resources: {
-    count: "{count} recursos",
-    countOne: "1 recurso",
     items: "Recursos de producto",
     previewMeta: "Vista previa de desarrollo de las variantes de recursos de producto.",
     previewEyebrow: "Vista previa de desarrollo",
@@ -332,18 +351,38 @@ export const es: Dictionary = {
       "Dos presentaciones reutilizables de datos verificados del catálogo. Sin enlaces desde el sitio, sin indexar y aún sin asignar a ninguna página de categoría.",
     previewVariant: "Variante"
   },
-  resourceIntro: {
-    cans: "Explore nuestros formatos de lata de aluminio y sus tapas compatibles, con sus fichas de producto y especificaciones técnicas publicadas.",
-    closures:
-      "Explore nuestras tapas corona y RipCaps, con sus fichas de producto y especificaciones técnicas publicadas.",
-    bottles: "Explore nuestros formatos de botella de vidrio por bebida, con sus fichas de producto publicadas.",
-    labels: "Explore nuestras soluciones de etiquetado para bebidas, con sus fichas de producto publicadas.",
-    plantBased: "Explore nuestros concentrados de origen vegetal, con sus fichas de producto publicadas."
+  resourceSections: {
+    cans: {
+      eyebrow: "Latas y tapas",
+      title: "Explore formatos de lata y tapas",
+      text: "Latas de aluminio estándar, sleek y slim y tapas de aluminio de 52 mm (202). Los formatos con página de especificaciones propia muestran ambos enlaces."
+    },
+    closures: {
+      eyebrow: "Cierres",
+      title: "Explore los formatos de cierre",
+      text: "Tapas corona, RipCaps y tapas corona con anilla para botellas de vidrio. Los formatos RipCap y de tapa corona con anilla enlazan a su ficha de producto y a sus especificaciones."
+    },
+    bottles: {
+      eyebrow: "Botellas de vidrio",
+      title: "Explore las aplicaciones de botella",
+      text: "Formatos de botella de vidrio para refrescos, bebidas alcohólicas y agua. Cada aplicación muestra sus referencias de botella con capacidad y dimensiones."
+    },
+    labels: {
+      eyebrow: "Etiquetas",
+      title: "Explore las soluciones de etiquetado",
+      text: "Tres tecnologías de etiquetado para envases de bebidas: manga retráctil, wash-off y cola húmeda."
+    },
+    plantBased: {
+      eyebrow: "Origen vegetal",
+      title: "Explore los concentrados de avena y almendra",
+      text: "Elija un concentrado para ver su descripción y sus detalles de producto."
+    }
   },
   libraryFrozen: {
-    text: "Explore nuestros cítricos congelados IQF — limón, naranja, lima y pomelo — con la página publicada de cada corte, ralladura y piel.",
-    noTechnicalHint:
-      "Sus páginas de producto muestran la presentación y la conservación publicadas para cada referencia."
+    eyebrow: "Catálogo IQF",
+    title: "Explore los formatos de cítricos",
+    text: "Limón, naranja, lima y pomelo en rodajas, medias rodajas y cortes; bastones y ralladura de limón, naranja y lima; piel de limón y naranja. Cada fruta empieza con la presentación de su gama.",
+    noTechnicalHint: "Cada página de formato muestra su presentación y su conservación."
   },
   notFound: {
     metaTitle: "Página no encontrada",

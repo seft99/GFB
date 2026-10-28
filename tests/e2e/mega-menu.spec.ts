@@ -3,7 +3,7 @@ import { expect, test, type Page } from "@playwright/test";
 const toggle = (page: Page, id: string) => page.locator(`button[aria-controls="mega-${id}"]`);
 const panel = (page: Page, id: string) => page.locator(`#mega-${id}`);
 const libraryFamily = (page: Page, name: string) =>
-  page.locator(".tech-library").getByRole("button", { name: new RegExp(`^${name}`) });
+  page.locator(".tech-library").getByRole("radio", { name: new RegExp(`^${name}`) });
 
 test.describe("desktop mega menu", () => {
   test.skip(({ isMobile }) => isMobile, "desktop navigation");
@@ -36,6 +36,10 @@ test.describe("desktop mega menu", () => {
     await page.mouse.move(box.x + box.width / 2, box.y + box.height + 20, { steps: 6 });
     await panel(page, "flavours-aromas").getByRole("link", { name: "Beverage applications" }).hover();
     await expect(panel(page, "flavours-aromas")).toBeVisible();
+    // "Explore all" keeps a readable brand colour on hover (never the navbar's white).
+    const footer = panel(page, "flavours-aromas").locator(".mega-menu__footer");
+    await footer.hover();
+    await expect(footer).toHaveCSS("color", "rgb(20, 87, 217)");
     await page.mouse.move(20, 700, { steps: 4 });
     await expect(panel(page, "flavours-aromas")).toBeHidden();
   });
@@ -60,18 +64,18 @@ test.describe("desktop mega menu", () => {
     await toggle(page, "raw-materials").click();
     await panel(page, "raw-materials").getByRole("link", { name: "Mediterranean" }).click();
     await expect(page).toHaveURL(/\/fruits-concentrates\?family=mediterranean#concentrates-library-title$/);
-    await expect(libraryFamily(page, "Mediterranean")).toHaveAttribute("aria-pressed", "true");
+    await expect(libraryFamily(page, "Mediterranean")).toBeChecked();
     await expect(page.locator("#concentrates-library-title")).toBeInViewport();
     await expect(panel(page, "raw-materials")).toBeHidden();
     // Same page: the selection follows a second family link.
     await toggle(page, "raw-materials").click();
     await panel(page, "raw-materials").getByRole("link", { name: "Tropical" }).click();
     await expect(page).toHaveURL(/family=tropical/);
-    await expect(libraryFamily(page, "Tropical")).toHaveAttribute("aria-pressed", "true");
+    await expect(libraryFamily(page, "Tropical")).toBeChecked();
     await page.reload();
-    await expect(libraryFamily(page, "Tropical")).toHaveAttribute("aria-pressed", "true");
+    await expect(libraryFamily(page, "Tropical")).toBeChecked();
     await page.goBack();
-    await expect(libraryFamily(page, "Mediterranean")).toHaveAttribute("aria-pressed", "true");
+    await expect(libraryFamily(page, "Mediterranean")).toBeChecked();
   });
 
   test("quick access destinations exist", async ({ page }) => {
@@ -88,7 +92,7 @@ test.describe("desktop mega menu", () => {
     await page.goto("/");
     await toggle(page, "raw-materials").click();
     await panel(page, "raw-materials").getByRole("link", { name: "Red grape specifications" }).click();
-    await expect(libraryFamily(page, "Red grape specifications")).toHaveAttribute("aria-pressed", "true");
+    await expect(libraryFamily(page, "Red grape specifications")).toBeChecked();
   });
 
   test("category pages mark their division as current", async ({ page }) => {

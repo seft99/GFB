@@ -226,14 +226,19 @@
   background: #eef2f8;
   font-size: 0.95rem;
   font-weight: 650;
-  transition: background 200ms var(--mega-ease);
+  transition:
+    color 200ms var(--mega-ease),
+    background 200ms var(--mega-ease);
 }
 .mega-menu__footer svg {
   width: 1.05rem;
   transition: translate 200ms var(--mega-ease);
 }
-.mega-menu__footer:hover {
-  background: #e5ebf5;
+/* Hover/focus: brand blue on a deeper tint (overrides the white hover of the navbar links). */
+.desktop-nav .mega-menu__footer:hover,
+.desktop-nav .mega-menu__footer:focus-visible {
+  color: var(--blue-600);
+  background: #dfe8f8;
 }
 .mega-menu__footer:hover svg {
   translate: 3px 0;

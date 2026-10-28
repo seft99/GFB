@@ -1,4 +1,4 @@
-import type { Locale } from "../i18n/config.ts";
+import type { Locale, LocalizedText } from "../i18n/config.ts";
 import { getDictionary } from "../i18n/dictionaries/index.ts";
 import { legacyPage } from "./manifest.ts";
 import { familyResourceGroup, type FamilyGroupOptions, type ResourcePhoto } from "./product-resources.ts";
@@ -12,7 +12,10 @@ import type { ResourceSectionConfig, ResourceVariant } from "./resource-section.
  * two variants render through ProductResourceSection. Categories not listed keep the plain
  * product index. The category page ends with its own call to action, so sections have none.
  * Images: licensed or approved assets only (docs/asset-provenance.md); without one, a card shows
- * the neutral fallback.
+ * a designed illustration (labels) or the neutral fallback.
+ * Copy: group and card texts are condensed from the pages' own content (no new claims); card
+ * names replace inconsistent H1s ("WashOff Labels") in the catalogue only — the product pages
+ * keep their published H1 (their identity, checked by scripts/verify-seo-migration.mjs).
  */
 
 export type ProductPresentationVariant = ResourceVariant | "technical-library";
@@ -20,9 +23,9 @@ export type ProductPresentationVariant = ResourceVariant | "technical-library";
 type Assignment = {
   variant: ProductPresentationVariant;
   selectionReason: string;
-  /** Key of the `resourceIntro` dictionary block (resource-section variants only). */
+  /** Key of the `resourceSections` dictionary block (resource-section variants only). */
   intro?: "cans" | "bottles" | "closures" | "labels" | "plantBased";
-  groups?: ({ family: string } & Pick<FamilyGroupOptions, "image" | "photos" | "descriptionSentence">)[];
+  groups?: ({ family: string } & Omit<FamilyGroupOptions, "eyebrow">)[];
   showSearch?: boolean;
   showResourceFilters?: boolean;
 };
@@ -30,6 +33,32 @@ type Assignment = {
 const PKG = "/images/packaging/resources";
 const RAW = "/images/raw-materials/resources";
 const decorative = (src: string): ResourcePhoto => ({ src, alt: { en: "", es: "" } });
+const t = (en: string, es: string): LocalizedText => ({ en, es });
+
+/**
+ * "12 bottle references, from 200 cc to 1000 cc": counted from the capacity rows of the page's
+ * own specification tables, so the card text cannot drift from the published references.
+ */
+function capacityRange(path: string) {
+  const values = (legacyPage(path)?.en.sections ?? []).flatMap((section) =>
+    section.items.flatMap((item) =>
+      item.type === "specs"
+        ? item.rows.filter((row) => /capacity/i.test(row[0])).map((row) => Number.parseInt(row[1], 10))
+        : []
+    )
+  );
+  const valid = values.filter((value) => Number.isFinite(value));
+  return { count: valid.length, min: Math.min(...valid), max: Math.max(...valid) };
+}
+const bottleText = (path: string, en: string, es: string): LocalizedText => {
+  const { count, min, max } = capacityRange(path);
+  const fill = (text: string, locale: Locale) =>
+    text
+      .replace("{count}", String(count))
+      .replace("{min}", min.toLocaleString(locale === "es" ? "es-ES" : "en-GB"))
+      .replace("{max}", max.toLocaleString(locale === "es" ? "es-ES" : "en-GB"));
+  return { en: fill(en, "en"), es: fill(es, "es") };
+};
 
 export const assignments: Record<string, Assignment> = {
   "fruit-concentrates": {
@@ -46,8 +75,38 @@ export const assignments: Record<string, Assignment> = {
       "5 products in 2 groups but 12 resources with 4 technical sheets and long identifiers (52mm (202) Dia ISE…): technical navigation first.",
     intro: "cans",
     groups: [
-      { family: "aluminium-cans", image: decorative(`${PKG}/aluminium-cans-group.webp`) },
-      { family: "can-ends", image: decorative(`${PKG}/can-ends-group.webp`) }
+      {
+        family: "aluminium-cans",
+        image: decorative(`${PKG}/aluminium-cans-group.webp`),
+        // The hub's published sentence reads "GFB have different solutions of types of aluminum cans…".
+        groupDescription: t(
+          "Standard, sleek and slim aluminium can formats for the beverage industry, made from AA3104 alloy and BPA free.",
+          "Formatos de lata de aluminio estándar, sleek y slim para la industria de bebidas, de aleación AA3104 y sin BPA."
+        ),
+        titles: {
+          "/aluminum-cans/std-can-d66mm": t("Standard can", "Lata estándar"),
+          "/aluminum-cans/sleek-can-d57mm": t("Sleek can", "Lata sleek"),
+          "/aluminum-cans/slim-can-d53mm": t("Slim can", "Lata slim")
+        }
+      },
+      {
+        family: "can-ends",
+        image: decorative(`${PKG}/can-ends-group.webp`),
+        groupDescription: t(
+          "52 mm (202) aluminium SOT ends, with standard aperture (Korinthos) or large aperture (Botcherby).",
+          "Tapas de aluminio SOT de 52 mm (202), con apertura estándar (Korinthos) o grande (Botcherby)."
+        ),
+        titles: {
+          "/aluminium-can-ends/52mm-(202)-dia-aluminium-end": t(
+            "52 mm (202) aluminium end",
+            "Tapa de aluminio de 52 mm (202)"
+          ),
+          "/aluminium-can-ends/52mm-(202)-dia-ise-aluminium-end": t(
+            "52 mm (202) ISE aluminium end",
+            "Tapa de aluminio ISE de 52 mm (202)"
+          )
+        }
+      }
     ],
     showSearch: true,
     showResourceFilters: true
@@ -57,7 +116,24 @@ export const assignments: Record<string, Assignment> = {
     selectionReason:
       "4 products but 9 resources: 3 RipCap / ring crown cap products each with a product page and a technical sheet.",
     intro: "closures",
-    groups: [{ family: "crown-corks", image: decorative("/images/packaging/closures-card.webp") }],
+    groups: [
+      {
+        family: "crown-corks",
+        image: decorative("/images/packaging/closures-card.webp"),
+        groupDescription: t(
+          "Steel crown caps for glass bottles, one-piece aluminium RipCaps and steel ring crown caps with a pull ring.",
+          "Tapas corona de acero para botellas de vidrio, RipCaps de aluminio de una pieza y tapas corona de acero con anilla."
+        ),
+        // Two pages share the name "Crown Cork Bottle Caps"; their content tells them apart.
+        titles: {
+          "/ripcap/crown-cork-bottle-caps": t("Crown caps, 26 and 42 mm", "Tapas corona de 26 y 42 mm"),
+          "/crown-corks-caps": t("Crown caps 26 mm: characteristics", "Tapas corona de 26 mm: características"),
+          "/ripcap/26-mm-ripcap": t("26 mm RipCap", "RipCap de 26 mm"),
+          "/ripcap/26-mm-ring-crown-cap": t("26 mm ring crown cap", "Tapa corona con anilla de 26 mm"),
+          "/ripcap/42-mm-ripcap": t("42 mm RipCap", "RipCap de 42 mm")
+        }
+      }
+    ],
     showSearch: true,
     showResourceFilters: true
   },
@@ -91,9 +167,25 @@ export const assignments: Record<string, Assignment> = {
             }
           }
         },
-        // The page's first sentence is about filtered water (copied from /water); its second
-        // sentence describes the glass bottles.
-        descriptionSentence: { "/soft-drinks": 1 }
+        // Counted from each page's specification tables. The pages' opening sentences are about
+        // filtered water (copied between pages) and are not used.
+        descriptions: {
+          "/soft-drinks": bottleText(
+            "/soft-drinks",
+            "{count} glass bottle references for soft drinks, from {min} to {max} cc.",
+            "{count} referencias de botella de vidrio para refrescos, de {min} a {max} cc."
+          ),
+          "/alcoholic-beverage": bottleText(
+            "/alcoholic-beverage",
+            "{count} glass bottle references for spirits, wine and beer, from {min} to {max} cc.",
+            "{count} referencias de botella de vidrio para destilados, vino y cerveza, de {min} a {max} cc."
+          ),
+          "/water": bottleText(
+            "/water",
+            "{count} glass bottle references for water, from {min} to {max} cc.",
+            "{count} referencias de botella de vidrio para agua, de {min} a {max} cc."
+          )
+        }
       }
     ]
   },
@@ -113,7 +205,28 @@ export const assignments: Record<string, Assignment> = {
             },
             position: "60% 50%"
           }
-        }
+        },
+        titles: {
+          "/shrink-sleeve-labels": t("Shrink sleeve labels", "Etiquetas de manga retráctil"),
+          "/washoff-labels": t("Wash-off labels", "Etiquetas wash-off"),
+          "/wet-glue-labels": t("Wet-glue labels", "Etiquetas de cola húmeda")
+        },
+        descriptions: {
+          "/shrink-sleeve-labels": t(
+            "Custom printed sleeves that can be tailored to the shape and size of the container.",
+            "Mangas impresas a medida que se adaptan a la forma y el tamaño del envase."
+          ),
+          "/washoff-labels": t(
+            "Labels that keep their print and adhesion in use and come off cleanly in the washing process.",
+            "Etiquetas que mantienen la impresión y la adherencia durante el uso y se retiran limpiamente en el lavado."
+          ),
+          "/wet-glue-labels": t(
+            "Labels for beverage applications in large-scale production, with high print quality.",
+            "Etiquetas para bebidas en producción a gran escala, con alta calidad de impresión."
+          )
+        },
+        // No licensed photograph shows these label types without a brand (docs/asset-provenance.md).
+        illustrations: { "/shrink-sleeve-labels": "shrink-sleeve", "/wet-glue-labels": "wet-glue" }
       }
     ]
   },
@@ -133,6 +246,17 @@ export const assignments: Record<string, Assignment> = {
             src: `${RAW}/almond-card.webp`,
             alt: { en: "Almonds in a white bowl", es: "Almendras en un cuenco blanco" }
           }
+        },
+        // From each page's "Available formats" table (the pages have no opening paragraph).
+        descriptions: {
+          "/plant-based-concentrate-1/oat-concentrate": t(
+            "Oat juice concentrate, available cloudy or clear.",
+            "Concentrado de zumo de avena, disponible turbio o clarificado."
+          ),
+          "/plant-based-concentrate-1/almond-concentrate": t(
+            "Almond juice concentrate, available cloudy or clear.",
+            "Concentrado de zumo de almendra, disponible turbio o clarificado."
+          )
         }
       }
     ]
@@ -144,13 +268,13 @@ export function categoryResources(categoryId: string, locale: Locale): ResourceS
   const assignment = assignments[categoryId];
   if (!assignment || assignment.variant === "technical-library" || !assignment.intro || !assignment.groups)
     return undefined;
-  const { library, resourceIntro } = getDictionary(locale);
+  const intro = getDictionary(locale).resourceSections[assignment.intro];
   return {
     id: categoryId,
     variant: assignment.variant,
-    eyebrow: library.eyebrow,
-    title: library.title,
-    description: resourceIntro[assignment.intro],
+    eyebrow: intro.eyebrow,
+    title: intro.title,
+    description: intro.text,
     groups: assignment.groups.map(({ family, ...options }) => familyResourceGroup(family, locale, options)),
     showSearch: assignment.showSearch,
     showResourceFilters: assignment.showResourceFilters

@@ -80,3 +80,136 @@
     display: none;
   }
 }
+
+/*
+ * Structured scope (category `scopeGroups`: applications, development, logistics, formats) and,
+ * on pages without a catalogue, links to the sibling categories and the division overview.
+ * Stacked below 1100px with the default light styling; columns on the navy desktop section.
+ */
+.detail-scope__groups {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+}
+.detail-scope__groups h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.detail-scope__groups .check-list li {
+  font-size: 1rem;
+}
+.detail-scope__related {
+  margin-top: 2.5rem;
+}
+.detail-scope__related p {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.detail-scope__related ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.detail-scope__related a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-weight: 650;
+}
+.detail-scope__related a svg {
+  width: 0.9rem;
+}
+.detail-scope__related a:focus-visible {
+  outline: 2px solid var(--blue-500);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1100px) {
+  .detail-scope__groups {
+    grid-template-columns: repeat(var(--group-count, 3), minmax(0, 1fr));
+    gap: 0;
+    margin-top: clamp(3rem, 4vw, 4rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  /* A single list (consulting sectors) stays compact under the description column. */
+  .detail-scope__groups[data-count="1"] {
+    grid-template-columns: minmax(0, 35fr) minmax(0, 65fr);
+    column-gap: clamp(3rem, 5vw, 6rem);
+  }
+  .detail-scope__groups[data-count="1"] > div {
+    grid-column: 2;
+  }
+  .detail-scope__groups > div {
+    padding: 1.75rem 1.75rem 0;
+  }
+  .detail-scope__groups > div:first-child {
+    padding-left: 0;
+  }
+  .detail-scope__groups > div + div {
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .detail-scope__groups h3,
+  .detail-scope__related p {
+    color: var(--brand-lime);
+  }
+  .detail-scope__groups .check-list li {
+    gap: 0.75rem;
+    padding: 0.55rem 0;
+    border-bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .detail-scope__groups .check-list svg {
+    flex: none;
+    width: 1.1rem;
+    color: var(--brand-lime);
+  }
+  .detail-scope__related {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    margin-top: clamp(2.5rem, 3.5vw, 3.25rem);
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .detail-scope__related p {
+    margin: 0;
+  }
+  .detail-scope__related a {
+    border-color: rgba(255, 255, 255, 0.28);
+    color: var(--white);
+    transition:
+      background 220ms ease,
+      border-color 220ms ease;
+  }
+  .detail-scope__related a:hover {
+    border-color: var(--brand-lime);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .detail-scope__related a:focus-visible {
+    outline-color: var(--brand-lime);
+  }
+  .detail-scope__related .detail-scope__overview {
+    border-color: var(--brand-lime);
+    color: var(--brand-lime);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-scope__related a {
+    transition: none;
+  }
+}

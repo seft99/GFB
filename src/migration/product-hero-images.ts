@@ -6,8 +6,8 @@ import { familyOf } from "./families.ts";
  * path. Licensed (Unsplash License, verified per photo) or approved repository images only — see
  * docs/asset-provenance.md, "Product detail heroes". All photographs are illustrative: they show
  * the fruit, vegetable, ingredient or packaging type, never a GFB concentrate, frozen product,
- * format or facility. Pages without a suitable photograph (white grapefruit, white guava,
- * tamarind, IQF zest and peel, RipCaps, two label types, overviews) get the image-free layout.
+ * format or facility. Pages without a suitable photograph (white grapefruit, IQF peel squares,
+ * block zest, orange and lime zest, RipCaps, two label types, overviews) get the image-free layout.
  */
 
 export type HeroPhoto = { src: string; alt: LocalizedText; position?: string };
@@ -44,6 +44,16 @@ const subjects: Record<string, HeroPhoto> = {
   "passion-fruit": photo("passion-fruit", t("A passion fruit cut open", "Un maracuyá abierto"), "30% 50%"),
   pineapple: photo("pineapple", t("A pineapple", "Una piña")),
   "pink-guava": photo("pink-guava", t("A pink guava cut in half", "Una guayaba rosa cortada por la mitad")),
+  "white-guava": photo(
+    "white-guava",
+    t("Green guavas, one cut open to show its white flesh", "Guayabas verdes, una abierta con la pulpa blanca"),
+    "55% 60%"
+  ),
+  tamarind: photo(
+    "tamarind",
+    t("A tamarind pod hanging from the tree", "Una vaina de tamarindo colgando del árbol"),
+    "50% 55%"
+  ),
   banana: photo("banana", t("A bunch of bananas", "Un racimo de plátanos")),
   mango: photo("mango", t("A ripe mango", "Un mango maduro")),
   coconut: photo("coconut", t("Coconut halves", "Mitades de coco")),
@@ -71,6 +81,15 @@ const subjects: Record<string, HeroPhoto> = {
   "iqf-orange": photo("iqf-orange", t("Fresh orange slices", "Rodajas de naranja fresca")),
   "iqf-lime": photo("iqf-lime", t("Fresh lime halves", "Mitades de lima fresca"), "50% 65%"),
   "iqf-grapefruit": photo("iqf-grapefruit", t("Fresh grapefruit slices", "Rodajas de pomelo fresco")),
+  "lemon-zest": photo(
+    "lemon-zest",
+    t("Lemon zest curls beside a lemon wedge", "Tiras de ralladura de limón junto a un gajo"),
+    "60% 45%"
+  ),
+  "citrus-peel": photo(
+    "citrus-peel",
+    t("Pieces of fresh orange and lemon peel", "Trozos de piel fresca de naranja y limón")
+  ),
   "soft-drinks": photo(
     "soft-drinks",
     t("A glass bottle beside a glass of orange drink", "Una botella de vidrio junto a un vaso de bebida de naranja"),
@@ -81,12 +100,24 @@ const subjects: Record<string, HeroPhoto> = {
     t("An amber glass beer bottle", "Una botella de cerveza de vidrio ámbar")
   ),
   water: photo("water", t("A glass bottle of water beside a glass", "Una botella de agua de vidrio junto a un vaso")),
+  // A single plain tall can: sleek (57 mm) and slim (53 mm) can pages; illustrative, unbranded.
+  "plain-can": photo(
+    "slim-can",
+    t("A plain unprinted aluminium can", "Una lata de aluminio lisa sin impresión"),
+    "50% 50%"
+  ),
   // Approved repository images (supplied panoramas and their card crops; labels category image).
-  cans: {
-    src: "/images/packaging/cans-card.webp",
-    alt: t("Plain aluminium cans and can ends", "Latas y tapas de aluminio lisas"),
-    position: "60% 55%"
-  },
+  // Plain unprinted cans (a 3D studio render per its Unsplash tags), 2571 × 2160: no upscaling.
+  cans: photo(
+    "cans-pair",
+    t("Two plain aluminium cans, tall and standard", "Dos latas de aluminio lisas, alta y estándar"),
+    "45% 55%"
+  ),
+  "can-ends": photo(
+    "can-ends",
+    t("Close-up of two aluminium can ends", "Primer plano de dos tapas de lata de aluminio"),
+    "45% 40%"
+  ),
   "crown-corks": {
     src: "/images/packaging/closures-crowns-panorama.webp",
     alt: t("Crown caps", "Tapas corona"),
@@ -117,12 +148,17 @@ function subjectOf(path: string): string | undefined {
     case "iqf-lime":
     case "iqf-grapefruit":
       // Zest and peel are presentations of their own: a slice photograph would misrepresent them.
+      // Only formats a photograph actually shows get one (lemon zest; peel shells of lemon and
+      // orange); block zest, peel squares and orange/lime zest stay image-free.
+      if (slug === "iqf-lemon-zest") return "lemon-zest";
+      if (/peel-shells$/.test(slug)) return "citrus-peel";
       return /zest|peel/.test(slug) ? undefined : family.id;
     case "bottle-formats":
       return { "soft-drinks": "soft-drinks", "alcoholic-beverage": "alcoholic-beverages", water: "water" }[slug];
     case "aluminium-cans":
+      return /^(sleek|slim)-can/.test(slug) ? "plain-can" : "cans";
     case "can-ends":
-      return "cans";
+      return "can-ends";
     case "crown-corks":
       // Crown caps only; RipCaps and ring crown caps have a different construction.
       return /ripcap|ring/.test(slug) ? undefined : "crown-corks";
@@ -133,6 +169,9 @@ function subjectOf(path: string): string | undefined {
       return family.id.endsWith("-concentrates") ? slug.replace(/-concentrate$/, "") : undefined;
   }
 }
+
+/** Product pages with no suitable licensed photograph yet (documented gaps). */
+export const missingHeroSubjects = ["white-grapefruit"];
 
 export function productHeroImage(path: string): HeroPhoto | undefined {
   const subject = subjectOf(path);

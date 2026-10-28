@@ -33,6 +33,8 @@ function productNames(path: string) {
   return [page?.h1 ?? "", `${page?.h1 ?? ""} ${page?.eyebrow ?? ""}`].map(compactName);
 }
 const isFlat = (path: string) => path.split("/").length === 2;
+/** Eyebrows that are identifiers (sizes, apertures), not marketing labels such as "Ring Pull Closure". */
+const IDENTIFIER = /\d|aperture/i;
 
 /** Content test (1)+(2) above, on the English page. */
 export function isSpecificationPage(path: string): boolean {
@@ -46,15 +48,33 @@ export function isSpecificationPage(path: string): boolean {
   return !prose && attributes >= 3;
 }
 
+/**
+ * Pairs verified by content rather than by name: the flat page publishes the same text as the
+ * nested product page (tests/unit/product-resources.test.ts compares them), so it is that
+ * product's specification page, not a second product.
+ */
+export const verifiedSpecificationPairs: { product: string; technical: string; reason: string }[] = [
+  {
+    product: "/aluminum-cans/std-can-d66mm",
+    technical: "/std-can-d66mm",
+    reason: 'Same "Standard Can Specifications" text (66 mm diameter, 202# cap/lid, fill volumes and heights).'
+  }
+];
+
 /** Nested product page → its flat specification page, per family (test (3) above). */
 export function specificationPairs(family: Family): { product: string; technical: string }[] {
-  return family.paths.filter(isSpecificationPage).flatMap((technical) => {
+  const detected = family.paths.filter(isSpecificationPage).flatMap((technical) => {
     const names = flatNames(technical);
     const product = family.paths.find(
       (path) => path !== family.hub && !isFlat(path) && productNames(path).some((name) => names.includes(name))
     );
     return product ? [{ product, technical }] : [];
   });
+  const verified = verifiedSpecificationPairs
+    .filter((pair) => family.paths.includes(pair.product) && family.paths.includes(pair.technical))
+    .filter((pair) => !detected.some((item) => item.technical === pair.technical))
+    .map(({ product, technical }) => ({ product, technical }));
+  return [...detected, ...verified];
 }
 
 const kindOf = (path: string, paired: Set<string>) =>
@@ -82,6 +102,14 @@ export type ResourcePhoto = { src: string; alt: LocalizedText; position?: string
 
 export type FamilyGroupOptions = {
   eyebrow?: LocalizedText;
+  /** Group text replacing the hub's first sentence (e.g. when the published one is ungrammatical). */
+  groupDescription?: LocalizedText;
+  /** Display names by legacy path, where the page H1 is inconsistent or ambiguous. */
+  titles?: Record<string, LocalizedText>;
+  /** Card descriptions by legacy path, condensed from that page's own content. */
+  descriptions?: Record<string, LocalizedText>;
+  /** Designed illustrations by legacy path, for products without a suitable photograph. */
+  illustrations?: Record<string, ProductResourceItem["illustration"]>;
   /** Representative image of the group (header thumbnail). */
   image?: ResourcePhoto;
   /** Product photographs by legacy path (licensed or published images, see docs/asset-provenance.md). */
@@ -117,14 +145,25 @@ export function familyResourceGroup(
     .map((path) => {
       const paths = [path, ...(technicalOf.has(path) ? [technicalOf.get(path)!] : [])];
       // The hub's first sentence describes the whole group, so it is not repeated on its item.
+      const curated = options.descriptions?.[path]?.[locale];
       const description =
-        path === family.hub ? undefined : firstSentence(path, locale, options.descriptionSentence?.[path]);
+        path === family.hub
+          ? undefined
+          : curated
+            ? { text: curated }
+            : firstSentence(path, locale, options.descriptionSentence?.[path]);
       const photo = options.photos?.[path];
+      // Nested product pages publish a factual identifier as their eyebrow ("D66 mm | 202# cap/lid").
+      const eyebrow = !isFlat(path) && path !== family.hub ? legacyPage(path)?.[locale].eyebrow : undefined;
+      const illustration = options.illustrations?.[path];
       return {
         id: path.split("/").filter(Boolean).join("--"),
-        title: pageTitle(path, locale),
+        title: options.titles?.[path]?.[locale] ?? pageTitle(path, locale),
+        ...(path === family.hub ? { overview: true } : {}),
+        ...(eyebrow && IDENTIFIER.test(eyebrow) ? { meta: eyebrow } : {}),
         ...(description ? { description: description.text } : {}),
         ...(photo ? { image: photo.src, imageAlt: photo.alt[locale], imagePosition: photo.position } : {}),
+        ...(illustration && !photo ? { illustration } : {}),
         keywords: paths.flatMap((item) => [pageTitle(item, "en"), pageTitle(item, "es")]).join(" "),
         resources: paths.map(link)
       };
@@ -135,6 +174,7 @@ export function familyResourceGroup(
   const pathOf = (item: ProductResourceItem) =>
     family.paths.find((candidate) => publicUrl(candidate, locale) === item.resources[0].href)!;
   for (const item of items) {
+    if (options.titles?.[pathOf(item)]) continue;
     const twins = items.filter((other) => other.title === item.title);
     if (twins.length < 2) continue;
     const keeper = twins.find((other) => !isFlat(pathOf(other))) ?? twins[0];
@@ -143,7 +183,11 @@ export function familyResourceGroup(
     if (heading) item.title = `${item.title}: ${heading}`;
   }
 
-  const hubSentence = family.hub ? firstSentence(family.hub, locale) : undefined;
+  const hubSentence = options.groupDescription
+    ? { text: options.groupDescription[locale] }
+    : family.hub
+      ? firstSentence(family.hub, locale)
+      : undefined;
   return {
     id: family.id,
     title: family.label[locale],

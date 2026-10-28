@@ -137,6 +137,9 @@ export const en = {
     explorerCount: "products",
     explorerCta: "Discuss this family",
     explorerTabs: "Concentrate families",
+    explorerLibrary: "View products and specifications",
+    relatedLabel: "More in {division}",
+    relatedOverview: "{division} overview",
     ctaEyebrow: "Let's discuss your project",
     ctaTitle: "Share the requirements for this category."
   },
@@ -277,51 +280,67 @@ export const en = {
     references: "Product references",
     viewProduct: "View product page",
     specs: "Specifications",
+    content: {
+      eyebrow: "Product information",
+      formatsTitle: "Available formats & product overview",
+      formatsPanel: "Available formats",
+      overview: "Product overview",
+      factsTitle: "Product facts & applications",
+      details: "Uses & details",
+      technicalTitle: "Technical specifications",
+      parameter: "Parameter",
+      specification: "Specification",
+      rangeTitle: "Product range & features",
+      featuresTitle: "Product description",
+      references: "{count} published references",
+      productReferences: "Product references"
+    },
     indexTitle: "Product index",
     indexText:
       "Every GFB product, specification and application page, grouped by family. Each page keeps its published content and links back to its category.",
     indexMeta: "Index of GFB Solutions product, specification and application pages, grouped by category and family."
   },
   library: {
-    eyebrow: "Technical product index",
-    title: "Product and specification pages",
-    text: "Explore our fruit and vegetable concentrates, with their published product pages and technical specifications.",
+    eyebrow: "Technical library",
+    title: "Find products and technical specifications",
+    text: "Browse the concentrate families or search by product, variety or code. Red grape varieties also have specifications with analysis and microbiology.",
     families: "Product families",
     searchLabel: "Search products, varieties or codes",
     searchPlaceholder: "Search products, varieties or specifications…",
     clearSearch: "Clear search",
-    typeFilter: "Resource type",
-    all: "All resources",
-    product: "Product pages",
-    technical: "Technical sheets",
-    productLink: "Product page",
-    overviewLink: "Overview page",
-    technicalLink: "Technical sheet",
-    products: "products",
-    records: "references",
-    pages: "pages",
+    typeFilter: "Show",
+    all: "All",
+    product: "Products",
+    technical: "Specifications",
+    productLink: "View product",
+    overviewLink: "Explore range",
+    technicalLink: "View specifications",
+    units: {
+      products: { one: "product", other: "products" },
+      formats: { one: "format", other: "formats" }
+    },
+    specifications: "specifications",
+    rangeOverview: "Range overview",
     results: "Search results",
     resultsIn: "Matches in",
     allFamilies: "All families",
     showAllFamilies: "Show matches in all families",
-    resultCount: "{count} references found",
-    resultCountOne: "1 reference found",
+    resultCount: "{count} results",
+    resultCountOne: "1 result",
     familyEyebrow: "Product family",
-    groupEyebrow: "Technical document group",
-    noResults: "No matching references found.",
+    groupEyebrow: "Specification group",
+    noResults: "No matching products found.",
     noResultsHint: "Try another product name, variety or code, or clear the search and filters.",
     reset: "Clear search and filters",
-    noTechnical: "No separate technical sheets are published for this family.",
-    noTechnicalHint: "Its product pages list the formats published for each concentrate.",
-    showAllResources: "Show all resources",
+    noTechnical: "No separate specifications are published for this family.",
+    noTechnicalHint: "Its product pages list the formats in which each concentrate is supplied.",
+    showAllResources: "Show all products",
     grapeEyebrow: "Red grape specifications",
     grapeTitle: "Looking for a specific grape specification?",
     grapeText: "Open the red grape group: variety overviews and technical sheets with analysis and microbiology.",
     grapeAction: "Browse grape specifications"
   },
   resources: {
-    count: "{count} resources",
-    countOne: "1 resource",
     items: "Product resources",
     previewMeta: "Development preview of the product resource variants.",
     previewEyebrow: "Development preview",
@@ -330,16 +349,38 @@ export const en = {
       "Two reusable presentations of verified catalogue data. Not linked from the site, not indexed and not assigned to any category page yet.",
     previewVariant: "Variant"
   },
-  resourceIntro: {
-    cans: "Explore our aluminium can formats and compatible ends, with their published product pages and technical specifications.",
-    closures: "Explore our crown corks and RipCaps, with their published product pages and technical specifications.",
-    bottles: "Explore our glass bottle formats by beverage, with their published product pages.",
-    labels: "Explore our beverage label solutions, with their published product pages.",
-    plantBased: "Explore our plant-based concentrates, with their published product pages."
+  resourceSections: {
+    cans: {
+      eyebrow: "Cans and ends",
+      title: "Explore can formats and ends",
+      text: "Standard, sleek and slim aluminium cans and 52 mm (202) aluminium ends. Formats with their own specification page show both links."
+    },
+    closures: {
+      eyebrow: "Closures",
+      title: "Explore closure formats",
+      text: "Crown corks, RipCaps and ring crown caps for glass bottles. RipCap and ring crown cap formats link to their product page and to their specifications."
+    },
+    bottles: {
+      eyebrow: "Glass bottles",
+      title: "Explore bottle applications",
+      text: "Glass bottle formats for soft drinks, alcoholic beverages and water. Each application lists its bottle references with capacity and dimensions."
+    },
+    labels: {
+      eyebrow: "Labels",
+      title: "Explore label solutions",
+      text: "Three labelling technologies for beverage containers: shrink sleeve, wash-off and wet-glue."
+    },
+    plantBased: {
+      eyebrow: "Plant-based",
+      title: "Explore oat and almond concentrates",
+      text: "Choose a concentrate for its description and product details."
+    }
   },
   libraryFrozen: {
-    text: "Explore our IQF frozen citrus — lemon, orange, lime and grapefruit — with the published page of each cut, zest and peel reference.",
-    noTechnicalHint: "Its product pages show the presentation and storage information published for each reference."
+    eyebrow: "IQF catalogue",
+    title: "Explore citrus formats",
+    text: "Lemon, orange, lime and grapefruit in slices, half slices and cuts; sticks and zest for lemon, orange and lime; peel for lemon and orange. Each fruit starts with its range overview.",
+    noTechnicalHint: "Each format page shows its presentation and storage details."
   },
   notFound: {
     metaTitle: "Page not found",

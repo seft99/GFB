@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type Ref } from "react";
 import { Icon } from "@/components/ui/icon";
+import { FAMILY_PARAM, notifyFamilyChange, subscribeFamilyChange } from "@/src/lib/family-url";
 import {
   matchesQuery,
   type DocumentType,
@@ -12,6 +12,7 @@ import {
   type LibraryFamily,
   type LibraryProduct
 } from "@/src/migration/library-search";
+import { FamilyUrlSync } from "./family-url-sync";
 import "../../app/styles/technical-library.css";
 
 /** Shared interface labels (`library` dictionary block); page-specific copy comes from the config. */
@@ -27,6 +28,7 @@ export type LibraryLabels = {
   productLink: string;
   overviewLink: string;
   technicalLink: string;
+  rangeOverview: string;
   results: string;
   resultsIn: string;
   allFamilies: string;
@@ -62,6 +64,7 @@ function readUrl(families: LibraryFamily[], fallback: State, filterable: boolean
 
 function writeUrl(state: State, families: LibraryFamily[], mode: "push" | "replace") {
   const url = new URL(window.location.href);
+  const previousFamily = url.searchParams.get(FAMILY_PARAM);
   const family = families.find((item) => item.id === state.familyId) ?? families[0];
   // A search across all families has no `family`, so a reload keeps the same scope.
   if (state.query && state.scope === "all") url.searchParams.delete("family");
@@ -72,10 +75,18 @@ function writeUrl(state: State, families: LibraryFamily[], mode: "push" | "repla
   else url.searchParams.delete("q");
   if (url.href === window.location.href) return;
   window.history[mode === "push" ? "pushState" : "replaceState"](window.history.state, "", url);
+  // The concentrate explorer on the same page follows the family (src/lib/family-url.ts).
+  if (url.searchParams.get(FAMILY_PARAM) !== previousFamily) queueMicrotask(notifyFamilyChange);
 }
 
 const countLabel = (labels: LibraryLabels, count: number) =>
   count === 1 ? labels.resultCountOne : labels.resultCount.replace("{count}", String(count));
+
+const resourceLabel = (resource: LibraryProduct["resources"][number], labels: LibraryLabels) =>
+  resource.type === "technical" ? labels.technicalLink : resource.overview ? labels.overviewLink : labels.productLink;
+
+/** Range overviews (records made only of general pages) are listed apart from the products. */
+const isOverviewRecord = (product: LibraryProduct) => product.resources.every((item) => item.overview);
 
 /** Products of a family narrowed by resource type (a product keeps only matching resources). */
 function byType(products: LibraryProduct[], type: ResourceFilter): LibraryProduct[] {
@@ -86,38 +97,38 @@ function byType(products: LibraryProduct[], type: ResourceFilter): LibraryProduc
 }
 
 /**
- * Shared "Product and specification pages" library (fruit & vegetable concentrates, frozen
- * fruits): group navigator, live search and resource-type filters over one verified catalogue
+ * Shared technical library (fruit & vegetable concentrates, IQF citrus): group navigator (a
+ * single-choice radio group), live search and resource-type filters over one verified catalogue
  * configuration (src/migration/technical-library.ts). The type filters appear only when the
  * catalogue mixes product pages and technical sheets; the contextual banner only when the config
  * defines one. Every group panel is server-rendered as real links — the inactive ones are
  * `hidden` until selected — so all destinations stay crawlable without JavaScript. Group, type
- * and query are mirrored in the URL (`family`, `type`, `q`).
+ * and query are mirrored in the URL (`family`, `type`, `q`); the family is shared with the
+ * concentrate explorer through src/lib/family-url.ts.
  */
 export function TechnicalLibrary({ config, labels }: { config: LibraryConfig; labels: LibraryLabels }) {
   const { families, banner } = config;
   const ids = `${config.id}-library`;
   const filterable =
     new Set(families.flatMap((family) => family.products.flatMap((p) => p.resources.map((r) => r.type)))).size > 1;
-  const initial: State = { familyId: families[0].id, query: "", type: "all", scope: "family" };
+  const initial: State = {
+    familyId: config.defaultFamilyId ?? families[0].id,
+    query: "",
+    type: "all",
+    scope: "family"
+  };
   const [state, setState] = useState<State>(initial);
   const panelHeading = useRef<HTMLHeadingElement>(null);
   const searchInput = useRef<HTMLInputElement>(null);
 
-  // Restore from the URL after hydration and follow Back/Forward.
+  // Restore from the URL after hydration; follow Back/Forward, same-page links and the explorer.
   useEffect(() => {
     const sync = () => setState(readUrl(families, initial, filterable));
     const params = new URLSearchParams(window.location.search);
     if (["family", "type", "q"].some((key) => params.has(key))) sync();
-    window.addEventListener("popstate", sync);
-    return () => window.removeEventListener("popstate", sync);
+    return subscribeFamilyChange(sync);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- the catalogue is static per render
   }, [families]);
-  const followUrl = useCallback(
-    () => setState(readUrl(families, initial, filterable)),
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- the catalogue is static per render
-    [families]
-  );
 
   const update = useCallback(
     (next: Partial<State>, mode: "push" | "replace" = "push") => {
@@ -172,16 +183,16 @@ export function TechnicalLibrary({ config, labels }: { config: LibraryConfig; la
     if (event.key === "Enter") event.preventDefault();
   }
 
-  const typeButtons: { value: ResourceFilter; label: string; icon: "bars" | "document" }[] = [
-    { value: "all", label: labels.all, icon: "bars" },
-    { value: "product", label: labels.product, icon: "document" },
-    { value: "technical", label: labels.technical, icon: "document" }
+  const typeOptions: { value: ResourceFilter; label: string }[] = [
+    { value: "all", label: labels.all },
+    { value: "product", label: labels.product },
+    { value: "technical", label: labels.technical }
   ];
 
   return (
     <section className="section tech-library" aria-labelledby={`${ids}-title`} data-library={config.id}>
       <Suspense fallback={null}>
-        <FamilyLinkSync onFamily={followUrl} />
+        <FamilyUrlSync />
       </Suspense>
       <div className="shell tech-library__inner">
         <header className="tech-library__intro">
@@ -191,36 +202,40 @@ export function TechnicalLibrary({ config, labels }: { config: LibraryConfig; la
         </header>
 
         <div className="tech-library__layout">
-          <nav className="tech-library__families" aria-labelledby={`${ids}-families`}>
-            <p className="tech-library__label" id={`${ids}-families`}>
-              {labels.families}
-            </p>
+          {/* One family at a time: a radio group (arrow keys move the selection natively). */}
+          <fieldset className="tech-library__families">
+            <legend className="tech-library__label">{labels.families}</legend>
             <ul>
               {families.map((family) => {
                 const selected = family.id === active.id && !(searching && state.scope === "all");
                 return (
                   <li key={family.id}>
-                    <button
-                      type="button"
-                      className="tech-library__family"
-                      aria-pressed={selected}
-                      onClick={() => selectFamily(family.id)}
-                    >
+                    <label className="tech-library__family">
+                      <input
+                        type="radio"
+                        className="tech-library__radio"
+                        name={`${ids}-family`}
+                        value={family.slug}
+                        checked={selected}
+                        onChange={() => selectFamily(family.id)}
+                        // Re-selecting the checked family during a search returns to its panel.
+                        onClick={() => selected || selectFamily(family.id)}
+                      />
                       <span className="tech-library__thumb" aria-hidden="true">
                         <Image src={family.thumb} alt="" fill sizes="48px" />
                       </span>
                       <span className="tech-library__family-name">{family.title}</span>
                       <span className="tech-library__family-count">
-                        {family.resourceCount}
+                        {family.productCount}
                         <span className="visually-hidden"> {family.countNoun}</span>
                       </span>
                       <Icon name="arrow" strokeWidth={1.8} />
-                    </button>
+                    </label>
                   </li>
                 );
               })}
             </ul>
-          </nav>
+          </fieldset>
 
           <div className="tech-library__main">
             <div className="tech-library__toolbar">
@@ -260,19 +275,22 @@ export function TechnicalLibrary({ config, labels }: { config: LibraryConfig; la
                 )}
               </div>
               {filterable && (
-                <div className="tech-library__types" role="group" aria-label={labels.typeFilter}>
-                  {typeButtons.map((button) => (
-                    <button
-                      key={button.value}
-                      type="button"
-                      aria-pressed={state.type === button.value}
-                      onClick={() => update({ type: button.value })}
-                    >
-                      <Icon name={button.icon} strokeWidth={1.6} />
-                      {button.label}
-                    </button>
+                <fieldset className="tech-library__types">
+                  <legend className="visually-hidden">{labels.typeFilter}</legend>
+                  {typeOptions.map((option) => (
+                    <label key={option.value}>
+                      <input
+                        type="radio"
+                        className="tech-library__radio"
+                        name={`${ids}-type`}
+                        value={option.value}
+                        checked={state.type === option.value}
+                        onChange={() => update({ type: option.value })}
+                      />
+                      {option.label}
+                    </label>
                   ))}
-                </div>
+                </fieldset>
               )}
             </div>
 
@@ -356,7 +374,11 @@ function FamilyPanel({
   headingRef?: Ref<HTMLHeadingElement>;
   onShowAll: () => void;
 }) {
-  const products = byType(family.products, type);
+  const overviews = type === "technical" ? [] : family.products.filter(isOverviewRecord);
+  const products = byType(
+    family.products.filter((product) => !isOverviewRecord(product)),
+    type
+  );
   return (
     <div className="tech-library__family-panel" hidden={hidden} aria-labelledby={headingId} role="region">
       <div className="tech-library__panel-head">
@@ -366,6 +388,28 @@ function FamilyPanel({
           <span className="tech-library__count">{family.countLabel}</span>
         </h3>
         <p>{family.description}</p>
+        {overviews.length > 0 && (
+          <div className="tech-library__overviews">
+            <p className="tech-library__overviews-label">{labels.rangeOverview}</p>
+            <ul>
+              {overviews.flatMap((product) =>
+                product.resources.map((resource) => (
+                  <li key={resource.id}>
+                    <Link
+                      href={resource.href}
+                      prefetch={false}
+                      className="tech-library__overview"
+                      aria-label={`${labels.overviewLink}: ${product.name}`}
+                    >
+                      <span>{product.name}</span>
+                      <Icon name="arrow" strokeWidth={1.8} />
+                    </Link>
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
+        )}
       </div>
       {products.length > 0 ? (
         <ResultGrid items={products.map((product) => ({ family, product }))} labels={labels} />
@@ -453,16 +497,13 @@ function ResultGrid({
           <ul className="tech-library__resources">
             {product.resources.map((resource) => (
               <li key={resource.id}>
-                <Link href={resource.href} prefetch={false} className={`tech-library__resource is-${resource.type}`}>
-                  <Icon name="document" strokeWidth={1.6} />
-                  <span>
-                    {resource.type === "technical"
-                      ? labels.technicalLink
-                      : resource.overview
-                        ? labels.overviewLink
-                        : labels.productLink}
-                    <span className="visually-hidden">: {resource.title}</span>
-                  </span>
+                <Link
+                  href={resource.href}
+                  prefetch={false}
+                  className={`tech-library__resource is-${resource.type}`}
+                  aria-label={`${resourceLabel(resource, labels)}: ${product.name}`}
+                >
+                  <span>{resourceLabel(resource, labels)}</span>
                   <Icon name="arrow" strokeWidth={1.8} />
                 </Link>
               </li>
@@ -472,20 +513,4 @@ function ResultGrid({
       ))}
     </ol>
   );
-}
-
-/**
- * Same-page links (e.g. a header family link) change the query with a client navigation, which
- * fires no `popstate`; follow `family` changes from the router. Isolated behind its own Suspense
- * boundary so the library itself stays in the prerendered HTML.
- */
-function FamilyLinkSync({ onFamily }: { onFamily: () => void }) {
-  const family = useSearchParams().get("family");
-  const seen = useRef(family);
-  useEffect(() => {
-    if (family === seen.current) return;
-    seen.current = family;
-    onFamily();
-  }, [family, onFamily]);
-  return null;
 }

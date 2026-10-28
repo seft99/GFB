@@ -36,6 +36,14 @@ export function documentType(path: string): DocumentType {
 const pageName = (path: string, locale: Locale) => (legacyPage(path)?.[locale].h1 ?? path).replace(/\s*\n\s*/g, " ");
 
 /**
+ * Display wording of published cut names: Wix writes "one fourths cut" / "one eights cut" on
+ * some IQF pages and "1/4 cut" / "1/8 cut" on others. Display only: URLs, page titles and the
+ * crawled content keep the published text, and the old wording stays searchable (cutAliases).
+ */
+export const displayProductName = (name: string) =>
+  name.replace(/\bone fourths cut\b/gi, "1/4 cut").replace(/\bone eights cut\b/gi, "1/8 cut");
+
+/**
  * General pages that are not one product reference: each family hub plus the two other overview
  * pages of the catalogue (/frozen-lemon lists the lemon range and its features; /fruit-concentrates
  * introduces the red grape concentrates).
@@ -73,19 +81,25 @@ type GroupSource = {
   products: (locale: Locale) => LibraryProduct[];
   /** Groups whose records combine product overviews and technical sheets. */
   documentGroup?: boolean;
-  /** Groups whose pages include general pages: counts references and pages separately. */
-  countReferences?: boolean;
+  /** Noun of the group's product records ("formats" for IQF cuts, "products" otherwise). */
+  unit?: "products" | "formats";
 };
 
+/**
+ * Counts in commercial terms: product records (not range overviews) and, where published, their
+ * specification sheets, e.g. "7 products · 7 specifications" or "9 formats". A product with a
+ * product page and a technical sheet counts once as a product.
+ */
 function buildGroup(source: GroupSource, locale: Locale): LibraryFamily {
   const { library } = getDictionary(locale);
   const products = source.products(locale);
   const resourceCount = products.reduce((sum, product) => sum + product.resources.length, 0);
-  // References: records that are one product, i.e. not only general (overview) pages.
-  const references = source.countReferences
-    ? products.filter((product) => !product.resources.every((item) => item.overview)).length
-    : products.length;
-  const split = source.documentGroup || source.countReferences;
+  const productCount = products.filter((product) => !product.resources.every((item) => item.overview)).length;
+  const technicalCount = products.reduce(
+    (sum, product) => sum + product.resources.filter((item) => item.type === "technical").length,
+    0
+  );
+  const unit = library.units[source.unit ?? "products"];
   return {
     id: source.id,
     slug: source.slug,
@@ -94,12 +108,12 @@ function buildGroup(source: GroupSource, locale: Locale): LibraryFamily {
     eyebrow: source.documentGroup ? library.groupEyebrow : library.familyEyebrow,
     description: source.description[locale],
     thumb: source.thumb,
-    productCount: references,
+    productCount,
     resourceCount,
-    countLabel: split
-      ? `${references} ${library.records} · ${resourceCount} ${library.pages}`
-      : `${references} ${library.products}`,
-    countNoun: split ? library.pages : library.products,
+    countLabel: `${productCount} ${productCount === 1 ? unit.one : unit.other}${
+      technicalCount ? ` · ${technicalCount} ${library.specifications}` : ""
+    }`,
+    countNoun: unit.other,
     products
   };
 }
@@ -111,7 +125,7 @@ const pagesOf =
     familyById(familyId).paths.map((path) => ({
       id: path.split("/").filter(Boolean).join("--"),
       // Descriptive, unique label (two Wix pages can share a translated title).
-      name: legacyLinkLabel(path, locale),
+      name: displayProductName(legacyLinkLabel(path, locale)),
       keywords: keywordsFor([path], aliases(pageName(path, "en"))),
       resources: [resource(path, locale)]
     }));
@@ -119,8 +133,8 @@ const pagesOf =
 // ---------- Concentrates ----------
 
 const CONCENTRATE_DESCRIPTION: LocalizedText = {
-  en: "Each product page shows the formats published for that concentrate.",
-  es: "Cada página de producto muestra los formatos publicados para ese concentrado."
+  en: "Open a concentrate to see the formats in which it is supplied.",
+  es: "Abra un concentrado para ver los formatos en los que se suministra."
 };
 
 const concentrateFamily = (id: string, slug: string, title: LocalizedText, thumb: string): GroupSource => ({
@@ -195,8 +209,8 @@ const concentrateGroups: GroupSource[] = [
     heading: RED_GRAPE_TITLE,
     thumb: "/images/raw-materials/concentrates/red-grape-thumb.webp",
     description: {
-      en: "Red grape juice concentrate varieties: product overviews and, where published, technical sheets with analysis and microbiology.",
-      es: "Variedades de concentrado de zumo de uva tinta: fichas de producto y, cuando están publicadas, fichas técnicas con análisis y microbiología."
+      en: "Red grape juice concentrate varieties, each with its product page and its specifications (analysis and microbiology).",
+      es: "Variedades de concentrado de zumo de uva tinta, cada una con su ficha de producto y sus especificaciones (análisis y microbiología)."
     },
     documentGroup: true,
     products: (locale) =>
@@ -234,8 +248,8 @@ export function cutAliases(name: string): string[] {
 }
 
 const IQF_DESCRIPTION: LocalizedText = {
-  en: "The overview page presents the range; each product page shows the information published for one IQF reference.",
-  es: "La página general presenta la gama; cada ficha de producto muestra la información publicada de una referencia IQF."
+  en: "Start with the range overview, or open a format for its presentation and storage details.",
+  es: "Empiece por la presentación de la gama o abra un formato para ver su presentación y conservación."
 };
 
 const iqfGroup = (id: string, slug: string, title: LocalizedText): GroupSource => ({
@@ -245,7 +259,7 @@ const iqfGroup = (id: string, slug: string, title: LocalizedText): GroupSource =
   heading: familyById(id).label,
   thumb: `/images/raw-materials/iqf/${id}-thumb.webp`,
   description: IQF_DESCRIPTION,
-  countReferences: true,
+  unit: "formats",
   products: (locale) =>
     pagesOf(
       id,
@@ -271,6 +285,9 @@ export function concentratesLibrary(locale: Locale): LibraryConfig {
     id: "concentrates",
     intro: { eyebrow: library.eyebrow, title: library.title, text: library.text },
     families: concentrateGroups.map((group) => buildGroup(group, locale)),
+    // Same family as the explorer's default (catalog `explorer.defaultGroup`), so both
+    // components agree on a page without a `family` parameter.
+    defaultFamilyId: "mediterranean-concentrates",
     noTechnicalHint: library.noTechnicalHint,
     banner: {
       groupId: "red-grape-concentrates",
@@ -284,10 +301,10 @@ export function concentratesLibrary(locale: Locale): LibraryConfig {
 }
 
 export function frozenFruitsLibrary(locale: Locale): LibraryConfig {
-  const { library, libraryFrozen } = getDictionary(locale);
+  const { libraryFrozen } = getDictionary(locale);
   return {
     id: "frozen-fruits",
-    intro: { eyebrow: library.eyebrow, title: library.title, text: libraryFrozen.text },
+    intro: { eyebrow: libraryFrozen.eyebrow, title: libraryFrozen.title, text: libraryFrozen.text },
     families: frozenGroups.map((group) => buildGroup(group, locale)),
     noTechnicalHint: libraryFrozen.noTechnicalHint
   };

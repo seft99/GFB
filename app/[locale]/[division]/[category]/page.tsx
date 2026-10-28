@@ -14,6 +14,8 @@ import { divisions, getCategoryBySlug, getDivisionBySlug } from "@/src/content/c
 import { isLocale, locales } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { localizedPaths, paths } from "@/src/i18n/routes";
+import Link from "next/link";
+import { familyLibraryHref } from "@/src/lib/family-url";
 import { pageMetadata } from "@/src/lib/metadata";
 import { categoryResources } from "@/src/migration/category-resources";
 import { categoryLibrary } from "@/src/migration/technical-library";
@@ -66,6 +68,10 @@ export default async function CategoryPage({ params }: Props) {
   const library = categoryLibrary(category.id, locale);
   // Extensive catalogues keep the technical library; other assigned categories use a variant.
   const resources = library ? undefined : categoryResources(category.id, locale);
+  // Pages without a catalogue (flavour applications, consulting sectors) link to their siblings
+  // and back to the division overview.
+  const siblings = !library && !resources ? division.categories.filter((item) => item.id !== category.id) : [];
+  const divisionName = division.shortTitle[locale];
 
   return (
     <main id="main-content">
@@ -97,6 +103,48 @@ export default async function CategoryPage({ params }: Props) {
               ))}
             </ul>
           )}
+          {category.scopeGroups && (
+            <div
+              className="detail-scope__groups"
+              data-count={category.scopeGroups.length}
+              style={{ "--group-count": category.scopeGroups.length } as CSSProperties}
+            >
+              {category.scopeGroups.map((group) => (
+                <div key={group.title.en}>
+                  <h3>{group.title[locale]}</h3>
+                  <ul className="check-list">
+                    {group.items.map((item) => (
+                      <li key={item.en}>
+                        <Icon name="check" />
+                        {item[locale]}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+          {siblings.length > 0 && (
+            <nav className="detail-scope__related" aria-label={copy.relatedLabel.replace("{division}", divisionName)}>
+              <p>{copy.relatedLabel.replace("{division}", divisionName)}</p>
+              <ul>
+                {siblings.map((item) => (
+                  <li key={item.id}>
+                    <Link href={paths.category(locale, division, item)}>
+                      {item.title[locale]}
+                      <Icon name="arrow" strokeWidth={1.8} />
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link href={paths.division(locale, division)} className="detail-scope__overview">
+                    {copy.relatedOverview.replace("{division}", divisionName)}
+                    <Icon name="arrow" strokeWidth={1.8} />
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          )}
         </div>
         <div className="detail-scope__context">
           <div className="shell">
@@ -124,7 +172,14 @@ export default async function CategoryPage({ params }: Props) {
               title={category.explorer.title[locale]}
               text={category.explorer.text[locale]}
               defaultId={slugify(category.explorer.defaultGroup)}
-              labels={{ count: copy.explorerCount, cta: copy.explorerCta, tabs: copy.explorerTabs }}
+              // The library's red grape group belongs to the Mediterranean family of the explorer.
+              aliases={library ? { "red-grape": "mediterranean" } : undefined}
+              labels={{
+                count: copy.explorerCount,
+                cta: copy.explorerCta,
+                tabs: copy.explorerTabs,
+                library: copy.explorerLibrary
+              }}
               families={category.groups.map((group) => ({
                 id: slugify(group.title.en),
                 name: group.title[locale],
@@ -140,7 +195,16 @@ export default async function CategoryPage({ params }: Props) {
                 href: paths.contact(locale, {
                   interest: division.id,
                   category: `${category.title[locale]} – ${group.title[locale]}`
-                })
+                }),
+                // Only families the library has (same slug), so the link never lands on a fallback.
+                ...(library?.families.some((family) => family.slug === slugify(group.title.en))
+                  ? {
+                      libraryHref: familyLibraryHref(
+                        paths.category(locale, division, category),
+                        slugify(group.title.en)
+                      )
+                    }
+                  : {})
               }))}
             />
           )}

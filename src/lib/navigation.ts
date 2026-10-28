@@ -5,6 +5,7 @@ import { getDictionary } from "../i18n/dictionaries/index.ts";
 import { paths, routes } from "../i18n/routes.ts";
 import { familyOf } from "../migration/families.ts";
 import { publicUrl } from "../migration/public-paths.ts";
+import { familyLibraryHref } from "./family-url.ts";
 
 /** `route`: the internal App Router path, which `usePathname()` reports on rewritten legacy URLs. */
 export type NavItem = { href: string; label: string; route?: string; menu?: MegaMenuConfig };
@@ -68,8 +69,7 @@ const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, "-")
 
 /** Deep link into the technical library of a category page (`family` URL state + its heading). */
 function libraryLink(locale: Locale, division: Division, category: Category, family: string) {
-  const href = paths.category(locale, division, category);
-  return `${href}${href.includes("?") ? "&" : "?"}family=${family}#concentrates-library-title`;
+  return familyLibraryHref(paths.category(locale, division, category), family);
 }
 
 const categoryLinks = (locale: Locale, division: Division): MegaMenuLink[] =>
