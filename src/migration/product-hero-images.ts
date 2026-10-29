@@ -106,7 +106,7 @@ const subjects: Record<string, HeroPhoto> = {
     t("A plain unprinted aluminium can", "Una lata de aluminio lisa sin impresión"),
     "50% 50%"
   ),
-  // Approved repository images (supplied panoramas and their card crops; labels category image).
+  // Commercially verified plain-can illustrations from Unsplash.
   // Plain unprinted cans (a 3D studio render per its Unsplash tags), 2571 × 2160: no upscaling.
   cans: photo(
     "cans-pair",
@@ -117,20 +117,7 @@ const subjects: Record<string, HeroPhoto> = {
     "can-ends",
     t("Close-up of two aluminium can ends", "Primer plano de dos tapas de lata de aluminio"),
     "45% 40%"
-  ),
-  "crown-corks": {
-    src: "/images/packaging/closures-crowns-panorama.webp",
-    alt: t("Crown caps", "Tapas corona"),
-    position: "70% 50%"
-  },
-  "wash-off-labels": {
-    src: "/images/packaging/labels-wash-off.webp",
-    alt: t(
-      "Glass bottles with wash-off labels peeling away in water",
-      "Botellas de vidrio con etiquetas wash-off despegándose en el agua"
-    ),
-    position: "60% 50%"
-  }
+  )
 };
 
 /**
@@ -175,10 +162,9 @@ function subjectOf(path: string): string | undefined {
     case "can-ends":
       return "can-ends";
     case "crown-corks":
-      // Crown caps only; RipCaps and ring crown caps have a different construction.
-      return /ripcap|ring/.test(slug) ? undefined : "crown-corks";
+      return undefined;
     case "label-types":
-      return slug === "washoff-labels" ? "wash-off-labels" : undefined;
+      return undefined;
     default:
       // Fruit and vegetable concentrates: /citrics/orange-concentrate, /mediterranean/apple…
       return family.id.endsWith("-concentrates") ? slug.replace(/-concentrate$/, "") : undefined;

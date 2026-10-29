@@ -123,7 +123,8 @@ export function DivisionCategoryShowcase({ division, locale }: { division: Divis
               href={href(category)}
               title={category.title[locale]}
               summary={category.summary[locale]}
-              image={category.image}
+              image={category.showcase?.card?.image ?? category.showcase?.image ?? category.image}
+              placeholder={category.showcase?.placeholder}
               index={index}
               linkLabel={common.learnMore}
             />

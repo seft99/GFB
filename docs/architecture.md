@@ -283,6 +283,22 @@ Other categories have no product pages and keep `LegacyCatalogue` (which renders
 - Layout: technical-document hero compacted; product and library H1/H2 use `--font-brand` on desktop; formats layout chosen by content (side by side with ≥3 formats and an overview; otherwise a compact stack at reading width, headed "Available formats"); a technical page's untitled description reads above its panels; bottle references with the same application are one group, and the application column is omitted when it repeats the group.
 - Product index (`components/sections/product-index.tsx`): one row per product identity with Overview / Product / Specification actions, category jump links and a client-side search; every link is in the server HTML.
 
+## Commercial image-rights gate
+
+- `docs/product-image-audit.md` is the approval ledger for every new product-facing photograph or
+  bitmap. A source being public, previously used on the GFB site, described as royalty-free, or
+  attributed is not evidence of commercial permission.
+- Before integration, record the original asset page, creator/owner, licence and licence URL,
+  commercial and modification permissions, attribution, depicted third-party rights, verification
+  date, local derivative and route/scope. Only `verified-commercial` or documented
+  `authorized-existing` assets may enter a new production-facing placement.
+- `pending-review` assets stay out of new integrations. Use an already verified image of the same
+  subject, a documented commercially permitted generated illustration, or an intentional
+  non-photographic fallback instead.
+- `docs/asset-provenance.md` records design origin and transformations; it does not replace the
+  rights gate. Never describe an asset as legally approved without supporting evidence, and report
+  residual third-party-rights uncertainty transparently.
+
 ## Header mega navigation
 
 - Config: `primaryNavigation(locale)` (`src/lib/navigation.ts`) adds a `MegaMenuConfig` to each division, built only from the catalogue, route helpers and dictionaries (`common.megaMenu`), so every link is an existing public URL in the current language. Layouts: `three-column` (Raw materials: categories · concentrate families · quick access), `two-column` (Packaging: categories · quick access to the cans, can ends and crown corks hubs) and `compact` (Flavours, Consulting: categories only). Each panel ends with "Explore all <division>" → the division page.

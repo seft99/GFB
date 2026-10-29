@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import { families } from "../../src/migration/families.ts";
 import { legacyPage } from "../../src/migration/manifest.ts";
@@ -231,13 +231,11 @@ test("category audit separates unique products from published resources", () => 
 
 test("only licensed or approved images are used by category pages", () => {
   const approved = new Set([
-    "/images/packaging/resources/aluminium-cans-group.webp",
-    "/images/packaging/resources/can-ends-group.webp",
-    "/images/packaging/closures-card.webp",
+    "/images/products/hero/cans-pair.webp",
+    "/images/products/hero/can-ends.webp",
     "/images/packaging/resources/bottles-soft-drinks-card.webp",
     "/images/packaging/resources/bottles-alcoholic-card.webp",
     "/images/packaging/resources/bottles-water-card.webp",
-    "/images/packaging/labels-wash-off.webp",
     "/images/raw-materials/resources/oat-card.webp",
     "/images/raw-materials/resources/almond-card.webp"
   ]);
@@ -248,6 +246,11 @@ test("only licensed or approved images are used by category pages", () => {
     ])
   );
   for (const image of used.filter(Boolean)) assert.ok(approved.has(image!), `${image} is not in the provenance list`);
+  const audit = readFileSync("docs/product-image-audit.md", "utf8");
+  for (const image of approved) {
+    assert.ok(audit.includes(image.split("/").pop()!), `${image} is missing from the rights audit`);
+    assert.match(audit, new RegExp(`${image.split("/").pop()!.replace(".", "\\.")}.*verified-commercial`));
+  }
   // Withdrawn: photographs taken from the GFB website without confirmed reuse rights.
   assert.equal(existsSync("public/images/packaging/resources/standard-can-card.webp"), false);
 });

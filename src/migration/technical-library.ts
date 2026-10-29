@@ -144,7 +144,7 @@ const concentrateFamily = (id: string, slug: string, title: LocalizedText, thumb
   slug,
   title,
   heading: familyById(id).label,
-  thumb: `/images/raw-materials/concentrates/${thumb}.webp`,
+  thumb,
   description: CONCENTRATE_DESCRIPTION,
   products: (locale) =>
     pagesOf(id)(locale).map((product) => ({ ...product, keywords: `${product.keywords} ${title.en} ${title.es}` }))
@@ -189,27 +189,42 @@ export const redGrapeRecords: {
 const RED_GRAPE_TITLE: LocalizedText = { en: "Red grape specifications", es: "Especificaciones de uva tinta" };
 
 const concentrateGroups: GroupSource[] = [
-  concentrateFamily("citrus-concentrates", "citrus", { en: "Citrus", es: "Cítricos" }, "citrus-thumb"),
+  concentrateFamily(
+    "citrus-concentrates",
+    "citrus",
+    { en: "Citrus", es: "Cítricos" },
+    "/images/raw-materials/concentrates/citrus-sliced.webp"
+  ),
   concentrateFamily(
     "mediterranean-concentrates",
     "mediterranean",
     { en: "Mediterranean", es: "Mediterráneos" },
-    "mediterranean-thumb"
+    "/images/raw-materials/concentrates/mediterranean-still-life.webp"
   ),
-  concentrateFamily("tropical-concentrates", "tropical", { en: "Tropical", es: "Tropicales" }, "tropical-thumb"),
+  concentrateFamily(
+    "tropical-concentrates",
+    "tropical",
+    { en: "Tropical", es: "Tropicales" },
+    "/images/raw-materials/concentrates/tropical-market.webp"
+  ),
   concentrateFamily(
     "red-fruit-concentrates",
     "red-fruits",
     { en: "Red fruits", es: "Frutos rojos" },
-    "red-fruits-thumb"
+    "/images/raw-materials/concentrates/red-fruits-mixed.webp"
   ),
-  concentrateFamily("vegetable-concentrates", "vegetables", { en: "Vegetables", es: "Vegetales" }, "vegetables-thumb"),
+  concentrateFamily(
+    "vegetable-concentrates",
+    "vegetables",
+    { en: "Vegetables", es: "Vegetales" },
+    "/images/raw-materials/concentrates/vegetables-roots.webp"
+  ),
   {
     id: "red-grape-concentrates",
     slug: "red-grape",
     title: RED_GRAPE_TITLE,
     heading: RED_GRAPE_TITLE,
-    thumb: "/images/raw-materials/concentrates/red-grape-thumb.webp",
+    thumb: "/images/products/hero/red-grape.webp",
     description: {
       en: "Red grape juice concentrate varieties, each with its product page and its specifications (analysis and microbiology).",
       es: "Variedades de concentrado de zumo de uva tinta, cada una con su ficha de producto y sus especificaciones (análisis y microbiología)."
@@ -259,7 +274,7 @@ const iqfGroup = (id: string, slug: string, title: LocalizedText): GroupSource =
   slug,
   title,
   heading: familyById(id).label,
-  thumb: `/images/raw-materials/iqf/${id}-thumb.webp`,
+  thumb: `/images/products/hero/${id}.webp`,
   description: IQF_DESCRIPTION,
   unit: "formats",
   products: (locale) =>
@@ -297,7 +312,7 @@ export function concentratesLibrary(locale: Locale): LibraryConfig {
       title: library.grapeTitle,
       text: library.grapeText,
       action: library.grapeAction,
-      image: "/images/raw-materials/concentrates/red-grape-thumb.webp"
+      image: "/images/products/hero/red-grape.webp"
     }
   };
 }

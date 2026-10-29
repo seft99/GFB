@@ -275,6 +275,11 @@ function LabelIllustration({ kind }: { kind: ResourceIllustration }) {
           <rect x="60" y="46" width="80" height="140" className="resource-illustration__label" />
           <path d="M60 70c20 6 60 6 80 0M60 150c20 6 60 6 80 0" className="resource-illustration__line" />
         </g>
+      ) : kind === "wash-off" ? (
+        <g clipPath={`url(#bottle-${kind})`}>
+          <path d="M60 104h80v54H60zM122 104h18v24l-18-10z" className="resource-illustration__label" />
+          <path d="M82 122h30M88 134h22" className="resource-illustration__line" />
+        </g>
       ) : (
         <g clipPath={`url(#bottle-${kind})`}>
           <rect x="60" y="104" width="80" height="54" className="resource-illustration__label" />

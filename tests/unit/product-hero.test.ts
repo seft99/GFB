@@ -8,11 +8,13 @@ import { isTechnicalResource } from "../../src/migration/product-resources.ts";
 const allPaths = families.flatMap((family) => family.paths);
 
 test("every hero photograph exists locally, is documented and has EN/ES alt text", () => {
-  const provenance = readFileSync("docs/asset-provenance.md", "utf8");
+  const rightsAudit = readFileSync("docs/product-image-audit.md", "utf8");
   for (const src of new Set(heroImageFiles)) {
     assert.ok(src.startsWith("/images/"), src);
     assert.ok(existsSync(`public${src}`), `${src} missing`);
-    assert.ok(provenance.includes(src.split("/").pop()!), `${src} not in docs/asset-provenance.md`);
+    const filename = src.split("/").pop()!;
+    assert.ok(rightsAudit.includes(filename), `${src} not in docs/product-image-audit.md`);
+    assert.match(rightsAudit, new RegExp(`${filename.replace(".", "\\.")}.*verified-commercial`));
   }
   for (const path of allPaths) {
     const photo = productHeroImage(path);

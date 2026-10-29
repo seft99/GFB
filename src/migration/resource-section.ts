@@ -15,7 +15,7 @@ export type ResourceVariant = "compact-groups" | "visual-cards";
 /** Same resource types as the technical library: product page or technical specification page. */
 export type ResourceKind = DocumentType;
 
-export type ResourceIllustration = "shrink-sleeve" | "wet-glue";
+export type ResourceIllustration = "shrink-sleeve" | "wash-off" | "wet-glue";
 
 export type ResourceLink = {
   id: string;

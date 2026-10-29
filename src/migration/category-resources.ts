@@ -77,7 +77,7 @@ export const assignments: Record<string, Assignment> = {
     groups: [
       {
         family: "aluminium-cans",
-        image: decorative(`${PKG}/aluminium-cans-group.webp`),
+        image: decorative("/images/products/hero/cans-pair.webp"),
         // The hub's published sentence reads "GFB have different solutions of types of aluminum cans…".
         groupDescription: t(
           "Standard, sleek and slim aluminium can formats for the beverage industry, made from AA3104 alloy and BPA free.",
@@ -91,7 +91,7 @@ export const assignments: Record<string, Assignment> = {
       },
       {
         family: "can-ends",
-        image: decorative(`${PKG}/can-ends-group.webp`),
+        image: decorative("/images/products/hero/can-ends.webp"),
         groupDescription: t(
           "52 mm (202) aluminium SOT ends, with standard aperture (Korinthos) or large aperture (Botcherby).",
           "Tapas de aluminio SOT de 52 mm (202), con apertura estándar (Korinthos) o grande (Botcherby)."
@@ -119,7 +119,6 @@ export const assignments: Record<string, Assignment> = {
     groups: [
       {
         family: "crown-corks",
-        image: decorative("/images/packaging/closures-card.webp"),
         groupDescription: t(
           "Steel crown caps for glass bottles, one-piece aluminium RipCaps and steel ring crown caps with a pull ring.",
           "Tapas corona de acero para botellas de vidrio, RipCaps de aluminio de una pieza y tapas corona de acero con anilla."
@@ -196,16 +195,6 @@ export const assignments: Record<string, Assignment> = {
     groups: [
       {
         family: "label-types",
-        photos: {
-          "/washoff-labels": {
-            src: "/images/packaging/labels-wash-off.webp",
-            alt: {
-              en: "Glass bottles with wash-off labels peeling away in water",
-              es: "Botellas de vidrio con etiquetas wash-off despegándose en el agua"
-            },
-            position: "60% 50%"
-          }
-        },
         titles: {
           "/shrink-sleeve-labels": t("Shrink sleeve labels", "Etiquetas de manga retráctil"),
           "/washoff-labels": t("Wash-off labels", "Etiquetas wash-off"),
@@ -226,7 +215,11 @@ export const assignments: Record<string, Assignment> = {
           )
         },
         // No licensed photograph shows these label types without a brand (docs/asset-provenance.md).
-        illustrations: { "/shrink-sleeve-labels": "shrink-sleeve", "/wet-glue-labels": "wet-glue" }
+        illustrations: {
+          "/shrink-sleeve-labels": "shrink-sleeve",
+          "/washoff-labels": "wash-off",
+          "/wet-glue-labels": "wet-glue"
+        }
       }
     ]
   },

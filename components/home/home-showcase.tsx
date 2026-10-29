@@ -6,8 +6,8 @@ import type { Locale } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { paths } from "@/src/i18n/routes";
 
-/** Same GFB photograph as the concentrates category image, from its 1286 × 600 original. */
-const featureImage = "/images/raw-materials/fruit-concentrates-juice.webp";
+/** Commercially licensed citrus still life; rights record: docs/product-image-audit.md. */
+const featureImage = "/images/raw-materials/concentrates/citrus-sliced.webp";
 
 /**
  * Homepage "Portfolio discovery": the fruit-concentrate category, photo left and copy right.

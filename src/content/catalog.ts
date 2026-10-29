@@ -94,12 +94,11 @@ export const divisions: Division[] = [
         },
         image: "/images/packaging/cans.avif",
         showcase: {
-          image: "/images/packaging/can-detail.webp",
+          image: "/images/products/hero/cans-pair.webp",
           focus: "50% 40%",
-          card: { image: "/images/packaging/cans-card.webp", focus: "62% 55%" }
+          card: { image: "/images/products/hero/cans-pair.webp", focus: "45% 55%" }
         },
         heroSecondary: t("Explore formats", "Ver formatos"),
-        heroPanorama: { image: "/images/packaging/cans-panorama.png", width: 1914, height: 822, focus: "50% 55%" },
         features: [
           t("Standard, slim and sleek profiles", "Perfiles estándar, slim y sleek"),
           t("Easy-open can ends", "Tapas abre-fácil"),
@@ -129,8 +128,11 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/packaging/bottles.avif",
-        heroPanorama: { image: "/images/packaging/bottles-panorama.png", width: 1914, height: 822, focus: "50% 40%" },
-        showcase: { card: { image: "/images/packaging/bottles-card.webp", focus: "50% 60%" } }
+        showcase: {
+          image: "/images/products/hero/soft-drinks.webp",
+          focus: "50% 45%",
+          card: { image: "/images/products/hero/soft-drinks.webp", focus: "50% 45%" }
+        }
       },
       {
         id: "closures",
@@ -155,13 +157,7 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/packaging/closures.avif",
-        heroPanorama: {
-          image: "/images/packaging/closures-crowns-panorama.webp",
-          width: 1914,
-          height: 822,
-          focus: "70% 45%"
-        },
-        showcase: { card: { image: "/images/packaging/closures-card.webp", focus: "50% 60%" } }
+        showcase: { placeholder: "cube" }
       },
       {
         id: "labels",
@@ -186,7 +182,7 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/packaging/labels.avif",
-        showcase: { image: "/images/packaging/labels-wash-off.webp", focus: "50% 50%" }
+        showcase: { placeholder: "document" }
       }
     ]
   },
@@ -323,7 +319,7 @@ export const divisions: Division[] = [
               alt: t("Sliced oranges, lemons and grapefruit", "Naranjas, limones y pomelos en rodajas"),
               focus: "50% 50%"
             },
-            thumb: "/images/raw-materials/concentrates/citrus-thumb.webp",
+            thumb: "/images/raw-materials/concentrates/citrus-sliced.webp",
             items: [
               t("Orange", "Naranja"),
               t("White grapefruit", "Pomelo blanco"),
@@ -345,7 +341,7 @@ export const divisions: Division[] = [
               ),
               focus: "50% 60%"
             },
-            thumb: "/images/raw-materials/concentrates/mediterranean-thumb.webp",
+            thumb: "/images/raw-materials/concentrates/mediterranean-still-life.webp",
             highlights: ["White grape", "Red grape"],
             note: t("A particular focus on grape.", "Una atención especial a la uva."),
             items: [
@@ -369,7 +365,7 @@ export const divisions: Division[] = [
               alt: t("Mangoes and bananas at a market stall", "Mangos y plátanos en un puesto de mercado"),
               focus: "32% 50%"
             },
-            thumb: "/images/raw-materials/concentrates/tropical-thumb.webp",
+            thumb: "/images/raw-materials/concentrates/tropical-market.webp",
             items: [
               t("Passion fruit", "Maracuyá"),
               t("White guava", "Guayaba blanca"),
@@ -392,7 +388,7 @@ export const divisions: Division[] = [
               ),
               focus: "50% 50%"
             },
-            thumb: "/images/raw-materials/concentrates/red-fruits-thumb.webp",
+            thumb: "/images/raw-materials/concentrates/red-fruits-mixed.webp",
             items: [
               t("Cranberry", "Arándano rojo"),
               t("Blueberry", "Arándano"),
@@ -410,7 +406,7 @@ export const divisions: Division[] = [
               alt: t("Carrots and beets at a market stall", "Zanahorias y remolachas en un puesto de mercado"),
               focus: "62% 60%"
             },
-            thumb: "/images/raw-materials/concentrates/vegetables-thumb.webp",
+            thumb: "/images/raw-materials/concentrates/vegetables-roots.webp",
             items: [
               t("Turnip", "Nabo"),
               t("Pumpkin", "Calabaza"),

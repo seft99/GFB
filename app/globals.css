@@ -677,6 +677,17 @@ p {
   object-fit: cover;
   transition: transform 0.6s ease;
 }
+.category-card__image--placeholder {
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.78);
+  background:
+    radial-gradient(70% 90% at 30% 20%, rgba(70, 120, 210, 0.45), transparent 70%),
+    linear-gradient(135deg, #0b2250 0%, #10306b 100%);
+}
+.category-card__image--placeholder > svg {
+  width: clamp(4rem, 10vw, 6rem);
+}
 .category-card:hover img {
   transform: scale(1.04);
 }

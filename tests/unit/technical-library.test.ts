@@ -160,7 +160,7 @@ test("frozen fruits: four IQF groups with the verified published pages, product 
   assert.equal(new Set(resources.map((resource) => resource.path)).size, 34);
   assert.ok(resources.every((resource) => resource.type === "product" && documentType(resource.path) === "product"));
   for (const family of frozen) {
-    assert.equal(family.thumb, `/images/raw-materials/iqf/${family.id}-thumb.webp`);
+    assert.equal(family.thumb, `/images/products/hero/${family.id}.webp`);
     assert.equal(family.countLabel, `${family.productCount} formats`);
   }
   // General pages are told apart from product references (hubs + /frozen-lemon).
