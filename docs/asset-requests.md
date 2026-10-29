@@ -1,8 +1,11 @@
 # Image asset requests (internal)
 
-Images needed to close audit findings I01–I05. Until an accurate asset is supplied, each route keeps
-its deliberate fallback (image-free product hero, or the current image where one exists). No
-placeholder, generic or AI-generated image is used as a stand-in for a specific product.
+Historical specification for audit findings I01–I05. On 2026-10-29, the product-image gaps in I01
+and I02 and the category placeholders in I03 were closed with documented generated illustrations.
+IQF family pages use an assortment image, while every individual IQF route uses a separate image
+containing only its named cut or presentation. Each is disclosed as generated in alt text and is
+not presented as a supplier photograph or technical drawing. I04 quality upgrades remain requests,
+not missing-image blockers.
 Approved assets go through the existing pipeline: master in `public/images/…`, served by `next/image`
 (WebP/AVIF), mapping in `src/migration/product-hero-images.ts`, provenance in `docs/asset-provenance.md`.
 
@@ -11,6 +14,14 @@ neutral light (daylight 5000–5500 K), clean light background or a single mater
 filling about 60–70 % of the frame, no heavy saturation or sharpening. Product-detail hero crop:
 4:3 landscape, at least **2400 × 1800 px** (the image column is about 55 vw on desktop); keep 15 %
 safe margin around the subject so the per-asset focal point can be adjusted.
+
+Resolution map: `generated/white-grapefruit.webp`, `generated/label-types.webp`,
+`generated/bottle-closures.webp`, family masters
+`generated/iqf-{lemon,orange,lime,grapefruit}-formats.webp`, and 29 exact route assets under
+`generated/iqf/`.
+Full rights/provenance records and the rejected closure attempt are in
+`docs/product-image-audit.md`. `/additives` and `/ingredients-and-materials` remain deliberate
+non-image cases until GFB confirms commercial status.
 
 ## Product heroes (I01, I02)
 

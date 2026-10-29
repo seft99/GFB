@@ -1755,7 +1755,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/packaging/closures-crowns-panorama.webp",
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -1809,7 +1809,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/packaging/closures-crowns-panorama.webp",
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -1858,7 +1858,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Can, can-end or closure product: materials and dimensions",
-    "heroImage": "/images/packaging/closures-crowns-panorama.webp",
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -1906,7 +1906,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Can, can-end or closure product: materials and dimensions",
-    "heroImage": "/images/packaging/closures-crowns-panorama.webp",
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -1947,7 +1947,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Can, can-end or closure product: materials and dimensions",
-    "heroImage": "/images/packaging/closures-crowns-panorama.webp",
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -1988,7 +1988,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Can, can-end or closure product: materials and dimensions",
-    "heroImage": "/images/packaging/closures-crowns-panorama.webp",
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2032,7 +2032,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Can, can-end or closure product: materials and dimensions",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2076,7 +2076,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Can, can-end or closure product: materials and dimensions",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2123,7 +2123,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Can, can-end or closure product: materials and dimensions",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2170,7 +2170,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Can, can-end or closure product: materials and dimensions",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2214,7 +2214,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Can, can-end or closure product: materials and dimensions",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2258,7 +2258,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Can, can-end or closure product: materials and dimensions",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2302,7 +2302,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Specification page (analysis tables or paired spec sheet)",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2349,7 +2349,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Specification page (analysis tables or paired spec sheet)",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2395,7 +2395,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Specification page (analysis tables or paired spec sheet)",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2441,7 +2441,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Specification page (analysis tables or paired spec sheet)",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2479,7 +2479,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Specification page (analysis tables or paired spec sheet)",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2519,7 +2519,7 @@
     "selectedVariant": "technical-specification",
     "arrangement": null,
     "reason": "Specification page (analysis tables or paired spec sheet)",
-    "heroImage": null,
+    "heroImage": "/images/generated/bottle-closures.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2560,7 +2560,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": null,
+    "heroImage": "/images/generated/label-types.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2601,7 +2601,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": null,
+    "heroImage": "/images/generated/label-types.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2643,7 +2643,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/packaging/labels-wash-off.webp",
+    "heroImage": "/images/generated/label-types.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2685,7 +2685,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/packaging/labels-wash-off.webp",
+    "heroImage": "/images/generated/label-types.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2743,7 +2743,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": null,
+    "heroImage": "/images/generated/label-types.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2801,7 +2801,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": null,
+    "heroImage": "/images/generated/label-types.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2909,7 +2909,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": null,
+    "heroImage": "/images/generated/white-grapefruit.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -2945,7 +2945,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": null,
+    "heroImage": "/images/generated/white-grapefruit.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -3347,7 +3347,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/apple.webp",
+    "heroImage": "/images/generated/produce/apple-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -3383,7 +3383,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/apple.webp",
+    "heroImage": "/images/generated/produce/apple-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -3767,7 +3767,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/pear.webp",
+    "heroImage": "/images/generated/produce/pear-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -3803,7 +3803,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/pear.webp",
+    "heroImage": "/images/generated/produce/pear-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -3983,7 +3983,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/melon.webp",
+    "heroImage": "/images/products/hero/melon-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -4019,7 +4019,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/melon.webp",
+    "heroImage": "/images/products/hero/melon-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -4055,7 +4055,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/passion-fruit.webp",
+    "heroImage": "/images/products/hero/passion-fruit-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -4091,7 +4091,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/passion-fruit.webp",
+    "heroImage": "/images/products/hero/passion-fruit-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -4343,7 +4343,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/pink-guava.webp",
+    "heroImage": "/images/generated/produce/pink-guava-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -4379,7 +4379,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/pink-guava.webp",
+    "heroImage": "/images/generated/produce/pink-guava-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -4487,7 +4487,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/mango.webp",
+    "heroImage": "/images/generated/produce/mango-studio.webp",
     "sourceIssue": "Overview says \"At Valencia Orange we have the varieties of mango…\" (wording copied from another page/supplier). Kept as published; to confirm.",
     "migrationStatus": "migrated (lossless)"
   },
@@ -4523,7 +4523,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/mango.webp",
+    "heroImage": "/images/generated/produce/mango-studio.webp",
     "sourceIssue": "Overview says \"At Valencia Orange we have the varieties of mango…\" (wording copied from another page/supplier). Kept as published; to confirm.",
     "migrationStatus": "migrated (lossless)"
   },
@@ -5051,7 +5051,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/turnip.webp",
+    "heroImage": "/images/generated/produce/turnip-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -5087,7 +5087,7 @@
     "selectedVariant": "formats-overview",
     "arrangement": null,
     "reason": "Concentrate product page: available formats + overview",
-    "heroImage": "/images/products/hero/turnip.webp",
+    "heroImage": "/images/generated/produce/turnip-studio.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7385,7 +7385,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": "/images/generated/iqf-lemon-formats.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7437,7 +7437,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": "/images/generated/iqf-lemon-formats.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7475,7 +7475,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": "/images/generated/iqf-lemon-formats.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7515,7 +7515,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": "/images/generated/iqf-lemon-formats.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7554,7 +7554,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": "/images/generated/iqf/lemon-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7593,7 +7593,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": "/images/generated/iqf/lemon-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7630,7 +7630,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-half-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7667,7 +7667,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-half-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7704,7 +7704,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-quarter-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7741,7 +7741,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-quarter-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7780,7 +7780,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-eighth-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7819,7 +7819,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-eighth-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7857,7 +7857,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-sticks-13x13.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7895,7 +7895,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-sticks-13x13.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7934,7 +7934,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/lemon-zest.webp",
+    "heroImage": "/images/generated/iqf/lemon-zest.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7973,7 +7973,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/lemon-zest.webp",
+    "heroImage": "/images/generated/iqf/lemon-zest.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8012,7 +8012,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-zest-block.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8051,7 +8051,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-zest-block.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8087,7 +8087,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/citrus-peel.webp",
+    "heroImage": "/images/generated/iqf/lemon-peel-shells.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8123,7 +8123,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/citrus-peel.webp",
+    "heroImage": "/images/generated/iqf/lemon-peel-shells.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8160,7 +8160,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-peel-squares.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8197,7 +8197,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lemon-peel-squares.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8251,7 +8251,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": "/images/generated/iqf-orange-formats.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8305,7 +8305,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": "/images/generated/iqf-orange-formats.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8337,7 +8337,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": "/images/generated/iqf/orange-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8369,7 +8369,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": "/images/generated/iqf/orange-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8400,7 +8400,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": "/images/generated/iqf/orange-half-slices.webp",
     "sourceIssue": "Describes orange as \"a very strong acidic citrus fruit with a bright yellow skin\" (lemon wording). Kept as published; correction to confirm (the lime pages had the same issue and were corrected in src/migration/corrections.ts).",
     "migrationStatus": "migrated (lossless)"
   },
@@ -8431,7 +8431,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": "/images/generated/iqf/orange-half-slices.webp",
     "sourceIssue": "Describes orange as \"a very strong acidic citrus fruit with a bright yellow skin\" (lemon wording). Kept as published; correction to confirm (the lime pages had the same issue and were corrected in src/migration/corrections.ts).",
     "migrationStatus": "migrated (lossless)"
   },
@@ -8462,7 +8462,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-quarter-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8493,7 +8493,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-quarter-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8527,7 +8527,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-eighth-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8561,7 +8561,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-eighth-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8596,7 +8596,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-sticks-13x13.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8631,7 +8631,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-sticks-13x13.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8663,7 +8663,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-julienne.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8695,7 +8695,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-julienne.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8734,7 +8734,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-zest.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8773,7 +8773,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-zest.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8811,7 +8811,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-zest-block.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8849,7 +8849,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-zest-block.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8879,7 +8879,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/citrus-peel.webp",
+    "heroImage": "/images/generated/iqf/orange-peel-shells.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8909,7 +8909,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/citrus-peel.webp",
+    "heroImage": "/images/generated/iqf/orange-peel-shells.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8941,7 +8941,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-peel-squares.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8973,7 +8973,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/orange-peel-squares.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9023,7 +9023,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": "/images/generated/iqf-lime-formats.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9073,7 +9073,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": "/images/generated/iqf-lime-formats.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9105,7 +9105,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9137,7 +9137,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9168,7 +9168,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-half-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9199,7 +9199,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-half-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9230,7 +9230,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-quarter-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9261,7 +9261,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-quarter-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9295,7 +9295,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-eighth-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9329,7 +9329,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-eighth-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9364,7 +9364,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-sticks-13x13.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9399,7 +9399,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-sticks-13x13.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9438,7 +9438,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-zest.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9477,7 +9477,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/lime-zest.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9515,7 +9515,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/products/hero/iqf-grapefruit.webp",
+    "heroImage": "/images/generated/iqf-grapefruit-formats.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9553,7 +9553,7 @@
     "selectedVariant": "product-range-features",
     "arrangement": "feature-editorial",
     "reason": "Product, range or overview page with descriptive features",
-    "heroImage": "/images/products/hero/iqf-grapefruit.webp",
+    "heroImage": "/images/generated/iqf-grapefruit-formats.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9592,7 +9592,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-grapefruit.webp",
+    "heroImage": "/images/generated/iqf/grapefruit-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9631,7 +9631,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-grapefruit.webp",
+    "heroImage": "/images/generated/iqf/grapefruit-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9671,7 +9671,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/grapefruit-half-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9711,7 +9711,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/grapefruit-half-slices.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9748,7 +9748,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/grapefruit-quarter-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9785,7 +9785,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/grapefruit-quarter-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9824,7 +9824,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/grapefruit-eighth-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9863,7 +9863,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": null,
+    "heroImage": "/images/generated/iqf/grapefruit-eighth-cuts.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },

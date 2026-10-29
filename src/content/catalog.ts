@@ -157,7 +157,7 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/packaging/closures.avif",
-        showcase: { placeholder: "cube" }
+        showcase: { image: "/images/generated/bottle-closures.webp", focus: "50% 50%" }
       },
       {
         id: "labels",
@@ -182,7 +182,7 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/packaging/labels.avif",
-        showcase: { placeholder: "document" }
+        showcase: { image: "/images/generated/label-types.webp", focus: "50% 50%" }
       }
     ]
   },

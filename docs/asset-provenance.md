@@ -145,13 +145,16 @@ and `packaging/labels-wash-off.webp` — were removed from production references
 rights pass because their licences are not documented. They remain as unreferenced files pending
 review. Can and can-end heroes use the licensed Unsplash renders listed above.
 
-Pages with the image-free layout (no suitable licensed photograph, re-checked on 2026-10-28):
-white grapefruit (every "grapefruit" candidate on Unsplash shows pink or red flesh), IQF lemon and
-orange peel squares, frozen block lemon and orange zest, IQF orange and lime zest (no photograph
-shows those formats), RipCaps and ring crown caps (no unbranded photograph of a ring-pull cap),
-shrink sleeve and wet glue labels (category cards use a designed line illustration instead, see
-below), the additives and ingredients overviews. Technical specification pages use the technical-document variant
-without photography.
+The image-free product gaps recorded on 2026-10-28 (white grapefruit, missing IQF formats,
+RipCaps/ring crown caps and label types) were superseded on 2026-10-29 by seven documented
+generated base/family illustrations. The four IQF masters were then used as the only visual input
+for 29 route-specific derivatives under `public/images/generated/iqf/`: family pages retain the
+assortment, while every individual IQF route shows only its named cut or presentation. Prompts,
+generation records, terms review, route scopes, rejected first-pass eighth cuts and accuracy
+limitations are recorded in `docs/product-image-audit.md`, the controlling rights ledger.
+`/additives` and `/ingredients-and-materials` remain intentionally image-free until GFB
+confirms their commercial status. Technical specification pages retain the technical-document
+presentation.
 
 ## Product-resource sections (category pages)
 
@@ -186,7 +189,8 @@ Not used (rejected or missing):
 - Both cards show a designed line illustration drawn in code (`LabelIllustration` in
   `components/sections/product-resources/resource-views.tsx`): a plain bottle outline with the
   area each label covers (full-body sleeve; body label). Not a photograph, not generated imagery,
-  no brand.
+  no brand. The category and product heroes now use the documented generated label-family image;
+  the diagrams remain because they distinguish the three technologies more clearly.
 - Soft drink candidates with Coca-Cola, Fanta, Jarritos and similar brands were rejected.
 - Withdrawn from `public/` on 2026-10-28: the crops of official GFB product photographs
   (`standard-can-card`, `sleek-can-card`, `slim-can-card`, `can-end-52mm-card`,
@@ -223,3 +227,21 @@ Derivatives of existing approved assets (no new source):
   supplied panoramas).
 - `raw-materials/fruit-concentrates-juice.webp`: Home feature, cropped from the 1286 × 600
   original of the same GFB website photograph (rights as for other official GFB images: to confirm).
+
+## Product-detail hero refresh (2026-10-29)
+
+Seven route heroes were replaced to improve close framing and product clarity. Melon uses Martin
+Moore's free Unsplash image
+https://unsplash.com/photos/a-cut-in-half-melon-sitting-on-top-of-a-white-cloth-PIybW7_fg1U;
+passion fruit uses Sleepy Zhao's free Unsplash image
+https://unsplash.com/photos/a-cut-open-passion-fruit-on-a-pink-surface-tf06NThi8PE. Both were
+cropped to 2400 × 1800 and encoded as quality-84 WebP after commercial-use and modification rights
+were rechecked on 2026-10-29.
+
+Apple, pear, pink guava, mango and turnip use new 1448 × 1086 generated still-life illustrations
+under `public/images/generated/produce/`. They were created without input/reference images by the
+built-in OpenAI image-generation tool, visually screened, resized without enlargement and encoded
+as quality-84 WebP. Generation IDs, prompts, output-rights terms, route scope and remaining
+third-party-rights limitations are recorded in `docs/product-image-audit.md`, the controlling
+legal ledger. The seven superseded photographs remain in the repository for traceability but are
+no longer used by `src/migration/product-hero-images.ts`.

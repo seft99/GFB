@@ -119,6 +119,7 @@ export const assignments: Record<string, Assignment> = {
     groups: [
       {
         family: "crown-corks",
+        image: decorative("/images/generated/bottle-closures.webp"),
         groupDescription: t(
           "Steel crown caps for glass bottles, one-piece aluminium RipCaps and steel ring crown caps with a pull ring.",
           "Tapas corona de acero para botellas de vidrio, RipCaps de aluminio de una pieza y tapas corona de acero con anilla."
@@ -214,7 +215,8 @@ export const assignments: Record<string, Assignment> = {
             "Etiquetas para bebidas en producción a gran escala, con alta calidad de impresión."
           )
         },
-        // No licensed photograph shows these label types without a brand (docs/asset-provenance.md).
+        // The cards keep code-authored diagrams because one family image cannot identify each
+        // label technology as clearly as the tailored line work.
         illustrations: {
           "/shrink-sleeve-labels": "shrink-sleeve",
           "/washoff-labels": "wash-off",

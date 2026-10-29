@@ -233,6 +233,7 @@ test("only licensed or approved images are used by category pages", () => {
   const approved = new Set([
     "/images/products/hero/cans-pair.webp",
     "/images/products/hero/can-ends.webp",
+    "/images/generated/bottle-closures.webp",
     "/images/packaging/resources/bottles-soft-drinks-card.webp",
     "/images/packaging/resources/bottles-alcoholic-card.webp",
     "/images/packaging/resources/bottles-water-card.webp",
@@ -249,7 +250,10 @@ test("only licensed or approved images are used by category pages", () => {
   const audit = readFileSync("docs/product-image-audit.md", "utf8");
   for (const image of approved) {
     assert.ok(audit.includes(image.split("/").pop()!), `${image} is missing from the rights audit`);
-    assert.match(audit, new RegExp(`${image.split("/").pop()!.replace(".", "\\.")}.*verified-commercial`));
+    assert.match(
+      audit,
+      new RegExp(`${image.split("/").pop()!.replace(".", "\\.")}.*(?:verified-commercial|generated-commercial)`)
+    );
   }
   // Withdrawn: photographs taken from the GFB website without confirmed reuse rights.
   assert.equal(existsSync("public/images/packaging/resources/standard-can-card.webp"), false);
