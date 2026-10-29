@@ -272,9 +272,46 @@ export const en = {
   },
   legacy: {
     related: "More in this family",
+    relatedText: "Other products of this family and their published pages.",
+    relatedTextTechnical: "Related products and their published product and technical pages.",
+    resourceKinds: {
+      overview: "Overview page",
+      product: "Product page",
+      technical: "Technical specification"
+    },
+    /** "Explore all {family} resources": short family names by family id. */
+    relatedExplore: "Explore all {family} resources",
+    familyShort: {
+      "aluminium-cans": "aluminium can",
+      "can-ends": "can end",
+      "bottle-formats": "bottle",
+      "crown-corks": "crown cork and RipCap",
+      "label-types": "label",
+      "citrus-concentrates": "citrus",
+      "mediterranean-concentrates": "Mediterranean",
+      "tropical-concentrates": "tropical",
+      "red-fruit-concentrates": "red fruit",
+      "vegetable-concentrates": "vegetable",
+      "red-grape-concentrates": "red grape",
+      "plant-based-concentrates": "plant-based",
+      "iqf-lemon": "IQF lemon",
+      "iqf-orange": "IQF orange",
+      "iqf-lime": "IQF lime",
+      "iqf-grapefruit": "IQF grapefruit"
+    } as Record<string, string>,
     allProducts: "Product and specification pages",
     allProductsText: "Technical and product pages of this category, with their published specifications.",
     backTo: "Back to",
+    /** Short visible names of the parent category in the hero's back link. */
+    backShort: {
+      "fruit-concentrates": "concentrates",
+      "plant-based-concentrates": "plant-based",
+      "iqf-frozen-fruits": "IQF citrus",
+      cans: "cans & ends",
+      bottles: "bottles",
+      closures: "closures",
+      labels: "labels"
+    } as Record<string, string>,
     heroProduct: "Product",
     heroTechnical: "Technical specification",
     references: "Product references",
@@ -293,7 +330,17 @@ export const en = {
       rangeTitle: "Product range & features",
       featuresTitle: "Product description",
       references: "{count} published references",
-      productReferences: "Product references"
+      productReferences: "Product references",
+      value: "Value",
+      unit: "Unit",
+      condition: "Condition / method",
+      volume: "Nominal fill volume",
+      openHeight: "Open can height",
+      table: "Table (scrolls sideways)",
+      properties: "Properties",
+      notes: "Notes",
+      reference: "Reference",
+      type: "Application"
     },
     indexTitle: "Product index",
     indexText:

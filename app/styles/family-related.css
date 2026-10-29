@@ -1,0 +1,239 @@
+/* "More in this family" (components/sections/family-related.tsx): compact product grid. */
+
+.family-related.section {
+  --related-line: #dbe2ec;
+  --related-soft: #eef2f8;
+  padding-block: clamp(3.5rem, 5vw, 5rem);
+  background: var(--cloud);
+}
+.family-related__head {
+  max-width: 46rem;
+  margin-bottom: clamp(1.5rem, 2.4vw, 2rem);
+}
+.family-related__head .eyebrow {
+  color: var(--blue-600);
+}
+.family-related__head h2 {
+  margin: 0;
+  color: var(--brand-ink);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.025em;
+}
+.family-related__head p:not(.eyebrow) {
+  margin: 0.75rem 0 0;
+  color: #5b6275;
+  line-height: 1.6;
+}
+
+/* Grid: the column count follows the number of cards; narrow containers drop columns. */
+.family-related__grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(max(min(100%, 19rem), calc((100% - (var(--related-columns) - 1) * 1rem) / var(--related-columns))), 1fr)
+  );
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* One or two cards keep a card width instead of stretching across the page. */
+.family-related__grid[data-count="1"] {
+  max-width: 30rem;
+}
+.family-related__grid[data-count="2"] {
+  max-width: 60rem;
+}
+
+.family-related__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--related-line);
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(10 18 41 / 0.04);
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease;
+}
+.family-related__card:hover,
+.family-related__card:focus-within {
+  border-color: #b7c7e2;
+  background: #fcfdff;
+  box-shadow: 0 6px 18px rgb(10 18 41 / 0.07);
+}
+
+.family-related__index {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--related-soft);
+  color: var(--brand-ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.family-related__body {
+  flex: 1;
+  min-width: 0;
+  padding-left: 1rem;
+  border-left: 1px solid var(--related-line);
+}
+.family-related__body h3 {
+  margin: 0 0 0.3rem;
+  color: var(--brand-ink);
+  font-size: 1.05rem;
+  font-weight: 650;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+/*
+ * Links in a row with thin separators. Each link carries its separator on its left; the list is
+ * shifted left by one separator and clipped there, so a link that starts a line (narrow cards,
+ * longer Spanish labels) has none and lines up with the title.
+ */
+.family-related__links {
+  --sep: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0;
+  margin: 0 0 0 calc(-2 * var(--sep) - 1px);
+  padding: 0;
+  list-style: none;
+  clip-path: inset(-0.5rem -0.5rem -0.5rem calc(2 * var(--sep) + 1px - 0.35rem));
+}
+.family-related__links li {
+  margin-left: var(--sep);
+  padding-left: var(--sep);
+  border-left: 1px solid var(--related-line);
+  line-height: 1.35;
+}
+/* One link: nothing to separate, and no clipping of the card-wide hit area. */
+.family-related__card.is-single .family-related__links {
+  margin-left: 0;
+  clip-path: none;
+}
+.family-related__card.is-single .family-related__links li {
+  margin-left: 0;
+  padding-left: 0;
+  border-left: 0;
+}
+.family-related__links a {
+  color: var(--blue-600);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.22s ease;
+}
+.family-related__links a:hover,
+.family-related__links a:focus-visible {
+  text-decoration-color: currentColor;
+}
+.family-related a:focus-visible {
+  outline: 2px solid var(--blue-600);
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}
+/* One destination: the whole card is its link (one anchor, no nesting). */
+.family-related__card.is-single .family-related__links a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.family-related__card.is-single:has(a:focus-visible) {
+  outline: 2px solid var(--blue-600);
+  outline-offset: 2px;
+}
+.family-related__card.is-single a:focus-visible {
+  outline: none;
+}
+
+.family-related__arrow {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--related-soft);
+  color: var(--blue-600);
+  transition:
+    translate 0.22s var(--ease-out),
+    background-color 0.22s ease;
+}
+.family-related__arrow svg {
+  width: 1rem;
+}
+.family-related__card:hover .family-related__arrow {
+  translate: 3px 0;
+  background: #e2e9f5;
+}
+
+.family-related__more {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1.5rem 0 0;
+}
+/* With one or two cards the link ends where the cards end. */
+.family-related__grid[data-count="1"] + .family-related__more {
+  max-width: 30rem;
+}
+.family-related__grid[data-count="2"] + .family-related__more {
+  max-width: 60rem;
+}
+.family-related__more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--blue-600);
+  font-weight: 650;
+}
+.family-related__more span {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid currentColor;
+}
+.family-related__more svg {
+  width: 1.1rem;
+  transition: translate 0.22s var(--ease-out);
+}
+.family-related__more a:hover svg {
+  translate: 3px 0;
+}
+
+@media (max-width: 40rem) {
+  .family-related__card {
+    padding: 1rem;
+    gap: 0.85rem;
+  }
+  .family-related__body {
+    padding-left: 0.85rem;
+  }
+  .family-related__more {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .family-related__card,
+  .family-related__arrow,
+  .family-related__links a,
+  .family-related__more svg {
+    transition: none;
+  }
+  .family-related__card:hover .family-related__arrow,
+  .family-related__more a:hover svg {
+    translate: none;
+  }
+}

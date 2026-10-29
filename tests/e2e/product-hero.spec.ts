@@ -19,10 +19,10 @@ test.describe("product detail hero", () => {
       "href",
       /^\/en\/contact\?/
     );
-    await expect(section.getByRole("link", { name: "Back to Fruit & vegetable concentrates" })).toHaveAttribute(
-      "href",
-      "/fruits-concentrates"
-    );
+    // Short visible label; the accessible name starts with it and adds the full category.
+    const back = section.getByRole("link", { name: "Back to concentrates: Fruit & vegetable concentrates" });
+    await expect(back).toHaveAttribute("href", "/fruits-concentrates");
+    await expect(back).toHaveText("Back to concentrates");
     const crumbs = section.getByRole("navigation", { name: /breadcrumb/i });
     await expect(crumbs.locator('[aria-current="page"]')).toHaveText("Orange concentrate");
     await expect(section.locator(".product-hero__curves")).toHaveAttribute("aria-hidden", "true");

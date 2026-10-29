@@ -25,7 +25,7 @@ export type Processed = {
   sections: Section[];
   excluded: {
     text: string;
-    reason: "health-claim" | "manufacturing-claim" | "benefits-section" | "empty-heading";
+    reason: "health-claim" | "manufacturing-claim" | "benefits-section" | "empty-heading" | "not-available";
   }[];
 };
 
@@ -48,6 +48,13 @@ const HEALTH =
 const MANUFACTURING =
   /\b(we manufacture|manufactures|manufacturing of|we make|have the technology to manufacture|fabricamos|fabrica)\b/i;
 const BENEFITS_HEADING = /\b(benefits|beneficios)\b/i;
+/**
+ * Concentrate pages (`strictClaims`): nutrition, health, composition and energy statements about
+ * the fruit. They describe the fresh fruit, not a substantiated property of the concentrate, so
+ * they are withheld like other health claims (recorded in `excluded`, listed for review).
+ */
+const NUTRITION =
+  /\b(health\w*|nutri\w*|immun\w*|antioxidant\w*|cholesterol|ldl|diseases?|degenerat\w*|digest\w*|intestin\w*|laxative|diuretic|antiseptic|astringent|anthelmintic|inflammat\w*|anti-inflammatory|blood pressure|hypertension|ana?emia|heartburn|sight|calori\w*|sugars?|fib(?:re|er)|vitamins?|minerals?|potassium|magnes\w*|iron|manganese|sodium|phosphorus|calcium|selenium|zinc|polyphenols?|flavonoids?|naring\w*|carotenes?|carotenoids?|lutein|zeaxanthin|tannins?|folates?|folic|pregnan\w*|aging|ageing|brain|energ\w*|revitaliz\w*|well-being|wellbeing|glucem\w*|glycem\w*|proteins?|satiat\w*|weight|diets?|benefi\w*|allies|ally|body|organism|phytochemicals?|beta-glucans?|haemostatic|hemostatic|blood|circulation|antibacterial|anti-?cancer\w*|cancer|cosmetic\w*|moisturi[sz]\w*|hair|skin|salud\w*|vitamina\w*|minerales|fibra|colesterol|enfermedad\w*)\b|\d+(?:[.,]\d+)?\s*%/i;
 
 const ACRONYM = /^(IQF|RGJC|SOT|ISE|PVC|BPA|PET|TPC|TAB|NFC|AA\d+|H\d+|D\d+|R-?\d+|PMS|UFC|NTU|SO2|pH|CO2|EN|GFB)$/i;
 
@@ -122,12 +129,14 @@ const SOUND_FRUIT =
   /\bhealthy\b(?=,?\s+(?:and\s+)?(?:hand-|carefully\s+)?selected\b)|(?<=\bselected,?\s+)healthy\b(?=\s+grapes\b)/gi;
 const isHeadingLike = (text: string) => text.length <= 70 && !text.includes("\n") && !/[.!?]$/.test(text);
 const isProse = (line: string) => line.length > 60 && !/^[^:]{2,40}:\s/.test(line);
-const claimReason = (text: string) =>
+const claimReason = (text: string, strict = false) =>
   MANUFACTURING.test(text)
     ? "manufacturing-claim"
     : isProse(text) && HEALTH.test(text.replace(SOUND_FRUIT, ""))
       ? "health-claim"
-      : null;
+      : strict && text.length > 30 && NUTRITION.test(text.replace(SOUND_FRUIT, ""))
+        ? "health-claim"
+        : null;
 
 /** Start of the "available formats" heading pairs of concentrate pages. */
 const FORMATS_START = /^(concentrates?|concentrados?|available formats|formatos disponibles)$/i;
@@ -135,7 +144,7 @@ const FORMATS_START = /^(concentrates?|concentrados?|available formats|formatos 
 const TYPE_LABEL = /^(frozen fruits|frutas congeladas)$/i;
 
 /** Parses a multi-line paragraph into label/value rows, bullet lists, subheadings and prose. */
-function parseLines(text: string, excluded: Processed["excluded"]): Item[] {
+function parseLines(text: string, excluded: Processed["excluded"], strict = false): Item[] {
   const lines = text
     .split("\n")
     .map((line) => line.trim())
@@ -148,7 +157,7 @@ function parseLines(text: string, excluded: Processed["excluded"]): Item[] {
     else items.push(item);
   };
   lines.forEach((line, index) => {
-    const reason = claimReason(line);
+    const reason = claimReason(line, strict);
     if (reason) return void excluded.push({ text: line, reason });
     const pair = line.match(/^([^:]{2,40}?)\s*:\s*(.+)$/);
     // Short "Label: value" lines are specification rows; a long value is prose with a lead-in.
@@ -224,6 +233,8 @@ export function processBlocks(
     linkFor?: (heading: string) => string | undefined;
     /** Drop empty headings (see dropEmptyHeadings); otherwise they are kept as crawled. */
     dropEmpty?: boolean;
+    /** Concentrate pages: also withhold nutrition/health headings, text and table cells (NUTRITION). */
+    strictClaims?: boolean;
   }
 ): Processed {
   const cleaned = blocks
@@ -259,6 +270,9 @@ export function processBlocks(
       const label = rest[index].text;
       const value = rest[index + 1].text.replace(/\n/g, ", ");
       if (/^(available formats|formatos disponibles)$/i.test(label)) items.push({ type: "p", text: value });
+      else if (options.strictClaims && (BENEFITS_HEADING.test(label) || (value.length > 140 && NUTRITION.test(value))))
+        // "Oat Benefits": health text published inside the formats table.
+        excluded.push({ text: `${label}: ${value}`, reason: "health-claim" });
       else if (!/^not apply$/i.test(value)) rows.push([displayCase(label), value]);
       index += 2;
     }
@@ -285,6 +299,11 @@ export function processBlocks(
       }
       skippingBenefits = false;
       flush();
+      if (options.strictClaims && NUTRITION.test(text)) {
+        // A claim used as a heading: the text after it stays, without that heading.
+        excluded.push({ text, reason: "health-claim" });
+        continue;
+      }
       section.heading = displayCase(text);
       const link = options.linkFor?.(text);
       if (link) section.link = link;
@@ -294,7 +313,13 @@ export function processBlocks(
       excluded.push({ text, reason: "benefits-section" });
       continue;
     }
-    const reason = !text.includes("\n") ? claimReason(text) : null;
+    // "Not apply" under a format heading means the format is not offered (as in the formats table).
+    if (options.strictClaims && /^(not apply|no aplica)$/i.test(text)) {
+      excluded.push({ text: section.heading ? `${section.heading}: ${text}` : text, reason: "not-available" });
+      if (section.items.length === 0) section.heading = undefined;
+      continue;
+    }
+    const reason = !text.includes("\n") ? claimReason(text, options.strictClaims) : null;
     if (reason) {
       excluded.push({ text, reason });
       continue;
@@ -312,13 +337,52 @@ export function processBlocks(
       continue;
     }
     flushRun();
-    section.items.push(...parseLines(text, excluded));
+    section.items.push(...parseLines(text, excluded, options.strictClaims));
   }
   flushRun();
   flush();
   if (options.dropEmpty) return dropEmptyHeadings({ h1, eyebrow, sections, excluded });
   return { h1, eyebrow, sections: sections.filter((item) => item.items.length > 0 || item.heading), excluded };
 }
+
+/**
+ * Typographic normalisation of units in published content (not in H1s or metadata): "330ml" →
+ * "330 ml", "66mm" → "66 mm", "20 ºC" → "20 °C", "ºBrix" → "°Brix", "SO2" → "SO₂". Meaning,
+ * values and codes are unchanged.
+ */
+export function normalizeUnits(value: string): string {
+  return (
+    value
+      .replace(/(\d)\s*[º°]\s*C\b/g, "$1 °C")
+      .replace(/[º°]\s*Brix\b/g, "°Brix")
+      .replace(/\bSO2\b/g, "SO₂")
+      .replace(/(\d)(ml|mm|cc|kg|nm)\b/g, "$1 $2")
+      // A trailing " _" left by the page layout after some bottle heights ("122.5mm _").
+      .replace(/\s+_$/, "")
+  );
+}
+
+const normalizeItem = (item: Item): Item => {
+  switch (item.type) {
+    case "p":
+    case "h3":
+      return { ...item, text: normalizeUnits(item.text) };
+    case "ul":
+      return { ...item, items: item.items.map(normalizeUnits) };
+    case "specs":
+      return { ...item, rows: item.rows.map(([label, value]) => [normalizeUnits(label), normalizeUnits(value)]) };
+    case "links":
+      return item;
+  }
+};
+
+/** `normalizeUnits` over every heading and item of the page content. */
+export const normalizeSections = (sections: Section[]): Section[] =>
+  sections.map((section) => ({
+    ...section,
+    ...(section.heading ? { heading: normalizeUnits(section.heading) } : {}),
+    items: section.items.map(normalizeItem)
+  }));
 
 const EN_WORDS = new Set(
   "the and of with for is are to in our your from that this it be by on as an can which their these was have will or all".split(

@@ -273,9 +273,44 @@ export const es: Dictionary = {
   },
   legacy: {
     related: "Más en esta familia",
+    relatedText: "Otros productos de esta familia y sus páginas publicadas.",
+    relatedTextTechnical: "Productos relacionados y sus fichas de producto y especificaciones técnicas publicadas.",
+    resourceKinds: {
+      overview: "Página de presentación",
+      product: "Ficha de producto",
+      technical: "Especificación técnica"
+    },
+    relatedExplore: "Ver todos los recursos de {family}",
+    familyShort: {
+      "aluminium-cans": "latas de aluminio",
+      "can-ends": "tapas para latas",
+      "bottle-formats": "botellas",
+      "crown-corks": "tapas corona y RipCaps",
+      "label-types": "etiquetas",
+      "citrus-concentrates": "cítricos",
+      "mediterranean-concentrates": "frutas mediterráneas",
+      "tropical-concentrates": "frutas tropicales",
+      "red-fruit-concentrates": "frutos rojos",
+      "vegetable-concentrates": "vegetales",
+      "red-grape-concentrates": "uva tinta",
+      "plant-based-concentrates": "origen vegetal",
+      "iqf-lemon": "limón IQF",
+      "iqf-orange": "naranja IQF",
+      "iqf-lime": "lima IQF",
+      "iqf-grapefruit": "pomelo IQF"
+    } as Record<string, string>,
     allProducts: "Fichas de producto y especificaciones",
     allProductsText: "Páginas técnicas y de producto de esta categoría, con sus especificaciones publicadas.",
     backTo: "Volver a",
+    backShort: {
+      "fruit-concentrates": "concentrados",
+      "plant-based-concentrates": "origen vegetal",
+      "iqf-frozen-fruits": "cítricos IQF",
+      cans: "latas y tapas",
+      bottles: "botellas",
+      closures: "cierres",
+      labels: "etiquetas"
+    } as Record<string, string>,
     heroProduct: "Producto",
     heroTechnical: "Especificación técnica",
     references: "Referencias de producto",
@@ -294,7 +329,17 @@ export const es: Dictionary = {
       rangeTitle: "Gama y características",
       featuresTitle: "Descripción del producto",
       references: "{count} referencias publicadas",
-      productReferences: "Referencias de producto"
+      productReferences: "Referencias de producto",
+      value: "Valor",
+      unit: "Unidad",
+      condition: "Condición / método",
+      volume: "Volumen nominal",
+      openHeight: "Altura de lata abierta",
+      table: "Tabla (desplazable en horizontal)",
+      properties: "Propiedades",
+      notes: "Notas",
+      reference: "Referencia",
+      type: "Aplicación"
     },
     indexTitle: "Índice de productos",
     indexText:

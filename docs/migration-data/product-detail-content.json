@@ -137,9 +137,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/products/hero/cans-pair.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -172,9 +172,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/products/hero/cans-pair.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -207,9 +207,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/products/hero/slim-can.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -242,9 +242,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/products/hero/slim-can.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -277,9 +277,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/products/hero/slim-can.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -312,9 +312,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/products/hero/slim-can.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -593,7 +593,7 @@
         "blocks": []
       },
       {
-        "heading": "52mm (202) Dia ISE Aluminium End",
+        "heading": "52 mm (202) Dia ISE Aluminium End",
         "blocks": []
       },
       {
@@ -601,7 +601,7 @@
         "blocks": []
       },
       {
-        "heading": "52mm (202) Dia Aluminium End",
+        "heading": "52 mm (202) Dia Aluminium End",
         "blocks": []
       },
       {
@@ -637,7 +637,7 @@
         "blocks": []
       },
       {
-        "heading": "52mm (202) Dia ISE Aluminium End",
+        "heading": "52 mm (202) Dia ISE Aluminium End",
         "blocks": []
       },
       {
@@ -645,7 +645,7 @@
         "blocks": []
       },
       {
-        "heading": "52mm (202) Dia Aluminium End",
+        "heading": "52 mm (202) Dia Aluminium End",
         "blocks": []
       },
       {
@@ -702,9 +702,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/products/hero/can-ends.webp",
     "sourceIssue": "The standard (Korinthos) end page introduces \"the 52mm (202) Dia ISE Aluminium End SOT - Large Aperture (Botcherby)\". Kept as published; to confirm which values apply.",
     "migrationStatus": "migrated (lossless)"
@@ -743,9 +743,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/products/hero/can-ends.webp",
     "sourceIssue": "The standard (Korinthos) end page introduces \"the 52mm (202) Dia ISE Aluminium End SOT - Large Aperture (Botcherby)\". Kept as published; to confirm which values apply.",
     "migrationStatus": "migrated (lossless)"
@@ -784,9 +784,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/products/hero/can-ends.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -825,9 +825,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/products/hero/can-ends.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -1820,9 +1820,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/packaging/closures-crowns-panorama.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -1868,9 +1868,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/packaging/closures-crowns-panorama.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -1909,9 +1909,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/packaging/closures-crowns-panorama.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -1950,9 +1950,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": "/images/packaging/closures-crowns-panorama.webp",
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -1994,9 +1994,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -2038,9 +2038,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -2085,9 +2085,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -2132,9 +2132,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -2176,9 +2176,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -2220,9 +2220,9 @@
       "excludedByMigration": 0
     },
     "links": [],
-    "selectedVariant": "product-range-features",
-    "arrangement": "feature-editorial",
-    "reason": "Product, range or overview page with descriptive features",
+    "selectedVariant": "technical-specification",
+    "arrangement": null,
+    "reason": "Can, can-end or closure product: materials and dimensions",
     "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
@@ -2785,19 +2785,18 @@
         ]
       },
       {
-        "heading": "Discover the Pure Essence of Spanish Orange Concentrate",
+        "heading": "Applications",
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 6,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 2
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -2822,19 +2821,18 @@
         ]
       },
       {
-        "heading": "Discover the Pure Essence of Spanish Orange Concentrate",
+        "heading": "Aplicaciones",
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 6,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 2
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -2859,19 +2857,18 @@
         ]
       },
       {
-        "heading": "The white grapefruit has a low caloric value",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -2896,19 +2893,18 @@
         ]
       },
       {
-        "heading": "The white grapefruit has a low caloric value",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -2933,7 +2929,7 @@
         ]
       },
       {
-        "heading": "80% of the lime is water",
+        "heading": null,
         "blocks": [
           "p",
           "p"
@@ -2945,7 +2941,7 @@
       "paragraphs": 2,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 4
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -2970,7 +2966,7 @@
         ]
       },
       {
-        "heading": "80% of the lime is water",
+        "heading": null,
         "blocks": [
           "p",
           "p"
@@ -2982,7 +2978,7 @@
       "paragraphs": 2,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 4
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3007,19 +3003,18 @@
         ]
       },
       {
-        "heading": "It reduces ldl cholesterol levels (bad)",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3044,19 +3039,18 @@
         ]
       },
       {
-        "heading": "It reduces ldl cholesterol levels (bad)",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3081,19 +3075,18 @@
         ]
       },
       {
-        "heading": "Covers a 15.7% of the recommended daily fibre intake",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 5,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3118,19 +3111,18 @@
         ]
       },
       {
-        "heading": "Covers a 15.7% of the recommended daily fibre intake",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 5,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3158,17 +3150,16 @@
         "heading": "Pink grapefruit acids give that characteristic flavour",
         "blocks": [
           "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 2,
       "specRows": 6,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 4
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3196,17 +3187,16 @@
         "heading": "Pink grapefruit acids give that characteristic flavour",
         "blocks": [
           "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 2,
       "specRows": 6,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 4
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3231,9 +3221,8 @@
         ]
       },
       {
-        "heading": "It is low in calorie thanks to its low sugar levels",
+        "heading": null,
         "blocks": [
-          "p",
           "p",
           "p"
         ]
@@ -3241,10 +3230,10 @@
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 2,
       "specRows": 6,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 4
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3269,9 +3258,8 @@
         ]
       },
       {
-        "heading": "It is low in calorie thanks to its low sugar levels",
+        "heading": null,
         "blocks": [
-          "p",
           "p",
           "p"
         ]
@@ -3279,10 +3267,10 @@
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 2,
       "specRows": 6,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 4
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3307,19 +3295,18 @@
         ]
       },
       {
-        "heading": "It contains the daily recommended 30% of vitamin c",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3344,19 +3331,18 @@
         ]
       },
       {
-        "heading": "It contains the daily recommended 30% of vitamin c",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3381,19 +3367,18 @@
         ]
       },
       {
-        "heading": "White grape’s vitamin k produces proteins",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3418,19 +3403,18 @@
         ]
       },
       {
-        "heading": "White grape’s vitamin k produces proteins",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3455,19 +3439,18 @@
         ]
       },
       {
-        "heading": "Persimmon’s main mineral is the manganese",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3492,19 +3475,18 @@
         ]
       },
       {
-        "heading": "Persimmon’s main mineral is the manganese",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3529,19 +3511,18 @@
         ]
       },
       {
-        "heading": "The red grape has polyphenol, a powerful antioxidant",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3566,19 +3547,18 @@
         ]
       },
       {
-        "heading": "The red grape has polyphenol, a powerful antioxidant",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3603,19 +3583,18 @@
         ]
       },
       {
-        "heading": "Its fibre helps to reduce cholesterol",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3640,19 +3619,18 @@
         ]
       },
       {
-        "heading": "Its fibre helps to reduce cholesterol",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3675,21 +3653,14 @@
         "blocks": [
           "specs×4"
         ]
-      },
-      {
-        "heading": "The 92% of watermelon’s weight is water",
-        "blocks": [
-          "p",
-          "p"
-        ]
       }
     ],
     "counts": {
-      "sections": 2,
-      "paragraphs": 2,
+      "sections": 1,
+      "paragraphs": 0,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3712,21 +3683,14 @@
         "blocks": [
           "specs×4"
         ]
-      },
-      {
-        "heading": "The 92% of watermelon’s weight is water",
-        "blocks": [
-          "p",
-          "p"
-        ]
       }
     ],
     "counts": {
-      "sections": 2,
-      "paragraphs": 2,
+      "sections": 1,
+      "paragraphs": 0,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3751,20 +3715,18 @@
         ]
       },
       {
-        "heading": "Pear has a light astringent action",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3789,20 +3751,18 @@
         ]
       },
       {
-        "heading": "Pear has a light astringent action",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3827,20 +3787,18 @@
         ]
       },
       {
-        "heading": "The pomegranate regulates blood pressure",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3865,20 +3823,18 @@
         ]
       },
       {
-        "heading": "The pomegranate regulates blood pressure",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3903,21 +3859,18 @@
         ]
       },
       {
-        "heading": "Potassium ads a diuretic effect",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 4,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3942,21 +3895,18 @@
         ]
       },
       {
-        "heading": "Potassium ads a diuretic effect",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 4,
+      "paragraphs": 1,
       "specRows": 4,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -3981,20 +3931,18 @@
         ]
       },
       {
-        "heading": "Potassium gives a diuretic effect to melon",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4019,20 +3967,18 @@
         ]
       },
       {
-        "heading": "Potassium gives a diuretic effect to melon",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4057,20 +4003,18 @@
         ]
       },
       {
-        "heading": "The passion fruit is a natural source of fibre",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4095,20 +4039,18 @@
         ]
       },
       {
-        "heading": "The passion fruit is a natural source of fibre",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4133,7 +4075,7 @@
         ]
       },
       {
-        "heading": "The white guava has antiseptic properties",
+        "heading": null,
         "blocks": [
           "p"
         ]
@@ -4144,7 +4086,7 @@
       "paragraphs": 1,
       "specRows": 2,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4169,7 +4111,7 @@
         ]
       },
       {
-        "heading": "The white guava has antiseptic properties",
+        "heading": null,
         "blocks": [
           "p"
         ]
@@ -4180,7 +4122,7 @@
       "paragraphs": 1,
       "specRows": 2,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4205,19 +4147,18 @@
         ]
       },
       {
-        "heading": "Vitamin c is the most abundant in the pineapple",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4242,19 +4183,18 @@
         ]
       },
       {
-        "heading": "Vitamin c is the most abundant in the pineapple",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4279,20 +4219,18 @@
         ]
       },
       {
-        "heading": "The tamarind contains iron and magnesium",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 2,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4317,20 +4255,18 @@
         ]
       },
       {
-        "heading": "The tamarind contains iron and magnesium",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 2,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4355,19 +4291,18 @@
         ]
       },
       {
-        "heading": "The pink guava has astringent properties",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 2,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4392,19 +4327,18 @@
         ]
       },
       {
-        "heading": "The pink guava has astringent properties",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 2,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4429,21 +4363,18 @@
         ]
       },
       {
-        "heading": "Banana neutralized heartburn",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 4,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4468,21 +4399,18 @@
         ]
       },
       {
-        "heading": "Banana neutralized heartburn",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 4,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4507,20 +4435,18 @@
         ]
       },
       {
-        "heading": "The mango fruit provides antioxidants",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4545,20 +4471,18 @@
         ]
       },
       {
-        "heading": "The mango fruit provides antioxidants",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4581,21 +4505,14 @@
         "blocks": [
           "p"
         ]
-      },
-      {
-        "heading": "Coconut is a natural source of fiber",
-        "blocks": [
-          "p",
-          "p"
-        ]
       }
     ],
     "counts": {
-      "sections": 2,
-      "paragraphs": 3,
+      "sections": 1,
+      "paragraphs": 1,
       "specRows": 0,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4618,21 +4535,14 @@
         "blocks": [
           "p"
         ]
-      },
-      {
-        "heading": "Coconut is a natural source of fiber",
-        "blocks": [
-          "p",
-          "p"
-        ]
       }
     ],
     "counts": {
-      "sections": 2,
-      "paragraphs": 3,
+      "sections": 1,
+      "paragraphs": 1,
       "specRows": 0,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4657,26 +4567,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
+        "heading": null,
         "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The cranberry helps to regulate the cholesterol ldl",
-        "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 3,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 2
+      "listEntries": 0,
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4701,26 +4603,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
+        "heading": null,
         "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The cranberry helps to regulate the cholesterol ldl",
-        "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 3,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 2
+      "listEntries": 0,
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4745,24 +4639,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
-        "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The blueberry prevents brain degeneration",
+        "heading": null,
         "blocks": [
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
+      "sections": 2,
       "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 5
+      "listEntries": 0,
+      "excludedByMigration": 7
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4787,24 +4675,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
-        "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The blueberry prevents brain degeneration",
+        "heading": null,
         "blocks": [
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
+      "sections": 2,
       "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 5
+      "listEntries": 0,
+      "excludedByMigration": 7
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4829,26 +4711,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
+        "heading": null,
         "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The cherry provides folic acid to our body",
-        "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 3,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 2
+      "listEntries": 0,
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4873,26 +4747,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
+        "heading": null,
         "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The cherry provides folic acid to our body",
-        "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 3,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 2
+      "listEntries": 0,
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4917,25 +4783,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
+        "heading": null,
         "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The raspberry contains folic and citric acid",
-        "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 2,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 3
+      "listEntries": 0,
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -4960,25 +4819,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
+        "heading": null,
         "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The raspberry contains folic and citric acid",
-        "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 2,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 3
+      "listEntries": 0,
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5003,26 +4855,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
+        "heading": null,
         "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The vitamin c is the most common in the blackberry fruit",
-        "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 3,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 3
+      "listEntries": 0,
+      "excludedByMigration": 7
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5047,26 +4891,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
+        "heading": null,
         "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The vitamin c is the most common in the blackberry fruit",
-        "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 3,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 3
+      "listEntries": 0,
+      "excludedByMigration": 7
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5091,25 +4927,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
+        "heading": null,
         "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The strawberry provides folic acid to our body",
-        "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 2,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 3
+      "listEntries": 0,
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5134,25 +4963,18 @@
         ]
       },
       {
-        "heading": "Deionized concentrates",
+        "heading": null,
         "blocks": [
-          "list×1"
-        ]
-      },
-      {
-        "heading": "The strawberry provides folic acid to our body",
-        "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 2,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 3,
-      "listEntries": 1,
-      "excludedByMigration": 3
+      "listEntries": 0,
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5177,20 +4999,18 @@
         ]
       },
       {
-        "heading": "The turnip is a source of folates",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5215,20 +5035,18 @@
         ]
       },
       {
-        "heading": "The turnip is a source of folates",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5253,7 +5071,7 @@
         ]
       },
       {
-        "heading": "The pumpkin is recommendable during pregnancy",
+        "heading": null,
         "blocks": [
           "p"
         ]
@@ -5264,7 +5082,7 @@
       "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5289,7 +5107,7 @@
         ]
       },
       {
-        "heading": "The pumpkin is recommendable during pregnancy",
+        "heading": null,
         "blocks": [
           "p"
         ]
@@ -5300,7 +5118,7 @@
       "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5325,19 +5143,18 @@
         ]
       },
       {
-        "heading": "The tomato prevents premature aging",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5362,19 +5179,18 @@
         ]
       },
       {
-        "heading": "The tomato prevents premature aging",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5399,20 +5215,18 @@
         ]
       },
       {
-        "heading": "The beet is a hypo-caloric vegetable",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5437,20 +5251,18 @@
         ]
       },
       {
-        "heading": "The beet is a hypo-caloric vegetable",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5475,20 +5287,18 @@
         ]
       },
       {
-        "heading": "The peppers has anti-inflammatory properties",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5513,20 +5323,18 @@
         ]
       },
       {
-        "heading": "The peppers has anti-inflammatory properties",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 6
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5551,7 +5359,7 @@
         ]
       },
       {
-        "heading": "The spinach provides minerals as the calcium or phosphorous",
+        "heading": null,
         "blocks": [
           "p"
         ]
@@ -5562,7 +5370,7 @@
       "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5587,7 +5395,7 @@
         ]
       },
       {
-        "heading": "The spinach provides minerals as the calcium or phosphorous",
+        "heading": null,
         "blocks": [
           "p"
         ]
@@ -5598,7 +5406,7 @@
       "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 4
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5625,19 +5433,16 @@
       {
         "heading": "The celery is rich in essential oils",
         "blocks": [
-          "p",
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 4,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5664,19 +5469,16 @@
       {
         "heading": "The celery is rich in essential oils",
         "blocks": [
-          "p",
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 4,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5701,20 +5503,18 @@
         ]
       },
       {
-        "heading": "The cucumber contains potassium",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5739,20 +5539,18 @@
         ]
       },
       {
-        "heading": "The cucumber contains potassium",
+        "heading": null,
         "blocks": [
-          "p",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 3,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5777,19 +5575,18 @@
         ]
       },
       {
-        "heading": "The broccoli has anticancer features",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5814,19 +5611,18 @@
         ]
       },
       {
-        "heading": "The broccoli has anticancer features",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5851,19 +5647,18 @@
         ]
       },
       {
-        "heading": "The carrot provides folic acid to our body",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5888,19 +5683,18 @@
         ]
       },
       {
-        "heading": "The carrot provides folic acid to our body",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5925,19 +5719,18 @@
         ]
       },
       {
-        "heading": "The asparagus is a diuretic vegetable",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5962,19 +5755,18 @@
         ]
       },
       {
-        "heading": "The asparagus is a diuretic vegetable",
+        "heading": null,
         "blocks": [
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 2,
-      "paragraphs": 2,
+      "paragraphs": 1,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 5
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -5997,20 +5789,14 @@
         "blocks": [
           "specs×3"
         ]
-      },
-      {
-        "heading": "Ginger is rich in vitamins and minerals",
-        "blocks": [
-          "p"
-        ]
       }
     ],
     "counts": {
-      "sections": 2,
-      "paragraphs": 1,
+      "sections": 1,
+      "paragraphs": 0,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 4
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -6033,20 +5819,14 @@
         "blocks": [
           "specs×3"
         ]
-      },
-      {
-        "heading": "Ginger is rich in vitamins and minerals",
-        "blocks": [
-          "p"
-        ]
       }
     ],
     "counts": {
-      "sections": 2,
-      "paragraphs": 1,
+      "sections": 1,
+      "paragraphs": 0,
       "specRows": 3,
       "listEntries": 0,
-      "excludedByMigration": 3
+      "excludedByMigration": 4
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -7413,16 +7193,16 @@
       {
         "heading": "Available formats",
         "blocks": [
-          "specs×3"
+          "specs×1"
         ]
       }
     ],
     "counts": {
       "sections": 1,
       "paragraphs": 0,
-      "specRows": 3,
+      "specRows": 1,
       "listEntries": 0,
-      "excludedByMigration": 0
+      "excludedByMigration": 2
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -7443,16 +7223,16 @@
       {
         "heading": "Formatos disponibles",
         "blocks": [
-          "specs×3"
+          "specs×1"
         ]
       }
     ],
     "counts": {
       "sections": 1,
       "paragraphs": 0,
-      "specRows": 3,
+      "specRows": 1,
       "listEntries": 0,
-      "excludedByMigration": 0
+      "excludedByMigration": 2
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -7473,16 +7253,16 @@
       {
         "heading": "Available formats",
         "blocks": [
-          "specs×3"
+          "specs×1"
         ]
       }
     ],
     "counts": {
       "sections": 1,
       "paragraphs": 0,
-      "specRows": 3,
+      "specRows": 1,
       "listEntries": 0,
-      "excludedByMigration": 0
+      "excludedByMigration": 2
     },
     "links": [],
     "selectedVariant": "formats-overview",
@@ -7503,16 +7283,16 @@
       {
         "heading": "Formatos disponibles",
         "blocks": [
-          "specs×3"
+          "specs×1"
         ]
       }
     ],
     "counts": {
       "sections": 1,
       "paragraphs": 0,
-      "specRows": 3,
+      "specRows": 1,
       "listEntries": 0,
-      "excludedByMigration": 0
+      "excludedByMigration": 2
     },
     "links": [],
     "selectedVariant": "formats-overview",

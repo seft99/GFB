@@ -281,6 +281,31 @@ export function categoryResources(categoryId: string, locale: Locale): ResourceS
   };
 }
 
+/**
+ * One family's resource group as its category page builds it (same names, overviews and
+ * product/specification pairs), with where that group sits on the page: the heading id of its
+ * group, so links can point at it. Undefined for families shown by the technical library.
+ */
+export function categoryFamilyGroup(familyId: string, locale: Locale) {
+  for (const [categoryId, assignment] of Object.entries(assignments)) {
+    const source = assignment.groups?.find((group) => group.family === familyId);
+    if (!source || assignment.variant === "technical-library") continue;
+    const { family, ...options } = source;
+    const group = familyResourceGroup(family, locale, options);
+    // Same ids as components/sections/product-resources (`${config.id}-resources` prefix): the
+    // group heading, or the section heading when a visual-cards page has one untitled group.
+    const prefix = `${categoryId}-resources`;
+    const anchor =
+      assignment.variant === "compact-groups"
+        ? `${prefix}-group-${group.id}`
+        : (assignment.groups?.length ?? 0) > 1
+          ? `${prefix}-cards-${group.id}`
+          : `${prefix}-title`;
+    return { categoryId, group, anchor };
+  }
+  return undefined;
+}
+
 /** Selected presentation per category (tests and docs). */
 export const resourceAssignments = Object.fromEntries(
   Object.entries(assignments).map(([id, assignment]) => [id, assignment.variant])

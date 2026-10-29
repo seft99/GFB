@@ -10,7 +10,8 @@ import { isTechnicalResource } from "./product-resources.ts";
  *
  * - formats-overview: concentrates (a formats table + editorial overview).
  * - facts-applications: individual IQF formats (fact cards + uses / handling).
- * - technical-specification: specification pages (analysis, microbiology, dimensions…).
+ * - technical-specification: specification pages (analysis, microbiology, dimensions…) and the
+ *   individual can, can-end and closure product pages (materials, coatings, dimensions).
  * - product-range-features: model collections (bottles) and feature/range pages (packaging
  *   products, labels, red grape varieties, range overviews).
  */
@@ -30,6 +31,8 @@ const FORMAT_FAMILIES = new Set([
 const IQF_FAMILIES = new Set(["iqf-lemon", "iqf-orange", "iqf-lime", "iqf-grapefruit"]);
 /** IQF range overview pages (not one format): shown as range pages. */
 const IQF_OVERVIEWS = new Set(["/frozen-lemon"]);
+/** Packaging families whose individual product pages are technical data (not their hubs). */
+const PACKAGING_TECHNICAL = new Set(["aluminium-cans", "can-ends", "crown-corks"]);
 
 export type VariantDecision = { variant: ProductContentVariant; reason: string };
 
@@ -39,6 +42,8 @@ export function productContentVariant(path: string): VariantDecision {
   if (!family) throw new Error(`No family for ${path}`);
   if (isTechnicalResource(path))
     return { variant: "technical-specification", reason: "Specification page (analysis tables or paired spec sheet)" };
+  if (PACKAGING_TECHNICAL.has(family.id) && family.hub !== path)
+    return { variant: "technical-specification", reason: "Can, can-end or closure product: materials and dimensions" };
   if (FORMAT_FAMILIES.has(family.id))
     return { variant: "formats-overview", reason: "Concentrate product page: available formats + overview" };
   if (IQF_FAMILIES.has(family.id) && family.hub !== path && !IQF_OVERVIEWS.has(path))
@@ -83,12 +88,20 @@ export type FactsContent = {
   details: ContentGroup[];
 };
 
+export type DefinitionEntry = { term: string; termLang?: "en"; item: Item };
+
+/** A technical panel: a titled group, or consecutive one-value groups consolidated as a list. */
+export type TechnicalPanel = ContentGroup | { definitions: DefinitionEntry[] };
+
 export type TechnicalContent = {
   variant: "technical-specification";
   /** Section headings published without content (identifiers such as "D57.4 mm"). */
   identifiers: { text: string; lang?: "en" }[];
-  panels: ContentGroup[];
+  panels: TechnicalPanel[];
 };
+
+export const isDefinitions = (panel: TechnicalPanel): panel is { definitions: DefinitionEntry[] } =>
+  "definitions" in panel;
 
 export type RangeContent = {
   variant: "product-range-features";
@@ -193,15 +206,49 @@ function factsContent(sections: Section[]): FactsContent {
   return { variant: "facts-applications", intro, facts, details };
 }
 
+/**
+ * A group that is one titled value — "Internal lacquer specs: PVC Free", "Dimensions: <one
+ * paragraph>" — reads better as an entry of a definition list than as its own card.
+ */
+const singleValue = (group: ContentGroup) => {
+  if (!group.heading || group.link || group.items.length !== 1) return undefined;
+  const [item] = group.items;
+  if (item.type === "p") return item;
+  if (item.type === "ul" && item.items.length === 1 && item.items[0].length <= 80) return item;
+  return undefined;
+};
+
 function technicalContent(sections: Section[]): TechnicalContent {
   const identifiers: TechnicalContent["identifiers"] = [];
-  const panels: ContentGroup[] = [];
+  const groups: ContentGroup[] = [];
   for (const section of sections) {
     if (section.heading && section.items.length === 0)
       identifiers.push({ text: section.heading, ...(section.headingLang ? { lang: section.headingLang } : {}) });
-    else if (section.heading) panels.push(asGroup(section));
-    else panels.push(...subgroups(section));
+    else if (section.heading) groups.push(asGroup(section));
+    else groups.push(...subgroups(section));
   }
+  // Two or more consecutive one-value groups become one definition list.
+  const panels: TechnicalPanel[] = [];
+  let run: DefinitionEntry[] = [];
+  const flush = () => {
+    if (run.length >= 2) panels.push({ definitions: run });
+    else if (run.length === 1)
+      panels.push({
+        heading: run[0].term,
+        ...(run[0].termLang ? { headingLang: run[0].termLang } : {}),
+        items: [run[0].item]
+      });
+    run = [];
+  };
+  for (const group of groups) {
+    const item = singleValue(group);
+    if (item) run.push({ term: group.heading!, ...(group.headingLang ? { termLang: group.headingLang } : {}), item });
+    else {
+      flush();
+      panels.push(group);
+    }
+  }
+  flush();
   return { variant: "technical-specification", identifiers, panels };
 }
 
@@ -301,7 +348,10 @@ export function contentStrings(content: ProductContent): string[] {
       break;
     case "technical-specification":
       out.push(...content.identifiers.map((identifier) => identifier.text));
-      out.push(...content.panels.flatMap(groupStrings));
+      for (const panel of content.panels)
+        if (isDefinitions(panel))
+          for (const entry of panel.definitions) out.push(entry.term, ...itemStrings(entry.item));
+        else out.push(...groupStrings(panel));
       break;
     case "product-range-features":
       out.push(...content.intro.flatMap(itemStrings));
@@ -314,4 +364,54 @@ export function contentStrings(content: ProductContent): string[] {
       break;
   }
   return out.sort();
+}
+
+// ---------- Derived presentations (parsed from published text; nothing added) ----------
+
+/**
+ * A published measurement split at its own word boundaries into value, unit and condition or
+ * method, so a table can show them in columns while the cells, read in order, still give the
+ * published text ("67 - 69" | "" | "@ 20 °C"; "< 150" | "NTU" | "At 16 °Brix").
+ */
+export type Measurement = { value: string; unit?: string; condition?: string };
+const MEASURE_VALUE =
+  /^([<>≤≥]\s*)?(\d[\d.,]*(?:\s*[-–]\s*\d[\d.,]*)?|negative|positive|absent|negativo|positivo|ausente)(?=\s|$)/i;
+const CONDITION_START = /^(?:@|(?:at|a|by|por|mediante|según)\b)/i;
+const METHOD_WORD = /(metry|metría|method|método|williams|welch)/i;
+
+export function parseMeasurement(cell: string): Measurement | undefined {
+  const match = cell.match(MEASURE_VALUE);
+  if (!match) return undefined;
+  const value = match[0].trim();
+  const rest = cell.slice(match[0].length).trim();
+  if (!rest) return { value };
+  if (CONDITION_START.test(rest) || METHOD_WORD.test(rest.split(/\s+/)[0])) return { value, condition: rest };
+  const split = rest.match(/^(.*?)\s+((?:@|at|a|by|por|mediante|según)\s.*)$/i);
+  if (split) return { value, unit: split[1], condition: split[2] };
+  return METHOD_WORD.test(rest) ? { value, condition: rest } : { value, unit: rest };
+}
+
+/** "92 mm for 250 ml" pairs published in a cell or a sentence (can heights by fill volume). */
+const HEIGHT_FOR_VOLUME = /(\d+(?:[.,]\d+)?\s?mm)\s+(?:for|para)\s+(\d+(?:[.,]\d+)?\s?ml)/gi;
+export function heightsByVolume(text: string): { height: string; volume: string }[] {
+  return [...text.matchAll(HEIGHT_FOR_VOLUME)].map((match) => ({ height: match[1], volume: match[2] }));
+}
+
+/** Comparison columns of bottle references, keyed from the published labels. */
+export type ReferenceColumn = "capacity" | "diameter" | "height" | "finish";
+export const referenceColumn = (label: string): ReferenceColumn | undefined =>
+  /capac/i.test(label)
+    ? "capacity"
+    : /diam/i.test(label)
+      ? "diameter"
+      : /height|altura/i.test(label)
+        ? "height"
+        : /finish|acabado|boca/i.test(label)
+          ? "finish"
+          : undefined;
+
+/** "Soft Drinks - 455020" → type and reference code (the published heading stays the row name). */
+export function splitReference(heading: string): { type?: string; code: string } {
+  const match = heading.match(/^(.*?)\s*-\s*([A-Z0-9][\w./-]*)$/i);
+  return match && match[1] ? { type: match[1].trim(), code: match[2] } : { code: heading };
 }

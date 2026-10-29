@@ -16,6 +16,7 @@ import {
   displayCase,
   firstProse,
   markUntranslated,
+  normalizeSections,
   processBlocks,
   truncate,
   usableDescription,
@@ -138,6 +139,15 @@ const content: Record<
 const titles = new Map<string, string[]>();
 
 const TIDY_CATEGORIES = new Set(["fruit-concentrates", "iqf-frozen-fruits"]);
+/** Fruit, vegetable and plant concentrates (not the red grape varieties and sheets). */
+const STRICT_CLAIM_FAMILIES = new Set([
+  "citrus-concentrates",
+  "mediterranean-concentrates",
+  "tropical-concentrates",
+  "red-fruit-concentrates",
+  "vegetable-concentrates",
+  "plant-based-concentrates"
+]);
 
 // Compact names for matching a legacy heading to the H1 of the page it linked to.
 const compactName = (value: string) => value.toUpperCase().replace(/[^A-Z0-9]/g, "");
@@ -158,8 +168,9 @@ function linkResolver(path: string, family: Family) {
 const appliedCorrections = new Set<Correction>();
 function corrected(row: CrawlRow, path: string): RawBlock[] {
   return row.contentBlocks.map((block) => {
-    const { text, applied } = correctText(path, block.text);
-    if (row.locale === "en") applied.forEach((item) => appliedCorrections.add(item));
+    const { text, applied } = correctText(path, block.text, row.locale);
+    // A correction counts as found on its own page: English unless it names a locale.
+    applied.forEach((item) => (item.locale ?? "en") === row.locale && appliedCorrections.add(item));
     return { ...block, text };
   });
 }
@@ -170,7 +181,12 @@ for (const family of (await import("../src/migration/families.ts")).families)
     const es = byKey.get(`${path}|es`)!;
     // Empty-heading cleanup and restored product links: concentrate and frozen-fruit pages only.
     const tidy = TIDY_CATEGORIES.has(family.parent.category ?? "");
-    const options = { linkFor: tidy ? linkResolver(path, family) : undefined, dropEmpty: tidy };
+    const options = {
+      linkFor: tidy ? linkResolver(path, family) : undefined,
+      dropEmpty: tidy,
+      // Fruit, vegetable and plant-based concentrates: nutrition/health statements are withheld.
+      strictClaims: STRICT_CLAIM_FAMILIES.has(family.id)
+    };
     const processedEn = processBlocks(corrected(en, path), { formatsHeading: formatsHeading.en, ...options });
     const processedEsRaw = processBlocks(corrected(es, path), { formatsHeading: formatsHeading.es, ...options });
     const name = concentrateName(family, path);
@@ -204,6 +220,8 @@ for (const family of (await import("../src/migration/families.ts")).families)
 
     const page = (processed: Processed, row: CrawlRow, h1: string, locale: Locale): LocalizedPage => ({
       ...processed,
+      // Units are normalised in the content only: H1, titles and descriptions stay as derived.
+      sections: normalizeSections(processed.sections),
       h1,
       eyebrow: processed.eyebrow,
       metaTitle: `${h1} – ${family.label[locale]}`,

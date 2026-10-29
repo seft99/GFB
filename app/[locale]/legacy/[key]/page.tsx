@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/sections/cta-band";
+import { FamilyRelated } from "@/components/sections/family-related";
 import { ProductDetailContent } from "@/components/sections/product-detail-content";
 import { ProductDetailHero } from "@/components/sections/product-detail-hero";
-import { Icon } from "@/components/ui/icon";
 import { JsonLd } from "@/components/ui/json-ld";
 import { getDivisionById } from "@/src/content/catalog";
 import { isLocale, locales, type Locale } from "@/src/i18n/config";
@@ -13,11 +12,12 @@ import { paths } from "@/src/i18n/routes";
 import { pageMetadata } from "@/src/lib/metadata";
 import type { Section } from "@/src/migration/content";
 import { familyOf, legacyKey, pathFromKey, type Family } from "@/src/migration/families";
-import { detailPaths, legacyCanonical, legacyLinkLabel, legacyName, legacyPage } from "@/src/migration/manifest";
+import { detailPaths, legacyCanonical, legacyName, legacyPage } from "@/src/migration/manifest";
 import { productContent } from "@/src/migration/product-content";
 import { productHeroImage } from "@/src/migration/product-hero-images";
 import { isTechnicalResource } from "@/src/migration/product-resources";
 import { publicUrl } from "@/src/migration/public-paths";
+import { familyResources, relatedEntries } from "@/src/migration/related-resources";
 import { categoryLibrary } from "@/src/migration/technical-library";
 import "../../../styles/legacy-detail.css";
 
@@ -93,6 +93,7 @@ export default async function LegacyDetailPage({ params }: Props) {
   const { division, category } = parentOf(family);
   const parentHref = category ? paths.category(locale, division, category) : paths.division(locale, division);
   const parentTitle = (category ?? division).title[locale];
+  const backLabel = `${legacy.backTo} ${(category && legacy.backShort[category.id]) || parentTitle}`;
   const inquiryHref = paths.contact(locale, { interest: division.id, category: content.h1 });
   const canonical = legacyCanonical(path, locale);
   // Hero and breadcrumb name: product name; the code/format goes to the eyebrow (see below).
@@ -104,9 +105,11 @@ export default async function LegacyDetailPage({ params }: Props) {
       : []),
     { label: content.h1 }
   ];
-  // Family pages not already linked from the content (no duplicated link lists on hubs).
-  const linked = contentLinks(content.sections);
-  const siblings = family.paths.filter((item) => item !== path && !linked.has(item));
+  // "More in this family": one card per product identity, without the current page and
+  // without pages the content already lists (hub pages' product links).
+  const related = familyResources(path, locale, category ? parentHref : undefined);
+  const relatedItems = related ? relatedEntries(related, path, contentLinks(content.sections)) : [];
+  const relatedTechnical = relatedItems.some((entry) => entry.resources.some((item) => item.kind === "technical"));
   const isHub = family.hub === path || path === "/fruit-concentrates";
   const firstParagraph = content.sections[0]?.items[0];
   const showLead = !(
@@ -155,7 +158,14 @@ export default async function LegacyDetailPage({ params }: Props) {
               ? { src: photo.src, alt: photo.alt[locale], objectPosition: photo.position }
               : undefined,
           primaryAction: { label: common.inquire, href: inquiryHref },
-          secondaryAction: { label: `${legacy.backTo} ${parentTitle}`, href: parentHref },
+          secondaryAction: {
+            // Short visible label ("Back to concentrates"); the accessible name starts with it
+            // (WCAG 2.5.3) and adds the full category ("…: Fruit & vegetable concentrates").
+            label: backLabel,
+            accessibleName:
+              backLabel === `${legacy.backTo} ${parentTitle}` ? undefined : `${backLabel}: ${parentTitle}`,
+            href: parentHref
+          },
           identifier: `${technical ? legacy.heroTechnical : legacy.heroProduct} / ${groupName}`
         }}
       />
@@ -168,24 +178,19 @@ export default async function LegacyDetailPage({ params }: Props) {
         />
       )}
 
-      {siblings.length > 0 && (
-        <nav className="section legacy-detail__related" aria-labelledby="legacy-related">
-          <div className="shell">
-            <p className="eyebrow">{family.label[locale]}</p>
-            <h2 id="legacy-related">{legacy.related}</h2>
-            <ul>
-              {siblings.map((item) => (
-                <li key={item}>
-                  <Link href={publicUrl(item, locale)} prefetch={false}>
-                    <span>{legacyLinkLabel(item, locale)}</span>
-                    <Icon name="arrow" strokeWidth={1.6} />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </nav>
-      )}
+      <FamilyRelated
+        eyebrow={family.label[locale]}
+        entries={relatedItems}
+        directoryHref={related?.directoryHref}
+        labels={{
+          title: legacy.related,
+          description: relatedTechnical ? legacy.relatedTextTechnical : legacy.relatedText,
+          resourceKinds: legacy.resourceKinds,
+          explore: legacy.familyShort[family.id]
+            ? legacy.relatedExplore.replace("{family}", legacy.familyShort[family.id])
+            : undefined
+        }}
+      />
 
       <CtaBand
         variant="compact"

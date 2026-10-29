@@ -123,20 +123,17 @@
   color: #3d4356;
 }
 
-/* Family links (also used by the category product index) */
-.legacy-detail__related.section,
+/* Category product index links */
 .legacy-catalogue.section {
   padding-block: clamp(3.5rem, 5vw, 5rem);
   background: var(--cloud);
 }
-.legacy-detail__related h2,
 .legacy-catalogue h2 {
   margin: 0 0 1.75rem;
   color: var(--brand-ink);
   font-size: clamp(1.75rem, 2.6vw, 2.5rem);
   letter-spacing: -0.025em;
 }
-.legacy-detail__related ul,
 .legacy-catalogue__links {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
@@ -145,7 +142,6 @@
   padding: 0;
   list-style: none;
 }
-.legacy-detail__related a,
 .legacy-catalogue__links a {
   display: flex;
   align-items: center;
@@ -157,18 +153,15 @@
   font-weight: 600;
   transition: color var(--motion-fast) ease;
 }
-.legacy-detail__related a svg,
 .legacy-catalogue__links a svg {
   flex: none;
   width: 0.95rem;
   color: var(--blue-600);
   transition: translate var(--motion-fast) var(--ease-out);
 }
-.legacy-detail__related a:hover,
 .legacy-catalogue__links a:hover {
   color: var(--blue-600);
 }
-.legacy-detail__related a:hover svg,
 .legacy-catalogue__links a:hover svg {
   translate: 3px 0;
 }
@@ -193,7 +186,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .legacy-detail__back svg,
-  .legacy-detail__related a svg,
   .legacy-catalogue__links a svg {
     transition: none;
   }

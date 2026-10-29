@@ -18,7 +18,8 @@ export type ProductHeroConfig = {
   breadcrumbs: Crumb[];
   image?: { src: string; alt: string; objectPosition?: string };
   primaryAction: { label: string; href: string };
-  secondaryAction: { label: string; href: string };
+  /** `label` is visible (short); `accessibleName` names the full destination. */
+  secondaryAction: { label: string; href: string; accessibleName?: string };
   /** Small editorial identifier under the actions, e.g. "Product / Citrus". */
   identifier?: string;
 };
@@ -103,7 +104,11 @@ export function ProductDetailHero({ config, locale }: { config: ProductHeroConfi
             <ButtonLink href={config.primaryAction.href} variant="dark" className="product-hero__primary">
               {config.primaryAction.label}
             </ButtonLink>
-            <Link href={config.secondaryAction.href} className="product-hero__secondary">
+            <Link
+              href={config.secondaryAction.href}
+              className="product-hero__secondary"
+              aria-label={config.secondaryAction.accessibleName}
+            >
               {config.secondaryAction.label}
               <Icon name="arrow" strokeWidth={1.8} />
             </Link>

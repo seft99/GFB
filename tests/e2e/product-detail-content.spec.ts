@@ -32,11 +32,25 @@ test("every detail page serves every published string of its content in the serv
   const missing: string[] = [];
   for (const [path, page] of Object.entries(pages))
     for (const locale of ["en", "es"] as const) {
-      const html = decode(await (await request.get(urlOf(path, locale))).text());
-      const body = html.slice(html.indexOf('class="section pdc'));
-      for (const text of strings(page[locale]))
-        if (!body.includes(text.replace(/\s*\n\s*/g, "\n").split("\n")[0]))
-          missing.push(`${path} (${locale}): ${text}`);
+      const html = await (await request.get(urlOf(path, locale))).text();
+      // Text as read: tags become spaces (table cells of one measurement read in order), then
+      // entities are decoded so "&lt; 50" is not taken for a tag.
+      const body = decode(
+        html
+          .slice(html.indexOf('class="section pdc'))
+          .replace(/<[^>]+>/g, " ")
+          .replace(/\s+/g, " ")
+      );
+      for (const text of strings(page[locale])) {
+        const first = text
+          .replace(/\s*\n\s*/g, "\n")
+          .split("\n")[0]
+          .replace(/\s+/g, " ");
+        // "95.6 mm for 200 ml" cells are shown as Volume | Height rows: both values must be there.
+        const pair = first.match(/^(\S+ mm) (?:for|para) (\S+ ml)$/);
+        const found = pair ? body.includes(`${pair[2]} ${pair[1]}`) : body.includes(first);
+        if (!found) missing.push(`${path} (${locale}): ${text}`);
+      }
       if (page[locale].sections.length) expect(html, path).toContain('data-variant="');
     }
   expect(missing).toEqual([]);
@@ -50,24 +64,26 @@ test.describe("product information layouts", () => {
     await expect(section.getByRole("heading", { level: 2 })).toHaveText("Available formats & product overview");
     await expect(section.locator(".pdc-formats__row")).toHaveCount(6);
     await expect(section.locator(".pdc-formats__row").first()).toContainText("Juice concentrate cloudy");
-    await expect(
-      section.getByRole("heading", { name: "Discover the Pure Essence of Spanish Orange Concentrate" })
-    ).toBeVisible();
+    // Promotional heading and energy/well-being copy replaced by the uses the page states.
+    await expect(section.getByRole("heading", { name: "Applications" })).toBeVisible();
+    await expect(section).not.toContainText(/Energizing|nutritious|Spanish orange/);
   });
 
   test("health text published in the oat formats table is not shown as a format", async ({ page }) => {
     await page.goto("/plant-based-concentrate-1/oat-concentrate");
     const section = page.locator(".pdc");
     await expect(section.locator(".pdc-formats__row")).toHaveCount(1);
-    await expect(section.locator(".pdc-chips")).not.toContainText("cholesterol");
-    await expect(section.locator(".pdc-note")).toHaveCount(2);
+    await expect(section).not.toContainText(/cholesterol|heart health|Benefits/);
+    await expect(section.locator(".pdc-note")).toHaveCount(0);
   });
 
   test("facts-applications: fact cards from the published table (IQF lemon slices, EN/ES)", async ({ page }) => {
     await page.goto("/iqf-lemon-slices/iqf-lemon-slices");
     const section = page.locator(".pdc");
     await expect(section).toHaveAttribute("data-variant", "facts-applications");
-    await expect(section.locator(".pdc-fact")).toHaveCount(5);
+    // Storage, presentation, applications, instructions; the vitamin note is a note, not a fact.
+    await expect(section.locator(".pdc-fact")).toHaveCount(4);
+    await expect(section.locator(".pdc-notes")).toContainText("Vitamin C");
     await expect(section.locator(".pdc-fact").filter({ hasText: "Presentation" })).toContainText(
       "Lemon slices from 6 millimetres to 9 millimetres"
     );
@@ -81,23 +97,45 @@ test.describe("product information layouts", () => {
     await expect(section).toHaveAttribute("data-variant", "technical-specification");
     const analysis = section.locator("section").filter({ has: page.getByRole("heading", { name: "Analysis" }) });
     await expect(analysis.locator('th[scope="row"]')).toHaveCount(7);
-    await expect(analysis.getByRole("row", { name: /^ºBrix/ })).toContainText("67 - 69 @ 20 ºC");
+    await expect(analysis.locator("thead th")).toHaveText(["Parameter", "Value", "Unit", "Condition / method"]);
+    const brix = analysis.getByRole("row", { name: /^°Brix/ });
+    await expect(brix.locator("td").first()).toHaveText("67 - 69");
+    await expect(brix).toContainText("@ 20 °C");
+    await expect(section.getByText("SO₂ Total (mg/kg)")).toBeVisible();
+    // The split characteristic is one complete negative statement.
+    await expect(section.getByText("No additives, flavourings or colourings of any kind")).toBeVisible();
     await expect(section).not.toContainText(/Published method|—|Download/);
     await expect(section.locator('a[href$=".pdf"], a[download]')).toHaveCount(0);
     await page.goto("/sleek-can-d57mm");
     await expect(page.locator(".pdc-identifiers li")).toHaveText(["D57.4 mm", "202# cap/lid", "Aluminium cans"]);
-    await expect(page.locator(".pdc-table.is-values").first()).toContainText("250ml");
+    await expect(page.locator(".pdc-table.is-values").first()).toContainText("250 ml");
+    const heights = page.locator(".pdc-table--compare");
+    await expect(heights.getByRole("row", { name: /^200 ml/ })).toContainText("95.6 mm");
+    await page.goto("/aluminum-can-end-52mm-202-ise-sot");
+    await expect(page.locator(".pdc-definitions dt")).toHaveText([
+      "Internal lacquer specs",
+      "External lacquer specs",
+      "Lining compound specs"
+    ]);
   });
 
   test("product-range-features: bottle models under their published groups (EN/ES)", async ({ page }) => {
     await page.goto("/alcoholic-beverage?lang=es");
     const section = page.locator(".pdc");
     await expect(section).toHaveAttribute("data-variant", "product-range-features");
-    await expect(section.locator(".pdc-model")).toHaveCount(10);
-    await expect(section.getByRole("heading", { level: 2 })).toHaveText("Gama y características");
+    const table = section.locator(".pdc-table--references");
+    await expect(table.locator('tbody th[scope="row"]')).toHaveCount(10);
+    await expect(table.locator('th[scope="rowgroup"]')).toHaveCount(3);
+    await expect(section.getByRole("heading", { level: 2 })).toHaveText("Referencias de producto");
     await page.goto("/soft-drinks");
-    await expect(page.locator(".pdc-model")).toHaveCount(12);
+    const rows = page.locator('.pdc-table--references tbody th[scope="row"]');
+    await expect(rows).toHaveCount(12);
+    await expect(page.getByRole("row", { name: /Soft Drinks - 455020/ })).toContainText("182.7 mm");
     await expect(page.locator(".pdc-count")).toHaveText("12 published references");
+    // The description sits above the table, not in a side column.
+    const intro = (await page.locator(".pdc-intro").boundingBox())!;
+    const box = (await page.locator(".pdc-table--references").boundingBox())!;
+    expect(intro.y + intro.height).toBeLessThan(box.y);
   });
 
   test("range overviews keep their product links (IQF lemon, red grape)", async ({ page }) => {
