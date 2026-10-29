@@ -4,7 +4,9 @@
  * Usage:
  *   MIGRATION_TEST_ORIGIN=http://localhost:3000 node scripts/verify-seo-migration.mjs
  *   MIGRATION_TEST_HOST=www.gfb-solutions.com  (optional; sent as x-forwarded-host because fetch
- *   cannot override Host — simulates the production host for the indexability checks)
+ *   cannot override Host — simulates the production host only on a local origin)
+ *   MIGRATION_TEST_ORIGIN=https://www.gfb-solutions.com node scripts/verify-seo-migration.mjs
+ *   (the actual production hostname is recognized as indexable without a header override)
  *
  * Canonicals and alternates are always validated against https://www.gfb-solutions.com.
  * Writes docs/migration-data/verification-results.json and exits non-zero on any failure.
@@ -13,8 +15,16 @@ import { readFile, writeFile } from "node:fs/promises";
 
 const testOrigin = (process.env.MIGRATION_TEST_ORIGIN || "http://localhost:3000").replace(/\/$/, "");
 const hostHeader = process.env.MIGRATION_TEST_HOST || "";
+const configuredConcurrency = Number(process.env.MIGRATION_VERIFY_CONCURRENCY || 12);
+const verificationConcurrency =
+  Number.isSafeInteger(configuredConcurrency) && configuredConcurrency > 0 ? configuredConcurrency : 12;
 const production = "https://www.gfb-solutions.com";
-const expectIndexable = hostHeader === "www.gfb-solutions.com";
+const productionHost = new URL(production).hostname;
+const testOriginHost = new URL(testOrigin).hostname.toLowerCase();
+const localTestOrigin = testOriginHost === "localhost" || testOriginHost === "127.0.0.1";
+// A forwarded-host override is meaningful only when exercising a local server. Vercel removes
+// it from inbound preview requests, so a remote preview must be judged by its actual hostname.
+const expectIndexable = testOriginHost === productionHost || (localTestOrigin && hostHeader === productionHost);
 const manifest = JSON.parse(await readFile(new URL("../docs/migration-data/migration-manifest.json", import.meta.url)));
 const content = JSON.parse(await readFile(new URL("../src/migration/legacy-content.json", import.meta.url)));
 
@@ -61,6 +71,18 @@ async function get(pathAndQuery, { userAgent = "GFBMigrationVerifier/2.0", cache
   };
   if (cache) pages.set(key, result);
   return result;
+}
+
+async function mapConcurrent(items, worker) {
+  let cursor = 0;
+  await Promise.all(
+    Array.from({ length: Math.min(verificationConcurrency, items.length) }, async () => {
+      while (cursor < items.length) {
+        const index = cursor++;
+        await worker(items[index]);
+      }
+    })
+  );
 }
 
 function parse(html) {
@@ -182,7 +204,7 @@ async function verifyBroken(row) {
 const rendered = new Map();
 const queue = [...manifest];
 await Promise.all(
-  Array.from({ length: 6 }, async () => {
+  Array.from({ length: Math.min(verificationConcurrency, queue.length) }, async () => {
     while (queue.length) {
       const row = queue.shift();
       if (row.pageKind === "broken-historical-link") await verifyBroken(row);
@@ -299,19 +321,19 @@ for (const [url, page] of rendered) {
   }
   for (const src of page.images) if (src.startsWith("/")) images.add(src);
 }
-for (const href of internal) {
+await mapConcurrent([...internal], async (href) => {
   const result = await get(href);
   count("internalLinks");
   if (href.startsWith("/en/") || href.startsWith("/es/")) {
     if (result.status !== 200) fail(href, `internal link status ${result.status}`, result.location);
   } else if (result.status !== 200) fail(href, `internal link not final (${result.status})`, result.location);
-}
-for (const src of images) {
+});
+await mapConcurrent([...images], async (src) => {
   const response = await fetch(`${testOrigin}${src}`, { method: "GET" });
   await response.arrayBuffer();
   count("images");
   if (response.status !== 200) fail(src, `image status ${response.status}`);
-}
+});
 for (const url of expectedCanonicals) if (!(inbound.get(url)?.size > 0)) fail(url, "no internal inbound link (orphan)");
 
 const failedUrls = new Set(failures.map((item) => item.url));

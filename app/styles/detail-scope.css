@@ -48,30 +48,28 @@
     text-wrap: pretty;
   }
 
-  /* Features: one row across the container, light rules above and below, dividers between items. */
+  /* Features retain readable intrinsic columns instead of dividing the row by an item count. */
   .detail-scope__features.check-list {
     display: grid;
-    grid-template-columns: repeat(var(--feature-count, 3), minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    column-gap: clamp(1.5rem, 3vw, 3rem);
     margin-top: clamp(3rem, 4vw, 4rem);
     border-block: 1px solid rgba(255, 255, 255, 0.16);
   }
   .detail-scope__features.check-list li {
+    min-width: 0;
+    align-items: flex-start;
     gap: 0.85rem;
-    padding: 1.5rem 1.75rem;
+    padding: 1.25rem 0;
     border-bottom: 0;
     color: var(--white);
     font-size: 1.05rem;
     font-weight: 600;
   }
-  .detail-scope__features.check-list li:first-child {
-    padding-left: 0;
-  }
-  .detail-scope__features.check-list li + li {
-    border-left: 1px solid rgba(255, 255, 255, 0.16);
-  }
   .detail-scope__features.check-list svg {
     flex: none;
     width: 1.25rem;
+    margin-top: 0.2em;
     color: var(--brand-lime);
   }
 
@@ -90,6 +88,9 @@
   display: grid;
   gap: 1.75rem;
   margin-top: 2.5rem;
+}
+.detail-scope__groups > div {
+  min-width: 0;
 }
 .detail-scope__groups h3 {
   margin: 0 0 0.75rem;
@@ -144,43 +145,25 @@
 
 @media (min-width: 1100px) {
   .detail-scope__groups {
-    grid-template-columns: repeat(var(--group-count, 3), minmax(0, 1fr));
-    gap: 0;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: clamp(2rem, 4vw, 4.5rem);
     margin-top: clamp(3rem, 4vw, 4rem);
+    padding-top: clamp(1.5rem, 2vw, 2rem);
     border-top: 1px solid rgba(255, 255, 255, 0.16);
   }
-  /* A single list (consulting sectors) stays compact under the description column. */
+  /* A single supplementary group stays at a readable measure without a nested split. */
   .detail-scope__groups[data-count="1"] {
-    grid-template-columns: minmax(0, 35fr) minmax(0, 65fr);
-    column-gap: clamp(3rem, 5vw, 6rem);
-  }
-  .detail-scope__groups[data-count="1"] > div {
-    grid-column: 2;
-  }
-  /* A single list of three points (consulting focus, concentrate packaging) reads as three
-     aligned columns across the section instead of one narrow column. */
-  .detail-scope__groups[data-count="1"] > div[data-items="3"] {
-    grid-column: 1 / -1;
-  }
-  .detail-scope__groups > div[data-items="3"] .check-list {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: clamp(1.5rem, 3vw, 3rem);
+    grid-template-columns: minmax(0, 44rem);
   }
   .detail-scope__groups > div {
-    padding: 1.75rem 1.75rem 0;
-  }
-  .detail-scope__groups > div:first-child {
-    padding-left: 0;
-  }
-  .detail-scope__groups > div + div {
-    border-left: 1px solid rgba(255, 255, 255, 0.16);
+    min-width: 0;
   }
   .detail-scope__groups h3,
   .detail-scope__related p {
     color: var(--brand-lime);
   }
   .detail-scope__groups .check-list li {
+    align-items: flex-start;
     gap: 0.75rem;
     padding: 0.55rem 0;
     border-bottom: 0;
@@ -189,6 +172,7 @@
   .detail-scope__groups .check-list svg {
     flex: none;
     width: 1.1rem;
+    margin-top: 0.2em;
     color: var(--brand-lime);
   }
   .detail-scope__related {

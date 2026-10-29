@@ -1,0 +1,6512 @@
+[
+  {
+    "width": 1280,
+    "id": "packaging-solutions/cans/en",
+    "url": "/en/packaging-solutions/cans",
+    "height": 375.84375,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1280,
+    "id": "packaging-solutions/cans/es",
+    "url": "/es/soluciones-de-embalaje/latas",
+    "height": 375.84375,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1280,
+    "id": "packaging-solutions/bottles/en",
+    "url": "/en/packaging-solutions/bottles",
+    "height": 298.96875,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1280,
+    "id": "packaging-solutions/bottles/es",
+    "url": "/es/soluciones-de-embalaje/botellas",
+    "height": 298.96875,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1280,
+    "id": "packaging-solutions/closures/en",
+    "url": "/en/packaging-solutions/closures",
+    "height": 298.96875,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1280,
+    "id": "packaging-solutions/closures/es",
+    "url": "/es/soluciones-de-embalaje/cierres",
+    "height": 270.546875,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1280,
+    "id": "packaging-solutions/labels/en",
+    "url": "/en/packaging-solutions/labels",
+    "height": 298.96875,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1280,
+    "id": "packaging-solutions/labels/es",
+    "url": "/es/soluciones-de-embalaje/etiquetas",
+    "height": 298.96875,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1280,
+    "id": "raw-materials/fruit-concentrates/en",
+    "url": "/en/raw-materials/fruit-concentrates",
+    "height": 583.828125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 884.328125,
+        "width": 704,
+        "height": 235.5,
+        "items": [
+          {
+            "x": 24,
+            "y": 929.625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 972.8125,
+            "width": 704,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1041.59375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "raw-materials/fruit-concentrates/es",
+    "url": "/es/materias-primas/concentrados-de-frutas",
+    "height": 612.25,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 912.75,
+        "width": 704,
+        "height": 235.5,
+        "items": [
+          {
+            "x": 24,
+            "y": 958.046875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1001.234375,
+            "width": 704,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1070.015625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "raw-materials/plant-based-concentrates/en",
+    "url": "/en/raw-materials/plant-based-concentrates",
+    "height": 577.203125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 912.75,
+        "width": 590.40625,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 24,
+            "y": 958.046875,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1001.234375,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 665.59375,
+        "y": 912.75,
+        "width": 590.40625,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 665.59375,
+            "y": 958.046875,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 665.59375,
+            "y": 1001.234375,
+            "width": 590.40625,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 665.59375,
+            "y": 1070.015625,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "raw-materials/plant-based-concentrates/es",
+    "url": "/es/materias-primas/concentrados-vegetales",
+    "height": 577.203125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 912.75,
+        "width": 590.40625,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 24,
+            "y": 958.046875,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1001.234375,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 665.59375,
+        "y": 912.75,
+        "width": 590.40625,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 665.59375,
+            "y": 958.046875,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 665.59375,
+            "y": 1001.234375,
+            "width": 590.40625,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 665.59375,
+            "y": 1070.015625,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "raw-materials/iqf-frozen-fruits/en",
+    "url": "/en/raw-materials/iqf-frozen-fruits",
+    "height": 551.609375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 865,
+        "width": 590.40625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 910.296875,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 953.484375,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 996.671875,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1039.859375,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 665.59375,
+        "y": 865,
+        "width": 590.40625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 665.59375,
+            "y": 910.296875,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 665.59375,
+            "y": 953.484375,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 665.59375,
+            "y": 996.671875,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 665.59375,
+            "y": 1039.859375,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "raw-materials/iqf-frozen-fruits/es",
+    "url": "/es/materias-primas/citricos-congelados-iqf",
+    "height": 594.796875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 919.734375,
+        "width": 590.40625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 965.03125,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1008.21875,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1051.40625,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1094.59375,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 665.59375,
+        "y": 919.734375,
+        "width": 590.40625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 665.59375,
+            "y": 965.03125,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 665.59375,
+            "y": 1008.21875,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 665.59375,
+            "y": 1051.40625,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 665.59375,
+            "y": 1094.59375,
+            "width": 590.40625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "flavours-aromas/sweet-applications/en",
+    "url": "/en/flavours-aromas/sweet-applications",
+    "height": 712.59375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 912.75,
+        "width": 376.53125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 958.046875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1001.234375,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1044.421875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1087.609375,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 451.71875,
+        "y": 912.75,
+        "width": 376.546875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 451.71875,
+            "y": 958.046875,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 1001.234375,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 1044.421875,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 879.453125,
+        "y": 912.75,
+        "width": 376.53125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 879.453125,
+            "y": 958.046875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 879.453125,
+            "y": 1001.234375,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "flavours-aromas/sweet-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-dulces",
+    "height": 712.59375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 912.75,
+        "width": 376.53125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 958.046875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1001.234375,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1044.421875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1087.609375,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 451.71875,
+        "y": 912.75,
+        "width": 376.546875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 451.71875,
+            "y": 958.046875,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 1001.234375,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 1044.421875,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 879.453125,
+        "y": 912.75,
+        "width": 376.53125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 879.453125,
+            "y": 958.046875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 879.453125,
+            "y": 1001.234375,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "flavours-aromas/beverage-applications/en",
+    "url": "/en/flavours-aromas/beverage-applications",
+    "height": 684.171875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 884.328125,
+        "width": 376.53125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 929.625,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 972.8125,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1016,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1059.1875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 451.71875,
+        "y": 884.328125,
+        "width": 376.546875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 451.71875,
+            "y": 929.625,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 972.8125,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 1016,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 879.453125,
+        "y": 884.328125,
+        "width": 376.53125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 879.453125,
+            "y": 929.625,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 879.453125,
+            "y": 972.8125,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "flavours-aromas/beverage-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-para-bebidas",
+    "height": 684.171875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 884.328125,
+        "width": 376.53125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 929.625,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 972.8125,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1016,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1059.1875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 451.71875,
+        "y": 884.328125,
+        "width": 376.546875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 451.71875,
+            "y": 929.625,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 972.8125,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 1016,
+            "width": 376.546875,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 879.453125,
+        "y": 884.328125,
+        "width": 376.53125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 879.453125,
+            "y": 929.625,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 879.453125,
+            "y": 972.8125,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "flavours-aromas/savoury-applications/en",
+    "url": "/en/flavours-aromas/savoury-applications",
+    "height": 712.59375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 912.75,
+        "width": 376.53125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 958.046875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1001.234375,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1044.421875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1087.609375,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 451.71875,
+        "y": 912.75,
+        "width": 376.546875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 451.71875,
+            "y": 958.046875,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 1001.234375,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 1044.421875,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 879.453125,
+        "y": 912.75,
+        "width": 376.53125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 879.453125,
+            "y": 958.046875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 879.453125,
+            "y": 1001.234375,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "flavours-aromas/savoury-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-saladas",
+    "height": 738.1875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 919.734375,
+        "width": 376.53125,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 24,
+            "y": 965.03125,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1008.21875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1051.40625,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1094.59375,
+            "width": 376.53125,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 451.71875,
+        "y": 919.734375,
+        "width": 376.546875,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 451.71875,
+            "y": 965.03125,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 1008.21875,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 451.71875,
+            "y": 1051.40625,
+            "width": 376.546875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 879.453125,
+        "y": 919.734375,
+        "width": 376.53125,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 879.453125,
+            "y": 965.03125,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 879.453125,
+            "y": 1008.21875,
+            "width": 376.53125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "industrial-consulting/food-sector/en",
+    "url": "/en/industrial-consulting/food-sector",
+    "height": 626.21875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 869.5625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 914.859375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 958.046875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1001.234375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "industrial-consulting/food-sector/es",
+    "url": "/es/consultoria-industrial/sector-alimentario",
+    "height": 640.984375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 884.328125,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 929.625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 972.8125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1016,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "industrial-consulting/industrial-sector/en",
+    "url": "/en/industrial-consulting/industrial-sector",
+    "height": 626.21875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 869.5625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 914.859375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 958.046875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1001.234375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "industrial-consulting/industrial-sector/es",
+    "url": "/es/consultoria-industrial/sector-industrial",
+    "height": 626.21875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 869.5625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 914.859375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 958.046875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1001.234375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "industrial-consulting/environmental-sector/en",
+    "url": "/en/industrial-consulting/environmental-sector",
+    "height": 669.40625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 912.75,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 958.046875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1001.234375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1044.421875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "industrial-consulting/environmental-sector/es",
+    "url": "/es/consultoria-industrial/sector-medioambiental",
+    "height": 626.21875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 896.734375,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 942.03125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 985.21875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1028.40625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "industrial-consulting/pharmaceutical-sector/en",
+    "url": "/en/industrial-consulting/pharmaceutical-sector",
+    "height": 669.40625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 908.1875,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 953.484375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 996.671875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1039.859375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1280,
+    "id": "industrial-consulting/pharmaceutical-sector/es",
+    "url": "/es/consultoria-industrial/sector-farmaceutico",
+    "height": 669.40625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 966.921875,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 1012.21875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1055.40625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1098.59375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "packaging-solutions/cans/en",
+    "url": "/en/packaging-solutions/cans",
+    "height": 387.40625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1366,
+    "id": "packaging-solutions/cans/es",
+    "url": "/es/soluciones-de-embalaje/latas",
+    "height": 387.40625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1366,
+    "id": "packaging-solutions/bottles/en",
+    "url": "/en/packaging-solutions/bottles",
+    "height": 308.15625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1366,
+    "id": "packaging-solutions/bottles/es",
+    "url": "/es/soluciones-de-embalaje/botellas",
+    "height": 308.15625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1366,
+    "id": "packaging-solutions/closures/en",
+    "url": "/en/packaging-solutions/closures",
+    "height": 276.796875,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1366,
+    "id": "packaging-solutions/closures/es",
+    "url": "/es/soluciones-de-embalaje/cierres",
+    "height": 276.796875,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1366,
+    "id": "packaging-solutions/labels/en",
+    "url": "/en/packaging-solutions/labels",
+    "height": 308.15625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1366,
+    "id": "packaging-solutions/labels/es",
+    "url": "/es/soluciones-de-embalaje/etiquetas",
+    "height": 308.15625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1366,
+    "id": "raw-materials/fruit-concentrates/en",
+    "url": "/en/raw-materials/fruit-concentrates",
+    "height": 595.234375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 892.609375,
+        "width": 704,
+        "height": 235.5,
+        "items": [
+          {
+            "x": 24,
+            "y": 937.90625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 981.09375,
+            "width": 704,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1049.875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "raw-materials/fruit-concentrates/es",
+    "url": "/es/materias-primas/concentrados-de-frutas",
+    "height": 626.59375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 923.96875,
+        "width": 704,
+        "height": 235.5,
+        "items": [
+          {
+            "x": 24,
+            "y": 969.265625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1012.453125,
+            "width": 704,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1081.234375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "raw-materials/plant-based-concentrates/en",
+    "url": "/en/raw-materials/plant-based-concentrates",
+    "height": 565.953125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 923.96875,
+        "width": 631.6875,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 969.265625,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1012.453125,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 710.3125,
+        "y": 923.96875,
+        "width": 631.6875,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 710.3125,
+            "y": 969.265625,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 710.3125,
+            "y": 1012.453125,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 710.3125,
+            "y": 1055.640625,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "raw-materials/plant-based-concentrates/es",
+    "url": "/es/materias-primas/concentrados-vegetales",
+    "height": 591.546875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 923.96875,
+        "width": 631.6875,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 24,
+            "y": 969.265625,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1012.453125,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 710.3125,
+        "y": 923.96875,
+        "width": 631.6875,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 710.3125,
+            "y": 969.265625,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 710.3125,
+            "y": 1012.453125,
+            "width": 631.6875,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 710.3125,
+            "y": 1081.234375,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "raw-materials/iqf-frozen-fruits/en",
+    "url": "/en/raw-materials/iqf-frozen-fruits",
+    "height": 564.890625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 910.265625,
+        "width": 631.6875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 955.5625,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 998.75,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1041.9375,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1085.125,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 710.3125,
+        "y": 910.265625,
+        "width": 631.6875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 710.3125,
+            "y": 955.5625,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 710.3125,
+            "y": 998.75,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 710.3125,
+            "y": 1041.9375,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 710.3125,
+            "y": 1085.125,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "raw-materials/iqf-frozen-fruits/es",
+    "url": "/es/materias-primas/citricos-congelados-iqf",
+    "height": 564.890625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 910.265625,
+        "width": 631.6875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 955.5625,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 998.75,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1041.9375,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1085.125,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 710.3125,
+        "y": 910.265625,
+        "width": 631.6875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 710.3125,
+            "y": 955.5625,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 710.3125,
+            "y": 998.75,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 710.3125,
+            "y": 1041.9375,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 710.3125,
+            "y": 1085.125,
+            "width": 631.6875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "flavours-aromas/sweet-applications/en",
+    "url": "/en/flavours-aromas/sweet-applications",
+    "height": 729.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 923.96875,
+        "width": 402.90625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 969.265625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1012.453125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1055.640625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1098.828125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 481.53125,
+        "y": 923.96875,
+        "width": 402.921875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 481.53125,
+            "y": 969.265625,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 1012.453125,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 1055.640625,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 939.078125,
+        "y": 923.96875,
+        "width": 402.90625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 939.078125,
+            "y": 969.265625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 939.078125,
+            "y": 1012.453125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "flavours-aromas/sweet-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-dulces",
+    "height": 729.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 923.96875,
+        "width": 402.90625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 969.265625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1012.453125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1055.640625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1098.828125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 481.53125,
+        "y": 923.96875,
+        "width": 402.921875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 481.53125,
+            "y": 969.265625,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 1012.453125,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 1055.640625,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 939.078125,
+        "y": 923.96875,
+        "width": 402.90625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 939.078125,
+            "y": 969.265625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 939.078125,
+            "y": 1012.453125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "flavours-aromas/beverage-applications/en",
+    "url": "/en/flavours-aromas/beverage-applications",
+    "height": 698.578125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 892.609375,
+        "width": 402.90625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 937.90625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 981.09375,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1024.28125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1067.46875,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 481.53125,
+        "y": 892.609375,
+        "width": 402.921875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 481.53125,
+            "y": 937.90625,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 981.09375,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 1024.28125,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 939.078125,
+        "y": 892.609375,
+        "width": 402.90625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 939.078125,
+            "y": 937.90625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 939.078125,
+            "y": 981.09375,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "flavours-aromas/beverage-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-para-bebidas",
+    "height": 698.578125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 892.609375,
+        "width": 402.90625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 937.90625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 981.09375,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1024.28125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1067.46875,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 481.53125,
+        "y": 892.609375,
+        "width": 402.921875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 481.53125,
+            "y": 937.90625,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 981.09375,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 1024.28125,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 939.078125,
+        "y": 892.609375,
+        "width": 402.90625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 939.078125,
+            "y": 937.90625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 939.078125,
+            "y": 981.09375,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "flavours-aromas/savoury-applications/en",
+    "url": "/en/flavours-aromas/savoury-applications",
+    "height": 729.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 923.96875,
+        "width": 402.90625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 24,
+            "y": 969.265625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1012.453125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1055.640625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1098.828125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 481.53125,
+        "y": 923.96875,
+        "width": 402.921875,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 481.53125,
+            "y": 969.265625,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 1012.453125,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 1055.640625,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 939.078125,
+        "y": 923.96875,
+        "width": 402.90625,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 939.078125,
+            "y": 969.265625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 939.078125,
+            "y": 1012.453125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "flavours-aromas/savoury-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-saladas",
+    "height": 755.53125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 947.28125,
+        "width": 402.90625,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 24,
+            "y": 992.578125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1035.765625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1078.953125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1122.140625,
+            "width": 402.90625,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 481.53125,
+        "y": 947.28125,
+        "width": 402.921875,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 481.53125,
+            "y": 992.578125,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 1035.765625,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 481.53125,
+            "y": 1078.953125,
+            "width": 402.921875,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 939.078125,
+        "y": 947.28125,
+        "width": 402.90625,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 939.078125,
+            "y": 992.578125,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 939.078125,
+            "y": 1035.765625,
+            "width": 402.90625,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "industrial-consulting/food-sector/en",
+    "url": "/en/industrial-consulting/food-sector",
+    "height": 642.5,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 879.71875,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 925.015625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 968.203125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1011.390625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "industrial-consulting/food-sector/es",
+    "url": "/es/consultoria-industrial/sector-alimentario",
+    "height": 655.390625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 892.609375,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 937.90625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 981.09375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1024.28125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "industrial-consulting/industrial-sector/en",
+    "url": "/en/industrial-consulting/industrial-sector",
+    "height": 642.5,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 879.71875,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 925.015625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 968.203125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1011.390625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "industrial-consulting/industrial-sector/es",
+    "url": "/es/consultoria-industrial/sector-industrial",
+    "height": 642.5,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 879.71875,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 925.015625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 968.203125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1011.390625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "industrial-consulting/environmental-sector/en",
+    "url": "/en/industrial-consulting/environmental-sector",
+    "height": 686.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 923.96875,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 969.265625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1012.453125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1055.640625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "industrial-consulting/environmental-sector/es",
+    "url": "/es/consultoria-industrial/sector-medioambiental",
+    "height": 642.5,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 879.71875,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 925.015625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 968.203125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1011.390625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "industrial-consulting/pharmaceutical-sector/en",
+    "url": "/en/industrial-consulting/pharmaceutical-sector",
+    "height": 686.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 954.515625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 999.8125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1043,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1086.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1366,
+    "id": "industrial-consulting/pharmaceutical-sector/es",
+    "url": "/es/consultoria-industrial/sector-farmaceutico",
+    "height": 642.5,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 24,
+        "y": 910.265625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 24,
+            "y": 955.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 998.75,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 24,
+            "y": 1041.9375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "packaging-solutions/cans/en",
+    "url": "/en/packaging-solutions/cans",
+    "height": 402.75,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1440,
+    "id": "packaging-solutions/cans/es",
+    "url": "/es/soluciones-de-embalaje/latas",
+    "height": 415.984375,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1440,
+    "id": "packaging-solutions/bottles/en",
+    "url": "/en/packaging-solutions/bottles",
+    "height": 322.9375,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1440,
+    "id": "packaging-solutions/bottles/es",
+    "url": "/es/soluciones-de-embalaje/botellas",
+    "height": 322.9375,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1440,
+    "id": "packaging-solutions/closures/en",
+    "url": "/en/packaging-solutions/closures",
+    "height": 322.9375,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1440,
+    "id": "packaging-solutions/closures/es",
+    "url": "/es/soluciones-de-embalaje/cierres",
+    "height": 289.515625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1440,
+    "id": "packaging-solutions/labels/en",
+    "url": "/en/packaging-solutions/labels",
+    "height": 322.9375,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1440,
+    "id": "packaging-solutions/labels/es",
+    "url": "/es/soluciones-de-embalaje/etiquetas",
+    "height": 322.9375,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1440,
+    "id": "raw-materials/fruit-concentrates/en",
+    "url": "/en/raw-materials/fruit-concentrates",
+    "height": 612.40625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 931.3125,
+        "width": 704,
+        "height": 235.5,
+        "items": [
+          {
+            "x": 48,
+            "y": 976.609375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1019.796875,
+            "width": 704,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1088.578125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "raw-materials/fruit-concentrates/es",
+    "url": "/es/materias-primas/concentrados-de-frutas",
+    "height": 645.828125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 964.734375,
+        "width": 704,
+        "height": 235.5,
+        "items": [
+          {
+            "x": 48,
+            "y": 1010.03125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1053.21875,
+            "width": 704,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1122,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "raw-materials/plant-based-concentrates/en",
+    "url": "/en/raw-materials/plant-based-concentrates",
+    "height": 585.1875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 964.734375,
+        "width": 643.203125,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 48,
+            "y": 1010.03125,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1053.21875,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 748.796875,
+        "y": 964.734375,
+        "width": 643.203125,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 748.796875,
+            "y": 1010.03125,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 748.796875,
+            "y": 1053.21875,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 748.796875,
+            "y": 1096.40625,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "raw-materials/plant-based-concentrates/es",
+    "url": "/es/materias-primas/concentrados-vegetales",
+    "height": 610.78125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 964.734375,
+        "width": 643.203125,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 48,
+            "y": 1010.03125,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1053.21875,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 748.796875,
+        "y": 964.734375,
+        "width": 643.203125,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 748.796875,
+            "y": 1010.03125,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 748.796875,
+            "y": 1053.21875,
+            "width": 643.203125,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 748.796875,
+            "y": 1122,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "raw-materials/iqf-frozen-fruits/en",
+    "url": "/en/raw-materials/iqf-frozen-fruits",
+    "height": 581.71875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 953.234375,
+        "width": 643.203125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 48,
+            "y": 998.53125,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1041.71875,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1084.90625,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1128.09375,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 748.796875,
+        "y": 953.234375,
+        "width": 643.203125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 748.796875,
+            "y": 998.53125,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 748.796875,
+            "y": 1041.71875,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 748.796875,
+            "y": 1084.90625,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 748.796875,
+            "y": 1128.09375,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "raw-materials/iqf-frozen-fruits/es",
+    "url": "/es/materias-primas/citricos-congelados-iqf",
+    "height": 628.375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 999.890625,
+        "width": 643.203125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 48,
+            "y": 1045.1875,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1088.375,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1131.5625,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1174.75,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 748.796875,
+        "y": 999.890625,
+        "width": 643.203125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 748.796875,
+            "y": 1045.1875,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 748.796875,
+            "y": 1088.375,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 748.796875,
+            "y": 1131.5625,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 748.796875,
+            "y": 1174.75,
+            "width": 643.203125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "flavours-aromas/sweet-applications/en",
+    "url": "/en/flavours-aromas/sweet-applications",
+    "height": 751.765625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 964.734375,
+        "width": 409.59375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 48,
+            "y": 1010.03125,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1053.21875,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1096.40625,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1139.59375,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 515.1875,
+        "y": 964.734375,
+        "width": 409.609375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 515.1875,
+            "y": 1010.03125,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1053.21875,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1096.40625,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 982.390625,
+        "y": 964.734375,
+        "width": 409.59375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 982.390625,
+            "y": 1010.03125,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 982.390625,
+            "y": 1053.21875,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "flavours-aromas/sweet-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-dulces",
+    "height": 751.765625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 964.734375,
+        "width": 409.59375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 48,
+            "y": 1010.03125,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1053.21875,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1096.40625,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1139.59375,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 515.1875,
+        "y": 964.734375,
+        "width": 409.609375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 515.1875,
+            "y": 1010.03125,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1053.21875,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1096.40625,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 982.390625,
+        "y": 964.734375,
+        "width": 409.59375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 982.390625,
+            "y": 1010.03125,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 982.390625,
+            "y": 1053.21875,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "flavours-aromas/beverage-applications/en",
+    "url": "/en/flavours-aromas/beverage-applications",
+    "height": 718.34375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 945.265625,
+        "width": 409.59375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 48,
+            "y": 990.5625,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1033.75,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1076.9375,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1120.125,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 515.1875,
+        "y": 945.265625,
+        "width": 409.609375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 515.1875,
+            "y": 990.5625,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1033.75,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1076.9375,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 982.390625,
+        "y": 945.265625,
+        "width": 409.59375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 982.390625,
+            "y": 990.5625,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 982.390625,
+            "y": 1033.75,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "flavours-aromas/beverage-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-para-bebidas",
+    "height": 718.34375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 945.265625,
+        "width": 409.59375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 48,
+            "y": 990.5625,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1033.75,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1076.9375,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1120.125,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 515.1875,
+        "y": 945.265625,
+        "width": 409.609375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 515.1875,
+            "y": 990.5625,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1033.75,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1076.9375,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 982.390625,
+        "y": 945.265625,
+        "width": 409.59375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 982.390625,
+            "y": 990.5625,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 982.390625,
+            "y": 1033.75,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "flavours-aromas/savoury-applications/en",
+    "url": "/en/flavours-aromas/savoury-applications",
+    "height": 751.765625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 964.734375,
+        "width": 409.59375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 48,
+            "y": 1010.03125,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1053.21875,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1096.40625,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1139.59375,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 515.1875,
+        "y": 964.734375,
+        "width": 409.609375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 515.1875,
+            "y": 1010.03125,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1053.21875,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1096.40625,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 982.390625,
+        "y": 964.734375,
+        "width": 409.59375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 982.390625,
+            "y": 1010.03125,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 982.390625,
+            "y": 1053.21875,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "flavours-aromas/savoury-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-saladas",
+    "height": 777.359375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 978.6875,
+        "width": 409.59375,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 48,
+            "y": 1023.984375,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1067.171875,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1110.359375,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1153.546875,
+            "width": 409.59375,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 515.1875,
+        "y": 978.6875,
+        "width": 409.609375,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 515.1875,
+            "y": 1023.984375,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1067.171875,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 515.1875,
+            "y": 1110.359375,
+            "width": 409.609375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 982.390625,
+        "y": 978.6875,
+        "width": 409.59375,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 982.390625,
+            "y": 1023.984375,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 982.390625,
+            "y": 1067.171875,
+            "width": 409.59375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "industrial-consulting/food-sector/en",
+    "url": "/en/industrial-consulting/food-sector",
+    "height": 661.921875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 918.078125,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 48,
+            "y": 963.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1006.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1049.75,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "industrial-consulting/food-sector/es",
+    "url": "/es/consultoria-industrial/sector-alimentario",
+    "height": 675.15625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 931.3125,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 48,
+            "y": 976.609375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1019.796875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1062.984375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "industrial-consulting/industrial-sector/en",
+    "url": "/en/industrial-consulting/industrial-sector",
+    "height": 661.921875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 918.078125,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 48,
+            "y": 963.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1006.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1049.75,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "industrial-consulting/industrial-sector/es",
+    "url": "/es/consultoria-industrial/sector-industrial",
+    "height": 661.921875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 918.078125,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 48,
+            "y": 963.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1006.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1049.75,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "industrial-consulting/environmental-sector/en",
+    "url": "/en/industrial-consulting/environmental-sector",
+    "height": 708.578125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 978.6875,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 48,
+            "y": 1023.984375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1067.171875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1110.359375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "industrial-consulting/environmental-sector/es",
+    "url": "/es/consultoria-industrial/sector-medioambiental",
+    "height": 661.921875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 932.03125,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 48,
+            "y": 977.328125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1020.515625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1063.703125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "industrial-consulting/pharmaceutical-sector/en",
+    "url": "/en/industrial-consulting/pharmaceutical-sector",
+    "height": 708.578125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 999.890625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 48,
+            "y": 1045.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1088.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1131.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "id": "industrial-consulting/pharmaceutical-sector/es",
+    "url": "/es/consultoria-industrial/sector-farmaceutico",
+    "height": 661.921875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 48,
+        "y": 953.234375,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 48,
+            "y": 998.53125,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1041.71875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 48,
+            "y": 1084.90625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "packaging-solutions/cans/en",
+    "url": "/en/packaging-solutions/cans",
+    "height": 435.9375,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1600,
+    "id": "packaging-solutions/cans/es",
+    "url": "/es/soluciones-de-embalaje/latas",
+    "height": 444.046875,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1600,
+    "id": "packaging-solutions/bottles/en",
+    "url": "/en/packaging-solutions/bottles",
+    "height": 354.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1600,
+    "id": "packaging-solutions/bottles/es",
+    "url": "/es/soluciones-de-embalaje/botellas",
+    "height": 354.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1600,
+    "id": "packaging-solutions/closures/en",
+    "url": "/en/packaging-solutions/closures",
+    "height": 354.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1600,
+    "id": "packaging-solutions/closures/es",
+    "url": "/es/soluciones-de-embalaje/cierres",
+    "height": 354.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1600,
+    "id": "packaging-solutions/labels/en",
+    "url": "/en/packaging-solutions/labels",
+    "height": 354.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1600,
+    "id": "packaging-solutions/labels/es",
+    "url": "/es/soluciones-de-embalaje/etiquetas",
+    "height": 354.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1600,
+    "id": "raw-materials/fruit-concentrates/en",
+    "url": "/en/raw-materials/fruit-concentrates",
+    "height": 643.671875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1024.171875,
+        "width": 704,
+        "height": 235.5,
+        "items": [
+          {
+            "x": 128,
+            "y": 1069.46875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1112.65625,
+            "width": 704,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1181.4375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "raw-materials/fruit-concentrates/es",
+    "url": "/es/materias-primas/concentrados-de-frutas",
+    "height": 687.390625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 704,
+        "height": 235.5,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 704,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1225.15625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "raw-materials/plant-based-concentrates/en",
+    "url": "/en/raw-materials/plant-based-concentrates",
+    "height": 626.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 640,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 832,
+        "y": 1067.890625,
+        "width": 640,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 832,
+            "y": 1113.1875,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 832,
+            "y": 1156.375,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 832,
+            "y": 1199.5625,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "raw-materials/plant-based-concentrates/es",
+    "url": "/es/materias-primas/concentrados-vegetales",
+    "height": 652.34375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 640,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 832,
+        "y": 1067.890625,
+        "width": 640,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 832,
+            "y": 1113.1875,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 832,
+            "y": 1156.375,
+            "width": 640,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 832,
+            "y": 1225.15625,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "raw-materials/iqf-frozen-fruits/en",
+    "url": "/en/raw-materials/iqf-frozen-fruits",
+    "height": 626.21875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1054.21875,
+        "width": 640,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 128,
+            "y": 1099.515625,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1142.703125,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1185.890625,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1229.078125,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 832,
+        "y": 1054.21875,
+        "width": 640,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 832,
+            "y": 1099.515625,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 832,
+            "y": 1142.703125,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 832,
+            "y": 1185.890625,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 832,
+            "y": 1229.078125,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "raw-materials/iqf-frozen-fruits/es",
+    "url": "/es/materias-primas/citricos-congelados-iqf",
+    "height": 669.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1097.9375,
+        "width": 640,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 128,
+            "y": 1143.234375,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1186.421875,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1229.609375,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1272.796875,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 832,
+        "y": 1097.9375,
+        "width": 640,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 832,
+            "y": 1143.234375,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 832,
+            "y": 1186.421875,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 832,
+            "y": 1229.609375,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 832,
+            "y": 1272.796875,
+            "width": 640,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "flavours-aromas/sweet-applications/en",
+    "url": "/en/flavours-aromas/sweet-applications",
+    "height": 794.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1242.75,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 597.328125,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 597.328125,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1066.65625,
+        "y": 1067.890625,
+        "width": 405.34375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 1066.65625,
+            "y": 1113.1875,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1066.65625,
+            "y": 1156.375,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "flavours-aromas/sweet-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-dulces",
+    "height": 794.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1242.75,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 597.328125,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 597.328125,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1066.65625,
+        "y": 1067.890625,
+        "width": 405.34375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 1066.65625,
+            "y": 1113.1875,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1066.65625,
+            "y": 1156.375,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "flavours-aromas/beverage-applications/en",
+    "url": "/en/flavours-aromas/beverage-applications",
+    "height": 794.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1242.75,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 597.328125,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 597.328125,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1066.65625,
+        "y": 1067.890625,
+        "width": 405.34375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 1066.65625,
+            "y": 1113.1875,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1066.65625,
+            "y": 1156.375,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "flavours-aromas/beverage-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-para-bebidas",
+    "height": 794.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1242.75,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 597.328125,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 597.328125,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1066.65625,
+        "y": 1067.890625,
+        "width": 405.34375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 1066.65625,
+            "y": 1113.1875,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1066.65625,
+            "y": 1156.375,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "flavours-aromas/savoury-applications/en",
+    "url": "/en/flavours-aromas/savoury-applications",
+    "height": 794.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1242.75,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 597.328125,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 597.328125,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1066.65625,
+        "y": 1067.890625,
+        "width": 405.34375,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 1066.65625,
+            "y": 1113.1875,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1066.65625,
+            "y": 1156.375,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "flavours-aromas/savoury-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-saladas",
+    "height": 820.53125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1242.75,
+            "width": 405.328125,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 597.328125,
+        "y": 1067.890625,
+        "width": 405.328125,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 597.328125,
+            "y": 1113.1875,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1156.375,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 597.328125,
+            "y": 1199.5625,
+            "width": 405.328125,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1066.65625,
+        "y": 1067.890625,
+        "width": 405.34375,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 1066.65625,
+            "y": 1113.1875,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1066.65625,
+            "y": 1156.375,
+            "width": 405.34375,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "industrial-consulting/food-sector/en",
+    "url": "/en/industrial-consulting/food-sector",
+    "height": 699.921875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1016.0625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 128,
+            "y": 1061.359375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1104.546875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1147.734375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "industrial-consulting/food-sector/es",
+    "url": "/es/consultoria-industrial/sector-alimentario",
+    "height": 751.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1199.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "industrial-consulting/industrial-sector/en",
+    "url": "/en/industrial-consulting/industrial-sector",
+    "height": 699.921875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1016.0625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 128,
+            "y": 1061.359375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1104.546875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1147.734375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "industrial-consulting/industrial-sector/es",
+    "url": "/es/consultoria-industrial/sector-industrial",
+    "height": 708.03125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1024.171875,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 128,
+            "y": 1069.46875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1112.65625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1155.84375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "industrial-consulting/environmental-sector/en",
+    "url": "/en/industrial-consulting/environmental-sector",
+    "height": 751.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1199.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "industrial-consulting/environmental-sector/es",
+    "url": "/es/consultoria-industrial/sector-medioambiental",
+    "height": 751.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1067.890625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 128,
+            "y": 1113.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1156.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1199.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "industrial-consulting/pharmaceutical-sector/en",
+    "url": "/en/industrial-consulting/pharmaceutical-sector",
+    "height": 751.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1097.9375,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 128,
+            "y": 1143.234375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1186.421875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1229.609375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1600,
+    "id": "industrial-consulting/pharmaceutical-sector/es",
+    "url": "/es/consultoria-industrial/sector-farmaceutico",
+    "height": 751.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 128,
+        "y": 1097.9375,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 128,
+            "y": 1143.234375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1186.421875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 128,
+            "y": 1229.609375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "packaging-solutions/cans/en",
+    "url": "/en/packaging-solutions/cans",
+    "height": 495.765625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1920,
+    "id": "packaging-solutions/cans/es",
+    "url": "/es/soluciones-de-embalaje/latas",
+    "height": 495.765625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1920,
+    "id": "packaging-solutions/bottles/en",
+    "url": "/en/packaging-solutions/bottles",
+    "height": 362.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1920,
+    "id": "packaging-solutions/bottles/es",
+    "url": "/es/soluciones-de-embalaje/botellas",
+    "height": 362.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1920,
+    "id": "packaging-solutions/closures/en",
+    "url": "/en/packaging-solutions/closures",
+    "height": 362.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1920,
+    "id": "packaging-solutions/closures/es",
+    "url": "/es/soluciones-de-embalaje/cierres",
+    "height": 362.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1920,
+    "id": "packaging-solutions/labels/en",
+    "url": "/en/packaging-solutions/labels",
+    "height": 362.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1920,
+    "id": "packaging-solutions/labels/es",
+    "url": "/es/soluciones-de-embalaje/etiquetas",
+    "height": 362.890625,
+    "overflow": 0,
+    "groups": []
+  },
+  {
+    "width": 1920,
+    "id": "raw-materials/fruit-concentrates/en",
+    "url": "/en/raw-materials/fruit-concentrates",
+    "height": 651.671875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1060.171875,
+        "width": 704,
+        "height": 235.5,
+        "items": [
+          {
+            "x": 288,
+            "y": 1105.46875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1148.65625,
+            "width": 704,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1217.4375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "raw-materials/fruit-concentrates/es",
+    "url": "/es/materias-primas/concentrados-de-frutas",
+    "height": 695.390625,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 704,
+        "height": 235.5,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 704,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1261.15625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "raw-materials/plant-based-concentrates/en",
+    "url": "/en/raw-materials/plant-based-concentrates",
+    "height": 634.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 636,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 996,
+        "y": 1103.890625,
+        "width": 636,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 996,
+            "y": 1149.1875,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 996,
+            "y": 1192.375,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 996,
+            "y": 1235.5625,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "raw-materials/plant-based-concentrates/es",
+    "url": "/es/materias-primas/concentrados-vegetales",
+    "height": 660.34375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 636,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 996,
+        "y": 1103.890625,
+        "width": 636,
+        "height": 200.453125,
+        "items": [
+          {
+            "x": 996,
+            "y": 1149.1875,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 996,
+            "y": 1192.375,
+            "width": 636,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 996,
+            "y": 1261.15625,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "raw-materials/iqf-frozen-fruits/en",
+    "url": "/en/raw-materials/iqf-frozen-fruits",
+    "height": 634.21875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1188.84375,
+        "width": 636,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 288,
+            "y": 1234.140625,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1277.328125,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1320.515625,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1363.703125,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 996,
+        "y": 1188.84375,
+        "width": 636,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 996,
+            "y": 1234.140625,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 996,
+            "y": 1277.328125,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 996,
+            "y": 1320.515625,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 996,
+            "y": 1363.703125,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "raw-materials/iqf-frozen-fruits/es",
+    "url": "/es/materias-primas/citricos-congelados-iqf",
+    "height": 677.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1232.5625,
+        "width": 636,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 288,
+            "y": 1277.859375,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1321.046875,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1364.234375,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1407.421875,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 996,
+        "y": 1232.5625,
+        "width": 636,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 996,
+            "y": 1277.859375,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 996,
+            "y": 1321.046875,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 996,
+            "y": 1364.234375,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 996,
+            "y": 1407.421875,
+            "width": 636,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "flavours-aromas/sweet-applications/en",
+    "url": "/en/flavours-aromas/sweet-applications",
+    "height": 802.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1278.75,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 760,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 760,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1232,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 1232,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1232,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "flavours-aromas/sweet-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-dulces",
+    "height": 802.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1278.75,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 760,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 760,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1232,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 1232,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1232,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "flavours-aromas/beverage-applications/en",
+    "url": "/en/flavours-aromas/beverage-applications",
+    "height": 802.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1278.75,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 760,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 760,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1232,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 1232,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1232,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "flavours-aromas/beverage-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-para-bebidas",
+    "height": 802.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1278.75,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 760,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 760,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1232,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 1232,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1232,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "flavours-aromas/savoury-applications/en",
+    "url": "/en/flavours-aromas/savoury-applications",
+    "height": 802.9375,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1278.75,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 760,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 760,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1232,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 218.046875,
+        "items": [
+          {
+            "x": 1232,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1232,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "flavours-aromas/savoury-applications/es",
+    "url": "/es/sabores-y-aromas/aplicaciones-saladas",
+    "height": 828.53125,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1278.75,
+            "width": 400,
+            "height": 68.78125,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 760,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 760,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 760,
+            "y": 1235.5625,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      },
+      {
+        "x": 1232,
+        "y": 1103.890625,
+        "width": 400,
+        "height": 243.640625,
+        "items": [
+          {
+            "x": 1232,
+            "y": 1149.1875,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 1232,
+            "y": 1192.375,
+            "width": 400,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "industrial-consulting/food-sector/en",
+    "url": "/en/industrial-consulting/food-sector",
+    "height": 707.921875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1052.0625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 288,
+            "y": 1097.359375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1140.546875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1183.734375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "industrial-consulting/food-sector/es",
+    "url": "/es/consultoria-industrial/sector-alimentario",
+    "height": 759.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1235.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "industrial-consulting/industrial-sector/en",
+    "url": "/en/industrial-consulting/industrial-sector",
+    "height": 707.921875,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1052.0625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 288,
+            "y": 1097.359375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1140.546875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1183.734375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "industrial-consulting/industrial-sector/es",
+    "url": "/es/consultoria-industrial/sector-industrial",
+    "height": 759.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1235.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "industrial-consulting/environmental-sector/en",
+    "url": "/en/industrial-consulting/environmental-sector",
+    "height": 759.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1235.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "industrial-consulting/environmental-sector/es",
+    "url": "/es/consultoria-industrial/sector-medioambiental",
+    "height": 759.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1103.890625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 288,
+            "y": 1149.1875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1192.375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1235.5625,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "industrial-consulting/pharmaceutical-sector/en",
+    "url": "/en/industrial-consulting/pharmaceutical-sector",
+    "height": 759.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1232.5625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 288,
+            "y": 1277.859375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1321.046875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1364.234375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "width": 1920,
+    "id": "industrial-consulting/pharmaceutical-sector/es",
+    "url": "/es/consultoria-industrial/sector-farmaceutico",
+    "height": 759.75,
+    "overflow": 0,
+    "groups": [
+      {
+        "x": 288,
+        "y": 1232.5625,
+        "width": 704,
+        "height": 174.859375,
+        "items": [
+          {
+            "x": 288,
+            "y": 1277.859375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1321.046875,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          },
+          {
+            "x": 288,
+            "y": 1364.234375,
+            "width": 704,
+            "height": 43.1875,
+            "iconTopOffset": 11.98
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { CSSProperties } from "react";
 import { CategoryHero, categorySectionIds } from "@/components/sections/category-hero";
 import { ConcentrateExplorer } from "@/components/sections/concentrate-explorer";
 import { CtaBand } from "@/components/sections/cta-band";
@@ -91,10 +90,7 @@ export default async function CategoryPage({ params }: Props) {
             <p className="lead">{category.detail[locale]}</p>
           </div>
           {category.features && category.features.length > 0 && (
-            <ul
-              className="check-list detail-scope__features"
-              style={{ "--feature-count": category.features.length } as CSSProperties}
-            >
+            <ul className="check-list detail-scope__features">
               {category.features.map((feature) => (
                 <li key={feature.en}>
                   <Icon name="check" />
@@ -104,11 +100,7 @@ export default async function CategoryPage({ params }: Props) {
             </ul>
           )}
           {category.scopeGroups && (
-            <div
-              className="detail-scope__groups"
-              data-count={category.scopeGroups.length}
-              style={{ "--group-count": category.scopeGroups.length } as CSSProperties}
-            >
+            <div className="detail-scope__groups" data-count={category.scopeGroups.length}>
               {category.scopeGroups.map((group) => (
                 <div key={group.title.en} data-items={group.items.length}>
                   <h3>{group.title[locale]}</h3>

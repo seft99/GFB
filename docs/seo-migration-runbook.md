@@ -117,7 +117,7 @@ Outside Vercel, production means `NODE_ENV=production`. The canonical origin is 
 `src/lib/metadata.ts` (not taken from an env variable). `robots.txt` allows crawling everywhere so
 crawlers can read the noindex header, and lists both sitemaps.
 
-## 5. Verification (actually run, 2026-10-28)
+## 5. Verification
 
 | Command                                                                                                                           | Result                                                                                   |
 | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
@@ -140,6 +140,19 @@ numbers, not field Core Web Vitals.
 
 Not verifiable here: live deployment behaviour (Vercel host headers, TLS, apex/HTTP redirects),
 Google's selected canonicals, Rich Results Test / URL Inspection, Search Console data.
+
+### Revalidation (2026-10-29 UTC)
+
+- The official English and Spanish sitemap roots were crawled again: 34 sitemap files, 286
+  localized URLs (143 per locale), all 200, with three additional historical internal links.
+- The manifest was regenerated: 289 rows (276 retained 200 pages, four retained review pages,
+  six permanent redirects and three broken historical links).
+- The full verifier against the public Vercel preview completed 631 checks with zero failures.
+  It covered the manifest, canonical and hreflang markup, body identity, redirects, sitemaps,
+  assets, internal discovery and the preview noindex policy.
+- The verifier now treats only the actual production hostname as indexable. A forwarded-host
+  override simulates production only on localhost because Vercel strips that header on remote
+  preview requests.
 
 ## 6. Launch checklist (requires explicit approval; not done in this task)
 
