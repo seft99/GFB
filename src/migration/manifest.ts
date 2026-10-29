@@ -14,6 +14,8 @@ import { publicUrl } from "./public-paths.ts";
 export type LegacyLocalizedPage = Processed & {
   metaTitle: string;
   metaDescription: string;
+  /** Hero lead: complete sentences (formats or first paragraph); absent when there is none. */
+  summary?: string;
   untranslatedItems: number;
 };
 

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { processBlocks, type Item, type Section } from "../../src/migration/content.ts";
-import { corrections } from "../../src/migration/corrections.ts";
+import { blockCorrections, corrections } from "../../src/migration/corrections.ts";
 import { families } from "../../src/migration/families.ts";
 import { detailPaths, legacyPage } from "../../src/migration/manifest.ts";
 import { en } from "../../src/i18n/dictionaries/en.ts";
@@ -13,9 +13,12 @@ const scope = families.filter((family) =>
   ["fruit-concentrates", "iqf-frozen-fruits"].includes(family.parent.category ?? "")
 );
 const scopePaths = scope.flatMap((family) => family.paths);
-const crawl: { locale: string; sourceUrl: string; internalOutboundLinks: string[] }[] = JSON.parse(
-  readFileSync(new URL("../../docs/migration-data/legacy-crawl.json", import.meta.url), "utf8")
-);
+const crawl: {
+  locale: string;
+  sourceUrl: string;
+  internalOutboundLinks: string[];
+  contentBlocks: { text: string }[];
+}[] = JSON.parse(readFileSync(new URL("../../docs/migration-data/legacy-crawl.json", import.meta.url), "utf8"));
 const textOf = (item: Item) =>
   item.type === "specs"
     ? item.rows.flat().join(" ")
@@ -156,9 +159,32 @@ test("editorial corrections are applied and no lime page calls its product lemon
   assert.doesNotMatch(pageText(legacyPage("/iqf-lemon-slices/iqf-lemon-one-fourths-cut")!.en.sections), /grapefruit/i);
 });
 
+/** Measured values in a text ("59.44 mm", "57,4 mm", "100%"), spacing and decimal mark normalised. */
+const measuredValues = (text: string) =>
+  [...text.replace(/(\d+)-degree/gi, "$1°").matchAll(/(\d+(?:[.,]\d+)?)\s*(mm|°|º|%|mg|NTU|UFC|ml)/g)].map(
+    ([, number, unit]) => `${number.replace(",", ".")}${unit}`
+  );
+
 test("technical values are unchanged by corrections", () => {
-  for (const correction of corrections)
-    assert.doesNotMatch(correction.find + correction.replace, /\d+\s*(mm|°|º|%|mg|NTU|UFC)/);
+  // A correction may remove a claim with figures (e.g. nutrient amounts), never add or alter one:
+  // every value in the replacement is a value of the replaced text.
+  for (const correction of corrections) {
+    const source = new Set(measuredValues(correction.find));
+    for (const value of measuredValues(correction.replace))
+      assert.ok(source.has(value), `${correction.path}: ${value}`);
+  }
+  for (const correction of blockCorrections) {
+    // Prefix matches name a long published paragraph: read its full text from the crawl.
+    const page = crawl.find(
+      (row) => new URL(row.sourceUrl).pathname === correction.path && row.locale === (correction.locale ?? "en")
+    );
+    const blocks = correction.blocks.map(
+      (text) => page?.contentBlocks.find((block) => block.text.trim().startsWith(text))?.text ?? text
+    );
+    const source = new Set(measuredValues(blocks.join(" ")));
+    const replaced = correction.replace.map((block) => (typeof block === "string" ? block : block.text)).join(" ");
+    for (const value of measuredValues(replaced)) assert.ok(source.has(value), `${correction.path}: ${value}`);
+  }
 });
 
 test("coconut shows its published formats instead of empty headings", () => {

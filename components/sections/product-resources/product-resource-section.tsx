@@ -28,6 +28,7 @@ export function ProductResourceSection({ config, locale }: { config: ResourceSec
     technicalLink: library.technicalLink,
     overviewLink: library.overviewLink,
     products: library.units.products,
+    specification: library.specification,
     specifications: library.specifications,
     searchLabel: library.searchLabel,
     searchPlaceholder: library.searchPlaceholder,

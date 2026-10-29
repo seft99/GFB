@@ -145,7 +145,13 @@ async function verifyRetained(row) {
       )
       .filter((text) => text.length > 3)
       .slice(0, 6);
-    const missing = facts.filter((fact) => !page.text.includes(fact.replace(/\s+/g, " ")));
+    // "92 mm for 250 ml" (can heights) is shown as a Volume | Height table row: "250 ml 92 mm".
+    const shown = (fact) => {
+      const text = fact.replace(/\s+/g, " ");
+      const pair = text.match(/^(\S+ mm) (?:for|para) (\S+ ml)$/);
+      return pair ? page.text.includes(`${pair[2]} ${pair[1]}`) : page.text.includes(text);
+    };
+    const missing = facts.filter((fact) => !shown(fact));
     if (missing.length) fail(row.sourceUrl, "published facts missing", missing.slice(0, 2));
     count("contentIdentity");
   }

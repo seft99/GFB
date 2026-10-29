@@ -273,6 +273,16 @@ Other categories have no product pages and keep `LegacyCatalogue` (which renders
 - "Explore all {family} resources": the library family view (`?family=<slug>#<library>-library-title`) or the family's resource-group heading on its category page; omitted without one.
 - Coverage per page and language: `docs/related-resources-audit.md` (`node scripts/build-related-audit.ts`).
 
+## Desktop audit pass (content, localisation, presentation)
+
+- Content corrections stay in the migration pipeline: text corrections and field-boundary corrections (`blockCorrections`: RipCap coatings, ring crown cap shell and liner, can product pages) in `src/migration/corrections.ts`; a section published twice is shown once (`duplicate-section`). Values are never changed (guarded by `tests/unit/catalogue-integrity.test.ts`).
+- Spanish pages: English text the official ES pages left untranslated is translated field by field after unit normalisation (`src/migration/translations-es.ts`); codes, numbers, inequality signs, units and methods are kept. No English block is left (`tests/unit/translations-es.test.ts`).
+- Internal register of conflicts and open questions: `src/migration/content-register.ts` → `docs/content-register.md` (C02 grape summary vs sheets is checked automatically). Image gaps: `docs/asset-requests.md`.
+- Hero lead: the page's own `summary` (complete sentences; formats sentence for concentrates), never the truncated meta description.
+- IQF hero photographs only where the photograph shows that cut (`IQF_CUT_PHOTOS`); IQF H1s use "1/4 cut" / "1/8 cut" (URLs unchanged).
+- Layout: technical-document hero compacted; product and library H1/H2 use `--font-brand` on desktop; formats layout chosen by content (side by side with ≥3 formats and an overview; otherwise a compact stack at reading width, headed "Available formats"); a technical page's untitled description reads above its panels; bottle references with the same application are one group, and the application column is omitted when it repeats the group.
+- Product index (`components/sections/product-index.tsx`): one row per product identity with Overview / Product / Specification actions, category jump links and a client-side search; every link is in the server HTML.
+
 ## Header mega navigation
 
 - Config: `primaryNavigation(locale)` (`src/lib/navigation.ts`) adds a `MegaMenuConfig` to each division, built only from the catalogue, route helpers and dictionaries (`common.megaMenu`), so every link is an existing public URL in the current language. Layouts: `three-column` (Raw materials: categories · concentrate families · quick access), `two-column` (Packaging: categories · quick access to the cans, can ends and crown corks hubs) and `compact` (Flavours, Consulting: categories only). Each panel ends with "Explore all <division>" → the division page.

@@ -591,6 +591,10 @@
 }
 
 @media (min-width: 1100px) {
+  .tech-library__intro h2 {
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
   .tech-library__layout {
     grid-template-columns: minmax(0, 26fr) minmax(0, 74fr);
     align-items: start;

@@ -283,6 +283,27 @@ export const divisions: Division[] = [
           }
         },
         image: "/images/raw-materials/fruit-concentrates.avif",
+        // Packaging options from the official category page (/fruits-concentrates), category level.
+        scopeGroups: [
+          {
+            title: t("Packaging options", "Opciones de envase"),
+            items: [
+              t(
+                "Frozen, aseptic or non-aseptic: drums of 160 to 270 kg",
+                "Congelado, aséptico o no aséptico: bidones de 160 a 270 kg"
+              ),
+              t(
+                "Aseptic: bags in drums of 180 to 270 kg, bag-in-box of 5 to 25 kg, cardboard bins up to 1,000 kg",
+                "Aséptico: bolsas en bidones de 180 a 270 kg, bag-in-box de 5 a 25 kg, contenedores de cartón de hasta 1.000 kg"
+              ),
+              t("Bulk: tank trucks", "Granel: camiones cisterna")
+            ],
+            note: t(
+              "Available packaging depends on the concentrate and its format.",
+              "El envase disponible depende del concentrado y de su formato."
+            )
+          }
+        ],
         showcase: { image: "/images/raw-materials/grapes.webp", focus: "45% 55%" },
         explorer: {
           eyebrow: t("Concentrate portfolio", "Portafolio de concentrados"),

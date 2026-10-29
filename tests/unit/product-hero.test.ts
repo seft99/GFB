@@ -26,7 +26,10 @@ test("photographs match the product; presentations without one get none", () => 
   assert.equal(subject("/vegetables/asparagus"), "asparagus.webp");
   assert.equal(subject("/red-grape-juice/merlot"), "red-grape.webp");
   assert.equal(subject("/frozen-lemon"), "iqf-lemon.webp");
-  assert.equal(subject("/iqf-orange-frozen/iqf-orange-13-x-13-sticks"), "iqf-orange.webp");
+  // IQF: a photograph only for the cut it shows (fruit + cut); the hub keeps the family photo.
+  assert.equal(subject("/iqf-orange"), "iqf-orange.webp");
+  assert.equal(subject("/iqf-orange-frozen/iqf-orange-slices--6-%2F-9-mm"), "iqf-orange.webp");
+  assert.equal(subject("/iqf-lemon-slices/iqf-lemon-slices"), "iqf-lemon.webp");
   assert.equal(subject("/plant-based-concentrate-1/oat-concentrate"), "oat.webp");
   assert.equal(subject("/soft-drinks"), "soft-drinks.webp");
   assert.equal(subject("/aluminum-cans/sleek-can-d57mm"), "slim-can.webp");
@@ -43,6 +46,10 @@ test("photographs match the product; presentations without one get none", () => 
     "/iqf-orange-frozen/iqf-orange-zest",
     "/iqf-lime-slices/iqf-lime-zest",
     "/ripcap/26-mm-ripcap",
+    "/iqf-orange-frozen/iqf-orange-13-x-13-sticks",
+    "/iqf-lime-slices/iqf-lime-13-x-13-sticks",
+    "/iqf-lime-slices/iqf-lime-slice--6-%2F-9-mm",
+    "/iqf-lemon-slices/iqf-lemon-one-eights-cut",
     "/shrink-sleeve-labels",
     "/additives"
   ])

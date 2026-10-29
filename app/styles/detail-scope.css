@@ -101,6 +101,11 @@
 .detail-scope__groups .check-list li {
   font-size: 1rem;
 }
+.detail-scope__note {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
 .detail-scope__related {
   margin-top: 2.5rem;
 }
@@ -151,6 +156,16 @@
   }
   .detail-scope__groups[data-count="1"] > div {
     grid-column: 2;
+  }
+  /* A single list of three points (consulting focus, concentrate packaging) reads as three
+     aligned columns across the section instead of one narrow column. */
+  .detail-scope__groups[data-count="1"] > div[data-items="3"] {
+    grid-column: 1 / -1;
+  }
+  .detail-scope__groups > div[data-items="3"] .check-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 3vw, 3rem);
   }
   .detail-scope__groups > div {
     padding: 1.75rem 1.75rem 0;

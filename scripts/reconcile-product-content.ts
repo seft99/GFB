@@ -9,7 +9,8 @@
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { cleanText, normalizeUnits } from "../src/migration/content.ts";
-import { corrections } from "../src/migration/corrections.ts";
+import { blockCorrections, corrections } from "../src/migration/corrections.ts";
+import { displayProductName } from "../src/migration/technical-library.ts";
 import { detailPaths, legacyPage } from "../src/migration/manifest.ts";
 
 type CrawlRow = { locale: "en" | "es"; sourceUrl: string; contentBlocks: { tag: string; text: string }[] };
@@ -84,33 +85,54 @@ for (const path of detailPaths)
       const parts = line.includes(":") ? line.split(":").map(squash).filter(Boolean) : [];
       const has = (haystack: string) =>
         haystack.includes(text) || (parts.length > 1 && parts.every((part) => haystack.includes(part)));
-      const correction = corrections.find(
-        (item) =>
-          item.path === path &&
-          (!item.locale || item.locale === locale) &&
-          (item.find.includes(line) || line.includes(item.find.trim()))
-      );
+      const correction =
+        corrections.find(
+          (item) =>
+            item.path === path &&
+            (!item.locale || item.locale === locale) &&
+            (item.find.includes(line) || line.includes(item.find.trim()))
+        ) ??
+        // Field boundaries rebuilt (src/migration/corrections.ts `blockCorrections`): the line was
+        // part of a replaced run of blocks.
+        blockCorrections.find(
+          (item) =>
+            item.path === path &&
+            (item.locale ?? "en") === locale &&
+            item.blocks.some((block) => {
+              // A prefix names a long published paragraph: its whole text is the replaced block.
+              const full =
+                item.match === "prefix"
+                  ? source.contentBlocks.find((candidate) => candidate.text.trim().startsWith(block))?.text
+                  : block;
+              return Boolean(full && (cleanText(full).includes(line) || full.includes(line)));
+            })
+        );
       // "Not apply" (and the format label it answers) means the format is not offered.
       const notOffered =
         /^(not apply|no aplica)$/i.test(line) || /^(not apply|no aplica)$/i.test(lines[index + 1] ?? "");
-      const status: Status = correction
-        ? "corrected"
-        : has(page.text)
-          ? "retained"
-          : notOffered
-            ? "not-available"
-            : excluded.some((item) => item.includes(text) || text.includes(item))
-              ? "withheld"
-              : english && has(english)
-                ? "translated"
-                : "missing";
+      // IQF cut names are displayed in one notation ("one eights cut" → "1/8 cut").
+      const renamed =
+        displayProductName(line) !== line &&
+        [page.text, english].some((text) => text.includes(squash(displayProductName(line))));
+      const status: Status =
+        correction || renamed
+          ? "corrected"
+          : has(page.text)
+            ? "retained"
+            : notOffered
+              ? "not-available"
+              : excluded.some((item) => item.includes(text) || text.includes(item))
+                ? "withheld"
+                : english && has(english)
+                  ? "translated"
+                  : "missing";
       summary[status] = (summary[status] ?? 0) + 1;
       const inLive = livePage ? livePage.includes(text) : null;
       if (inLive === false) summary.sourceChanged++;
       return {
         field: line.slice(0, 160),
         status,
-        ...(correction ? { reason: correction.reason } : {}),
+        ...(correction ? { reason: correction.reason } : renamed ? { reason: "IQF cut name notation" } : {}),
         inLiveSource: inLive
       };
     });

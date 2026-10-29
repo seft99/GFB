@@ -133,6 +133,22 @@ const subjects: Record<string, HeroPhoto> = {
   }
 };
 
+/**
+ * IQF cut or presentation → the photograph that shows it (fruit + cut). Cuts not listed (1/4 and
+ * 1/8 cuts, sticks, julienne, lemon and grapefruit half slices, every lime cut, block zest,
+ * orange and lime zest, peel squares) have no matching photograph: image-free layout, listed in
+ * docs/asset-requests.md.
+ */
+const IQF_CUT_PHOTOS: Record<string, string> = {
+  "iqf-lemon-slices": "iqf-lemon",
+  "iqf-orange-slices--6-%2F-9-mm": "iqf-orange",
+  "iqf-orange-half-slices-6-%2F-9-mm": "iqf-orange",
+  "iqf-grapefruit-slices": "iqf-grapefruit",
+  "iqf-lemon-zest": "lemon-zest",
+  "iqf-lemon-peel-shells": "citrus-peel",
+  "iqf-orange-peel-shells": "citrus-peel"
+};
+
 /** Subject of a legacy product page, or undefined when no suitable photograph exists. */
 function subjectOf(path: string): string | undefined {
   const family = familyOf(path);
@@ -147,12 +163,11 @@ function subjectOf(path: string): string | undefined {
     case "iqf-orange":
     case "iqf-lime":
     case "iqf-grapefruit":
-      // Zest and peel are presentations of their own: a slice photograph would misrepresent them.
-      // Only formats a photograph actually shows get one (lemon zest; peel shells of lemon and
-      // orange); block zest, peel squares and orange/lime zest stay image-free.
-      if (slug === "iqf-lemon-zest") return "lemon-zest";
-      if (/peel-shells$/.test(slug)) return "citrus-peel";
-      return /zest|peel/.test(slug) ? undefined : family.id;
+      // The family hub and range overview use the family photograph; a cut or presentation gets
+      // a photograph only when it shows that cut (IQF_CUT_PHOTOS). The lime photograph shows
+      // halves, which is none of the lime cuts.
+      if (path === family.hub || path === "/frozen-lemon") return family.id;
+      return IQF_CUT_PHOTOS[slug];
     case "bottle-formats":
       return { "soft-drinks": "soft-drinks", "alcoholic-beverage": "alcoholic-beverages", water: "water" }[slug];
     case "aluminium-cans":

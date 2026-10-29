@@ -102,9 +102,9 @@ test.describe("product detail hero", () => {
     }
   });
 
-  test("the H1 keeps the published wording (page identity)", async ({ page }) => {
+  test("IQF cut names use one notation; the URL keeps the published slug", async ({ page }) => {
     await page.goto("/iqf-lemon-slices/iqf-lemon-one-eights-cut");
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("IQF lemon one eights cut");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("IQF lemon 1/8 cut");
   });
 });
 

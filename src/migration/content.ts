@@ -25,7 +25,13 @@ export type Processed = {
   sections: Section[];
   excluded: {
     text: string;
-    reason: "health-claim" | "manufacturing-claim" | "benefits-section" | "empty-heading" | "not-available";
+    reason:
+      | "health-claim"
+      | "manufacturing-claim"
+      | "benefits-section"
+      | "empty-heading"
+      | "not-available"
+      | "duplicate-section";
   }[];
 };
 
@@ -235,6 +241,12 @@ export function processBlocks(
     dropEmpty?: boolean;
     /** Concentrate pages: also withhold nutrition/health headings, text and table cells (NUTRITION). */
     strictClaims?: boolean;
+    /**
+     * Keep "Benefits" sections (packaging): there they list product capabilities, not health
+     * claims, and their lines still pass the claim filter one by one. Elsewhere the whole
+     * section is withheld (fruit benefits = nutrition claims).
+     */
+    keepBenefits?: boolean;
   }
 ): Processed {
   const cleaned = blocks
@@ -292,7 +304,7 @@ export function processBlocks(
     const heading = /^h[1-6]$/.test(tag) && isHeadingLike(text);
     if (heading) {
       flushRun();
-      if (BENEFITS_HEADING.test(text)) {
+      if (BENEFITS_HEADING.test(text) && !options.keepBenefits) {
         skippingBenefits = true;
         excluded.push({ text, reason: "benefits-section" });
         continue;
@@ -341,8 +353,16 @@ export function processBlocks(
   }
   flushRun();
   flush();
-  if (options.dropEmpty) return dropEmptyHeadings({ h1, eyebrow, sections, excluded });
-  return { h1, eyebrow, sections: sections.filter((item) => item.items.length > 0 || item.heading), excluded };
+  // A section published twice in full (e.g. "Coatings and printing" on /42mm-ripcap) is shown once.
+  const seen = new Set<string>();
+  const unique = sections.filter((item) => {
+    const key = JSON.stringify(item);
+    if (!item.items.length || !seen.has(key)) return seen.add(key);
+    excluded.push({ text: item.heading ?? "", reason: "duplicate-section" });
+    return false;
+  });
+  if (options.dropEmpty) return dropEmptyHeadings({ h1, eyebrow, sections: unique, excluded });
+  return { h1, eyebrow, sections: unique.filter((item) => item.items.length > 0 || item.heading), excluded };
 }
 
 /**
@@ -446,6 +466,21 @@ export function truncate(value: string, max: number): string {
   const cut = value.slice(0, max - 1);
   const sentence = cut.lastIndexOf(". ");
   return sentence > max * 0.5 ? cut.slice(0, sentence + 1) : `${cut.slice(0, cut.lastIndexOf(" "))}…`;
+}
+
+/**
+ * Hero summary from a paragraph: whole sentences only (never cut, never "…"), as many as fit in
+ * about 240 characters; undefined when even the first sentence is too long to be a summary.
+ */
+export function summarySentences(text: string, max = 240): string | undefined {
+  const sentences = text.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡0-9])/);
+  let summary = "";
+  for (const sentence of sentences) {
+    if (!summary) summary = sentence;
+    else if (`${summary} ${sentence}`.length <= max) summary = `${summary} ${sentence}`;
+    else break;
+  }
+  return summary.length <= 320 && /[.!?]$/.test(summary) ? summary : undefined;
 }
 
 export function firstProse(processed: Processed): string | undefined {

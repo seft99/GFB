@@ -17,7 +17,8 @@ import {
   type ProductContent,
   type RangeContent,
   type ReferenceColumn,
-  type TechnicalContent
+  type TechnicalContent,
+  type TechnicalPanel
 } from "@/src/migration/product-content";
 import { publicUrl } from "@/src/migration/public-paths";
 import "../../app/styles/product-detail-content.css";
@@ -75,15 +76,19 @@ export function ProductDetailContent({
   labels: ProductContentLabels;
 }) {
   const ctx: Ctx = { locale, labels, technical: content.variant === "technical-specification" };
+  // The heading names what the page has: no "product overview" without an overview.
+  const formatsOnly = content.variant === "formats-overview" && !content.overview.length && !content.notes.length;
   const title =
     content.variant === "product-range-features" && content.arrangement === "reference-collection"
       ? labels.productReferences
-      : {
-          "formats-overview": labels.formatsTitle,
-          "facts-applications": labels.factsTitle,
-          "technical-specification": labels.technicalTitle,
-          "product-range-features": labels.rangeTitle
-        }[content.variant];
+      : formatsOnly
+        ? labels.formatsPanel
+        : {
+            "formats-overview": labels.formatsTitle,
+            "facts-applications": labels.factsTitle,
+            "technical-specification": labels.technicalTitle,
+            "product-range-features": labels.rangeTitle
+          }[content.variant];
   return (
     <section
       className={`section pdc pdc--${content.variant} legacy-detail__body`}
@@ -351,17 +356,21 @@ const formatIcon = (label: string) => FORMAT_ICONS.find(([pattern]) => pattern.t
 
 function FormatsView({ content, ctx }: { content: FormatsContent; ctx: Ctx }) {
   const hasOverview = content.overview.length > 0 || content.notes.length > 0;
-  // Side by side only when both sides carry comparable content; otherwise formats above, text below.
+  // Side by side when the overview has a few sentences next to several format rows; otherwise a
+  // compact stack at reading width (formats above, text below).
   const sideBySide =
     hasOverview &&
     content.formats.length >= 3 &&
-    textLength(content.overview) + content.notes.reduce((sum, note) => sum + note.text.length, 0) >= 320;
+    textLength(content.overview) + content.notes.reduce((sum, note) => sum + note.text.length, 0) >= 120;
   return (
-    <div className={sideBySide ? "pdc-split pdc-split--formats" : "pdc-stack"}>
-      <section className="pdc-surface pdc-formats" aria-labelledby="pdc-formats">
-        <h3 id="pdc-formats" lang={content.formatsHeadingLang}>
-          {content.formatsHeading ?? ctx.labels.formatsPanel}
-        </h3>
+    <div className={sideBySide ? "pdc-split pdc-split--formats" : "pdc-stack pdc-stack--compact"}>
+      {/* Without an overview the section heading already says "Available formats". */}
+      <section className="pdc-surface pdc-formats" aria-labelledby={hasOverview ? "pdc-formats" : "pdc-title"}>
+        {hasOverview && (
+          <h3 id="pdc-formats" lang={content.formatsHeadingLang}>
+            {content.formatsHeading ?? ctx.labels.formatsPanel}
+          </h3>
+        )}
         <dl className="pdc-formats__rows">
           {content.formats.map((row, index) => (
             <div key={`${index}-${row.label}`} className="pdc-formats__row" lang={row.lang}>
@@ -481,8 +490,21 @@ function FactsView({ content, ctx }: { content: FactsContent; ctx: Ctx }) {
 // ---------- B: technical-specification ----------
 
 function TechnicalView({ content, ctx }: { content: TechnicalContent; ctx: Ctx }) {
+  // An untitled panel of plain sentences is the page's description: it reads above the
+  // specification panels instead of taking a card of its own (e.g. the can pages).
+  const isIntro = (panel: TechnicalPanel) =>
+    !isDefinitions(panel) && !panel.heading && panel.items.every((item) => item.type === "p");
+  const intro = content.panels.filter(isIntro);
+  const panels = content.panels.filter((panel) => !isIntro(panel));
   return (
     <>
+      {intro.length > 0 && (
+        <div className="pdc-intro pdc-measure">
+          {intro.map((panel, index) => (
+            <Items key={index} items={isDefinitions(panel) ? [] : panel.items} ctx={ctx} />
+          ))}
+        </div>
+      )}
       {content.identifiers.length > 0 && (
         <ul className="pdc-identifiers">
           {content.identifiers.map((identifier, index) => (
@@ -492,8 +514,8 @@ function TechnicalView({ content, ctx }: { content: TechnicalContent; ctx: Ctx }
           ))}
         </ul>
       )}
-      <div className="pdc-panels" data-count={content.panels.length}>
-        {content.panels.map((panel, index) =>
+      <div className="pdc-panels" data-count={panels.length}>
+        {panels.map((panel, index) =>
           isDefinitions(panel) ? (
             <section key={index} className="pdc-surface pdc-spec" aria-labelledby={`pdc-panel-${index}`}>
               <h3 id={`pdc-panel-${index}`}>{ctx.labels.properties}</h3>
@@ -525,6 +547,13 @@ function TechnicalView({ content, ctx }: { content: TechnicalContent; ctx: Ctx }
 
 const COLUMNS: ReferenceColumn[] = ["capacity", "diameter", "height", "finish"];
 
+const applicationKey = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/\b(bottles?|botellas?|de)\b/g, "")
+    .replace(/[^\p{L}\p{N}]/gu, "");
+const sameApplication = (type: string, label: string) => applicationKey(type) === applicationKey(label);
+
 /** Bottle references as one comparison table, grouped under their published group labels. */
 function ReferenceTable({ content, ctx }: { content: RangeContent; ctx: Ctx }) {
   const models = content.references.flatMap((group) => group.models);
@@ -539,7 +568,14 @@ function ReferenceTable({ content, ctx }: { content: RangeContent; ctx: Ctx }) {
       else if (!column && !extra.includes(label)) extra.push(label);
     }
   const columns = COLUMNS.filter((column) => headers.has(column));
-  const hasType = models.some((model) => splitReference(model.heading ?? "").type);
+  // The application column is left out when every row's application is its group heading
+  // ("Wine Bottle - 524818" under "Wine"); the full reference stays in the row header.
+  const hasType = content.references.some((group) =>
+    group.models.some((model) => {
+      const { type } = splitReference(model.heading ?? "");
+      return type && !(group.label && sameApplication(type, group.label));
+    })
+  );
   const span = 1 + Number(hasType) + columns.length + extra.length;
   return (
     <TableWrap ctx={ctx} className="pdc-surface pdc-surface--table">

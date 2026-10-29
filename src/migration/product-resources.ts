@@ -13,8 +13,9 @@ import { documentType } from "./technical-library.ts";
  *
  * Technical specification pages: besides the analysis sheets of the technical library
  * (`documentType`), a flat legacy page is a specification page of a product when (1) it has no
- * prose (no paragraph over 100 characters), (2) at least three of its sections are headed lists
- * or tables of attributes, and (3) the family has a nested product page with the same product
+ * prose (no paragraph over 140 characters; a one-sentence note such as the FDA lacquer treatment
+ * is not prose), (2) at least two of its sections are headed lists or tables of attributes (the
+ * 42 mm RipCap sheet has two once its duplicated block is shown once), and (3) the family has a nested product page with the same product
  * name (the nested page's H1, or H1 + eyebrow such as "52mm (202) Dia Aluminium End" + "SOT - Std
  * Aperture (Korinthos)"; on the flat page, its first H1 line or its whole H1). Such a page is shown next to that product page as its "Technical sheet". A flat page
  * that repeats the product page's prose (e.g. /std-can-d66mm) stays a product page of its own.
@@ -41,11 +42,11 @@ export function isSpecificationPage(path: string): boolean {
   const page = legacyPage(path)?.en;
   if (!page || !isFlat(path)) return false;
   const items = page.sections.flatMap((section) => section.items);
-  const prose = items.some((item) => item.type === "p" && item.text.length > 100);
+  const prose = items.some((item) => item.type === "p" && item.text.length > 140);
   const attributes = page.sections.filter(
     (section) => section.heading && section.items.some((item) => item.type === "specs" || item.type === "ul")
   ).length;
-  return !prose && attributes >= 3;
+  return !prose && attributes >= 2;
 }
 
 /**

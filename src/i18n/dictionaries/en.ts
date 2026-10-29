@@ -300,7 +300,7 @@ export const en = {
       "iqf-grapefruit": "IQF grapefruit"
     } as Record<string, string>,
     allProducts: "Product and specification pages",
-    allProductsText: "Technical and product pages of this category, with their published specifications.",
+    allProductsText: "Products and technical specifications of this category.",
     backTo: "Back to",
     /** Short visible names of the parent category in the hero's back link. */
     backShort: {
@@ -329,7 +329,7 @@ export const en = {
       specification: "Specification",
       rangeTitle: "Product range & features",
       featuresTitle: "Product description",
-      references: "{count} published references",
+      references: "{count} references",
       productReferences: "Product references",
       value: "Value",
       unit: "Unit",
@@ -343,8 +343,22 @@ export const en = {
       type: "Application"
     },
     indexTitle: "Product index",
+    index: {
+      actions: { overview: "Overview", product: "Product", technical: "Specification" },
+      actionNames: {
+        overview: "Overview: {name}",
+        product: "Product: {name}",
+        technical: "Specification: {name}"
+      },
+      jump: "Jump to",
+      searchLabel: "Search the index",
+      searchPlaceholder: "Product name or code…",
+      clear: "Clear search",
+      empty: "No product matches your search.",
+      count: { one: "product", other: "products" }
+    },
     indexText:
-      "Every GFB product, specification and application page, grouped by family. Each page keeps its published content and links back to its category.",
+      "GFB products and technical specifications by category and family. Search by name or code, or jump to a category.",
     indexMeta: "Index of GFB Solutions product, specification and application pages, grouped by category and family."
   },
   library: {
@@ -366,6 +380,7 @@ export const en = {
       products: { one: "product", other: "products" },
       formats: { one: "format", other: "formats" }
     },
+    specification: "specification",
     specifications: "specifications",
     rangeOverview: "Range overview",
     results: "Search results",
@@ -379,7 +394,7 @@ export const en = {
     noResults: "No matching products found.",
     noResultsHint: "Try another product name, variety or code, or clear the search and filters.",
     reset: "Clear search and filters",
-    noTechnical: "No separate specifications are published for this family.",
+    noTechnical: "This family has no separate technical specifications.",
     noTechnicalHint: "Its product pages list the formats in which each concentrate is supplied.",
     showAllResources: "Show all products",
     grapeEyebrow: "Red grape specifications",

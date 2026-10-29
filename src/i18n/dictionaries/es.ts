@@ -300,7 +300,7 @@ export const es: Dictionary = {
       "iqf-grapefruit": "pomelo IQF"
     } as Record<string, string>,
     allProducts: "Fichas de producto y especificaciones",
-    allProductsText: "Páginas técnicas y de producto de esta categoría, con sus especificaciones publicadas.",
+    allProductsText: "Productos y especificaciones técnicas de esta categoría.",
     backTo: "Volver a",
     backShort: {
       "fruit-concentrates": "concentrados",
@@ -328,7 +328,7 @@ export const es: Dictionary = {
       specification: "Especificación",
       rangeTitle: "Gama y características",
       featuresTitle: "Descripción del producto",
-      references: "{count} referencias publicadas",
+      references: "{count} referencias",
       productReferences: "Referencias de producto",
       value: "Valor",
       unit: "Unidad",
@@ -342,8 +342,22 @@ export const es: Dictionary = {
       type: "Aplicación"
     },
     indexTitle: "Índice de productos",
+    index: {
+      actions: { overview: "Presentación", product: "Producto", technical: "Especificación" },
+      actionNames: {
+        overview: "Presentación: {name}",
+        product: "Producto: {name}",
+        technical: "Especificación: {name}"
+      },
+      jump: "Ir a",
+      searchLabel: "Buscar en el índice",
+      searchPlaceholder: "Nombre de producto o código…",
+      clear: "Borrar búsqueda",
+      empty: "Ningún producto coincide con su búsqueda.",
+      count: { one: "producto", other: "productos" }
+    },
     indexText:
-      "Todas las páginas de producto, especificación y aplicación de GFB, agrupadas por familia. Cada página conserva su contenido publicado y enlaza con su categoría.",
+      "Productos y especificaciones técnicas de GFB por categoría y familia. Busque por nombre o código, o vaya directamente a una categoría.",
     indexMeta:
       "Índice de páginas de producto, especificaciones y aplicaciones de GFB Solutions, agrupadas por categoría y familia."
   },
@@ -366,6 +380,7 @@ export const es: Dictionary = {
       products: { one: "producto", other: "productos" },
       formats: { one: "formato", other: "formatos" }
     },
+    specification: "especificación",
     specifications: "especificaciones",
     rangeOverview: "Presentación de la gama",
     results: "Resultados de búsqueda",
@@ -379,7 +394,7 @@ export const es: Dictionary = {
     noResults: "No se encontraron productos.",
     noResultsHint: "Pruebe con otro producto, variedad o código, o borre la búsqueda y los filtros.",
     reset: "Borrar búsqueda y filtros",
-    noTechnical: "Esta familia no tiene especificaciones publicadas por separado.",
+    noTechnical: "Esta familia no tiene especificaciones técnicas por separado.",
     noTechnicalHint: "Sus fichas de producto indican los formatos en los que se suministra cada concentrado.",
     showAllResources: "Ver todos los productos",
     grapeEyebrow: "Especificaciones de uva tinta",

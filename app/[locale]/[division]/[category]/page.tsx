@@ -110,7 +110,7 @@ export default async function CategoryPage({ params }: Props) {
               style={{ "--group-count": category.scopeGroups.length } as CSSProperties}
             >
               {category.scopeGroups.map((group) => (
-                <div key={group.title.en}>
+                <div key={group.title.en} data-items={group.items.length}>
                   <h3>{group.title[locale]}</h3>
                   <ul className="check-list">
                     {group.items.map((item) => (
@@ -120,6 +120,7 @@ export default async function CategoryPage({ params }: Props) {
                       </li>
                     ))}
                   </ul>
+                  {group.note && <p className="detail-scope__note">{group.note[locale]}</p>}
                 </div>
               ))}
             </div>

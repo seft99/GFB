@@ -38,7 +38,12 @@ export type CategoryShowcase = {
   card?: { image: string; focus?: string };
 };
 
-export type ScopeGroup = { title: LocalizedText; items: LocalizedText[] };
+export type ScopeGroup = {
+  title: LocalizedText;
+  items: LocalizedText[];
+  /** Short qualification under the list (e.g. options that vary by product). */
+  note?: LocalizedText;
+};
 
 export type Category = {
   /** Stable identifier, independent of the public slug; used in inquiries and tests. */

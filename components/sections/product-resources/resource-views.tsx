@@ -26,6 +26,7 @@ export type ResourceViewLabels = {
   technicalLink: string;
   overviewLink: string;
   products: { one: string; other: string };
+  specification: string;
   specifications: string;
 };
 
@@ -45,7 +46,8 @@ const actionLabel = (link: ResourceLink, labels: ResourceViewLabels) =>
 export function countText(group: ProductResourceGroup, labels: ResourceViewLabels) {
   const { products, specifications } = groupCounts(group);
   const noun = products === 1 ? labels.products.one : labels.products.other;
-  return `${products} ${noun}${specifications ? ` · ${specifications} ${labels.specifications}` : ""}`;
+  const specs = specifications === 1 ? labels.specification : labels.specifications;
+  return `${products} ${noun}${specifications ? ` · ${specifications} ${specs}` : ""}`;
 }
 
 /** Columns that keep a balanced grid without empty placeholders (CSS narrows them on small screens). */

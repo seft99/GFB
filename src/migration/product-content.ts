@@ -109,7 +109,8 @@ export type RangeContent = {
   intro: Item[];
   /**
    * reference-collection: model cards grouped under the published group labels. Wix repeats the
-   * label after every model of a group; `repeats` keeps that count (nothing is dropped).
+   * label after every model of a group; `repeats` keeps that count (nothing is dropped). Groups
+   * with the same label are one group (Wix interleaves them on /water), models in published order.
    */
   references: { label?: string; labelLang?: "en"; repeats: number; models: ContentGroup[] }[];
   /** feature-editorial: titled blocks (section headings, or h3 subsections). */
@@ -261,13 +262,20 @@ function rangeContent(sections: Section[], collection: boolean): RangeContent {
   if (collection) {
     const references: RangeContent["references"] = [];
     let group: RangeContent["references"][number] = { repeats: 0, models: [] };
+    const keep = () => {
+      if ((group.models.length || group.label) && !references.includes(group)) references.push(group);
+    };
     const startGroup = (item: Extract<Item, { type: "ul" }>) => {
       if (group.label === item.items[0]) {
         group.repeats++;
         return;
       }
-      if (group.models.length || group.label) references.push(group);
-      group = { label: item.items[0], ...(item.lang ? { labelLang: item.lang } : {}), repeats: 0, models: [] };
+      keep();
+      const existing = references.find((candidate) => candidate.label === item.items[0]);
+      if (existing) {
+        existing.repeats++;
+        group = existing;
+      } else group = { label: item.items[0], ...(item.lang ? { labelLang: item.lang } : {}), repeats: 0, models: [] };
     };
     for (const section of sections) {
       const label = groupLabel(section.items.at(-1));
@@ -276,7 +284,7 @@ function rangeContent(sections: Section[], collection: boolean): RangeContent {
       else group.models.push({ ...asGroup(section), items });
       if (label) startGroup(label);
     }
-    if (group.models.length || group.label) references.push(group);
+    keep();
     return { variant: "product-range-features", arrangement: "reference-collection", intro, references, features: [] };
   }
   const features: ContentGroup[] = [];
@@ -402,7 +410,7 @@ export type ReferenceColumn = "capacity" | "diameter" | "height" | "finish";
 export const referenceColumn = (label: string): ReferenceColumn | undefined =>
   /capac/i.test(label)
     ? "capacity"
-    : /diam/i.test(label)
+    : /di[aá]m/i.test(label)
       ? "diameter"
       : /height|altura/i.test(label)
         ? "height"

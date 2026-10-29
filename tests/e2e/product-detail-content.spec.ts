@@ -131,7 +131,7 @@ test.describe("product information layouts", () => {
     const rows = page.locator('.pdc-table--references tbody th[scope="row"]');
     await expect(rows).toHaveCount(12);
     await expect(page.getByRole("row", { name: /Soft Drinks - 455020/ })).toContainText("182.7 mm");
-    await expect(page.locator(".pdc-count")).toHaveText("12 published references");
+    await expect(page.locator(".pdc-count")).toHaveText("12 references");
     // The description sits above the table, not in a side column.
     const intro = (await page.locator(".pdc-intro").boundingBox())!;
     const box = (await page.locator(".pdc-table--references").boundingBox())!;

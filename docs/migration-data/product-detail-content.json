@@ -66,11 +66,17 @@
     "pageKind": "overview",
     "contentBlocks": [
       {
-        "heading": "Aluminum cans",
+        "heading": null,
+        "blocks": [
+          "p"
+        ]
+      },
+      {
+        "heading": "Latas de aluminio",
         "blocks": []
       },
       {
-        "heading": "Standard can",
+        "heading": "Lata estándar",
         "blocks": [
           "p",
           "p",
@@ -78,7 +84,7 @@
         ]
       },
       {
-        "heading": "Slim can",
+        "heading": "Lata slim",
         "blocks": [
           "p",
           "p",
@@ -86,7 +92,7 @@
         ]
       },
       {
-        "heading": "Sleek can",
+        "heading": "Lata sleek",
         "blocks": [
           "p",
           "p",
@@ -95,11 +101,11 @@
       }
     ],
     "counts": {
-      "sections": 4,
-      "paragraphs": 9,
+      "sections": 5,
+      "paragraphs": 10,
       "specRows": 0,
       "listEntries": 0,
-      "excludedByMigration": 1
+      "excludedByMigration": 0
     },
     "links": [],
     "selectedVariant": "product-range-features",
@@ -120,20 +126,27 @@
       {
         "heading": null,
         "blocks": [
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
           "p"
+        ]
+      },
+      {
+        "heading": "Key dimensions",
+        "blocks": [
+          "specs×2"
+        ]
+      },
+      {
+        "heading": "Open can height by nominal fill volume",
+        "blocks": [
+          "list×6"
         ]
       }
     ],
     "counts": {
-      "sections": 1,
-      "paragraphs": 3,
-      "specRows": 0,
-      "listEntries": 0,
+      "sections": 3,
+      "paragraphs": 1,
+      "specRows": 2,
+      "listEntries": 6,
       "excludedByMigration": 0
     },
     "links": [],
@@ -155,20 +168,27 @@
       {
         "heading": null,
         "blocks": [
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
           "p"
+        ]
+      },
+      {
+        "heading": "Dimensiones principales",
+        "blocks": [
+          "specs×2"
+        ]
+      },
+      {
+        "heading": "Altura de lata abierta por volumen nominal",
+        "blocks": [
+          "list×6"
         ]
       }
     ],
     "counts": {
-      "sections": 1,
-      "paragraphs": 3,
-      "specRows": 0,
-      "listEntries": 0,
+      "sections": 3,
+      "paragraphs": 1,
+      "specRows": 2,
+      "listEntries": 6,
       "excludedByMigration": 0
     },
     "links": [],
@@ -190,20 +210,27 @@
       {
         "heading": null,
         "blocks": [
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
           "p"
+        ]
+      },
+      {
+        "heading": "Key dimensions",
+        "blocks": [
+          "specs×2"
+        ]
+      },
+      {
+        "heading": "Open can height by nominal fill volume",
+        "blocks": [
+          "list×6"
         ]
       }
     ],
     "counts": {
-      "sections": 1,
-      "paragraphs": 3,
-      "specRows": 0,
-      "listEntries": 0,
+      "sections": 3,
+      "paragraphs": 1,
+      "specRows": 2,
+      "listEntries": 6,
       "excludedByMigration": 0
     },
     "links": [],
@@ -225,20 +252,27 @@
       {
         "heading": null,
         "blocks": [
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
           "p"
+        ]
+      },
+      {
+        "heading": "Dimensiones principales",
+        "blocks": [
+          "specs×2"
+        ]
+      },
+      {
+        "heading": "Altura de lata abierta por volumen nominal",
+        "blocks": [
+          "list×6"
         ]
       }
     ],
     "counts": {
-      "sections": 1,
-      "paragraphs": 3,
-      "specRows": 0,
-      "listEntries": 0,
+      "sections": 3,
+      "paragraphs": 1,
+      "specRows": 2,
+      "listEntries": 6,
       "excludedByMigration": 0
     },
     "links": [],
@@ -260,20 +294,27 @@
       {
         "heading": null,
         "blocks": [
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
           "p"
+        ]
+      },
+      {
+        "heading": "Key dimensions",
+        "blocks": [
+          "specs×2"
+        ]
+      },
+      {
+        "heading": "Open can height by nominal fill volume",
+        "blocks": [
+          "list×3"
         ]
       }
     ],
     "counts": {
-      "sections": 1,
-      "paragraphs": 3,
-      "specRows": 0,
-      "listEntries": 0,
+      "sections": 3,
+      "paragraphs": 1,
+      "specRows": 2,
+      "listEntries": 3,
       "excludedByMigration": 0
     },
     "links": [],
@@ -295,20 +336,27 @@
       {
         "heading": null,
         "blocks": [
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
           "p"
+        ]
+      },
+      {
+        "heading": "Dimensiones principales",
+        "blocks": [
+          "specs×2"
+        ]
+      },
+      {
+        "heading": "Altura de lata abierta por volumen nominal",
+        "blocks": [
+          "list×3"
         ]
       }
     ],
     "counts": {
-      "sections": 1,
-      "paragraphs": 3,
-      "specRows": 0,
-      "listEntries": 0,
+      "sections": 3,
+      "paragraphs": 1,
+      "specRows": 2,
+      "listEntries": 3,
       "excludedByMigration": 0
     },
     "links": [],
@@ -330,20 +378,27 @@
       {
         "heading": null,
         "blocks": [
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
           "p"
+        ]
+      },
+      {
+        "heading": "Key dimensions",
+        "blocks": [
+          "specs×2"
+        ]
+      },
+      {
+        "heading": "Open can height by nominal fill volume",
+        "blocks": [
+          "list×6"
         ]
       }
     ],
     "counts": {
-      "sections": 1,
-      "paragraphs": 3,
-      "specRows": 0,
-      "listEntries": 0,
+      "sections": 3,
+      "paragraphs": 1,
+      "specRows": 2,
+      "listEntries": 6,
       "excludedByMigration": 0
     },
     "links": [],
@@ -633,7 +688,7 @@
     "pageKind": "overview",
     "contentBlocks": [
       {
-        "heading": "Aluminum can ends",
+        "heading": "Tapas para latas de aluminio",
         "blocks": []
       },
       {
@@ -680,23 +735,13 @@
         "heading": null,
         "blocks": [
           "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 6,
+      "paragraphs": 1,
       "specRows": 0,
       "listEntries": 0,
       "excludedByMigration": 0
@@ -721,23 +766,13 @@
         "heading": null,
         "blocks": [
           "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
-          "p",
-          "h3",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 6,
+      "paragraphs": 1,
       "specRows": 0,
       "listEntries": 0,
       "excludedByMigration": 0
@@ -1142,84 +1177,84 @@
         ]
       },
       {
-        "heading": "Soft Drinks - 455020",
+        "heading": "Refrescos - 455020",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 416620",
+        "heading": "Refrescos - 416620",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 490120",
+        "heading": "Refrescos - 490120",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 318020",
+        "heading": "Refrescos - 318020",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 403220",
+        "heading": "Refrescos - 403220",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 418425",
+        "heading": "Refrescos - 418425",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 400425",
+        "heading": "Refrescos - 400425",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 486825",
+        "heading": "Refrescos - 486825",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 487025",
+        "heading": "Refrescos - 487025",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 485925",
+        "heading": "Refrescos - 485925",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 486725",
+        "heading": "Refrescos - 486725",
         "blocks": [
           "specs×3",
           "list×1"
         ]
       },
       {
-        "heading": "Soft Drinks - 418699",
+        "heading": "Refrescos - 418699",
         "blocks": [
           "specs×3"
         ]
@@ -1356,70 +1391,70 @@
         ]
       },
       {
-        "heading": "Spirits - 203205",
+        "heading": "Destilados - 203205",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Wine Bottle - 524818",
+        "heading": "Botella de vino - 524818",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Wine Bottle - 525218",
+        "heading": "Botella de vino - 525218",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Beer Bottle - 250720",
+        "heading": "Botella de cerveza - 250720",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Beer Bottle - 527433",
+        "heading": "Botella de cerveza - 527433",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Beer Bottle - 276633",
+        "heading": "Botella de cerveza - 276633",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Beer Bottle - 261933",
+        "heading": "Botella de cerveza - 261933",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Beer Bottle - 585433",
+        "heading": "Botella de cerveza - 585433",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Beer Bottle - 586433",
+        "heading": "Botella de cerveza - 586433",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Beer Bottle - 251034",
+        "heading": "Botella de cerveza - 251034",
         "blocks": [
           "specs×4"
         ]
@@ -1572,84 +1607,84 @@
         ]
       },
       {
-        "heading": "Mineral Water Bottles - 310420",
+        "heading": "Botellas de agua mineral - 310420",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Mineral Water Bottles- 333320",
+        "heading": "Botellas de agua mineral - 333320",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Mineral Water Bottles - 318020",
+        "heading": "Botellas de agua mineral - 318020",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Mineral Water Bottles -321020",
+        "heading": "Botellas de agua mineral - 321020",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Mineral Water Bottles - 335225",
+        "heading": "Botellas de agua mineral - 335225",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Mineral Water Bottles - 336425",
+        "heading": "Botellas de agua mineral - 336425",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Water Bottles -332733",
+        "heading": "Botellas de agua - 332733",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Water Bottles -310433",
+        "heading": "Botellas de agua - 310433",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Water Bottles -324133",
+        "heading": "Botellas de agua - 324133",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Water Bottles - 332433",
+        "heading": "Botellas de agua - 332433",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Mineral Water Bottles - 520133",
+        "heading": "Botellas de agua mineral - 520133",
         "blocks": [
           "specs×4",
           "list×1"
         ]
       },
       {
-        "heading": "Water Bottles - 334950",
+        "heading": "Botellas de agua - 334950",
         "blocks": [
           "specs×4"
         ]
@@ -1733,11 +1768,11 @@
     "pageKind": "overview",
     "contentBlocks": [
       {
-        "heading": "Crown corks",
+        "heading": "Tapones corona",
         "blocks": []
       },
       {
-        "heading": "Crown Cork Bottle Caps",
+        "heading": "Tapones corona para botellas",
         "blocks": [
           "list×3"
         ]
@@ -1749,7 +1784,7 @@
         ]
       },
       {
-        "heading": "26 mm Ring Crown Cap",
+        "heading": "Tapa corona con anilla de 26 mm",
         "blocks": [
           "list×1",
           "specs×1",
@@ -2244,7 +2279,7 @@
       {
         "heading": "Coatings and printing",
         "blocks": [
-          "list×3",
+          "specs×2",
           "p",
           "specs×2"
         ]
@@ -2252,15 +2287,15 @@
       {
         "heading": "Liner",
         "blocks": [
-          "list×5"
+          "specs×2"
         ]
       }
     ],
     "counts": {
       "sections": 3,
       "paragraphs": 1,
-      "specRows": 2,
-      "listEntries": 11,
+      "specRows": 6,
+      "listEntries": 3,
       "excludedByMigration": 0
     },
     "links": [],
@@ -2290,9 +2325,7 @@
       {
         "heading": "Recubrimientos e impresión",
         "blocks": [
-          "list×1",
-          "p",
-          "list×1",
+          "specs×2",
           "p",
           "specs×2"
         ]
@@ -2307,9 +2340,9 @@
     ],
     "counts": {
       "sections": 3,
-      "paragraphs": 5,
-      "specRows": 2,
-      "listEntries": 6,
+      "paragraphs": 4,
+      "specRows": 4,
+      "listEntries": 4,
       "excludedByMigration": 0
     },
     "links": [],
@@ -2331,37 +2364,31 @@
       {
         "heading": "Cap shell and ring",
         "blocks": [
-          "list×2",
-          "p",
-          "list×7"
+          "specs×7"
         ]
       },
       {
         "heading": "Coatings and printing",
         "blocks": [
-          "list×1",
-          "p",
-          "p",
-          "list×1",
+          "specs×2",
           "p",
           "specs×2",
-          "h3",
           "p"
         ]
       },
       {
         "heading": "Liner",
         "blocks": [
-          "list×2",
+          "specs×2",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 3,
-      "paragraphs": 6,
-      "specRows": 2,
-      "listEntries": 13,
+      "paragraphs": 3,
+      "specRows": 13,
+      "listEntries": 0,
       "excludedByMigration": 0
     },
     "links": [],
@@ -2383,17 +2410,13 @@
       {
         "heading": "Capuchón y anillo",
         "blocks": [
-          "list×2",
-          "p",
-          "list×9"
+          "specs×7"
         ]
       },
       {
         "heading": "Recubrimientos e impresión",
         "blocks": [
-          "list×1",
-          "p",
-          "list×1",
+          "specs×2",
           "p",
           "specs×2",
           "p"
@@ -2402,16 +2425,16 @@
       {
         "heading": "Revestimiento",
         "blocks": [
-          "list×2",
+          "specs×2",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 3,
-      "paragraphs": 5,
-      "specRows": 2,
-      "listEntries": 15,
+      "paragraphs": 3,
+      "specRows": 13,
+      "listEntries": 0,
       "excludedByMigration": 0
     },
     "links": [],
@@ -2439,26 +2462,18 @@
       {
         "heading": "Coatings and printing",
         "blocks": [
-          "list×3",
-          "p",
-          "specs×2"
-        ]
-      },
-      {
-        "heading": "Coatings and printing",
-        "blocks": [
-          "list×3",
+          "specs×2",
           "p",
           "specs×2"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 2,
+      "sections": 2,
+      "paragraphs": 1,
       "specRows": 4,
-      "listEntries": 9,
-      "excludedByMigration": 0
+      "listEntries": 3,
+      "excludedByMigration": 1
     },
     "links": [],
     "selectedVariant": "technical-specification",
@@ -2487,30 +2502,18 @@
       {
         "heading": "Recubrimientos e impresión",
         "blocks": [
-          "list×1",
-          "p",
-          "list×1",
-          "p",
-          "specs×2"
-        ]
-      },
-      {
-        "heading": "Recubrimientos e impresión",
-        "blocks": [
-          "list×1",
-          "p",
-          "list×1",
+          "specs×2",
           "p",
           "specs×2"
         ]
       }
     ],
     "counts": {
-      "sections": 3,
-      "paragraphs": 6,
+      "sections": 2,
+      "paragraphs": 3,
       "specRows": 4,
-      "listEntries": 5,
-      "excludedByMigration": 0
+      "listEntries": 1,
+      "excludedByMigration": 1
     },
     "links": [],
     "selectedVariant": "technical-specification",
@@ -2538,14 +2541,20 @@
           "p",
           "list×4"
         ]
+      },
+      {
+        "heading": "Benefits",
+        "blocks": [
+          "list×5"
+        ]
       }
     ],
     "counts": {
-      "sections": 2,
+      "sections": 3,
       "paragraphs": 1,
       "specRows": 0,
-      "listEntries": 4,
-      "excludedByMigration": 10
+      "listEntries": 9,
+      "excludedByMigration": 0
     },
     "links": [],
     "selectedVariant": "product-range-features",
@@ -2564,23 +2573,29 @@
     "pageKind": "product",
     "contentBlocks": [
       {
-        "heading": "Shrink Sleeves Labels",
+        "heading": "Etiquetas sleeve retráctiles",
         "blocks": []
       },
       {
-        "heading": "Features",
+        "heading": "Características",
         "blocks": [
           "p",
           "list×4"
         ]
+      },
+      {
+        "heading": "Ventajas",
+        "blocks": [
+          "list×5"
+        ]
       }
     ],
     "counts": {
-      "sections": 2,
+      "sections": 3,
       "paragraphs": 1,
       "specRows": 0,
-      "listEntries": 4,
-      "excludedByMigration": 10
+      "listEntries": 9,
+      "excludedByMigration": 0
     },
     "links": [],
     "selectedVariant": "product-range-features",
@@ -2641,18 +2656,18 @@
     "pageKind": "product",
     "contentBlocks": [
       {
-        "heading": "Washoff Labels",
+        "heading": "Etiquetas wash-off",
         "blocks": []
       },
       {
-        "heading": "Key Features",
+        "heading": "Características principales",
         "blocks": [
           "list×8",
           "p"
         ]
       },
       {
-        "heading": "Explore our Range",
+        "heading": "Nuestra gama",
         "blocks": [
           "list×2",
           "p"
@@ -2699,20 +2714,30 @@
         ]
       },
       {
+        "heading": "Options",
+        "blocks": [
+          "list×2"
+        ]
+      },
+      {
         "heading": "Key Advantages",
         "blocks": [
-          "list×7",
-          "p",
+          "list×6"
+        ]
+      },
+      {
+        "heading": "Request a quotation",
+        "blocks": [
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 4,
-      "paragraphs": 4,
+      "sections": 6,
+      "paragraphs": 3,
       "specRows": 0,
-      "listEntries": 7,
-      "excludedByMigration": 6
+      "listEntries": 8,
+      "excludedByMigration": 0
     },
     "links": [],
     "selectedVariant": "product-range-features",
@@ -2737,30 +2762,40 @@
         ]
       },
       {
-        "heading": "Wet Glue Labels",
+        "heading": "Etiquetas de cola húmeda",
         "blocks": []
       },
       {
-        "heading": "Introducing Wet Glue Labels",
+        "heading": "Etiquetas de cola húmeda",
         "blocks": [
           "p"
         ]
       },
       {
-        "heading": "Key Advantages",
+        "heading": "Opciones",
         "blocks": [
-          "list×7",
-          "p",
+          "list×2"
+        ]
+      },
+      {
+        "heading": "Ventajas principales",
+        "blocks": [
+          "list×6"
+        ]
+      },
+      {
+        "heading": "Solicite un presupuesto",
+        "blocks": [
           "p"
         ]
       }
     ],
     "counts": {
-      "sections": 4,
-      "paragraphs": 4,
+      "sections": 6,
+      "paragraphs": 3,
       "specRows": 0,
-      "listEntries": 7,
-      "excludedByMigration": 6
+      "listEntries": 8,
+      "excludedByMigration": 0
     },
     "links": [],
     "selectedVariant": "product-range-features",
@@ -3184,7 +3219,7 @@
         ]
       },
       {
-        "heading": "Pink grapefruit acids give that characteristic flavour",
+        "heading": "Los ácidos del pomelo rosa le dan su sabor característico",
         "blocks": [
           "p",
           "p"
@@ -5467,7 +5502,7 @@
         ]
       },
       {
-        "heading": "The celery is rich in essential oils",
+        "heading": "El apio es rico en aceites esenciales",
         "blocks": [
           "p"
         ]
@@ -7540,7 +7575,7 @@
         ]
       },
       {
-        "heading": "The Uses of Lemon Slices",
+        "heading": "Usos de las rodajas de limón",
         "blocks": [
           "p",
           "p"
@@ -7595,7 +7630,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7615,7 +7650,7 @@
         ]
       },
       {
-        "heading": "The Uses of Halved Lemon Slices",
+        "heading": "Usos de las medias rodajas de limón",
         "blocks": [
           "p"
         ]
@@ -7632,7 +7667,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7669,7 +7704,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7689,7 +7724,7 @@
         ]
       },
       {
-        "heading": "The Uses of Lemon 1/4 Cut",
+        "heading": "Usos del limón corte 1/4",
         "blocks": [
           "p"
         ]
@@ -7706,7 +7741,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7745,7 +7780,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7767,7 +7802,7 @@
         ]
       },
       {
-        "heading": "The Uses of Lemon 1/8 Cut",
+        "heading": "Usos del limón corte 1/8",
         "blocks": [
           "p"
         ]
@@ -7784,7 +7819,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7822,7 +7857,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7842,7 +7877,7 @@
         ]
       },
       {
-        "heading": "The Uses of Lemon Sticks",
+        "heading": "Usos de los bastones de limón",
         "blocks": [
           "p",
           "p"
@@ -7860,7 +7895,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lemon.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -7920,7 +7955,7 @@
         ]
       },
       {
-        "heading": "The Uses of Frozen Lemon Zest",
+        "heading": "Usos de la ralladura de limón congelada",
         "blocks": [
           "p",
           "p"
@@ -7998,7 +8033,7 @@
         ]
       },
       {
-        "heading": "The Uses of Frozen Block Zest",
+        "heading": "Usos de la ralladura congelada en bloque",
         "blocks": [
           "p",
           "p"
@@ -8071,7 +8106,7 @@
         ]
       },
       {
-        "heading": "The Uses of Lemon Peel Shells",
+        "heading": "Usos de las cáscaras de limón",
         "blocks": [
           "p"
         ]
@@ -8145,7 +8180,7 @@
         ]
       },
       {
-        "heading": "The Uses of Lemon Peel Square",
+        "heading": "Usos de la piel de limón en cuadrados",
         "blocks": [
           "p"
         ]
@@ -8427,7 +8462,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8458,7 +8493,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8477,14 +8512,13 @@
           "p",
           "p",
           "specs×5",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 5,
+      "paragraphs": 4,
       "specRows": 5,
       "listEntries": 0,
       "excludedByMigration": 0
@@ -8493,7 +8527,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8512,14 +8546,13 @@
           "p",
           "p",
           "specs×5",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 5,
+      "paragraphs": 4,
       "specRows": 5,
       "listEntries": 0,
       "excludedByMigration": 0
@@ -8528,7 +8561,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8548,15 +8581,13 @@
           "h3",
           "p",
           "h3",
-          "p",
-          "h3",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 4,
+      "paragraphs": 3,
       "specRows": 5,
       "listEntries": 0,
       "excludedByMigration": 1
@@ -8565,7 +8596,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8585,15 +8616,13 @@
           "h3",
           "p",
           "h3",
-          "p",
-          "h3",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 4,
+      "paragraphs": 3,
       "specRows": 5,
       "listEntries": 0,
       "excludedByMigration": 1
@@ -8602,7 +8631,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8634,7 +8663,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8666,7 +8695,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-orange.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -8835,20 +8864,16 @@
       {
         "heading": null,
         "blocks": [
-          "specs×5",
-          "p",
-          "p",
-          "p",
-          "p"
+          "specs×5"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 4,
+      "paragraphs": 0,
       "specRows": 5,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 1
     },
     "links": [],
     "selectedVariant": "facts-applications",
@@ -8869,20 +8894,16 @@
       {
         "heading": null,
         "blocks": [
-          "specs×5",
-          "p",
-          "p",
-          "p",
-          "p"
+          "specs×5"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 4,
+      "paragraphs": 0,
       "specRows": 5,
       "listEntries": 0,
-      "excludedByMigration": 2
+      "excludedByMigration": 1
     },
     "links": [],
     "selectedVariant": "facts-applications",
@@ -8905,20 +8926,16 @@
         "blocks": [
           "p",
           "p",
-          "specs×5",
-          "p",
-          "p",
-          "p",
-          "p"
+          "specs×5"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 6,
+      "paragraphs": 2,
       "specRows": 5,
       "listEntries": 0,
-      "excludedByMigration": 1
+      "excludedByMigration": 0
     },
     "links": [],
     "selectedVariant": "facts-applications",
@@ -8941,20 +8958,16 @@
         "blocks": [
           "p",
           "p",
-          "specs×5",
-          "p",
-          "p",
-          "p",
-          "p"
+          "specs×5"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 6,
+      "paragraphs": 2,
       "specRows": 5,
       "listEntries": 0,
-      "excludedByMigration": 1
+      "excludedByMigration": 0
     },
     "links": [],
     "selectedVariant": "facts-applications",
@@ -9092,7 +9105,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9124,7 +9137,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9155,7 +9168,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9186,7 +9199,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9217,7 +9230,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9248,7 +9261,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9267,14 +9280,13 @@
           "p",
           "p",
           "specs×5",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 5,
+      "paragraphs": 4,
       "specRows": 5,
       "listEntries": 0,
       "excludedByMigration": 0
@@ -9283,7 +9295,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9302,14 +9314,13 @@
           "p",
           "p",
           "specs×5",
-          "p",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 5,
+      "paragraphs": 4,
       "specRows": 5,
       "listEntries": 0,
       "excludedByMigration": 0
@@ -9318,7 +9329,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9338,15 +9349,13 @@
           "h3",
           "p",
           "h3",
-          "p",
-          "h3",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 4,
+      "paragraphs": 3,
       "specRows": 5,
       "listEntries": 0,
       "excludedByMigration": 1
@@ -9355,7 +9364,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9375,15 +9384,13 @@
           "h3",
           "p",
           "h3",
-          "p",
-          "h3",
           "p"
         ]
       }
     ],
     "counts": {
       "sections": 1,
-      "paragraphs": 4,
+      "paragraphs": 3,
       "specRows": 5,
       "listEntries": 0,
       "excludedByMigration": 1
@@ -9392,7 +9399,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-lime.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9606,7 +9613,7 @@
         ]
       },
       {
-        "heading": "The Uses of Grapefruit Slices",
+        "heading": "Usos de las rodajas de pomelo",
         "blocks": [
           "p",
           "p"
@@ -9664,7 +9671,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-grapefruit.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9686,7 +9693,7 @@
         ]
       },
       {
-        "heading": "The Uses of Halved Grapefruit Slices",
+        "heading": "Usos de las medias rodajas de pomelo",
         "blocks": [
           "p",
           "p"
@@ -9704,7 +9711,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-grapefruit.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9741,7 +9748,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-grapefruit.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9761,7 +9768,7 @@
         ]
       },
       {
-        "heading": "The Uses of Grapefruit 1/4 Cut",
+        "heading": "Usos del pomelo corte 1/4",
         "blocks": [
           "p"
         ]
@@ -9778,7 +9785,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-grapefruit.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9817,7 +9824,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-grapefruit.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9839,7 +9846,7 @@
         ]
       },
       {
-        "heading": "The Uses of Grapefruit 1/8 Cut",
+        "heading": "Usos del pomelo corte 1/8",
         "blocks": [
           "p"
         ]
@@ -9856,7 +9863,7 @@
     "selectedVariant": "facts-applications",
     "arrangement": null,
     "reason": "Individual IQF format: published facts + uses",
-    "heroImage": "/images/products/hero/iqf-grapefruit.webp",
+    "heroImage": null,
     "sourceIssue": null,
     "migrationStatus": "migrated (lossless)"
   },
@@ -9995,19 +10002,13 @@
     "pageKind": "product",
     "contentBlocks": [
       {
-        "heading": null,
-        "blocks": [
-          "p"
-        ]
-      },
-      {
         "heading": "Sabores y aromas",
         "blocks": []
       }
     ],
     "counts": {
-      "sections": 2,
-      "paragraphs": 1,
+      "sections": 1,
+      "paragraphs": 0,
       "specRows": 0,
       "listEntries": 0,
       "excludedByMigration": 1

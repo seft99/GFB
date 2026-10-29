@@ -54,7 +54,7 @@ test.describe("technical product library", () => {
 
   test("product families have no fabricated specifications", async ({ page }) => {
     await typeFilter(page, "Specifications").check();
-    await expect(panel(page).getByText("No separate specifications are published for this family.")).toBeVisible();
+    await expect(panel(page).getByText("This family has no separate technical specifications.")).toBeVisible();
     await expect(panel(page).locator("a")).toHaveCount(0);
     await panel(page).getByRole("button", { name: "Show all products" }).click();
     await expect(cards(page)).toHaveCount(10);

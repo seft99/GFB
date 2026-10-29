@@ -34,10 +34,9 @@ test("packaging specification pages are paired only with their own product page"
     specificationPairs(family(id))
   );
   assert.deepEqual(pairs, [
+    { product: "/aluminum-cans/std-can-d66mm", technical: "/std-can-d66mm" },
     { product: "/aluminum-cans/sleek-can-d57mm", technical: "/sleek-can-d57mm" },
     { product: "/aluminum-cans/slim-can-d53mm", technical: "/slim-can-d53mm" },
-    // Verified by content (below), not by name.
-    { product: "/aluminum-cans/std-can-d66mm", technical: "/std-can-d66mm" },
     { product: "/aluminium-can-ends/52mm-(202)-dia-aluminium-end", technical: "/aluminum-can-end-52mm-202-std-sot" },
     {
       product: "/aluminium-can-ends/52mm-(202)-dia-ise-aluminium-end",
@@ -47,10 +46,10 @@ test("packaging specification pages are paired only with their own product page"
     { product: "/ripcap/26-mm-ring-crown-cap", technical: "/26mm-ring-crown-cap" },
     { product: "/ripcap/42-mm-ripcap", technical: "/42mm-ripcap" }
   ]);
-  // A flat page repeating the product prose is not detected as a specification page; the one
-  // such pair is listed explicitly because both pages publish the same English text (the
-  // Spanish flat page has no content of its own).
-  assert.equal(isSpecificationPage("/std-can-d66mm"), false);
+  // The flat standard-can page repeated the product prose; both now show the same key
+  // dimensions and height table (D01), so it is detected by content and the explicit pair
+  // still holds (both pages publish the same English content).
+  assert.equal(isSpecificationPage("/std-can-d66mm"), true);
   for (const pair of verifiedSpecificationPairs)
     assert.deepEqual(
       legacyPage(pair.technical)!.en.sections.flatMap((section) => section.items),
@@ -107,8 +106,10 @@ test("titles and descriptions come from the pages themselves", () => {
         const text = JSON.stringify(legacyPage(path)![locale].sections);
         assert.ok(text.includes(item.description.replace(/…$/, "")), `${item.title}: description not on its page`);
       }
-  // Spanish pages whose text is still English get no description instead of English text.
-  assert.ok(familyResourceGroup("label-types", "es").items.every((item) => !item.description));
+  // Spanish pages show Spanish descriptions (the English text left on them is translated, C03).
+  const english = familyResourceGroup("label-types", "en").items.map((item) => item.description);
+  for (const item of familyResourceGroup("label-types", "es").items)
+    assert.ok(!item.description || !english.includes(item.description), item.title);
   assert.equal(familyResourceGroup("aluminium-cans", "es").title, "Latas de aluminio");
 });
 

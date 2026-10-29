@@ -111,7 +111,9 @@ function buildGroup(source: GroupSource, locale: Locale): LibraryFamily {
     productCount,
     resourceCount,
     countLabel: `${productCount} ${productCount === 1 ? unit.one : unit.other}${
-      technicalCount ? ` · ${technicalCount} ${library.specifications}` : ""
+      technicalCount
+        ? ` · ${technicalCount} ${technicalCount === 1 ? library.specification : library.specifications}`
+        : ""
     }`,
     countNoun: unit.other,
     products

@@ -490,6 +490,12 @@
 }
 
 @media (min-width: 1100px) {
+  /* Headings share the brand typeface of the service and category pages (Noto Sans). */
+  .pdc__head h2,
+  .pdc h3 {
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
   .pdc-split--formats {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: clamp(2rem, 4vw, 3.5rem);
@@ -500,6 +506,11 @@
   }
   .pdc-stack > .pdc-formats {
     max-width: 58rem;
+  }
+  /* Sparse pages: formats and text share one reading width instead of a wide half-empty band. */
+  .pdc-stack--compact > .pdc-formats,
+  .pdc-stack--compact > .pdc-overview {
+    max-width: var(--pdc-measure);
   }
   .pdc-split--formats .pdc-overview {
     padding-top: 0.35rem;

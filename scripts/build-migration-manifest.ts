@@ -18,10 +18,12 @@ import {
   markUntranslated,
   normalizeSections,
   processBlocks,
+  summarySentences,
   truncate,
   usableDescription,
   type Processed,
-  type RawBlock
+  type RawBlock,
+  type Section
 } from "../src/migration/content.ts";
 import {
   brokenHistoricalLinks,
@@ -32,7 +34,16 @@ import {
   redesignedPaths,
   type Family
 } from "../src/migration/families.ts";
-import { correctText, corrections, type Correction } from "../src/migration/corrections.ts";
+import {
+  blockCorrections,
+  correctBlocks,
+  correctText,
+  corrections,
+  type BlockCorrection,
+  type Correction
+} from "../src/migration/corrections.ts";
+import { displayProductName } from "../src/migration/technical-library.ts";
+import { exact, localizeSections } from "../src/migration/translations-es.ts";
 import { formatLabelEs, formatRowEs, productNameEs } from "../src/migration/glossary-es.ts";
 import { publicUrl, redesignedRoutes } from "../src/migration/public-paths.ts";
 
@@ -130,7 +141,27 @@ function formatsDescription(processed: Processed, h1: string, locale: Locale) {
 
 const formatsHeading = { en: "Available formats", es: "Formatos disponibles" };
 
-type LocalizedPage = Processed & { metaTitle: string; metaDescription: string; untranslatedItems: number };
+/** Hero summary: the formats sentence of a concentrate, or whole sentences of the first paragraph. */
+function heroSummary(sections: Section[], locale: Locale): string | undefined {
+  const formats = sections[0]?.heading === formatsHeading[locale] ? sections[0].items[0] : undefined;
+  if (formats?.type === "specs") {
+    const labels = formats.rows.map(([label]) => label.toLowerCase());
+    const list =
+      labels.length > 1
+        ? `${labels.slice(0, -1).join(", ")} ${locale === "es" ? "y" : "and"} ${labels.at(-1)}`
+        : labels[0];
+    return locale === "en" ? `Available as ${list}.` : `Disponible en ${list}.`;
+  }
+  const prose = firstProse({ h1: "", sections, excluded: [] });
+  return prose ? summarySentences(prose) : undefined;
+}
+
+type LocalizedPage = Processed & {
+  metaTitle: string;
+  metaDescription: string;
+  summary?: string;
+  untranslatedItems: number;
+};
 const content: Record<
   string,
   { key: string; family: string; review?: string; lastmod: string | null; en: LocalizedPage; es: LocalizedPage }
@@ -166,8 +197,11 @@ function linkResolver(path: string, family: Family) {
 
 /** Raw blocks with the editorial corrections of src/migration/corrections.ts applied. */
 const appliedCorrections = new Set<Correction>();
+const appliedBlockCorrections = new Set<BlockCorrection>();
 function corrected(row: CrawlRow, path: string): RawBlock[] {
-  return row.contentBlocks.map((block) => {
+  const split = correctBlocks(path, row.contentBlocks, row.locale);
+  split.applied.forEach((item) => appliedBlockCorrections.add(item));
+  return split.blocks.map((block) => {
     const { text, applied } = correctText(path, block.text, row.locale);
     // A correction counts as found on its own page: English unless it names a locale.
     applied.forEach((item) => (item.locale ?? "en") === row.locale && appliedCorrections.add(item));
@@ -185,7 +219,8 @@ for (const family of (await import("../src/migration/families.ts")).families)
       linkFor: tidy ? linkResolver(path, family) : undefined,
       dropEmpty: tidy,
       // Fruit, vegetable and plant-based concentrates: nutrition/health statements are withheld.
-      strictClaims: STRICT_CLAIM_FAMILIES.has(family.id)
+      strictClaims: STRICT_CLAIM_FAMILIES.has(family.id),
+      keepBenefits: family.parent.division === "packaging-solutions"
     };
     const processedEn = processBlocks(corrected(en, path), { formatsHeading: formatsHeading.en, ...options });
     const processedEsRaw = processBlocks(corrected(es, path), { formatsHeading: formatsHeading.es, ...options });
@@ -194,9 +229,12 @@ for (const family of (await import("../src/migration/families.ts")).families)
       name ? translateFormats(processedEsRaw, name.fruit) : processedEsRaw,
       processedEn
     );
-    const h1En = name?.en ?? processedEn.h1;
+    // IQF cut names in one notation ("one eights cut" → "1/8 cut"); URLs keep the published slug.
+    const iqf = family.parent.category === "iqf-frozen-fruits";
+    const h1En = iqf ? displayProductName(processedEn.h1) : (name?.en ?? processedEn.h1);
     const translatedH1 = processedEsRaw.h1 && processedEsRaw.h1 !== processedEn.h1 ? processedEsRaw.h1 : undefined;
-    const h1Es = name?.es ?? translatedH1 ?? productNameEs(processedEn.h1) ?? processedEn.h1;
+    const h1EsRaw = name?.es ?? translatedH1 ?? productNameEs(processedEn.h1) ?? processedEn.h1;
+    const h1Es = iqf ? displayProductName(h1EsRaw) : h1EsRaw;
 
     const describe = (row: CrawlRow, processed: Processed, h1: string, locale: Locale) => {
       const fromFormats = formatsDescription(processed, h1, locale);
@@ -218,22 +256,31 @@ for (const family of (await import("../src/migration/families.ts")).families)
           );
     };
 
-    const page = (processed: Processed, row: CrawlRow, h1: string, locale: Locale): LocalizedPage => ({
-      ...processed,
+    const page = (processed: Processed, row: CrawlRow, h1: string, locale: Locale): LocalizedPage => {
       // Units are normalised in the content only: H1, titles and descriptions stay as derived.
-      sections: normalizeSections(processed.sections),
-      h1,
-      eyebrow: processed.eyebrow,
-      metaTitle: `${h1} – ${family.label[locale]}`,
-      metaDescription: describe(row, processed, h1, locale),
-      untranslatedItems:
+      // English text left on the Spanish page is translated field by field (C03).
+      const sections =
         locale === "es"
-          ? processed.sections.reduce(
-              (sum, section) => sum + section.items.filter((item) => "lang" in item && item.lang === "en").length,
-              0
-            )
-          : 0
-    });
+          ? localizeSections(normalizeSections(processed.sections))
+          : normalizeSections(processed.sections);
+      const summary = heroSummary(sections, locale);
+      return {
+        ...processed,
+        sections,
+        h1,
+        eyebrow: locale === "es" && processed.eyebrow ? exact(processed.eyebrow) : processed.eyebrow,
+        metaTitle: `${h1} – ${family.label[locale]}`,
+        metaDescription: describe(row, processed, h1, locale),
+        ...(summary ? { summary } : {}),
+        untranslatedItems:
+          locale === "es"
+            ? sections.reduce(
+                (sum, section) => sum + section.items.filter((item) => "lang" in item && item.lang === "en").length,
+                0
+              )
+            : 0
+      };
+    };
 
     content[path] = {
       key: legacyKey(path),
@@ -249,7 +296,10 @@ for (const family of (await import("../src/migration/families.ts")).families)
     }
   }
 
-const staleCorrections = corrections.filter((item) => !appliedCorrections.has(item));
+const staleCorrections = [
+  ...corrections.filter((item) => !appliedCorrections.has(item)),
+  ...blockCorrections.filter((item) => !appliedBlockCorrections.has(item))
+];
 if (staleCorrections.length)
   throw new Error(`Corrections no longer found on the source page: ${JSON.stringify(staleCorrections, null, 1)}`);
 

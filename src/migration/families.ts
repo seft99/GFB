@@ -288,7 +288,7 @@ export const families: Family[] = [
   },
   {
     id: "legacy-overviews",
-    label: { en: "Earlier overview pages", es: "Páginas de presentación anteriores" },
+    label: { en: "Additives and ingredients", es: "Aditivos e ingredientes" },
     parent: { division: "raw-materials" },
     paths: ["/additives", "/ingredients-and-materials"],
     review:

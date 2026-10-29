@@ -266,8 +266,29 @@
   .product-hero__copy > :nth-child(n + 4) {
     animation-delay: 140ms;
   }
+  /* Technical documents: a compact header so the specification starts in the first viewport. */
   .product-hero--technical-document {
-    min-height: clamp(34rem, 38vw, 40rem);
+    min-height: clamp(26rem, 30vw, 32rem);
+    padding-bottom: 2.5rem;
+  }
+  .product-hero--technical-document .breadcrumbs {
+    margin-bottom: 1.75rem;
+  }
+  .product-hero--technical-document .product-hero__eyebrow {
+    margin-bottom: 1.25rem;
+  }
+  /* Headings share the brand typeface of the service and category pages (Noto Sans). */
+  .product-hero h1,
+  .product-hero__code {
+    font-family: var(--font-brand);
+    font-stretch: 92%;
+  }
+  /* Long trails wrap with clear separation between lines. */
+  .product-hero .breadcrumbs ol {
+    row-gap: 0.4rem;
+  }
+  .product-hero .breadcrumbs li {
+    line-height: 1.4;
   }
   .product-hero--technical-document .product-hero__media {
     width: calc(50% - var(--hero-shell) * 0.06);

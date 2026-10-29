@@ -6,7 +6,7 @@ import { ProductDetailContent } from "@/components/sections/product-detail-conte
 import { ProductDetailHero } from "@/components/sections/product-detail-hero";
 import { JsonLd } from "@/components/ui/json-ld";
 import { getDivisionById } from "@/src/content/catalog";
-import { isLocale, locales, type Locale } from "@/src/i18n/config";
+import { isLocale, locales } from "@/src/i18n/config";
 import { getDictionary } from "@/src/i18n/dictionaries";
 import { paths } from "@/src/i18n/routes";
 import { pageMetadata } from "@/src/lib/metadata";
@@ -64,17 +64,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-/**
- * Hero lead: the page description without its leading "<name> from GFB Solutions," (the title
- * already names the product), e.g. "Available as concentrates, juices & purees, …".
- */
-function heroDescription(description: string, name: string, locale: Locale) {
-  const prefix = `${name} ${locale === "es" ? "de" : "from"} GFB Solutions, `;
-  if (!description.startsWith(prefix)) return description;
-  const rest = description.slice(prefix.length);
-  return rest.charAt(0).toUpperCase() + rest.slice(1);
-}
-
 /** Legacy paths linked from the page content (restored product references). */
 const contentLinks = (sections: Section[]) =>
   new Set(
@@ -111,9 +100,10 @@ export default async function LegacyDetailPage({ params }: Props) {
   const relatedItems = related ? relatedEntries(related, path, contentLinks(content.sections)) : [];
   const relatedTechnical = relatedItems.some((entry) => entry.resources.some((item) => item.kind === "technical"));
   const isHub = family.hub === path || path === "/fruit-concentrates";
+  // Hero lead: the page's own summary (complete sentences), unless the body opens with it.
   const firstParagraph = content.sections[0]?.items[0];
-  const showLead = !(
-    firstParagraph?.type === "p" && content.metaDescription.startsWith(firstParagraph.text.slice(0, 40))
+  const showLead = Boolean(
+    content.summary && !(firstParagraph?.type === "p" && firstParagraph.text.startsWith(content.summary.slice(0, 40)))
   );
 
   // Hero: technical specification pages get the technical-document variant; product pages
@@ -128,7 +118,7 @@ export default async function LegacyDetailPage({ params }: Props) {
   // Roles: title = the published name (its code, if any, on a second line), eyebrow = the
   // published identifier or the document type, lead = availability/application.
   const heroEyebrow = technical ? legacy.heroTechnical : (content.eyebrow ?? family.label[locale]);
-  const lead = showLead ? heroDescription(content.metaDescription, content.h1, locale) : undefined;
+  const lead = showLead ? content.summary : undefined;
   // A lead that only repeats the eyebrow (e.g. "SOT - Large Aperture (Botcherby)") is left out.
   const heroLead = lead && lead !== heroEyebrow ? lead : undefined;
 

@@ -10,11 +10,12 @@ whether the field is still on the live page). Regenerate with
 ## Method
 
 - Source: the crawl of the official site (`docs/migration-data/legacy-crawl.json`), re-checked
-  against the live pages on 2026-10-28 (247 of 248 pages answered; the other one timed out and keeps
-  the crawl as reference).
+  against the live pages on 2026-10-28 (200 of 248 pages answered in the last run; the others timed
+  out and keep the crawl as reference).
 - Each published line of a page is classified: **retained** (shown, units normalised),
-  **translated** (the official ES page shows English format names; the ES page shows them in
-  Spanish), **corrected** (an entry of `src/migration/corrections.ts`), **withheld** (claim policy
+  **translated** (English text on the official ES page, shown here in Spanish:
+  `src/migration/translations-es.ts`), **corrected** (an entry of `src/migration/corrections.ts`,
+  including rebuilt field boundaries and IQF cut-name notation), **withheld** (claim policy
   or an empty layout heading, recorded in the page's `excluded` list), **not-available** ("Not
   apply" formats, as the format tables already did) or **missing**.
 
@@ -22,18 +23,31 @@ whether the field is still on the live page). Regenerate with
 
 | Status        | Fields |
 | ------------- | -----: |
-| retained      |   2943 |
-| translated    |    227 |
-| corrected     |     74 |
-| withheld      |    732 |
-| not-available |    496 |
+| retained      |   1986 |
+| translated    |    919 |
+| corrected     |    308 |
+| withheld      |    759 |
+| not-available |    500 |
 | **missing**   |  **0** |
 
 No product reference, technical value, link or localized destination was dropped. Formats,
 codes, ranges, limits, units and measurement conditions are kept; units are only normalised in
 presentation (330 ml, 66 mm, 20 °C, °Brix, SO₂), never in codes, H1s or metadata.
 
+Field-level register of conflicts, corrections and open questions (desktop audit C01–C09, D09):
+`docs/content-register.md` (source of truth `src/migration/content-register.ts`, checked by
+`tests/unit/content-register.test.ts`).
+
 ## Corrections applied (source-supported)
+
+- **Desktop audit (C01, C03–C09)**: standard-aperture end overview rewritten from its own sheet;
+  English text on Spanish pages translated field by field (0 English blocks left); shrink sleeve
+  benefits restored as qualified capabilities; wet glue online ordering and unsupported
+  environmental claims removed; RipCap and ring crown cap coatings, shell and liner shown as
+  label/value pairs, duplicated block shown once; Tamarind, Water, Soft drinks, aluminium cans hub
+  and /fruit-concentrates wording; IQF household advice, wrong-fruit descriptions and orange-peel
+  health/disease claims removed; can product pages condensed to key dimensions and the height
+  table.
 
 - **Grape specification sheets** (Merlot, Malbec, Cabernet Sauvignon, RED-800, RED-1000, RGJC
   R-600, Tintorera R-4000; EN and ES): "Viscous red liquid without additives" + "Flavourings or
@@ -62,10 +76,8 @@ presentation (330 ml, 66 mm, 20 °C, °Brix, SO₂), never in codes, H1s or meta
 | Orange                                                               | "Spanish oranges" origin claim removed with the promotional copy. Confirm origin if it should be stated.                                                                                   |
 | Fruit/vegetable concentrates                                         | Nutrition/health statements withheld; reinstate only with product-specific evidence.                                                                                                       |
 | Standard can end (Korinthos), `/aluminum-can-end-52mm-202-std-sot`   | Both measurements are labelled "Curl External Diameter" (59.44 mm and 57.66 mm). Kept as published; the ISE page labels its pair outside/inside. Which label is right?                     |
-| Standard can end, `/aluminium-can-ends/52mm-(202)-dia-aluminium-end` | Its overview text introduces the ISE (Botcherby) end. Which values apply?                                                                                                                  |
+| Standard can end, `/aluminium-can-ends/52mm-(202)-dia-aluminium-end` | Overview rewritten from its own sheet (C01). Its dimensions are not restated: confirm the approved values (see C08).                                                                       |
 | Sleek can, `/sleek-can-d57mm`                                        | Fill volumes list 270 ml; the height table says "122 mm for 269 ml".                                                                                                                       |
-| IQF orange half slices                                               | Described with lemon wording ("bright yellow skin").                                                                                                                                       |
-| Soft drinks, Water                                                   | Opening text about filtered water and chemical contamination (copied between pages).                                                                                                       |
 | 26 mm ring crown cap, grape sheets (ES)                              | 7 fields not found on the live page at the time of the check (tin coating "5,6g/m2/5,6g/m2"; ES "Concentrado de Jugo de Uva Roja"): possible change of the official page or of its markup. |
 
 ## Assets
