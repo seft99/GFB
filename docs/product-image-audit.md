@@ -377,3 +377,25 @@ replacement before they can be treated as cleared under this policy.
    report.
 7. Re-check licences when replacing an asset or materially changing its use. Never fabricate a
    release, ownership record or legal approval.
+
+## G. User-supplied editorial background
+
+The following non-photographic asset was supplied directly by the GFB project stakeholder with an
+explicit instruction to publish it as the secondary editorial background on product-detail pages.
+That task request is the authorization evidence for this placement; no external stock licence or
+creator identity is inferred.
+
+Licence detail: original image URL = **not applicable (local file supplied by stakeholder)**;
+creator/copyright owner = **not independently identified**; licence name and URL = **not
+applicable** because this placement relies on the stakeholder's direct written authorization,
+rather than an external stock licence. Commercial publication is authorized only for the requested
+GFB website placement. No artwork edit is authorized or performed; CSS may crop and reposition the
+unchanged file responsively. No attribution obligation was specified.
+
+| Local asset                                                   | Scope                                                                                                 | Original source / owner                                                                                                                                                                                                               | Commercial use                                              | Modification                                                             | Attribution    | Relevant third-party rights                                                                                                                                                                                     | Verified   | Status                |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------ | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------------- |
+| `images/product-detail/gfb-premium-product-editorial-bg.webp` | Structurally eligible secondary editorial/descriptive branches in individual product-detail templates | User-supplied file `C:/Users/sebas/Downloads/gfb-premium-product-editorial-bg.webp`; explicit publication instruction in the Codex task dated 2026-10-29. SHA-256: `39FEAD9D182D03D09CB2C75ADBC57F0BADE46A1AE733F6BC0F9EF41ACF87734F` | Authorized for this requested GFB commercial-site placement | Artwork must remain unmodified; responsive CSS cropping/positioning only | None specified | Abstract artwork; no recognisable people, trademarks, logos, private property or protected product designs observed. Creator/provenance beyond the stakeholder-supplied file was not independently established. | 2026-10-29 | `authorized-existing` |
+
+The copied production asset is byte-identical to the supplied file. This record documents the
+stakeholder's authorization for the requested use; it is not a representation that every possible
+copyright or third-party-rights risk has been eliminated.

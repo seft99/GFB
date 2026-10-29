@@ -160,27 +160,29 @@ export default async function LegacyDetailPage({ params }: Props) {
         }}
       />
 
-      {content.sections.length > 0 && (
-        <ProductDetailContent
-          content={productContent(path, content.sections)}
-          locale={locale}
-          labels={{ ...legacy.content, viewProduct: legacy.viewProduct }}
-        />
-      )}
+      <div className="legacy-detail__product-context">
+        {content.sections.length > 0 && (
+          <ProductDetailContent
+            content={productContent(path, content.sections)}
+            locale={locale}
+            labels={{ ...legacy.content, viewProduct: legacy.viewProduct }}
+          />
+        )}
 
-      <FamilyRelated
-        eyebrow={family.label[locale]}
-        entries={relatedItems}
-        directoryHref={related?.directoryHref}
-        labels={{
-          title: legacy.related,
-          description: relatedTechnical ? legacy.relatedTextTechnical : legacy.relatedText,
-          resourceKinds: legacy.resourceKinds,
-          explore: legacy.familyShort[family.id]
-            ? legacy.relatedExplore.replace("{family}", legacy.familyShort[family.id])
-            : undefined
-        }}
-      />
+        <FamilyRelated
+          eyebrow={family.label[locale]}
+          entries={relatedItems}
+          directoryHref={related?.directoryHref}
+          labels={{
+            title: legacy.related,
+            description: relatedTechnical ? legacy.relatedTextTechnical : legacy.relatedText,
+            resourceKinds: legacy.resourceKinds,
+            explore: legacy.familyShort[family.id]
+              ? legacy.relatedExplore.replace("{family}", legacy.familyShort[family.id])
+              : undefined
+          }}
+        />
+      </div>
 
       <CtaBand
         variant="compact"

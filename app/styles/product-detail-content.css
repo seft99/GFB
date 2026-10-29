@@ -485,6 +485,29 @@
 .pdc-section--wide {
   max-width: none;
 }
+.legacy-detail__product-context {
+  position: relative;
+  isolation: isolate;
+  background: #edf2f9;
+}
+.legacy-detail__product-context::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  content: "";
+  opacity: 0.2;
+  pointer-events: none;
+  background-image: url("/images/backgrounds/gfb-product-detail-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.legacy-detail__product-context > .pdc.section,
+.legacy-detail__product-context > .family-related.section {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
 .pdc-editorial > .pdc-label {
   margin: 0.5rem 0 -0.25rem;
 }

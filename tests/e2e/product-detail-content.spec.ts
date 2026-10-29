@@ -57,6 +57,45 @@ test("every detail page serves every published string of its content in the serv
 });
 
 test.describe("product information layouts", () => {
+  test("the supplied premium background is limited to secondary editorial content", async ({ page, request }) => {
+    const asset = "/images/product-detail/gfb-premium-product-editorial-bg.webp";
+    expect((await request.get(asset)).status()).toBe(200);
+
+    const loadedAsset: string[] = [];
+    page.on("request", (entry) => {
+      if (entry.url().endsWith(asset)) loadedAsset.push(entry.url());
+    });
+
+    // A technical product has no equivalent editorial branch, so the image is neither present
+    // in the DOM nor requested by the browser.
+    await page.goto("/merlot");
+    await page.waitForLoadState("networkidle");
+    await expect(page.locator(".pdc-secondary-editorial")).toHaveCount(0);
+    expect(loadedAsset).toEqual([]);
+
+    for (const url of [
+      "/citrics/orange-concentrate",
+      "/iqf-lemon-slices/iqf-lemon-slices",
+      "/aluminium-cans"
+    ]) {
+      await page.goto(url);
+      const editorial = page.locator(".pdc.pdc-secondary-editorial");
+      await expect(editorial).toHaveCount(1);
+      await expect
+        .poll(() => editorial.evaluate((element) => getComputedStyle(element).backgroundImage))
+        .toContain("gfb-premium-product-editorial-bg.webp");
+      await expect(page.locator(".pdc__body .pdc-secondary-editorial")).toHaveCount(0);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+    }
+
+    // Reference tables are not editorial descriptions even though they share the product-detail
+    // component, and unrelated pages never render the opt-in class.
+    await page.goto("/alcoholic-beverage");
+    await expect(page.locator(".pdc-secondary-editorial")).toHaveCount(0);
+    await page.goto("/");
+    await expect(page.locator(".pdc-secondary-editorial")).toHaveCount(0);
+  });
+
   test("formats-overview: format rows with chips and the editorial overview (Orange)", async ({ page }) => {
     await page.goto("/citrics/orange-concentrate");
     const section = page.locator(".pdc");
