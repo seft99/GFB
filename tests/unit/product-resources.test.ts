@@ -96,7 +96,7 @@ test("every family page appears once, at its public URL, with a verified type", 
 
 test("titles and descriptions come from the pages themselves", () => {
   assert.deepEqual(titles([cans]), ["Aluminium cans", "Standard can", "Sleek can", "Slim can"]);
-  assert.ok(titles([crowns]).includes("Crown Cork Bottle Caps: Characteristics"));
+  assert.ok(titles([crowns]).includes("Crown Cork Bottle Caps: Crown caps 26 mm"));
   assert.equal(new Set(titles([crowns])).size, crowns.items.length);
   for (const locale of ["en", "es"] as const)
     for (const id of ["aluminium-cans", "can-ends", "crown-corks", "label-types"])

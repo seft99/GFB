@@ -68,7 +68,7 @@ export const isValueRow = (row: [string, string]) => /^\d/.test(row[0].trim()) &
 /** Format rows are short lists; long cells are editorial text published inside the table. */
 const LONG_CELL = 140;
 
-export type FormatRow = { label: string; values: string[]; lang?: "en" };
+export type FormatRow = { label?: string; values: string[]; sourceText?: string; lang?: "en" };
 
 export type FormatsContent = {
   variant: "formats-overview";
@@ -102,6 +102,34 @@ export type TechnicalContent = {
 
 export const isDefinitions = (panel: TechnicalPanel): panel is { definitions: DefinitionEntry[] } =>
   "definitions" in panel;
+
+export type TechnicalPanelRow =
+  | { layout: "full"; panels: [TechnicalPanel] }
+  | { layout: "pair"; panels: [TechnicalPanel, TechnicalPanel] };
+
+/**
+ * Technical panels are only paired when they are adjacent, one-table groups. This preserves
+ * the relationship between genuinely comparable tables (such as analysis and microbiology)
+ * without allowing Grid auto-placement to pair prose, definitions, conclusions or mixed tables.
+ */
+const isComparableTechnicalTable = (panel: TechnicalPanel): panel is ContentGroup =>
+  !isDefinitions(panel) && panel.items.length === 1 && panel.items[0]?.type === "specs";
+
+export function technicalPanelRows(panels: TechnicalPanel[]): TechnicalPanelRow[] {
+  const rows: TechnicalPanelRow[] = [];
+  for (let index = 0; index < panels.length; ) {
+    const current = panels[index]!;
+    const next = panels[index + 1];
+    if (isComparableTechnicalTable(current) && next && isComparableTechnicalTable(next)) {
+      rows.push({ layout: "pair", panels: [current, next] });
+      index += 2;
+    } else {
+      rows.push({ layout: "full", panels: [current] });
+      index++;
+    }
+  }
+  return rows;
+}
 
 export type RangeContent = {
   variant: "product-range-features";
@@ -143,7 +171,11 @@ const asGroup = (section: Section): ContentGroup => ({
 });
 
 function formatsContent(sections: Section[]): FormatsContent {
-  const index = sections.findIndex((section) => section.items.some((item) => item.type === "specs"));
+  const index = sections.findIndex(
+    (section) =>
+      section.items.some((item) => item.type === "specs") ||
+      (Boolean(section.heading) && section.items.length === 1 && section.items[0]?.type === "p")
+  );
   const table = sections[index];
   const formats: FormatRow[] = [];
   const notes: FormatsContent["notes"] = [];
@@ -151,8 +183,18 @@ function formatsContent(sections: Section[]): FormatsContent {
   for (const item of table?.items ?? [])
     if (item.type === "specs")
       for (const [label, value] of item.rows)
-        if (value.length > LONG_CELL) notes.push({ label, text: value, ...(item.lang ? { lang: item.lang } : {}) });
+        // Comma-separated format names remain format chips even when their combined source cell
+        // is long (for example, the four melon concentrate presentations). A single long cell is
+        // editorial copy, not a format name.
+        if (value.length > LONG_CELL && splitValues(value).length === 1)
+          notes.push({ label, text: value, ...(item.lang ? { lang: item.lang } : {}) });
         else formats.push({ label, values: splitValues(value), ...(item.lang ? { lang: item.lang } : {}) });
+    else if (item.type === "p" && table?.heading && table.items.length === 1)
+      formats.push({
+        values: item.text.replace(/\.$/, "").split(/,\s+|\s+(?:and|y)\s+/).filter(Boolean),
+        sourceText: item.text,
+        ...(item.lang ? { lang: item.lang } : {})
+      });
     else overview.push({ items: [item] });
   sections.forEach((section, position) => {
     if (position === index) return;
@@ -345,7 +387,8 @@ export function contentStrings(content: ProductContent): string[] {
   switch (content.variant) {
     case "formats-overview":
       if (content.formatsHeading) out.push(content.formatsHeading);
-      for (const row of content.formats) out.push(row.label, row.values.join(", "));
+      for (const row of content.formats)
+        out.push(...(row.label ? [row.label] : []), row.sourceText ?? row.values.join(", "));
       for (const note of content.notes) out.push(note.label, note.text);
       out.push(...content.overview.flatMap(groupStrings));
       break;

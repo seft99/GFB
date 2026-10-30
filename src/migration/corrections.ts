@@ -681,6 +681,61 @@ Our ${name.en.toLowerCase()} cans are designed`;
 });
 
 export const blockCorrections: BlockCorrection[] = [
+  {
+    path: "/crown-corks-caps",
+    blocks: [
+      "Crown Caps\n26mm",
+      "CHARACTERISTICS",
+      "Tinplate, electrolytically lined with tin, or TFS steel , chromium plated sheet metal, according to DIN 6099",
+      "Standard Pantone PMS colours, with neutral one colour printing, multicolour printing or customer designed printing using the offset printing method. We also make crown caps with inside printing.",
+      "Crown Caps\n42mm",
+      "CHARACTERISTICS",
+      "Made from steel for glass bottles",
+      "Maximum sealing pressure and good hermetic seal for vast range of drinks",
+      "Five colours gold, silver, white, black & red",
+      "Decorated 29mm crown caps are also available with printed logo or design when the brand demands it"
+    ],
+    replace: [
+      { tag: "h2", text: "Crown caps 26 mm" },
+      { tag: "p", text: "Tinplate, electrolytically lined with tin, or TFS steel, chromium-plated sheet metal, according to DIN 6099" },
+      { tag: "p", text: "Standard Pantone PMS colours, with neutral one-colour printing, multicolour printing or customer-designed printing using the offset printing method. We also make crown caps with inside printing." },
+      { tag: "h2", text: "Crown caps 42 mm" },
+      { tag: "p", text: "Made from steel for glass bottles" },
+      { tag: "p", text: "Maximum sealing pressure and good hermetic seal for a vast range of drinks" },
+      { tag: "p", text: "Five colours: gold, silver, white, black and red" },
+      { tag: "p", text: "Decorated 29 mm crown caps are also available with a printed logo or design when the brand demands it" }
+    ],
+    reason:
+      "Groups the published Crown caps 26 mm and 42 mm characteristics under their own headings; only spacing and British-English grammar are corrected. The 29 mm offer remains published as an unresolved additional presentation."
+  },
+  {
+    path: "/crown-corks-caps",
+    locale: "es",
+    blocks: [
+      "Tapas de corona 26 mm",
+      "CARACTERÍSTICAS",
+      "Hojalata, revestida electrolíticamente con estaño, o acero TFS, chapa cromada, según DIN 6099",
+      "Colores estándar Pantone PMS, con impresión monocolor neutra, impresión multicolor o impresión diseñada por el cliente mediante el método de impresión offset. También hacemos gorras de corona con impresión interior.",
+      "Tapas de corona 42 mm",
+      "CARACTERÍSTICAS",
+      "Hecho de acero para botellas de vidrio.",
+      "Máxima presión de sellado y buen cierre hermético para una amplia gama de bebidas",
+      "Cinco colores oro, plata, blanco, negro y rojo.",
+      "Las tapas de corona decoradas de 29 mm también están disponibles con el logotipo o diseño impreso cuando la marca lo exige."
+    ],
+    replace: [
+      { tag: "h2", text: "Tapas de corona de 26 mm" },
+      { tag: "p", text: "Hojalata revestida electrolíticamente con estaño o acero TFS, chapa cromada, según DIN 6099" },
+      { tag: "p", text: "Colores estándar Pantone PMS, con impresión monocolor neutra, impresión multicolor o impresión diseñada por el cliente mediante el método de impresión offset. También fabricamos tapas de corona con impresión interior." },
+      { tag: "h2", text: "Tapas de corona de 42 mm" },
+      { tag: "p", text: "Fabricadas en acero para botellas de vidrio." },
+      { tag: "p", text: "Máxima presión de sellado y buen cierre hermético para una amplia gama de bebidas" },
+      { tag: "p", text: "Cinco colores: oro, plata, blanco, negro y rojo." },
+      { tag: "p", text: "Las tapas de corona decoradas de 29 mm también están disponibles con el logotipo o diseño impreso cuando la marca lo exige." }
+    ],
+    reason:
+      "Groups the published Spanish 26 mm and 42 mm presentations with their characteristics and corrects only grammar and the machine-translated reference to crown caps. The 29 mm offer remains published as an unresolved additional presentation."
+  },
   ...canCorrections,
   ...ripcapCoatings("/26mm-ripcap"),
   ...ripcapCoatings("/42mm-ripcap"),

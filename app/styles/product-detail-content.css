@@ -4,8 +4,7 @@
  * technical canvas with white surfaces → the white related-family section → blue CTA → navy
  * footer. Fine borders and row separators instead of shadows; text at a reading measure; lime
  * only as an accent. Layouts:
- * - formats-overview: formats surface (rows with non-interactive chips) + overview, side by
- *   side only when both are substantial (`pdc-split--formats`), otherwise stacked.
+ * - formats-overview: format groups with chips, followed by their editorial overview.
  * - facts-applications: light fact grid + notes; uses/handling on one white surface.
  * - technical-specification: identifier chips + tables and definition lists on white surfaces.
  * - product-range-features: comparison table of references, or editorial sections.
@@ -430,7 +429,12 @@
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
-.pdc-panels {
+.pdc-technical {
+  display: grid;
+  gap: clamp(1rem, 1.6vw, 1.25rem);
+  align-items: start;
+}
+.pdc-technical__pair {
   display: grid;
   gap: clamp(1rem, 1.6vw, 1.25rem);
   align-items: start;
@@ -519,51 +523,29 @@
     font-family: var(--font-brand);
     font-stretch: 92%;
   }
-  .pdc-split--formats {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: clamp(2rem, 4vw, 3.5rem);
-  }
   .pdc-formats__row {
     grid-template-columns: minmax(11rem, 0.38fr) minmax(0, 1fr);
     align-items: center;
   }
-  .pdc-stack > .pdc-formats {
+  /* A short published list may have no subgroup label (for example Coconut). Its chips use
+     the available reading width rather than inheriting the empty label column. */
+  .pdc-formats__row:not(:has(dt)) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pdc-stack--formats > .pdc-formats {
     max-width: 58rem;
   }
-  /* Sparse pages: formats and text share one reading width instead of a wide half-empty band. */
-  .pdc-stack--compact > .pdc-formats,
-  .pdc-stack--compact > .pdc-overview {
+  .pdc-stack--formats > .pdc-overview {
     max-width: var(--pdc-measure);
   }
-  .pdc-split--formats .pdc-overview {
-    padding-top: 0.35rem;
+  .pdc-stack--facts .pdc-facts__grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
   }
-  .pdc-split--facts {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  }
-  .pdc-split--facts .pdc-facts__grid {
+  .pdc-technical__pair {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .pdc-panels {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  /* An odd last panel spans the width instead of leaving an empty cell. */
-  .pdc-panels > :last-child:nth-child(odd) {
-    grid-column: 1 / -1;
   }
   .pdc-definitions > div {
     grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
-  }
-  .pdc-editorial {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: clamp(2rem, 4vw, 3.5rem);
-  }
-  .pdc-editorial > .pdc-intro,
-  .pdc-editorial > .pdc-label,
-  .pdc-editorial > .pdc-section--wide,
-  .pdc-editorial > .pdc-label + .pdc-section:last-child,
-  .pdc-editorial > :last-child:nth-child(odd) {
-    grid-column: 1 / -1;
   }
 }
 

@@ -11,6 +11,7 @@ import {
   parseMeasurement,
   referenceColumn,
   splitReference,
+  technicalPanelRows,
   type ContentGroup,
   type FactsContent,
   type FormatsContent,
@@ -333,15 +334,6 @@ function GroupCard({
   );
 }
 
-const textLength = (groups: ContentGroup[]) =>
-  groups.reduce(
-    (sum, group) =>
-      sum +
-      (group.heading?.length ?? 0) +
-      group.items.reduce((total, item) => total + ("text" in item ? item.text.length : 0), 0),
-    0
-  );
-
 // ---------- A: formats-overview ----------
 
 const FORMAT_ICONS: [RegExp, IconName][] = [
@@ -356,14 +348,8 @@ const formatIcon = (label: string) => FORMAT_ICONS.find(([pattern]) => pattern.t
 
 function FormatsView({ content, ctx }: { content: FormatsContent; ctx: Ctx }) {
   const hasOverview = content.overview.length > 0 || content.notes.length > 0;
-  // Side by side when the overview has a few sentences next to several format rows; otherwise a
-  // compact stack at reading width (formats above, text below).
-  const sideBySide =
-    hasOverview &&
-    content.formats.length >= 3 &&
-    textLength(content.overview) + content.notes.reduce((sum, note) => sum + note.text.length, 0) >= 120;
   return (
-    <div className={sideBySide ? "pdc-split pdc-split--formats" : "pdc-stack pdc-stack--compact"}>
+    <div className="pdc-stack pdc-stack--formats">
       {/* Without an overview the section heading already says "Available formats". */}
       <section className="pdc-surface pdc-formats" aria-labelledby={hasOverview ? "pdc-formats" : "pdc-title"}>
         {hasOverview && (
@@ -373,13 +359,15 @@ function FormatsView({ content, ctx }: { content: FormatsContent; ctx: Ctx }) {
         )}
         <dl className="pdc-formats__rows">
           {content.formats.map((row, index) => (
-            <div key={`${index}-${row.label}`} className="pdc-formats__row" lang={row.lang}>
-              <dt>
-                <span className="pdc-icon" aria-hidden="true">
-                  <Icon name={formatIcon(row.label)} strokeWidth={1.6} />
-                </span>
-                {row.label}
-              </dt>
+            <div key={`${index}-${row.label ?? "formats"}`} className="pdc-formats__row" lang={row.lang}>
+              {row.label && (
+                <dt>
+                  <span className="pdc-icon" aria-hidden="true">
+                    <Icon name={formatIcon(row.label)} strokeWidth={1.6} />
+                  </span>
+                  {row.label}
+                </dt>
+              )}
               <dd>
                 {/* The published cell, whole (read by assistive technology, matched by the SEO
                     verifier); the chips below are its visual form. */}
@@ -432,7 +420,7 @@ const isNote = (label: string) => /note|nota/i.test(label);
 
 function FactsView({ content, ctx }: { content: FactsContent; ctx: Ctx }) {
   return (
-    <div className={content.details.length ? "pdc-split pdc-split--facts" : "pdc-stack"}>
+    <div className="pdc-stack pdc-stack--facts">
       <div className="pdc-facts">
         {content.intro.length > 0 && (
           <div className="pdc-intro pdc-measure">
@@ -496,6 +484,29 @@ function TechnicalView({ content, ctx }: { content: TechnicalContent; ctx: Ctx }
     !isDefinitions(panel) && !panel.heading && panel.items.every((item) => item.type === "p");
   const intro = content.panels.filter(isIntro);
   const panels = content.panels.filter((panel) => !isIntro(panel));
+  const rows = technicalPanelRows(panels);
+  const panelView = (panel: TechnicalPanel, id: string) =>
+    isDefinitions(panel) ? (
+      <section key={id} className="pdc-surface pdc-spec" aria-labelledby={id}>
+        <h3 id={id}>{ctx.labels.properties}</h3>
+        <dl className="pdc-definitions">
+          {panel.definitions.map((entry, position) => (
+            <div key={`${position}-${entry.term}`}>
+              <dt lang={entry.termLang}>{entry.term}</dt>
+              <dd>
+                {entry.item.type === "ul" ? (
+                  <span lang={entry.item.lang}>{entry.item.items[0]}</span>
+                ) : (
+                  <ItemView item={entry.item} ctx={ctx} />
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    ) : (
+      <GroupCard key={id} group={panel} ctx={ctx} id={id} className="pdc-surface pdc-spec" />
+    );
   return (
     <>
       {intro.length > 0 && (
@@ -514,28 +525,14 @@ function TechnicalView({ content, ctx }: { content: TechnicalContent; ctx: Ctx }
           ))}
         </ul>
       )}
-      <div className="pdc-panels" data-count={panels.length}>
-        {panels.map((panel, index) =>
-          isDefinitions(panel) ? (
-            <section key={index} className="pdc-surface pdc-spec" aria-labelledby={`pdc-panel-${index}`}>
-              <h3 id={`pdc-panel-${index}`}>{ctx.labels.properties}</h3>
-              <dl className="pdc-definitions">
-                {panel.definitions.map((entry, position) => (
-                  <div key={`${position}-${entry.term}`}>
-                    <dt lang={entry.termLang}>{entry.term}</dt>
-                    <dd>
-                      {entry.item.type === "ul" ? (
-                        <span lang={entry.item.lang}>{entry.item.items[0]}</span>
-                      ) : (
-                        <ItemView item={entry.item} ctx={ctx} />
-                      )}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </section>
+      <div className="pdc-technical" data-count={panels.length}>
+        {rows.map((row, rowIndex) =>
+          row.layout === "pair" ? (
+            <div key={rowIndex} className="pdc-technical__pair">
+              {row.panels.map((panel, panelIndex) => panelView(panel, `pdc-panel-${rowIndex}-${panelIndex}`))}
+            </div>
           ) : (
-            <GroupCard key={index} group={panel} ctx={ctx} id={`pdc-panel-${index}`} className="pdc-surface pdc-spec" />
+            panelView(row.panels[0], `pdc-panel-${rowIndex}-0`)
           )
         )}
       </div>

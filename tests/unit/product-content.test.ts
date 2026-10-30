@@ -7,6 +7,7 @@ import {
   productContent,
   productContentVariant,
   sourceStrings,
+  technicalPanelRows,
   type ProductContentVariant
 } from "../../src/migration/product-content.ts";
 
@@ -63,6 +64,22 @@ test("formats are format groups; long editorial cells never become chips", () =>
   // The "Oat Benefits" health text published in the formats table is withheld at the source.
   assert.deepEqual(oat.notes, []);
   assert.ok(orange.formats.some((row) => row.label === "Deionized concentrates"));
+  const melon = productContent("/mediterranean/melon", legacyPage("/mediterranean/melon")!.en.sections);
+  if (melon.variant !== "formats-overview") assert.fail();
+  assert.deepEqual(melon.formats[0], {
+    label: "Concentrate",
+    values: [
+      "Cantaloupe melon juice concentrate cloudy",
+      "Cantaloupe melon juice concentrate clear",
+      "Honeydew melon juice concentrate cloudy",
+      "Honeydew melon juice concentrate clear"
+    ]
+  });
+  const coconut = productContent("/tropical/coconut", legacyPage("/tropical/coconut")!.en.sections);
+  if (coconut.variant !== "formats-overview") assert.fail();
+  assert.deepEqual(coconut.formats, [
+    { values: ["Diced", "coconut cream", "coconut water"], sourceText: "Diced, coconut cream and coconut water." }
+  ]);
 });
 
 test("technical pages keep identifiers apart and bottle models under their published groups", () => {
@@ -100,6 +117,21 @@ test("technical pages keep identifiers apart and bottle models under their publi
       ["Wine", 2],
       ["Beer", 7]
     ]
+  );
+});
+
+test("technical composition pairs only adjacent comparable tables", () => {
+  const crown = productContent("/ripcap/crown-cork-bottle-caps", legacyPage("/ripcap/crown-cork-bottle-caps")!.en.sections);
+  if (crown.variant !== "technical-specification") assert.fail();
+  assert.deepEqual(
+    technicalPanelRows(crown.panels).map((row) => row.layout),
+    ["full", "full", "full", "full"]
+  );
+  const merlot = productContent("/merlot", legacyPage("/merlot")!.en.sections);
+  if (merlot.variant !== "technical-specification") assert.fail();
+  assert.deepEqual(
+    technicalPanelRows(merlot.panels).map((row) => row.layout),
+    ["pair", "full"]
   );
 });
 

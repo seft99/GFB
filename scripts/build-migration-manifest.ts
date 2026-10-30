@@ -101,6 +101,7 @@ const groups =
     ?.groups ?? [];
 
 function concentrateName(family: Family, path: string) {
+  if (path === "/tropical/coconut") return { en: "Coconut", es: "Coco", fruit: "coco" };
   const group = groups.find((item) => item.title.en === concentrateGroups[family.id]);
   const item = group?.items[family.paths.indexOf(path)];
   return item
