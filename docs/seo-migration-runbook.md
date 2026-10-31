@@ -90,7 +90,7 @@ merged.
 - Detail pages render the crawled content in order: specification tables (`<table>`, `<th
 scope="row">`), lists and paragraphs, plus breadcrumbs, family links and the contextual CTA.
   One H1 per page; H2/H3 from the source headings.
-- Withheld for review (173 blocks, listed per page in the content matrix): health/benefit claims
+- Withheld for review (507 blocks on 130 localized rows, listed per page in the content matrix): health/benefit claims
   ("Benefits" sections, nutrition claims) and manufacturing claims (GFB is not a manufacturer).
   Nothing is dropped silently.
 - Visible typos fixed: `GBF`, "Alluminium", "Sof Drinks", "suvignon", "Corona corchos".
@@ -98,7 +98,8 @@ scope="row">`), lists and paragraphs, plus breadcrumbs, family links and the con
   facts from the page (formats table) or a factual template. No UUID/empty descriptions.
 - Spanish: pages Wix translated keep that translation. Concentrate formats and IQF/can/closure
   product names use a closed glossary (`src/migration/glossary-es.ts`); commercial names and codes
-  stay unchanged. Blocks still in English carry `lang="en"` (494 items) — see §8.
+  stay unchanged. The current manifest reports zero untranslated blocks; the earlier 494-item
+  count is obsolete.
 - JSON-LD: Organization and WebSite (stable `@id`s, no Wix social profiles) on Home;
   BreadcrumbList on every page with breadcrumbs; Product (name, description, category, url —
   no offers, prices, GTINs or ratings) on leaf product pages; CollectionPage on family hubs.
@@ -123,16 +124,16 @@ crawlers can read the noindex header, and lists both sitemaps.
 | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `npm run check` (format, lint, typecheck, unit tests, build)                                                                      | pass; 29 unit tests                                                                      |
 | `npx playwright test`                                                                                                             | 56 passed, 2 skipped (desktop + mobile; axe on 10 pages incl. detail template and index) |
-| `MIGRATION_TEST_ORIGIN=http://localhost:3000 npm run test:migration`                                                              | 632 HTTP checks, 0 failures (preview host: noindex expected)                             |
-| `… MIGRATION_TEST_HOST=www.gfb-solutions.com npm run test:migration`                                                              | 632 HTTP checks, 0 failures (production host: indexable)                                 |
+| `MIGRATION_TEST_ORIGIN=https://gfb-solutions.vercel.app npm run test:migration` (2026-10-31 UTC)                                  | 771 HTTP requests; 15,121 assertions: 15,114 passed, 7 structured-data consistency failures, 744 skipped |
+| `MIGRATION_TEST_ORIGIN=https://www.gfb-solutions.com npm run test:migration`                                                       | Not executed; required after authorised cutover                                           |
 | Browser check (scratchpad script): language switch after hydration on 4 pages × 2 viewports, client navigation category ↔ product | 21/21                                                                                    |
 | Concentrate portfolio QA at `/fruits-concentrates` (EN 1366/1440/1920, ES 1440)                                                   | unchanged: 43 entries, counts, panel heights, keyboard, CTA                              |
 
 The verifier covers every manifest row (status, single hop for redirects, canonical, HTML lang, one
 H1 and its text, hreflang cluster, title/description quality, JSON-LD parse, noindex/indexable,
-published facts present in the HTML), 18 edge cases (aliases, trailing slash, case, encoded
+all source-derived Product Information blocks present in their scoped section), 18 edge cases (aliases, trailing slash, case, encoded
 characters, unknown URLs, child sitemaps), query-order variants, alternating-language requests,
-crawler user agent, sitemap equality with the manifest, 568 internal links, 52 images and orphans.
+crawler user agent, sitemap equality with the manifest, 568 internal links, 138 images and orphans.
 
 Lab performance (local Chromium, 10 Mbps / 40 ms): CLS 0 on Home, a service page, the concentrate
 catalogue, two technical pages and the index; LCP 0.3–0.8 s; ~150 KB compressed JS. These are lab
@@ -141,15 +142,16 @@ numbers, not field Core Web Vitals.
 Not verifiable here: live deployment behaviour (Vercel host headers, TLS, apex/HTTP redirects),
 Google's selected canonicals, Rich Results Test / URL Inspection, Search Console data.
 
-### Revalidation (2026-10-29 UTC)
+### Revalidation (2026-10-31 UTC)
 
 - The official English and Spanish sitemap roots were crawled again: 34 sitemap files, 286
   localized URLs (143 per locale), all 200, with three additional historical internal links.
 - The manifest was regenerated: 289 rows (276 retained 200 pages, four retained review pages,
   six permanent redirects and three broken historical links).
-- The full verifier against the public Vercel preview completed 631 checks with zero failures.
-  It covered the manifest, canonical and hreflang markup, body identity, redirects, sitemaps,
-  assets, internal discovery and the preview noindex policy.
+- The hardened verifier against the public Vercel preview made 771 HTTP requests and executed
+  15,121 assertions. Seven Product schema-description/visible-content consistency assertions
+  failed; all 3,207 scoped content blocks and 744 candidate metadata-contract assertions passed.
+  The raw result is `docs/migration-data/verification-results.json`.
 - The verifier now treats only the actual production hostname as indexable. A forwarded-host
   override simulates production only on localhost because Vercel strips that header on remote
   preview requests.
@@ -187,9 +189,9 @@ Google's selected canonicals, Rich Results Test / URL Inspection, Search Console
   and measure the migration; public crawling cannot establish traffic or rankings.
 - `/additives` and `/ingredients-and-materials`: confirm whether these offers are current.
 - The three broken historical links: confirm intended destinations, if any.
-- Spanish translation of the 494 English blocks still on Spanish pages (Wix never translated
-  them) — professional translation recommended; product codes stay unchanged.
-- Withheld claims (173 blocks): confirm which, if any, can be supported.
+- Spanish source blocks: the current manifest reports zero untranslated blocks.
+- Withheld claims/placeholders (507 blocks): confirm which, if any, can be supported; do not
+  restore health, benefits or manufacturing claims without evidence.
 - Overlapping flat/nested product pages: consolidate only with Search Console evidence.
 - No PDF/downloadable files were linked from the crawled HTML; Wix-hosted images are not
   republished (the templates use text content and local assets only).
